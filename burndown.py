@@ -13,6 +13,7 @@ Aufruf:
 import argparse
 import csv
 import json
+import os
 import subprocess
 import sys
 from datetime import date, datetime, timedelta
@@ -26,12 +27,33 @@ import matplotlib.pyplot as plt
 TZ = ZoneInfo("Europe/Berlin")
 
 
+def diagnose():
+    """Zeigt bei einem Fehler, welche Art Token ankommt (ohne den Token selbst auszugeben)."""
+    tok = os.environ.get("GH_TOKEN", "")
+    if not tok:
+        kind = "leer (Secret PROJECT_TOKEN fehlt oder ist leer)"
+    elif tok.startswith("github_pat_"):
+        kind = "fine-grained (falscher Typ, es muss ein classic Token sein)"
+    elif tok.startswith("ghp_"):
+        kind = "classic"
+    else:
+        kind = "unbekannter Typ"
+    print(f"DIAGNOSE: GH_TOKEN ist {kind}, Laenge {len(tok)} (classic hat 40)", file=sys.stderr)
+    r = subprocess.run(["gh", "api", "-i", "user"], capture_output=True, text=True)
+    for line in (r.stdout or "").splitlines():
+        if line.lower().startswith(("http/", "x-oauth-scopes", "x-accepted-oauth-scopes")):
+            print("DIAGNOSE: " + line.strip(), file=sys.stderr)
+    if r.returncode != 0 and r.stderr.strip():
+        print("DIAGNOSE: " + r.stderr.strip(), file=sys.stderr)
+
+
 def gh(*args):
     try:
         out = subprocess.run(["gh", *args], capture_output=True, text=True, check=True)
     except subprocess.CalledProcessError as e:
         print(f"FEHLER bei: gh {' '.join(args)}", file=sys.stderr)
         print((e.stderr or e.stdout or "keine Ausgabe von gh").strip(), file=sys.stderr)
+        diagnose()
         sys.exit(1)
     return json.loads(out.stdout)
 

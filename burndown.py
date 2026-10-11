@@ -14,6 +14,7 @@ import argparse
 import csv
 import json
 import subprocess
+import sys
 from datetime import date, datetime, timedelta
 from zoneinfo import ZoneInfo
 
@@ -26,7 +27,12 @@ TZ = ZoneInfo("Europe/Berlin")
 
 
 def gh(*args):
-    out = subprocess.run(["gh", *args], capture_output=True, text=True, check=True)
+    try:
+        out = subprocess.run(["gh", *args], capture_output=True, text=True, check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"FEHLER bei: gh {' '.join(args)}", file=sys.stderr)
+        print((e.stderr or e.stdout or "keine Ausgabe von gh").strip(), file=sys.stderr)
+        sys.exit(1)
     return json.loads(out.stdout)
 
 
@@ -58,7 +64,8 @@ def current_sprint(items):
             s = date.fromisoformat(sp["startDate"])
             if s <= today < s + timedelta(days=int(sp["duration"])):
                 return sp["title"]
-    raise SystemExit("Kein laufender Sprint gefunden (Items ohne Sprint oder Sprint nicht aktiv).")
+    print("Kein laufender Sprint gefunden (Items ohne Sprint oder Sprint nicht aktiv). Nichts zu zeichnen.")
+    sys.exit(0)
 
 
 def build(items, sprint_name, start_override, days_override, closed_of):
@@ -77,8 +84,9 @@ def build(items, sprint_name, start_override, days_override, closed_of):
     if days_override:
         days = days_override
     if not sprint_items or start is None:
-        raise SystemExit(f"Keine Items im Sprint '{sprint_name}' gefunden. "
-                         "Estimate und Sprints bei den Items gesetzt?")
+        print(f"Keine Items im Sprint '{sprint_name}' gefunden. "
+              "Estimate und Sprints bei den Items gesetzt? Nichts zu zeichnen.")
+        sys.exit(0)
     total = sum(float(it.get("estimate") or 0) for it in sprint_items)
     done = [(closed_of(it), float(it.get("estimate") or 0)) for it in sprint_items]
     rows = []

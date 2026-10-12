@@ -1,0 +1,41 @@
+@startuml use-case-diagram
+' Use-Case-Diagramm Cyber Defenders (SRS Abschnitt 2.2)
+' Autor: Dominik. Entwurf, vom Team zu bestaetigen.
+left to right direction
+skinparam shadowing false
+skinparam packageStyle rectangle
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor #FFFFFF
+  BorderColor #1F2937
+}
+skinparam defaultFontName Arial
+
+actor "Spieler" as Spieler
+
+rectangle "Cyber Defenders" {
+  usecase "Anmelden und registrieren" as Login #E5E7EB
+  usecase "UC-01\nMission auswählen" as UC01
+  usecase "UC-02\nFallakte lesen" as UC02
+  usecase "UC-03\nLösung im Editor schreiben" as UC03
+  usecase "UC-04\nLösung prüfen lassen" as UC04
+  usecase "UC-05\nFortschritt speichern" as UC05
+  usecase "UC-06\nFortschritt ansehen" as UC06
+  usecase "UC-07\nHinweis anfordern" as UC07
+}
+
+Spieler --> Login
+Spieler --> UC01
+Spieler --> UC02
+Spieler --> UC03
+Spieler --> UC04
+Spieler --> UC06
+
+UC07 .up.> UC03 : <<extend>>\n(Spieler kommt nicht weiter)
+UC05 .up.> UC04 : <<extend>>\n(Lösung korrekt)
+
+note bottom of Login
+  Grau: zählt nicht zu den fünf
+  High-Level-Use-Cases (Vorgabe Task 03)
+end note
+@enduml

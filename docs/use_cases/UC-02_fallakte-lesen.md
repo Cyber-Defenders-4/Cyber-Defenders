@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| Marco | 2 | [#17](https://github.com/MarcoDaquila/Cyber-Defenders/issues/17), [#19](https://github.com/MarcoDaquila/Cyber-Defenders/issues/19), [#20](https://github.com/MarcoDaquila/Cyber-Defenders/issues/20) |
+| [@MarcoDaquila](https://github.com/MarcoDaquila) | 2 | [#17](https://github.com/MarcoDaquila/Cyber-Defenders/issues/17), [#19](https://github.com/MarcoDaquila/Cyber-Defenders/issues/19), [#20](https://github.com/MarcoDaquila/Cyber-Defenders/issues/20) |
 
 ## 1 Brief description
 

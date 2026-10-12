@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| Leonie | 2 | [#18](https://github.com/MarcoDaquila/Cyber-Defenders/issues/18) |
+| [@webdesign19](https://github.com/webdesign19) | 2 | [#18](https://github.com/MarcoDaquila/Cyber-Defenders/issues/18) |
 
 ## 1 Brief description
 

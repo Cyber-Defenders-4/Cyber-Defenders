@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| Leonie | 3 | noch keine Story, Issue anlegen |
+| [@webdesign19](https://github.com/webdesign19) | 3 | noch keine Story, Issue anlegen |
 
 ## 1 Brief description
 

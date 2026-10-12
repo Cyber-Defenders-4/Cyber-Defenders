@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| Felix | 8 | [#24](https://github.com/MarcoDaquila/Cyber-Defenders/issues/24), [#26](https://github.com/MarcoDaquila/Cyber-Defenders/issues/26), [#27](https://github.com/MarcoDaquila/Cyber-Defenders/issues/27), [#28](https://github.com/MarcoDaquila/Cyber-Defenders/issues/28), [#29](https://github.com/MarcoDaquila/Cyber-Defenders/issues/29) |
+| [@FelixHagino](https://github.com/FelixHagino) | 8 | [#24](https://github.com/MarcoDaquila/Cyber-Defenders/issues/24), [#26](https://github.com/MarcoDaquila/Cyber-Defenders/issues/26), [#27](https://github.com/MarcoDaquila/Cyber-Defenders/issues/27), [#28](https://github.com/MarcoDaquila/Cyber-Defenders/issues/28), [#29](https://github.com/MarcoDaquila/Cyber-Defenders/issues/29) |
 
 ## 1 Brief description
 

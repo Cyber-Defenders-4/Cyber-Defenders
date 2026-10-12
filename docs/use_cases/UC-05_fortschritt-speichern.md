@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| Felix | 3 | [#30](https://github.com/MarcoDaquila/Cyber-Defenders/issues/30) |
+| [@FelixHagino](https://github.com/FelixHagino) | 3 | [#30](https://github.com/MarcoDaquila/Cyber-Defenders/issues/30) |
 
 ## 1 Brief description
 

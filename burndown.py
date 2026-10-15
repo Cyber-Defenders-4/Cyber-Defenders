@@ -7,7 +7,7 @@ Formel: Rest(d) = Summe Estimates im Sprint - Summe Estimates der Issues, die bi
 Ideallinie: Gerade von der Gesamtsumme am Sprintstart auf 0 am Sprintende.
 
 Aufruf:
-  python burndown.py --owner MarcoDaquila --project 3 --sprint current
+  python burndown.py --owner Cyber-Defenders-4 --project 2 --sprint current
   python burndown.py --demo        # Testlauf ohne GitHub-Zugriff
 """
 import argparse
@@ -156,8 +156,8 @@ def demo_data():
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--owner", default="MarcoDaquila")
-    p.add_argument("--project", type=int, default=3)
+    p.add_argument("--owner", default="Cyber-Defenders-4")
+    p.add_argument("--project", type=int, default=2)
     p.add_argument("--sprint", default="current", help='Sprint-Titel oder "current" (Standard)')
     p.add_argument("--start", type=date.fromisoformat, help="Startdatum ueberschreiben (YYYY-MM-DD)")
     p.add_argument("--days", type=int, help="Sprintlaenge in Tagen ueberschreiben (Standard: aus Board)")

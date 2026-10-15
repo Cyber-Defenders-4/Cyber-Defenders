@@ -25,7 +25,7 @@ jobs:
           GH_TOKEN: ${{ secrets.PROJECT_TOKEN }}
         run: |
           mkdir -p docs/burndown
-          python burndown.py --owner MarcoDaquila --project 3 --sprint current --out docs/burndown/burndown.png
+          python burndown.py --owner Cyber-Defenders-4 --project 2 --sprint current --out docs/burndown/burndown.png
 
       - name: Ergebnis committen
         run: |

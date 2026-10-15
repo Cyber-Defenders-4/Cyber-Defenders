@@ -84,7 +84,7 @@ Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. 
 | Titel | Link |
 | ----- | ---- |
 | Blog | https://github.com/MarcoDaquila/Cyber-Defenders/discussions |
-| Board | https://github.com/users/MarcoDaquila/projects/3/views/1 |
+| Board | https://github.com/orgs/Cyber-Defenders-4/projects/2/views/1 |
 | Repository | https://github.com/MarcoDaquila/Cyber-Defenders |
 
 ### 1.5 Überblick

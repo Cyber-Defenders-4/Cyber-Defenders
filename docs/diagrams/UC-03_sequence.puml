@@ -1,0 +1,35 @@
+@startuml UC-03_sequence
+' Sequenzdiagramm UC-03 (Abschnitt 4.3 der Spezifikation)
+' Autor: Marco. Entwurf aus Basic Flow und Alternative Flows, vom Team zu bestaetigen.
+title UC-03 Lösung im Editor schreiben
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant "Frontend\n(Angular)" as FE
+participant "Backend\n(Express)" as BE
+database "Datenbank\n(Neon)" as DB
+S -> FE : Editor der gestarteten Mission öffnen
+FE -> BE : Letzten Entwurf anfordern
+BE -> DB : Entwurf lesen
+DB --> BE : Entwurf oder keiner
+BE --> FE : Entwurf oder Code-Gerüst
+FE --> S : Code im Editor anzeigen
+loop Spieler arbeitet am Code
+  S -> FE : Code schreiben oder ändern
+  FE -> BE : Entwurf zwischenspeichern
+  alt Backend antwortet
+    BE -> DB : Entwurf speichern
+    DB --> BE : OK
+    BE --> FE : gespeichert
+  else 4a: Backend antwortet nicht
+    FE --> S : Hinweis "Entwurf nicht gespeichert",\nCode bleibt im Editor
+  end
+end
+opt 3c: Code zurücksetzen
+  S -> FE : Code zurücksetzen
+  FE --> S : Code-Gerüst der Mission anzeigen
+end
+note over S, FE : 3a: Hinweis anfordern (UC-07)\n3b: Code ausführen (UC-08)
+@enduml

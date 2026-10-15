@@ -1,0 +1,41 @@
+@startuml UC-04_sequence
+' Sequenzdiagramm UC-04 (Abschnitt 4.3 der Spezifikation)
+' Autor: Felix. Entwurf aus Basic Flow und Alternative Flows, vom Team zu bestaetigen.
+title UC-04 Lösung prüfen lassen
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant "Frontend\n(Angular)" as FE
+participant "Backend\n(Express)" as BE
+participant "Ausführungsumgebung\n(isoliert)" as AU
+database "Datenbank\n(Neon)" as DB
+S -> FE : Lösung einreichen
+FE -> BE : Code senden
+alt 2a: Backend antwortet nicht
+  FE --> S : Fehlermeldung, Code bleibt im Editor
+else Backend antwortet
+  BE -> AU : Code gegen die Tests der Mission ausführen (max. 5 s)
+  alt 3a: Compilerfehler
+    AU --> BE : Compilerfehler
+    BE --> FE : Fehlermeldung
+    FE --> S : Compilerfehler statt Testergebnis
+  else 3b: Zeitlimit überschritten
+    AU --> BE : Abbruch nach 5 s
+    BE --> FE : Zeitlimit überschritten
+    FE --> S : Meldung "Zeitlimit überschritten"
+  else Code läuft
+    AU --> BE : Ergebnis je Test
+    BE -> DB : Versuch zählen
+    alt Alle Tests bestanden
+      BE --> FE : Lösung korrekt
+      FE --> S : Ergebnis je Test (bestanden)
+      ref over S, FE, BE, DB : UC-05 Fortschritt speichern
+    else 4a: Tests fehlgeschlagen
+      BE --> FE : Lösung falsch
+      FE --> S : Anzahl bestandener Tests, je Fehler\nBeschreibung, erwartetes und tatsächliches Ergebnis
+    end
+  end
+end
+@enduml

@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| [@webdesign19](https://github.com/webdesign19) | 2 | [#18](https://github.com/MarcoDaquila/Cyber-Defenders/issues/18), [#63](https://github.com/MarcoDaquila/Cyber-Defenders/issues/63) |
+| [@webdesign19](https://github.com/webdesign19) | 2 | [#18](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/18), [#63](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/63) |
 
 ## 1 Brief description
 

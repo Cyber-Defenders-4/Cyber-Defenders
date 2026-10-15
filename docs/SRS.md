@@ -108,7 +108,7 @@ Abschnitt 2 beschreibt das Produkt als Ganzes: Vision und Use-Case-Diagramm. Abs
      der Nutzen und die Abgrenzung zu Alternativen. Der Investor soll sie in zwei Minuten
      verstehen. -->
 
-Cyber Defenders ist ein Lernspiel, das einen virtuellen Escape Room mit einem Detektiv- und Rätselspiel verbindet. In einzelnen Missionen, zum Beispiel in einem gehackten Serverraum oder einem Firmennetzwerk, lernen Spieler spielerisch fortgeschrittene Java-Programmierung und grundlegende Prinzipien der IT-Sicherheit. Vor dem Start wählen sie eine Rolle (Cyber-Defender oder White-Hat-Hacker) und lernen IT-Sicherheit so aus zwei Blickwinkeln. Die Oberfläche folgt einem Retro-PC-Design mit eigenem Maskottchen.
+Cyber Defenders ist ein Lernspiel, das einen virtuellen Escape Room mit einem Detektiv- und Rätselspiel verbindet. In einzelnen Missionen, zum Beispiel in einem gehackten Serverraum oder einem Firmennetzwerk, lernen Spieler spielerisch fortgeschrittene Java-Programmierung und grundlegende Prinzipien der IT-Sicherheit. Eine Rollenwahl (Cyber-Defender oder White-Hat-Hacker), mit der Spieler IT-Sicherheit aus zwei Blickwinkeln lernen, ist als spätere Erweiterung vorgesehen und nicht im aktuellen Umfang (siehe 1.2). Die Oberfläche folgt einem Retro-PC-Design mit eigenem Maskottchen.
 
 - **Zielgruppe:** Studierende, Schüler und Einsteiger, die Java und IT-Sicherheit lernen wollen.
 - **Stakeholder:** Spieler (Lernende), unser Entwicklungsteam, der Dozent als Investor.

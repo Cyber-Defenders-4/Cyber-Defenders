@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| [@webdesign19](https://github.com/webdesign19) | [SP im Daily schätzen] | [#58](https://github.com/MarcoDaquila/Cyber-Defenders/issues/58), [#59](https://github.com/MarcoDaquila/Cyber-Defenders/issues/59), [#62](https://github.com/MarcoDaquila/Cyber-Defenders/issues/62) |
+| [@webdesign19](https://github.com/webdesign19) | [SP im Daily schätzen] | [#58](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/58), [#59](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/59), [#62](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/62) |
 
 ## 1 Brief description
 

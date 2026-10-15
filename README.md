@@ -1,22 +1,31 @@
 # Cyber Defenders
 
-Lernspiel für Java und IT-Sicherheit aus zwei Sichten
+Lernspiel für Java und IT-Sicherheit
 
 ## Team
 
-* Felix Hagino
-* Marco Daquila
-* Leonie Röse
-* Dominik Stengele
+**FMLD-Studios**
+
+* Felix Hagino ([@FelixHagino](https://github.com/FelixHagino))
+* Marco Daquila ([@MarcoDaquila](https://github.com/MarcoDaquila))
+* Leonie Röse ([@webdesign19](https://github.com/webdesign19))
+* Dominik Stengele ([@keckamreck](https://github.com/keckamreck))
+
+## Links
+
+| Titel | Link |
+| ----- | ---- |
+| Projekt-Board | https://github.com/orgs/Cyber-Defenders-4/projects/2/views/1 |
+| Software Requirements Specification | [docs/SRS.md](docs/SRS.md) |
+| Use Cases | [docs/use_cases/](docs/use_cases/) |
+| Blog | https://github.com/Cyber-Defenders-4/Cyber-Defenders/discussions |
 
 ## Beschreibung
 
-Link zum Projekt-Board: https://github.com/orgs/Cyber-Defenders-4/projects/2/views/1
-
-Als Team von **FMLD-Studios** werden wir das Lernspiel **Cyber Defenders** entwickeln. Dabei wird ein virtueller Escape Room mit einem Detektiv- und Rätselspiel kombiniert. 
+Als Team von **FMLD-Studios** entwickeln wir das Lernspiel **Cyber Defenders**. Dabei wird ein virtueller Escape Room mit einem Detektiv- und Rätselspiel kombiniert.
 Die Nutzer lernen darin spielerisch fortgeschrittene Java-Programmierung und grundlegende Prinzipien der IT-Sicherheit.
-Gespielt wird in einzelnen Missionen, zum Beispiel in einem gehackten Serverraum oder einem Firmennetzwerk. 
-Vor dem Start wählen die Spieler eine Rolle (Cyber-Defender oder White-Hat-Hacker) und lernen IT-Sicherheit so aus zwei Blickwinkeln.
+Gespielt wird in einzelnen Missionen, zum Beispiel in einem gehackten Serverraum oder einem Firmennetzwerk. Zu jeder Mission gibt es eine Fallakte, die Spieler lösen die Rätsel in einem Java-Code-Editor und sehen danach ihren Fortschritt.
+Eine Rollenwahl (Cyber-Defender oder White-Hat-Hacker) ist als spätere Erweiterung vorgesehen und gehört nicht zum aktuellen Umfang.
 
 - **Nutzer:** Studierende und Einsteiger, die Java und IT-Sicherheit lernen wollen.
 - **Mindestumfang:** eine spielbare Mission mit Code-Editor, automatischer Prüfung der Lösung und gespeichertem Fortschritt.
@@ -26,13 +35,21 @@ Vor dem Start wählen die Spieler eine Rolle (Cyber-Defender oder White-Hat-Hack
 * Frontend: Angular (TypeScript), Tailwind CSS
 * Backend: TypeScript mit Express
 * Datenbank: Neon (PostgreSQL)
+* Bereitstellung: Vercel
 
 ## Lokal starten
 
-> Der lokale Start soll über die Ports 3100 und 4100 erfolgen, jedoch befindet sich das Projekt noch in Arbeit.
+> Der Quellcode für Frontend und Backend liegt noch nicht im Repository. Die Anleitung wird ergänzt, sobald er da ist.
+
+Geplant ist:
+
 1. `git clone` des Repos
 2. `npm install` im Frontend- und Backend-Ordner
-3. `npx supabase start` für die lokale Datenbank (benötigt Docker) (Muss überarbeitet werden)
-4. `npm run start` im Backend (Express, http://localhost:3100)
-5. `ng serve` im Frontend (http://localhost:4100)
+3. `npm run start` im Backend (Express, http://localhost:3100)
+4. `ng serve` im Frontend (http://localhost:4100)
 
+## Burndown-Chart
+
+![Burndown-Chart des aktuellen Sprints](docs/burndown/burndown.png)
+
+Das Chart wird täglich um 21:00 UTC vom Workflow [Burndown](.github/workflows/burndown.yml) aus den Feldern Estimate und Sprint des Projekt-Boards erzeugt. Manuell starten: Tab *Actions* → *Burndown* → *Run workflow*.

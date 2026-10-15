@@ -2,11 +2,11 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| [@MarcoDaquila](https://github.com/MarcoDaquila) | 2 | [#17](https://github.com/MarcoDaquila/Cyber-Defenders/issues/17), [#19](https://github.com/MarcoDaquila/Cyber-Defenders/issues/19), [#20](https://github.com/MarcoDaquila/Cyber-Defenders/issues/20) |
+| [@MarcoDaquila](https://github.com/MarcoDaquila) | 2 | [#14](https://github.com/MarcoDaquila/Cyber-Defenders/issues/14), [#17](https://github.com/MarcoDaquila/Cyber-Defenders/issues/17), [#19](https://github.com/MarcoDaquila/Cyber-Defenders/issues/19), [#20](https://github.com/MarcoDaquila/Cyber-Defenders/issues/20), [#73](https://github.com/MarcoDaquila/Cyber-Defenders/issues/73) |
 
 ## 1 Brief description
 
-Der Spieler liest die Fallakte der gewählten Mission. Sie beschreibt das Szenario (zum Beispiel einen gehackten Serverraum), das Ziel und die Beweisstücke. Damit weiß der Spieler, was er im Editor lösen soll.
+Der Spieler liest die Fallakte der gewählten Mission. Sie beschreibt das Szenario (zum Beispiel einen gehackten Serverraum), den Schwierigkeitsgrad und die Lernziele. Danach startet der Spieler die Mission, und die Arbeitsansicht mit Beweisdatei, Einsatzbericht, Code-Editor und Konsole öffnet sich.
 
 ## 2 Actors
 
@@ -15,21 +15,21 @@ Der Spieler liest die Fallakte der gewählten Mission. Sie beschreibt das Szenar
 
 ## 3 Mockup
 
-<!-- Vorlage im Design System: Mission 01 "Gehackter Serverraum", Bereich Fallakte (Design System, Mockup 3). Als PNG exportieren und unter docs/mockups/ ablegen. -->
-
 ![Mockup UC-02](../mockups/UC-02_fallakte-lesen.png)
 
 ## 4 Flow of events
 
 ### 4.1 Basic flow
 
-1. Der Spieler öffnet die Fallakte der gewählten Mission.
-2. Das System zeigt Szenario, Ziel und Beweisstücke der Mission an.
-3. Der Spieler liest die Fallakte und wechselt zum Editor.
+1. Das System zeigt die Fallakte der gewählten Mission mit Nummer, Name, Schwierigkeitsgrad, Szenario und Lernzielen sowie eine Nachricht der Vorgesetzten zur Lage.
+2. Der Spieler liest die Fallakte und startet die Mission.
+3. Das System lädt die Mission und öffnet die Arbeitsansicht mit Beweisdatei, Einsatzbericht (Auftrag und Beweise), Code-Editor (UC-03) und Konsole.
 
 ### 4.2 Alternative flows
 
-**2a · Fallakte nicht ladbar.** Bei Schritt 2 antwortet das Backend nicht. Das System zeigt eine Fehlermeldung mit der Möglichkeit, es erneut zu versuchen. Der Ablauf geht bei Schritt 1 weiter.
+**1a · Fallakte nicht ladbar.** Bei Schritt 1 antwortet das Backend nicht. Das System zeigt eine Fehlermeldung mit der Möglichkeit, es erneut zu versuchen. Der Ablauf geht bei Schritt 1 weiter.
+
+**3a · Mission nicht ladbar.** Bei Schritt 3 antwortet das Backend nicht. Das System zeigt eine Fehlermeldung, und der Spieler bleibt in der Missionsübersicht. Der Ablauf geht bei UC-01 weiter.
 
 ### 4.3 Sequence diagram
 
@@ -42,8 +42,9 @@ Keine.
 ## 6 Preconditions
 
 - Der Spieler ist angemeldet.
-- Eine Mission ist gewählt (UC-01).
+- Eine offene Mission ist gewählt (UC-01).
 
 ## 7 Postconditions
 
-- Der Spieler kennt Szenario und Ziel der Mission.
+- Die Mission ist gestartet.
+- Die Arbeitsansicht der Mission ist geöffnet.

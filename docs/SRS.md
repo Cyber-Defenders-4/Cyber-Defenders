@@ -135,29 +135,41 @@ Wir nutzen Neon (PostgreSQL) als gehostete Datenbank und sind damit von diesem D
      Task 3: mindestens ein spezifizierter Use Case pro Teammitglied (vier Einträge mit Link).
      Listet jeden Use Case eures Diagramms auf; markiert noch nicht spezifizierte als "geplant". -->
 
-#### 3.1.1 UC-01 Rolle auswählen
+#### 3.1.1 UC-01 Mission auswählen
 
-*Autor: [Vorname]* · Der Spieler sieht Avatar und Kurzbeschreibung einer Rolle, wählt sie aus und bestätigt die Auswahl für den weiteren Spielverlauf. · Stories: #8 · [Spezifikation](use_cases/UC-01_Rolle-auswaehlen.md)
+*Autor: Dominik* · Der Spieler sieht eine Liste an offen oder gesperrt angezeigten Missionen und wählt eine offene 
+Mission aus. · Stories: #8 · [Spezifikation](use_cases/UC-01_Rolle-auswaehlen.md)
 
-#### 3.1.2 UC-02 Mission auswählen
+#### 3.1.2 UC-02 Fallakte lesen
 
-*Autor: [Vorname]* · Der Spieler öffnet die Missionsübersicht mit Nummer, Name und Thema jeder Mission und wählt eine Mission aus. · Stories: #12, #13 · [Spezifikation](use_cases/UC-02_Mission-auswaehlen.md)
+*Autor: Marco* · Der Spieler sieht die Fallakte der gewählten Mission und startet sie, danach öffnet sich die Arbeitsansicht. · Stories: #14, #10 · [Spezifikation](use_cases/UC-03_Mission-starten.md)
 
-#### 3.1.3 UC-03 Mission starten
+#### 3.1.3 UC-03 Lösung im Editor schreiben
 
-*Autor: [Vorname]* · Der Spieler sieht die Fallakte der gewählten Mission und startet sie, danach öffnet sich die Arbeitsansicht. · Stories: #14, #10 · [Spezifikation](use_cases/UC-03_Mission-starten.md)
+*Autor: Marco* · Der Spieler löst ein Java-Rätsel der Mission im integrierten Editor mit automatischer Speicherung und erhält eine Rückmeldung zur Lösung. · Stories: [Issue-Nummern] · [Spezifikation](use_cases/UC-04_Raetsel-loesen.md)
 
-#### 3.1.4 UC-04 Rätsel lösen
+#### 3.1.4 UC-04 Lösung prüfen lassen
 
-*Autor: [Vorname]* · Der Spieler löst ein Java-Rätsel der Mission im integrierten Editor und erhält eine Rückmeldung zur Lösung. · Stories: [Issue-Nummern] · [Spezifikation](use_cases/UC-04_Raetsel-loesen.md)
+*Autor: Felix* · Die Lösung des Java-Rätsels werden vom Spieler eingereicht und auf Korrektheit überprüft. · Stories: [Issue-Nummern] · [Spezifikation](use_cases/UC-04_Raetsel-loesen.md)
 
-#### 3.1.5 UC-05 Fortschritt einsehen
+#### 3.1.5 UC-05 Fortschritt speichern
 
-*Autor: [Vorname]* · Der Spieler sieht seinen Fortschritt, sein Level und seine Punkte. · Stories: [Issue-Nummern] · geplant
+*Autor: Felix* · Die korrekt abgeschlossenen Rätsel werden im Fortschritt gespeichert. · Stories: [Issue-Nummern] · [Spezifikation](use_cases/UC-04_Raetsel-loesen.md)
 
-#### 3.1.6 UC-06 Missionen verwalten
+#### 3.1.6 UC-06 Fortschritt ansehen
 
-*Autor: [Vorname]* · Ein Autor legt neue Missionen und Rätsel an und pflegt die Level-Struktur. · Stories: [Issue-Nummern] · geplant
+*Autor: Leonie* · Der Spieler sieht seinen Fortschritt, sein Level und seine Punkte für abgeschlossene Missionen. · Stories: [Issue-Nummern] · geplant
+
+#### 3.1.7 UC-07 Hinweis anfordern
+
+*Autor: Leonie* · Ein Spieler kann durch einen Button 3 Hinweise anfordern, welche dann auf dem Screen angezeigt werden. · Stories: [Issue-Nummern] · geplant
+
+#### 3.1.8 UC-08 Code ausführen
+
+*Autor: Leonie* · Der Spieler möchte seinen Code ausführen, was über einen Button erfolgt. · Stories: [Issue-Nummern] · geplant
+
+
+![img.png](img.png)
 
 <!-- QUALITÄTSANFORDERUNGEN (3.2 bis 3.5)
      Mindestens eine pro Abschnitt. Jede mit ID, einem Satz mit "soll", einer Zahl, die man

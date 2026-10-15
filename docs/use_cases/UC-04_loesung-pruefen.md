@@ -15,7 +15,7 @@ Der Spieler reicht seinen Code ein, und das System prüft ihn automatisch gegen 
 
 ## 3 Mockup
 
-![Mockup UC-04](../mockups/UC-04_loesung-pruefen.png)
+![Mockup UC-04](../mockups/UC-04_loesung_pruefen.png)
 
 ## 4 Flow of events
 

@@ -15,7 +15,7 @@ Der Spieler liest die Fallakte der gewählten Mission. Sie beschreibt das Szenar
 
 ## 3 Mockup
 
-![Mockup UC-02](../mockups/UC-02_fallakte-lesen.png)
+![Mockup UC-02](../mockups/UC-02_fallakte_lesen.png)
 
 ## 4 Flow of events
 

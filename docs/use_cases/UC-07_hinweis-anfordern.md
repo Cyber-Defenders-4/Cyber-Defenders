@@ -17,7 +17,7 @@ Kommt der Spieler bei einer Mission nicht weiter, kann er einen Hinweis anforder
 
 <!-- Aus dem interaktiven Figma-Design: Code-Editor mit Button "Hinweis (3)". Der Screen mit dem angezeigten Hinweis fehlt noch. Als PNG exportieren und unter docs/mockups/ ablegen. -->
 
-![Mockup UC-07](../mockups/UC-07_hinweis-anfordern.png)
+![Mockup UC-07](../mockups/UC-07_hinweis_anfordern.png)
 
 ## 4 Flow of events
 

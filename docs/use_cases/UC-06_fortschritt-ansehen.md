@@ -17,7 +17,7 @@ Der Spieler sieht seinen Spielfortschritt: den Status jeder Mission (gesperrt, o
 
 <!-- Aus dem interaktiven Figma-Design: Missionsakten mit Menü "Fortschritt" und Statusleiste (Mockup 2), Rang und XP-Balken im Dialog "Fall abgeschlossen" (Mockup 5), Fenster "Erfolge" (Mockup 6). Ein eigener Fortschritts-Screen fehlt noch. Als PNG exportieren und unter docs/mockups/ ablegen. -->
 
-![Mockup UC-06](../mockups/UC-06_fortschritt-ansehen.png)
+![Mockup UC-06](../mockups/UC-06_fortschritt_ansehen.png)
 
 ## 4 Flow of events
 

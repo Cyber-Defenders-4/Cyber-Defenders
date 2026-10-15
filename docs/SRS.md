@@ -17,7 +17,7 @@ SO NUTZT IHR DIESE VORLAGE
 
 | Team | Version | Letzte Änderung |
 | ---- | ------- | --------------- |
-| FMLD-Studios | 0.1 | 12.10.2026 |
+| FMLD-Studios | 0.2 | 15.10.2026 |
 
 Die Git-Historie dieser Datei ist die Änderungshistorie.
 
@@ -41,7 +41,7 @@ Dieses Dokument spezifiziert die Anforderungen an Cyber Defenders, ein Lernspiel
 
 ### 1.2 Umfang (Scope)
 
-*Autor: [Vorname]*
+*Autor: Leonie*
 
 <!-- Was die Software tut und für wen, in zwei bis drei Sätzen.
      Danach eine ausdrückliche Trennung in "im Umfang" und "nicht im Umfang", jeweils mit
@@ -52,7 +52,6 @@ Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. 
 
 | Im Umfang | Begründung |
 | --------- | ---------- |
-| Rolle auswählen (Cyber-Defender oder White-Hat-Hacker) | Grundlage des Spielkonzepts: IT-Sicherheit aus zwei Blickwinkeln lernen |
 | Missionen anzeigen, auswählen und starten (Fallakte mit Schwierigkeitsgrad, Auftrag und Lernzielen) | Mindestumfang aus unserer Vision: mindestens eine spielbare Mission |
 | Java-Code-Editor mit automatischer Prüfung der Lösung | Teil des Mindestumfangs aus Task 1 [Umfang nach der Entscheidung zum Feedback zu Task 1 anpassen] |
 | Fortschritt, Level und Punkte speichern und einsehen | Mindestumfang aus unserer Vision, die Anwendung muss Daten dauerhaft speichern |
@@ -60,6 +59,7 @@ Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. 
 
 | Nicht im Umfang | Begründung |
 | --------------- | ---------- |
+| Rolle auswählen (Cyber-Defender oder White-Hat-Hacker) | Nice-to-have um IT-Sicherheit aus zwei Blickwinkeln lernen, jedoch nicht entscheiden für den allgemeinen Spielablauf |
 | [Funktion, z. B. echte Ausführung von Nutzer-Code im Backend, noch zu entscheiden] | [Grund, z. B. Aufwand und Sicherheit (abgesicherte Ausführung)] |
 
 ### 1.3 Definitionen, Akronyme und Abkürzungen
@@ -74,12 +74,12 @@ Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. 
 | MVP | Minimum Viable Product, die kleinste spielbare Version |
 | Mission | Ein einzelner Spielabschnitt, zum Beispiel „Gehackter Serverraum“, mit Fallakte und Rätseln |
 | Fallakte | Beschreibung einer Mission mit Schwierigkeitsgrad, Auftrag und Lernzielen |
-| Cyber-Defender, White-Hat-Hacker | Die beiden wählbaren Rollen, aus deren Sicht der Spieler IT-Sicherheit lernt |
+| Cyber-Defender, (White-Hat-Hacker) | Die beiden wählbaren Rollen, aus deren Sicht der Spieler IT-Sicherheit lernt |
 | Agent | Bezeichnung für den Spieler in unseren User Stories |
 
 ### 1.4 Referenzen
 
-*Autor: [Vorname]*
+*Autor: Leonie*
 
 | Titel | Link |
 | ----- | ---- |
@@ -95,7 +95,7 @@ Abschnitt 2 beschreibt das Produkt als Ganzes: Vision und Use-Case-Diagramm. Abs
 
 ### 2.1 Vision
 
-*Autor: [Vorname]*
+*Autor: Leonie*
 
 <!-- Unsere Vision aus Task 1: Problem, Zielgruppe und Stakeholder,
      der Nutzen und die Abgrenzung zu Alternativen. Der Investor soll sie in zwei Minuten
@@ -103,23 +103,23 @@ Abschnitt 2 beschreibt das Produkt als Ganzes: Vision und Use-Case-Diagramm. Abs
 
 Cyber Defenders ist ein Lernspiel, das einen virtuellen Escape Room mit einem Detektiv- und Rätselspiel verbindet. In einzelnen Missionen, zum Beispiel in einem gehackten Serverraum oder einem Firmennetzwerk, lernen Spieler spielerisch fortgeschrittene Java-Programmierung und grundlegende Prinzipien der IT-Sicherheit. Vor dem Start wählen sie eine Rolle (Cyber-Defender oder White-Hat-Hacker) und lernen IT-Sicherheit so aus zwei Blickwinkeln. Die Oberfläche folgt einem Retro-PC-Design mit eigenem Maskottchen.
 
-- **Zielgruppe:** Studierende und Einsteiger, die Java und IT-Sicherheit lernen wollen.
+- **Zielgruppe:** Studierende, Schüler und Einsteiger, die Java und IT-Sicherheit lernen wollen.
 - **Stakeholder:** Spieler (Lernende), unser Entwicklungsteam, der Dozent als Investor.
 - **Nutzen:** Spielerisches Lernen von Java und IT-Sicherheit anhand praktischer Aufgaben.
 - **Abgrenzung zu Alternativen:** [ergänzen, z. B. gegenüber reinen Lernplattformen oder Capture-the-Flag-Angeboten]
 
 ### 2.2 Use-Case-Diagramm
 
-*Autor: [Vorname]*
+*Autor: Dominik*
 
 <!-- Ein UML-Use-Case-Diagramm für die gesamte Anwendung mit mindestens fünf übergeordneten
-     Use Cases; Login und Registrierung zählen nicht. Legt die Quelldatei neben das Bild. -->
+     Use Cases; Anmeldung und Registrierung zählen nicht. Legt die Quelldatei neben das Bild. -->
 
 ![Use-Case-Diagramm](diagrams/use-case-diagram.png)
 
 ### 2.3 Annahmen und Abhängigkeiten
 
-*Autor: [Vorname]*
+*Autor: Dominik*
 
 <!-- Optional: Was ihr annehmt (z. B. Nutzer haben ein DHBW-Konto) und wovon ihr abhängt
      (z. B. eine externe API). Löscht den Kommentar und schreibt "Keine", falls es nichts gibt. -->
@@ -168,9 +168,6 @@ Mission aus. · Stories: #8 · [Spezifikation](use_cases/UC-01_Rolle-auswaehlen.
 
 *Autor: Leonie* · Der Spieler möchte seinen Code ausführen, was über einen Button erfolgt. · Stories: [Issue-Nummern] · geplant
 
-
-![img.png](img.png)
-
 <!-- QUALITÄTSANFORDERUNGEN (3.2 bis 3.5)
      Mindestens eine pro Abschnitt. Jede mit ID, einem Satz mit "soll", einer Zahl, die man
      testen kann, und wenn möglich Stimulus, Reaktion und Messgröße. IDs sind im gesamten SRS
@@ -178,25 +175,25 @@ Mission aus. · Stories: #8 · [Spezifikation](use_cases/UC-01_Rolle-auswaehlen.
      Beispiel: NFR-P-01 — Wenn 50 Nutzer gleichzeitig suchen, listet die App freie Termine
      bei 95 % der Anfragen innerhalb von 1 s auf. -->
 
-### 3.2 Benutzbarkeit
+### 3.2 Benutzbarkeit (Usability)
 
 | ID | Anforderung | Autor |
 | -- | ----------- | ----- |
 | NFR-U-01 | [messbare Anforderung] | [Vorname] |
 
-### 3.3 Zuverlässigkeit
+### 3.3 Zuverlässigkeit (Reliability)
 
 | ID | Anforderung | Autor |
 | -- | ----------- | ----- |
 | NFR-R-01 | [messbare Anforderung] | [Vorname] |
 
-### 3.4 Leistung
+### 3.4 Leistung (Performance)
 
 | ID | Anforderung | Autor |
 | -- | ----------- | ----- |
 | NFR-P-01 | [messbare Anforderung] | [Vorname] |
 
-### 3.5 Wartbarkeit und Erweiterbarkeit
+### 3.5 Wartbarkeit und Erweiterbarkeit ()
 
 | ID | Anforderung | Autor |
 | -- | ----------- | ----- |
@@ -204,7 +201,7 @@ Mission aus. · Stories: #8 · [Spezifikation](use_cases/UC-01_Rolle-auswaehlen.
 
 ### 3.6 Entwurfsrandbedingungen
 
-*Autor: [Vorname]*
+*Autor: Leonie*
 
 <!-- Feststehende Entscheidungen, nicht pro Funktion gewählt: euer Stack. -->
 
@@ -213,7 +210,7 @@ Mission aus. · Stories: #8 · [Spezifikation](use_cases/UC-01_Rolle-auswaehlen.
 | DC-01 | Frontend: TypeScript mit Angular und Tailwind CSS |
 | DC-02 | Backend: TypeScript mit Express |
 | DC-03 | Datenbank: Neon (PostgreSQL) |
-| DC-04 | Bereitstellung: Docker |
+| DC-04 | Bereitstellung: Vercel |
 
 ### 3.7 Anforderungen an Online-Benutzerdokumentation und Hilfesystem
 

@@ -15,7 +15,7 @@ Der Spieler schreibt oder ändert Java-Code in einem Code-Editor, um die Aufgabe
 
 ## 3 Mockup
 
-![Mockup UC-03](../mockups/UC-03_loesung-schreiben.png)
+![Mockup UC-03](../mockups/UC-03_loesung_schreiben.png)
 
 ## 4 Flow of events
 

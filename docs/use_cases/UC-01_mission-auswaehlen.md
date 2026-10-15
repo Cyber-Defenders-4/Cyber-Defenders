@@ -15,7 +15,7 @@ Der Spieler sieht alle Missionen mit ihrem Status (freigeschaltet, gesperrt, gel
 
 ## 3 Mockup
 
-![Mockup UC-01](../mockups/UC-01_mission-auswaehlen.png)
+![Mockup UC-01](../mockups/UC-01_mission_auswaehlen.png)
 
 ## 4 Flow of events
 

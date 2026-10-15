@@ -15,7 +15,7 @@ Wurde eine Lösung als korrekt bewertet, berechnet das System XP und Rang und sp
 
 ## 3 Mockup
 
-![Mockup UC-05](../mockups/UC-05_fortschritt-speichern.png)
+![Mockup UC-05](../mockups/UC-05_fortschritt_speichern.png)
 
 ## 4 Flow of events
 

@@ -13,13 +13,9 @@ Der Spieler führt den Java-Code aus dem Editor zur Probe aus und sieht die Ausg
 - **Primary:** Spieler
 - **Secondary:** keine
 
-<!-- Die Ausführung läuft in einer isolierten Umgebung im Backend (Epic E10). Sie wird nur als Secondary Actor geführt, wenn sie ein externer Dienst ist. UC-04 legt dasselbe fest. -->
-
 ## 3 Mockup
 
-<!-- Aus dem interaktiven Figma-Design: Code-Editor mit Button "Code ausführen" und Konsole. Die Konsole zeigt dort den Tipp "Nutze Code ausführen, bevor du die Lösung einreichst". Ein Screen mit der Ausgabe eines Probelaufs fehlt noch. Als PNG exportieren und unter docs/mockups/ ablegen. -->
-
-![Mockup UC-08](../mockups/UC-08_code-ausfuehren.png)
+![Mockup UC-08](../mockups/UC-08_code_ausfuehren.png)
 
 ## 4 Flow of events
 

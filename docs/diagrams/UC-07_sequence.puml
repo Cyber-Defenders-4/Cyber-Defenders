@@ -1,0 +1,30 @@
+@startuml UC-07_sequence
+' Sequenzdiagramm UC-07 (Abschnitt 4.3 der Spezifikation)
+' Autor: Leonie. Entwurf aus Basic Flow und Alternative Flows, vom Team zu bestaetigen.
+title UC-07 Hinweis anfordern
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant "Frontend\n(Angular)" as FE
+participant "Backend\n(Express)" as BE
+database "Datenbank\n(Neon)" as DB
+S -> FE : Hinweis anfordern (aus UC-03)
+FE -> BE : Nächsten Hinweis der Mission anfordern
+alt 2b: Backend antwortet nicht
+  FE --> S : Fehlermeldung, Hinweis zählt nicht als genutzt
+else Backend antwortet
+  BE -> DB : Genutzte Hinweise und nächsten Hinweis lesen
+  DB --> BE : Hinweis oder keiner
+  alt Hinweis verfügbar
+    BE -> DB : Genutzten Hinweis für die Mission speichern
+    DB --> BE : OK
+    BE --> FE : Hinweis, verbleibende Anzahl
+    FE --> S : Hinweis anzeigen, verbleibende Hinweise aktualisieren
+  else 2a: Keine Hinweise mehr
+    BE --> FE : keine weiteren Hinweise
+    FE --> S : Meldung "Keine weiteren Hinweise"
+  end
+end
+@enduml

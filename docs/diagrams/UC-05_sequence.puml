@@ -1,0 +1,37 @@
+@startuml UC-05_sequence
+' Sequenzdiagramm UC-05 (Abschnitt 4.3 der Spezifikation)
+' Autor: Felix. Entwurf aus Basic Flow und Alternative Flows, vom Team zu bestaetigen.
+title UC-05 Fortschritt speichern
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant "Frontend\n(Angular)" as FE
+participant "Backend\n(Express)" as BE
+database "Datenbank\n(Neon)" as DB
+note over BE : Lösung als korrekt erkannt (aus UC-04)
+BE -> BE : XP und Rang aus Mission, Zeit,\nVersuchen und Hinweisen berechnen
+opt 2a: Rangaufstieg
+  BE -> BE : Neuen Rang setzen
+end
+BE -> DB : Mission als gelöst speichern\n(Zeitpunkt, Zeit, Versuche, Hinweise, XP, Rang)
+alt 3a: Datenbank antwortet nicht
+  loop höchstens 3 Versuche
+    BE -> DB : Speichern wiederholen
+  end
+  BE --> FE : Speichern fehlgeschlagen
+  FE --> S : Fehlermeldung, Speichern später erneut möglich
+else gespeichert
+  DB --> BE : OK
+  alt Weitere Mission vorhanden
+    BE -> DB : Nächste Mission freischalten
+    DB --> BE : OK
+  else 4a: Letzte Mission gelöst
+    BE -> BE : Freischalten überspringen
+  end
+  BE --> FE : Ergebnis (Zeit, Versuche, Hinweise, XP, Rang, neue Akte)
+  FE --> S : Dialog "Fall gelöst"
+  S -> FE : Zum Desktop oder nächste Mission öffnen
+end
+@enduml

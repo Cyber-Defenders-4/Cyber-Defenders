@@ -1,0 +1,32 @@
+@startuml UC-02_sequence
+' Sequenzdiagramm UC-02 (Abschnitt 4.3 der Spezifikation)
+' Autor: Marco. Entwurf aus Basic Flow und Alternative Flows, vom Team zu bestaetigen.
+title UC-02 Fallakte lesen
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant "Frontend\n(Angular)" as FE
+participant "Backend\n(Express)" as BE
+database "Datenbank\n(Neon)" as DB
+FE -> BE : Fallakte der gewählten Mission anfordern
+alt Backend antwortet
+  BE -> DB : Fallakte lesen
+  DB --> BE : Fallakte
+  BE --> FE : Fallakte
+  FE --> S : Nummer, Name, Schwierigkeitsgrad, Szenario,\nLernziele, Nachricht der Vorgesetzten
+else 1a: Backend antwortet nicht
+  FE --> S : Fehlermeldung mit "Erneut versuchen"
+end
+S -> FE : Mission starten
+FE -> BE : Mission laden
+alt Backend antwortet
+  BE -> DB : Missionsdaten lesen
+  DB --> BE : Beweisdatei, Einsatzbericht, Code-Gerüst
+  BE --> FE : Missionsdaten
+  FE --> S : Arbeitsansicht mit Beweisdatei, Einsatzbericht,\nCode-Editor (UC-03) und Konsole
+else 3a: Backend antwortet nicht
+  FE --> S : Fehlermeldung, zurück zur Missionsübersicht (UC-01)
+end
+@enduml

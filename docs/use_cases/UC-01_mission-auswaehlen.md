@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| [@keckamreck](https://github.com/keckamreck) | 3 | [#12](https://github.com/MarcoDaquila/Cyber-Defenders/issues/12), [#13](https://github.com/MarcoDaquila/Cyber-Defenders/issues/13), [#15](https://github.com/MarcoDaquila/Cyber-Defenders/issues/15) |
+| [@keckamreck](https://github.com/keckamreck) | 3 | [#12](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/12), [#13](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/13), [#15](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/15) |
 
 ## 1 Brief description
 

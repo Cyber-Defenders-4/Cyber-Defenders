@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| [@webdesign19](https://github.com/webdesign19) | [SP im Daily schätzen] | [#24](https://github.com/MarcoDaquila/Cyber-Defenders/issues/24), technische Grundlage: Epic E10 [#71](https://github.com/MarcoDaquila/Cyber-Defenders/issues/71) |
+| [@webdesign19](https://github.com/webdesign19) | [SP im Daily schätzen] | [#24](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/24), technische Grundlage: Epic E10 [#71](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/71) |
 
 ## 1 Brief description
 

@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories |
 | ------ | -------- | ------------ |
-| [@FelixHagino](https://github.com/FelixHagino) | 8 | [#26](https://github.com/MarcoDaquila/Cyber-Defenders/issues/26), [#27](https://github.com/MarcoDaquila/Cyber-Defenders/issues/27), [#28](https://github.com/MarcoDaquila/Cyber-Defenders/issues/28), [#29](https://github.com/MarcoDaquila/Cyber-Defenders/issues/29), technische Grundlage: Epic E10 [#71](https://github.com/MarcoDaquila/Cyber-Defenders/issues/71) |
+| [@FelixHagino](https://github.com/FelixHagino) | 8 | [#26](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/26), [#27](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/27), [#28](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/28), [#29](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/29), technische Grundlage: Epic E10 [#71](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/71) |
 
 ## 1 Brief description
 

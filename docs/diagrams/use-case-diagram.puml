@@ -22,6 +22,7 @@ rectangle "Cyber Defenders" {
   usecase "UC-05\nFortschritt speichern" as UC05
   usecase "UC-06\nFortschritt ansehen" as UC06
   usecase "UC-07\nHinweis anfordern" as UC07
+  usecase "UC-08\nCode ausführen" as UC08
 }
 
 Spieler --> Login
@@ -32,6 +33,7 @@ Spieler --> UC04
 Spieler --> UC06
 
 UC07 .up.> UC03 : <<extend>>\n(Spieler kommt nicht weiter)
+UC08 .up.> UC03 : <<extend>>\n(Spieler testet seinen Code)
 UC05 .up.> UC04 : <<extend>>\n(Lösung korrekt)
 
 note bottom of Login

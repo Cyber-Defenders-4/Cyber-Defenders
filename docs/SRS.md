@@ -17,7 +17,14 @@ SO NUTZT IHR DIESE VORLAGE
 
 | Team | Version | Letzte Änderung |
 | ---- | ------- | --------------- |
-| FMLD-Studios | 0.2 | 15.10.2026 |
+| FMLD-Studios | 0.3 | 15.10.2026 |
+
+| Autor | GitHub |
+| ----- | ------ |
+| Felix Hagino | [@FelixHagino](https://github.com/FelixHagino) |
+| Marco Daquila | [@MarcoDaquila](https://github.com/MarcoDaquila) |
+| Leonie Röse | [@webdesign19](https://github.com/webdesign19) |
+| Dominik Stengele | [@keckamreck](https://github.com/keckamreck) |
 
 Die Git-Historie dieser Datei ist die Änderungshistorie.
 
@@ -32,7 +39,7 @@ Die Git-Historie dieser Datei ist die Änderungshistorie.
 
 ### 1.1 Zweck
 
-*Autor: [Vorname]*
+*Autor: Leonie*
 
 <!-- Ein Absatz: Was beschreibt dieses Dokument, und wer liest es
      (euer Team, der Dozent als Investor, die Person, die das Projekt übernimmt)? -->
@@ -48,7 +55,7 @@ Dieses Dokument spezifiziert die Anforderungen an Cyber Defenders, ein Lernspiel
      Begründung. Nicht im Umfang = euer MoSCoW-"Won't have this time". Spätere Änderungen
      dokumentiert ihr hier. -->
 
-Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. Spieler wählen eine Rolle (Cyber-Defender oder White-Hat-Hacker), lösen in einzelnen Missionen Rätsel zu Java und IT-Sicherheit und sehen ihren Fortschritt. Der Fortschritt wird dauerhaft gespeichert.
+Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. Spieler wählen eine Mission, lösen darin Rätsel zu Java und IT-Sicherheit in einem Code-Editor und sehen ihren Fortschritt. Der Fortschritt wird dauerhaft gespeichert.
 
 | Im Umfang | Begründung |
 | --------- | ---------- |
@@ -64,7 +71,7 @@ Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. 
 
 ### 1.3 Definitionen, Akronyme und Abkürzungen
 
-*Autor: [Vorname]*
+*Autor: Leonie*
 
 | Begriff | Bedeutung |
 | ------- | --------- |
@@ -83,9 +90,9 @@ Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. 
 
 | Titel | Link |
 | ----- | ---- |
-| Blog | https://github.com/MarcoDaquila/Cyber-Defenders/discussions |
+| Blog | https://github.com/Cyber-Defenders-4/Cyber-Defenders/discussions |
 | Board | https://github.com/orgs/Cyber-Defenders-4/projects/2/views/1 |
-| Repository | https://github.com/MarcoDaquila/Cyber-Defenders |
+| Repository | https://github.com/Cyber-Defenders-4/Cyber-Defenders |
 
 ### 1.5 Überblick
 
@@ -101,7 +108,7 @@ Abschnitt 2 beschreibt das Produkt als Ganzes: Vision und Use-Case-Diagramm. Abs
      der Nutzen und die Abgrenzung zu Alternativen. Der Investor soll sie in zwei Minuten
      verstehen. -->
 
-Cyber Defenders ist ein Lernspiel, das einen virtuellen Escape Room mit einem Detektiv- und Rätselspiel verbindet. In einzelnen Missionen, zum Beispiel in einem gehackten Serverraum oder einem Firmennetzwerk, lernen Spieler spielerisch fortgeschrittene Java-Programmierung und grundlegende Prinzipien der IT-Sicherheit. Vor dem Start wählen sie eine Rolle (Cyber-Defender oder White-Hat-Hacker) und lernen IT-Sicherheit so aus zwei Blickwinkeln. Die Oberfläche folgt einem Retro-PC-Design mit eigenem Maskottchen.
+Cyber Defenders ist ein Lernspiel, das einen virtuellen Escape Room mit einem Detektiv- und Rätselspiel verbindet. In einzelnen Missionen, zum Beispiel in einem gehackten Serverraum oder einem Firmennetzwerk, lernen Spieler spielerisch fortgeschrittene Java-Programmierung und grundlegende Prinzipien der IT-Sicherheit. Eine Rollenwahl (Cyber-Defender oder White-Hat-Hacker), mit der Spieler IT-Sicherheit aus zwei Blickwinkeln lernen, ist als spätere Erweiterung vorgesehen und nicht im aktuellen Umfang (siehe 1.2). Die Oberfläche folgt einem Retro-PC-Design mit eigenem Maskottchen.
 
 - **Zielgruppe:** Studierende, Schüler und Einsteiger, die Java und IT-Sicherheit lernen wollen.
 - **Stakeholder:** Spieler (Lernende), unser Entwicklungsteam, der Dozent als Investor.
@@ -137,36 +144,35 @@ Wir nutzen Neon (PostgreSQL) als gehostete Datenbank und sind damit von diesem D
 
 #### 3.1.1 UC-01 Mission auswählen
 
-*Autor: Dominik* · Der Spieler sieht eine Liste an offen oder gesperrt angezeigten Missionen und wählt eine offene 
-Mission aus. · Stories: #8 · [Spezifikation](use_cases/UC-01_Rolle-auswaehlen.md)
+*Autor: Dominik* · Der Spieler sieht alle Missionen mit ihrem Status (freigeschaltet, gesperrt, gelöst) und wählt eine freigeschaltete Mission aus. · Stories: #12, #13, #15 · [Spezifikation](use_cases/UC-01_mission-auswaehlen.md)
 
 #### 3.1.2 UC-02 Fallakte lesen
 
-*Autor: Marco* · Der Spieler sieht die Fallakte der gewählten Mission und startet sie, danach öffnet sich die Arbeitsansicht. · Stories: #14, #10 · [Spezifikation](use_cases/UC-03_Mission-starten.md)
+*Autor: Marco* · Der Spieler liest die Fallakte der gewählten Mission und startet sie, danach öffnet sich die Arbeitsansicht. · Stories: #14, #17, #19, #20, #73 · [Spezifikation](use_cases/UC-02_fallakte-lesen.md)
 
 #### 3.1.3 UC-03 Lösung im Editor schreiben
 
-*Autor: Marco* · Der Spieler löst ein Java-Rätsel der Mission im integrierten Editor mit automatischer Speicherung und erhält eine Rückmeldung zur Lösung. · Stories: [Issue-Nummern] · [Spezifikation](use_cases/UC-04_Raetsel-loesen.md)
+*Autor: Marco* · Der Spieler schreibt Java-Code im Editor mit vorgegebenem Gerüst, der Entwurf wird automatisch zwischengespeichert. · Stories: #22, #23, #74 · [Spezifikation](use_cases/UC-03_loesung-schreiben.md)
 
 #### 3.1.4 UC-04 Lösung prüfen lassen
 
-*Autor: Felix* · Die Lösung des Java-Rätsels werden vom Spieler eingereicht und auf Korrektheit überprüft. · Stories: [Issue-Nummern] · [Spezifikation](use_cases/UC-04_Raetsel-loesen.md)
+*Autor: Felix* · Der Spieler reicht seinen Code ein, das System prüft ihn gegen die Tests der Mission und gibt pro Test eine Rückmeldung. · Stories: #26, #27, #28, #29, Epic #71 · [Spezifikation](use_cases/UC-04_loesung-pruefen.md)
 
 #### 3.1.5 UC-05 Fortschritt speichern
 
-*Autor: Felix* · Die korrekt abgeschlossenen Rätsel werden im Fortschritt gespeichert. · Stories: [Issue-Nummern] · [Spezifikation](use_cases/UC-04_Raetsel-loesen.md)
+*Autor: Felix* · Nach einer korrekten Lösung berechnet das System XP und Rang, speichert den Fortschritt und schaltet die nächste Mission frei. · Stories: #30, #57, #61, #72, #75 · [Spezifikation](use_cases/UC-05_fortschritt-speichern.md)
 
 #### 3.1.6 UC-06 Fortschritt ansehen
 
-*Autor: Leonie* · Der Spieler sieht seinen Fortschritt, sein Level und seine Punkte für abgeschlossene Missionen. · Stories: [Issue-Nummern] · geplant
+*Autor: Leonie* · Der Spieler sieht den Status jeder Mission, seinen Rang mit den gesammelten XP und seine Erfolge. · Stories: #58, #59, #62 · [Spezifikation](use_cases/UC-06_fortschritt-ansehen.md)
 
 #### 3.1.7 UC-07 Hinweis anfordern
 
-*Autor: Leonie* · Ein Spieler kann durch einen Button 3 Hinweise anfordern, welche dann auf dem Screen angezeigt werden. · Stories: [Issue-Nummern] · geplant
+*Autor: Leonie* · Kommt der Spieler nicht weiter, fordert er einen von drei Hinweisen pro Mission an, ohne dass die Lösung verraten wird. · Stories: #18, #63 · [Spezifikation](use_cases/UC-07_hinweis-anfordern.md)
 
 #### 3.1.8 UC-08 Code ausführen
 
-*Autor: Leonie* · Der Spieler möchte seinen Code ausführen, was über einen Button erfolgt. · Stories: [Issue-Nummern] · geplant
+*Autor: Leonie* · Der Spieler führt seinen Code zur Probe aus und sieht Ausgabe oder Fehlermeldungen in der Konsole, ohne Bewertung. · Stories: #24, Epic #71 · [Spezifikation](use_cases/UC-08_code-ausfuehren.md)
 
 <!-- QUALITÄTSANFORDERUNGEN (3.2 bis 3.5)
      Mindestens eine pro Abschnitt. Jede mit ID, einem Satz mit "soll", einer Zahl, die man
@@ -222,18 +228,20 @@ Nicht zutreffend. [Begründung, oder die Komponenten auflisten.]
 
 ### 3.9 Schnittstellen
 
-*Autor: [Vorname]*
+*Autor: Leonie*
 
 #### 3.9.1 Benutzerschnittstellen
 
 <!-- Verlinkt die Mockups eurer Use Cases oder beschreibt die Hauptansichten in je einer Zeile. -->
 
-Alle Ansichten folgen dem Retro-PC-Design. Die Mockups liegen in `mockups/`. [Links zu den Mockups ergänzen]
+Alle Ansichten folgen dem Retro-PC-Design. Die Mockups liegen in `mockups/`.
 
-- **Rollenauswahl:** Avatar und Kurzbeschreibung der Rollen, Auswahl und Bestätigung.
-- **Missionsübersicht:** Liste der Missionen mit Nummer, Name und Thema.
-- **Fallakte:** Schwierigkeitsgrad, Auftrag und Lernziele der gewählten Mission mit dem Button „Mission starten“.
-- **Arbeitsansicht:** Fenster für Beweise (z. B. `server_log.txt`), Einsatzbericht, Java-Code-Editor und Konsole.
+- **Anmeldung und Kontoerstellung:** [Anmeldung](mockups/anmeldung.png), [Kontoerstellung](mockups/kontoerstellung.png)
+- **Dashboard und Profil:** [Dashboard](mockups/dashboard.png), [Profilverwaltung](mockups/profilverwaltung.png)
+- **Missionsübersicht:** Liste der Missionen mit Status (freigeschaltet, gesperrt, gelöst). [Mockup UC-01](mockups/UC-01_mission_auswaehlen.png)
+- **Fallakte:** Schwierigkeitsgrad, Auftrag und Lernziele der gewählten Mission mit dem Button „Mission starten“. [Mockup UC-02](mockups/UC-02_fallakte_lesen.png)
+- **Arbeitsansicht:** Fenster für Beweise (z. B. `server_log.txt`), Einsatzbericht, Java-Code-Editor und Konsole. [Mockup UC-03](mockups/UC-03_loesung_schreiben.png), [Mockup UC-04](mockups/UC-04_loesung_pruefen.png), [Mockup UC-07](mockups/UC-07_hinweis_anfordern.png)
+- **Fortschritt:** Dialog „Fall gelöst“ mit XP und Rang, Übersicht über Missionen und Erfolge. [Mockup UC-05](mockups/UC-05_fortschritt_speichern.png), [Mockup UC-06](mockups/UC-06_fortschritt_ansehen.png)
 
 #### 3.9.2 Hardwareschnittstellen
 

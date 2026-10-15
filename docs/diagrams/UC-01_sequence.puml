@@ -1,0 +1,29 @@
+@startuml UC-01_sequence
+' Sequenzdiagramm UC-01 (Abschnitt 4.3 der Spezifikation)
+' Autor: Dominik. Entwurf aus Basic Flow und Alternative Flows, vom Team zu bestaetigen.
+title UC-01 Mission auswählen
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant "Frontend\n(Angular)" as FE
+participant "Backend\n(Express)" as BE
+database "Datenbank\n(Neon)" as DB
+S -> FE : Missionsübersicht öffnen
+FE -> BE : Missionen und Fortschritt anfordern
+alt Backend antwortet
+  BE -> DB : Missionen und Fortschritt des Spielers lesen
+  DB --> BE : Missionen, Fortschritt
+  BE --> FE : Missionen mit Status
+  FE --> S : Missionen mit Nummer, Name, Thema, Status\nund Anzahl verfügbarer Missionen
+else 2a: Backend antwortet nicht
+  FE --> S : Fehlermeldung mit "Erneut versuchen"
+end
+S -> FE : Mission auswählen
+alt Mission freigeschaltet
+  FE --> S : Mission markieren, Fallakte zeigen (UC-02)
+else 3a: Mission gesperrt
+  FE --> S : Hinweis, welche Mission zuerst gelöst werden muss
+end
+@enduml

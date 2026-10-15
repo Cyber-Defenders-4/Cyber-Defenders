@@ -40,7 +40,7 @@ Der Spieler sieht seinen Spielfortschritt: den Status jeder Mission (gesperrt, o
 
 ### 4.3 Sequence diagram
 
-![Sequence diagram UC-06](../diagrams/UC-06_sequence.png)
+![Sequence diagram UC-06](../diagrams/sequences/UC-06_sequence.png)
 
 ## 5 Special requirements
 

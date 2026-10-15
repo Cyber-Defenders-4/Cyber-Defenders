@@ -38,7 +38,7 @@ Wurde eine Lösung als korrekt bewertet, berechnet das System XP und Rang und sp
 
 ### 4.3 Sequence diagram
 
-![Sequence diagram UC-05](../diagrams/UC-05_sequence.png)
+![Sequence diagram UC-05](../diagrams/sequences/UC-05_sequence.png)
 
 ## 5 Special requirements
 

@@ -36,7 +36,7 @@ Kommt der Spieler bei einer Mission nicht weiter, kann er einen Hinweis anforder
 
 ### 4.3 Sequence diagram
 
-![Sequence diagram UC-07](../diagrams/UC-07_sequence.png)
+![Sequence diagram UC-07](../diagrams/sequences/UC-07_sequence.png)
 
 ## 5 Special requirements
 

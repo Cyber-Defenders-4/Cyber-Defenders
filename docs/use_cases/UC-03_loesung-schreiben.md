@@ -38,7 +38,7 @@ Der Spieler schreibt oder ändert Java-Code in einem Code-Editor, um die Aufgabe
 
 ### 4.3 Sequence diagram
 
-![Sequence diagram UC-03](../diagrams/UC-03_sequence.png)
+![Sequence diagram UC-03](../diagrams/sequences/UC-03_sequence.png)
 
 ## 5 Special requirements
 

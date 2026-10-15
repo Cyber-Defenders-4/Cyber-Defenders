@@ -36,7 +36,7 @@ Der Spieler führt den Java-Code aus dem Editor zur Probe aus und sieht die Ausg
 
 ### 4.3 Sequence diagram
 
-![Sequence diagram UC-08](../diagrams/UC-08_sequence.png)
+![Sequence diagram UC-08](../diagrams/sequences/UC-08_sequence.png)
 
 ## 5 Special requirements
 

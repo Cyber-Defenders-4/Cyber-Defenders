@@ -67,7 +67,7 @@ Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. 
 | Nicht im Umfang | Begründung |
 | --------------- | ---------- |
 | Rolle auswählen (Cyber-Defender oder White-Hat-Hacker) | Nice-to-have um IT-Sicherheit aus zwei Blickwinkeln lernen, jedoch nicht entscheiden für den allgemeinen Spielablauf |
-| [Funktion, z. B. echte Ausführung von Nutzer-Code im Backend, noch zu entscheiden] | [Grund, z. B. Aufwand und Sicherheit (abgesicherte Ausführung)] |
+| echte Ausführung von Nutzer-Code, noch zu entscheiden (erstmal nur durch Vergleich einer korrekten Lösung) | Aufwand und Sicherheit (abgesicherte Ausführung) |
 
 ### 1.3 Definitionen, Akronyme und Abkürzungen
 

@@ -34,7 +34,7 @@ Der Spieler sieht alle Missionen mit ihrem Status (freigeschaltet, gesperrt, gel
 
 ### 4.3 Sequence diagram
 
-![Sequence diagram UC-01](../diagrams/UC-01_sequence.png)
+![Sequence diagram UC-01](../diagrams/sequences/UC-01_sequence.png)
 
 ## 5 Special requirements
 

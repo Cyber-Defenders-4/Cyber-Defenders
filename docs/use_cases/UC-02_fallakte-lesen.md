@@ -33,7 +33,7 @@ Der Spieler liest die Fallakte der gewählten Mission. Sie beschreibt das Szenar
 
 ### 4.3 Sequence diagram
 
-![Sequence diagram UC-02](../diagrams/UC-02_sequence.png)
+![Sequence diagram UC-02](../diagrams/sequences/UC-02_sequence.png)
 
 ## 5 Special requirements
 

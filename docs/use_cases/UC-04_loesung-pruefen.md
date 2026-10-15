@@ -39,7 +39,7 @@ Der Spieler reicht seinen Code ein, und das System prüft ihn automatisch gegen 
 
 ### 4.3 Sequence diagram
 
-![Sequence diagram UC-04](../diagrams/UC-04_sequence.png)
+![Sequence diagram UC-04](../diagrams/sequences/UC-04_sequence.png)
 
 ## 5 Special requirements
 

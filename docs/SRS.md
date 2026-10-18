@@ -185,25 +185,25 @@ Wir nutzen Neon (PostgreSQL) als gehostete Datenbank und sind damit von diesem D
 
 | ID | Anforderung | Autor |
 | -- | ----------- | ----- |
-| NFR-U-01 | [messbare Anforderung] | [Vorname] |
+| NFR-U-01 | Da das Spiel ein altes Betriebssystem simuliert, muss die gesamte Arbeitsansicht (inklusive Code-Editor und Fallakte) bei der definierten Referenzauflösung von 1280 × 720 Pixeln vollständig und ohne horizontales oder vertikales Scrollen des Browser-Hauptfensters bedienbar sein. | Marco |
 
 ### 3.3 Zuverlässigkeit (Reliability)
 
 | ID | Anforderung | Autor |
 | -- | ----------- | ----- |
-| NFR-R-01 | [messbare Anforderung] | [Vorname] |
+| NFR-R-01 | Das System speichert den Code-Entwurf des Nutzers im Editor (UC-03) alle 10 Sekunden automatisch zwischen, sodass bei einem plötzlichen Schließen des Browsers oder Verbindungsabbruch maximal die Arbeit von 10 Sekunden verloren geht. | Marco |
 
 ### 3.4 Leistung (Performance)
 
 | ID | Anforderung | Autor |
 | -- | ----------- | ----- |
-| NFR-P-01 | [messbare Anforderung] | [Vorname] |
+| NFR-P-01 | Um das Backend vor typischen Programmierfehlern (z. B. Endlosschleifen) zu schützen, bricht das System die Ausführung von eingereichtem Nutzer-Code zwingend nach maximal 5 Sekunden ab und gibt in der Konsole eine Timeout-Warnung aus. | Marco |
 
 ### 3.5 Wartbarkeit und Erweiterbarkeit ()
 
 | ID | Anforderung | Autor |
 | -- | ----------- | ----- |
-| NFR-S-01 | [messbare Anforderung] | [Vorname] |
+| NFR-S-01 | Um die unabhängige Weiterentwicklung im Team zu gewährleisten, müssen 100 % der im Express-Backend implementierten REST-API-Endpunkte (z. B. für Missionsdaten oder Lösungsabgaben) in einer zentralen OpenAPI/Swagger-Spezifikation mit exakten Request- und Response-Formaten dokumentiert sein. | Marco |
 
 ### 3.6 Entwurfsrandbedingungen
 

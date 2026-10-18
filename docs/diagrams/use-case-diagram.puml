@@ -15,14 +15,14 @@ actor "Spieler" as Spieler
 
 rectangle "Cyber Defenders" {
   usecase "Anmelden und registrieren" as Login #E5E7EB
-  usecase "UC-01\nMission auswählen" as UC01
-  usecase "UC-02\nFallakte lesen" as UC02
-  usecase "UC-03\nLösung im Editor schreiben" as UC03
-  usecase "UC-04\nLösung prüfen lassen" as UC04
-  usecase "UC-05\nFortschritt speichern" as UC05
-  usecase "UC-06\nFortschritt ansehen" as UC06
-  usecase "UC-07\nHinweis anfordern" as UC07
-  usecase "UC-08\nCode ausführen" as UC08
+  usecase "UC-01\nMission auswählen\n(3 SP)" as UC01
+  usecase "UC-02\nFallakte lesen\n(2 SP)" as UC02
+  usecase "UC-03\nLösung im Editor schreiben\n(8 SP)" as UC03
+  usecase "UC-04\nLösung prüfen lassen\n(8 SP)" as UC04
+  usecase "UC-05\nFortschritt speichern\n(3 SP)" as UC05
+  usecase "UC-06\nFortschritt ansehen\n(5 SP)" as UC06
+  usecase "UC-07\nHinweis anfordern\n(2 SP)" as UC07
+  usecase "UC-08\nCode ausführen\n(5 SP)" as UC08
 }
 
 Spieler --> Login

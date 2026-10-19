@@ -39,14 +39,56 @@ Eine Rollenwahl (Cyber-Defender oder White-Hat-Hacker) ist als spätere Erweiter
 
 ## Lokal starten
 
-> Der Quellcode für Frontend und Backend liegt noch nicht im Repository. Die Anleitung wird ergänzt, sobald er da ist.
+## Lokal starten
 
-Geplant ist:
+### Voraussetzungen
 
-1. `git clone` des Repos
-2. `npm install` im Frontend- und Backend-Ordner
-3. `npm run start` im Backend (Express, http://localhost:3100)
-4. `ng serve` im Frontend (http://localhost:4100)
+- Node.js und npm
+- Git
+
+### Repository klonen
+
+```bash
+git clone https://github.com/Cyber-Defenders-4/Cyber-Defenders.git
+cd Cyber-Defenders
+```
+
+### Backend starten
+
+1. In den Backend-Ordner wechseln:
+
+   ```bash
+   cd backend
+   ```
+
+2. Abhängigkeiten installieren:
+
+   ```bash
+   npm install
+   ```
+
+3. Entwicklungsserver starten:
+
+   ```bash
+   npm run dev
+   ```
+
+Das Backend läuft unter `http://localhost:3100`.
+
+Der Health-Check kann über `GET http://localhost:3100/api/status` aufgerufen werden und liefert folgende Antwort:
+
+```json
+{
+  "status": "ok"
+}
+```
+
+Für den kompilierten Start stehen außerdem folgende Befehle zur Verfügung:
+
+```bash
+npm run build
+npm start
+```
 
 ## Burndown-Chart
 

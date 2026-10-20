@@ -42,6 +42,10 @@ Der Spieler sieht seinen Spielfortschritt: den Status jeder Mission (gesperrt, o
 
 ![Sequence diagram UC-06](../diagrams/sequences/UC-06_sequence.png)
 
+### 4.4 Activity diagram
+
+![Activity diagram UC-06](../diagrams/UC-06_activity.png)
+
 ## 5 Special requirements
 
 NFR-UC06-01: Die Fortschrittsübersicht erscheint bei 95 % der Aufrufe innerhalb von 2 s.

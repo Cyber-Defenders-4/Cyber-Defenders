@@ -40,6 +40,10 @@ Wurde eine Lösung als korrekt bewertet, berechnet das System XP und Rang und sp
 
 ![Sequence diagram UC-05](../diagrams/sequences/UC-05_sequence.png)
 
+### 4.4 Activity diagram
+
+![Activity diagram UC-05](../diagrams/UC-05_activity.png)
+
 ## 5 Special requirements
 
 NFR-UC05-01: Nach einem Neuladen der Seite oder einer erneuten Anmeldung sind in 20 von 20 Testläufen alle gespeicherten Missionen, XP und der Rang unverändert vorhanden.

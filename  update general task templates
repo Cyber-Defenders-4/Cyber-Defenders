@@ -1,0 +1,260 @@
+[1mdiff --git a/docs/domain_model.md b/docs/domain_model.md[m
+[1mindex e69de29..18a3642 100644[m
+[1m--- a/docs/domain_model.md[m
+[1m+++ b/docs/domain_model.md[m
+[36m@@ -0,0 +1,15 @@[m
+[32m+[m[32m# Domänenmodell[m
+[32m+[m
+[32m+[m[32m| Autoren | [Vornamen] |[m
+[32m+[m[32m| ------- | ---------- |[m
+[32m+[m
+[32m+[m[32m<!-- UML-Klassendiagramm der gesamten Anwendung.[m
+[32m+[m[32m     Die Quelldatei neben dem Bild versionieren. -->[m
+[32m+[m
+[32m+[m[32m![Domänenmodell](diagrams/domain_model.png)[m
+[32m+[m
+[32m+[m[32m## Klassen[m
+[32m+[m
+[32m+[m[32m| Klasse | Bedeutung |[m
+[32m+[m[32m| ------ | --------- |[m
+[32m+[m[32m| [Klassenname] | [Beschreibung der fachlichen Bedeutung] |[m
+\ No newline at end of file[m
+[1mdiff --git a/docs/use_case_realizations/UCR-00_template.md b/docs/use_case_realizations/UCR-00_template.md[m
+[1mindex e69de29..4400df7 100644[m
+[1m--- a/docs/use_case_realizations/UCR-00_template.md[m
+[1m+++ b/docs/use_case_realizations/UCR-00_template.md[m
+[36m@@ -0,0 +1,96 @@[m
+[32m+[m[32m# UCR-[NN] [Verb Objekt] — Use-Case-Realisierung[m
+[32m+[m
+[32m+[m[32m<!--[m
+[32m+[m[32mANLEITUNG ZUR VERWENDUNG DIESER VORLAGE[m
+[32m+[m[32m- Kopiere diese Datei für jede Realisierung und benenne sie UCR-[NN]_[name].md.[m
+[32m+[m[32m  Verwende dabei die Nummer des zugehörigen Use Cases: UCR-02_book_a_room.md realisiert UC-02.[m
+[32m+[m[32m- Ersetze alle [Platzhalter] in eckigen Klammern.[m
+[32m+[m[32m- Bleibe auf der Analyseebene aus Vorlesung 4: Boundary-, Control- und Entity-Objekte,[m
+[32m+[m[32m  noch keine Framework-Klassen. In Aufgabe 5 werden diese durch Designklassen ersetzt.[m
+[32m+[m[32m- Entferne diese Kommentare, sobald die Realisierung abgeschlossen ist.[m
+[32m+[m[32m- Die Struktur basiert auf der RUP-Vorlage „Use-Case Realization Specification“:[m
+[32m+[m[32m  https://cin.ufpe.br/~if682/RUP/webtmpl/templates/a_and_d/rup_ucrs.htm[m
+[32m+[m[32m- Abschnitt 2 entspricht dem RUP-Abschnitt „Flow of Events — Design“ (Ablauf der Ereignisse — Entwurf).[m
+[32m+[m[32m-->[m
+[32m+[m
+[32m+[m[32m| Autor | Realisiert |[m
+[32m+[m[32m| ------ | ---------- |[m
+[32m+[m[32m| [Vorname] | [UC-NN Verb Objekt](../use_cases/UC-[NN]_[name].md) — und verlinke diese Datei von dort |[m
+[32m+[m
+[32m+[m[32m## 1 Einleitung[m
+[32m+[m
+[32m+[m[32m<!-- Zwei oder drei Sätze: Welchen Use Case realisiert diese Spezifikation, welche seiner[m
+[32m+[m[32m     Abläufe deckt sie ab und was bleibt unberücksichtigt? Fachbegriffe gehören in die SRS,[m
+[32m+[m[32m     nicht hier. -->[m
+[32m+[m
+[32m+[m[32m[…][m
+[32m+[m
+[32m+[m[32m## 2 Ablauf der Ereignisse — Entwurf[m
+[32m+[m
+[32m+[m[32m### 2.1 Beteiligte Objekte[m
+[32m+[m
+[32m+[m[32m<!-- Jedes Objekt aus deinen Sequenzdiagrammen, jeweils mit genau einer Verantwortlichkeit.[m
+[32m+[m[32m     Boundary: Schnittstelle zwischen einem Akteur und dem System — eines pro Akteur und[m
+[32m+[m[32m              Use Case; auch auf externe Systeme wird über ein Boundary-Objekt zugegriffen.[m
+[32m+[m[32m     Control:  koordiniert diesen Use Case — normalerweise eines.[m
+[32m+[m[32m     Entity:   Informationen, die gespeichert werden müssen. -->[m
+[32m+[m
+[32m+[m[32m| Objekt | Stereotyp | Verantwortlichkeit |[m
+[32m+[m[32m| ------ | --------- | ------------------ |[m
+[32m+[m[32m| [:BookingForm] | boundary | [Erfasst Raum und Zeitfenster des Studierenden und zeigt das Ergebnis an] |[m
+[32m+[m[32m| [:BookRoom] | control | [Prüft das Zeitfenster, erstellt die Buchung und startet die Benachrichtigung] |[m
+[32m+[m[32m| [:Booking] | entity | [Speichert, wer welchen Raum für welches Zeitfenster gebucht hat] |[m
+[32m+[m
+[32m+[m[32m### 2.2 Sequenzdiagramme[m
+[32m+[m
+[32m+[m[32m<!-- Der Basisablauf und die alternativen Abläufe: alt, wenn ein Ablauf wieder zusammengeführt[m
+[32m+[m[32m     wird; break, wenn er den Use Case beendet; opt für einen optionalen Schritt; loop für eine[m
+[32m+[m[32m     Wiederholung; ref für einen eingebundenen Use Case.[m
+[32m+[m[32m     Ein Diagramm genügt, solange es übersichtlich bleibt; andernfalls erstelle eines pro Ablauf.[m
+[32m+[m[32m     Lege die Quelldatei neben dem Bild ab. -->[m
+[32m+[m
+[32m+[m[32m![Sequenzdiagramm UCR-[NN]](../diagrams/UCR-[NN]_sequence.png)[m
+[32m+[m
+[32m+[m[32m### 2.3 Ablaufbeschreibung[m
+[32m+[m
+[32m+[m[32m<!-- Beschreibe die Diagramme in wenigen Sätzen: Welches Objekt tut was und in welcher[m
+[32m+[m[32m     Reihenfolge? Erkläre, wie die Diagramme zusammenhängen. Verweise auf die Schritte des[m
+[32m+[m[32m     Use Cases (1, 2, 4a …). -->[m
+[32m+[m
+[32m+[m[32m[…][m
+[32m+[m
+[32m+[m[32m### 2.4 Zustandsautomat[m
+[32m+[m
+[32m+[m[32m<!-- Optional. Nur erforderlich, wenn eine Entität dieser Realisierung einen Status mit Regeln[m
+[32m+[m[32m     besitzt, z. B. eine Buchung, die bestätigt, storniert oder abgelaufen sein kann.[m
+[32m+[m[32m     Andernfalls schreibe „Nicht zutreffend“. -->[m
+[32m+[m
+[32m+[m[32m[Nicht zutreffend][m
+[32m+[m
+[32m+[m[32m### 2.5 Designklassen[m
+[32m+[m
+[32m+[m[32m<!-- Die Designklassen des Use Cases. Quelldateien der Diagramme[m
+[32m+[m[32m     zusammen mit den Bildern versionieren. -->[m
+[32m+[m
+[32m+[m[32m| Analyseobjekt (2.1) | Designklasse(n) |[m
+[32m+[m[32m| ------------------- | ---------------- |[m
+[32m+[m[32m| [:BoundaryObject «boundary»] | [Page, Controller] |[m
+[32m+[m[32m| [:ControlObject «control»] | [Service] |[m
+[32m+[m[32m| [:EntityObject «entity»] | [Model, Repository] |[m
+[32m+[m
+[32m+[m[32m![Klassesdiagramm UCR-[NN]](../diagrams/UCR-[NN]_classes.png)[m
+[32m+[m
+[32m+[m[32m![Sequenzdiagramm UCR-[NN], Designklasses](../diagrams/UCR-[NN]_sequence_design.png)[m
+[32m+[m
+[32m+[m[32m## 3 Abgeleitete Anforderungen[m
+[32m+[m
+[32m+[m[32m<!-- Anforderungen, die sich aus dem Entwurf ergeben und bei der Implementierung berücksichtigt[m
+[32m+[m[32m     werden müssen. Jede Anforderung benötigt eine ID, die in der gesamten SRS eindeutig ist,[m
+[32m+[m[32m     z. B.:[m
+[32m+[m[32m     DR-02-01 — Die Prüfung des Zeitfensters und das Einfügen der Buchung erfolgen innerhalb[m
+[32m+[m[32m                einer Transaktion.[m
+[32m+[m[32m     DR-02-02 — E-Mails werden asynchron versendet; ein fehlgeschlagener Versand wird dreimal[m
+[32m+[m[32m                erneut versucht.[m
+[32m+[m[32m     Schreibe „Keine“, wenn es keine abgeleiteten Anforderungen gibt. -->[m
+[32m+[m
+[32m+[m[32m- [DR-NN-01 — …][m
+[1mdiff --git a/docs/use_cases/UC-00_template.md b/docs/use_cases/UC-00_template.md[m
+[1mindex 6f860f2..27e259d 100644[m
+[1m--- a/docs/use_cases/UC-00_template.md[m
+[1m+++ b/docs/use_cases/UC-00_template.md[m
+[36m@@ -65,6 +65,13 @@[m [mSchritt [M] weiter / Der Use Case endet.[m
+ [m
+ ![Sequenzdiagramm UC-[NN]](../diagrams/UC-[NN]_sequence.png)[m
+ [m
+[32m+[m[32m### 4.4 Aktivitätsdiagramm[m
+[32m+[m
+[32m+[m[32m<!-- Der Ereignisablauf als UML-Aktivitätsdiagramm.[m
+[32m+[m[32m     Die Quelldatei zusammen mit dem Bild versionieren. -->[m
+[32m+[m
+[32m+[m[32m![Aktivitätsdiagramm UC-[NN]](../diagrams/UC-[NN]_activity.png)[m
+[32m+[m
+ ## 5 Besondere Anforderungen[m
+ [m
+ <!-- Qualitätsanforderungen nur für diesen Use Case, jeweils mit einer ID, die in der[m
+[1mdiff --git a/docs/use_cases/UC-01_mission-auswaehlen.md b/docs/use_cases/UC-01_mission-auswaehlen.md[m
+[1mindex 96e77fe..ab11292 100644[m
+[1m--- a/docs/use_cases/UC-01_mission-auswaehlen.md[m
+[1m+++ b/docs/use_cases/UC-01_mission-auswaehlen.md[m
+[36m@@ -36,6 +36,10 @@[m [mDer Spieler sieht alle Missionen mit ihrem Status (freigeschaltet, gesperrt, gel[m
+ [m
+ ![Sequence diagram UC-01](../diagrams/sequences/UC-01_sequence.png)[m
+ [m
+[32m+[m[32m### 4.4 Activity diagram[m
+[32m+[m
+[32m+[m[32m![Activity diagram UC-01](../diagrams/UC-01_activity.png)[m
+[32m+[m
+ ## 5 Special requirements[m
+ [m
+ NFR-UC01-01: Die Missionsübersicht erscheint bei 95 % der Aufrufe innerhalb von 2 s.[m
+[1mdiff --git a/docs/use_cases/UC-02_fallakte-lesen.md b/docs/use_cases/UC-02_fallakte-lesen.md[m
+[1mindex 22595d8..d64b0f6 100644[m
+[1m--- a/docs/use_cases/UC-02_fallakte-lesen.md[m
+[1m+++ b/docs/use_cases/UC-02_fallakte-lesen.md[m
+[36m@@ -35,6 +35,10 @@[m [mDer Spieler liest die Fallakte der gewählten Mission. Sie beschreibt das Szenar[m
+ [m
+ ![Sequence diagram UC-02](../diagrams/sequences/UC-02_sequence.png)[m
+ [m
+[32m+[m[32m### 4.4 Activity diagram[m
+[32m+[m
+[32m+[m[32m![Activity diagram UC-02](../diagrams/UC-02_activity.png)[m
+[32m+[m
+ ## 5 Special requirements[m
+ [m
+ Keine.[m
+[1mdiff --git a/docs/use_cases/UC-03_loesung-schreiben.md b/docs/use_cases/UC-03_loesung-schreiben.md[m
+[1mindex 1ac5c42..7707d57 100644[m
+[1m--- a/docs/use_cases/UC-03_loesung-schreiben.md[m
+[1m+++ b/docs/use_cases/UC-03_loesung-schreiben.md[m
+[36m@@ -40,6 +40,10 @@[m [mDer Spieler schreibt oder ändert Java-Code in einem Code-Editor, um die Aufgabe[m
+ [m
+ ![Sequence diagram UC-03](../diagrams/sequences/UC-03_sequence.png)[m
+ [m
+[32m+[m[32m### 4.4 Activity diagram[m
+[32m+[m
+[32m+[m[32m![Activity diagram UC-03](../diagrams/UC-03_activity.png)[m
+[32m+[m
+ ## 5 Special requirements[m
+ [m
+ NFR-UC03-01: Eingaben im Editor erscheinen bei 95 % der Tastenanschläge innerhalb von 100 ms.[m
+[1mdiff --git a/docs/use_cases/UC-04_loesung-pruefen.md b/docs/use_cases/UC-04_loesung-pruefen.md[m
+[1mindex 820c8de..7c78f1e 100644[m
+[1m--- a/docs/use_cases/UC-04_loesung-pruefen.md[m
+[1m+++ b/docs/use_cases/UC-04_loesung-pruefen.md[m
+[36m@@ -41,6 +41,10 @@[m [mDer Spieler reicht seinen Code ein, und das System prüft ihn automatisch gegen[m
+ [m
+ ![Sequence diagram UC-04](../diagrams/sequences/UC-04_sequence.png)[m
+ [m
+[32m+[m[32m### 4.4 Activity diagram[m
+[32m+[m
+[32m+[m[32m![Activity diagram UC-04](../diagrams/UC-04_activity.png)[m
+[32m+[m
+ ## 5 Special requirements[m
+ [m
+ NFR-UC04-01: Bei Code, der das Zeitlimit nicht erreicht, erscheint das Prüfergebnis bei 95 % der Einreichungen innerhalb von 5 s.[m
+[1mdiff --git a/docs/use_cases/UC-05_fortschritt-speichern.md b/docs/use_cases/UC-05_fortschritt-speichern.md[m
+[1mindex f2bfda5..c4f4e8f 100644[m
+[1m--- a/docs/use_cases/UC-05_fortschritt-speichern.md[m
+[1m+++ b/docs/use_cases/UC-05_fortschritt-speichern.md[m
+[36m@@ -40,6 +40,10 @@[m [mWurde eine Lösung als korrekt bewertet, berechnet das System XP und Rang und sp[m
+ [m
+ ![Sequence diagram UC-05](../diagrams/sequences/UC-05_sequence.png)[m
+ [m
+[32m+[m[32m### 4.4 Activity diagram[m
+[32m+[m
+[32m+[m[32m![Activity diagram UC-05](../diagrams/UC-05_activity.png)[m
+[32m+[m
+ ## 5 Special requirements[m
+ [m
+ NFR-UC05-01: Nach einem Neuladen der Seite oder einer erneuten Anmeldung sind in 20 von 20 Testläufen alle gespeicherten Missionen, XP und der Rang unverändert vorhanden.[m
+[1mdiff --git a/docs/use_cases/UC-06_fortschritt-ansehen.md b/docs/use_cases/UC-06_fortschritt-ansehen.md[m
+[1mindex b86d3b1..db87403 100644[m
+[1m--- a/docs/use_cases/UC-06_fortschritt-ansehen.md[m
+[1m+++ b/docs/use_cases/UC-06_fortschritt-ansehen.md[m
+[36m@@ -42,6 +42,10 @@[m [mDer Spieler sieht seinen Spielfortschritt: den Status jeder Mission (gesperrt, o[m
+ [m
+ ![Sequence diagram UC-06](../diagrams/sequences/UC-06_sequence.png)[m
+ [m
+[32m+[m[32m### 4.4 Activity diagram[m
+[32m+[m
+[32m+[m[32m![Activity diagram UC-06](../diagrams/UC-06_activity.png)[m
+[32m+[m
+ ## 5 Special requirements[m
+ [m
+ NFR-UC06-01: Die Fortschrittsübersicht erscheint bei 95 % der Aufrufe innerhalb von 2 s.[m
+[1mdiff --git a/docs/use_cases/UC-07_hinweis-anfordern.md b/docs/use_cases/UC-07_hinweis-anfordern.md[m
+[1mindex a62124c..a63a4ec 100644[m
+[1m--- a/docs/use_cases/UC-07_hinweis-anfordern.md[m
+[1m+++ b/docs/use_cases/UC-07_hinweis-anfordern.md[m
+[36m@@ -38,6 +38,10 @@[m [mKommt der Spieler bei einer Mission nicht weiter, kann er einen Hinweis anforder[m
+ [m
+ ![Sequence diagram UC-07](../diagrams/sequences/UC-07_sequence.png)[m
+ [m
+[32m+[m[32m### 4.4 Activity diagram[m
+[32m+[m
+[32m+[m[32m![Activity diagram UC-07](../diagrams/UC-07_activity.png)[m
+[32m+[m
+ ## 5 Special requirements[m
+ [m
+ Keine.[m
+[1mdiff --git a/docs/use_cases/UC-08_code-ausfuehren.md b/docs/use_cases/UC-08_code-ausfuehren.md[m
+[1mindex 3428e46..b5866d1 100644[m
+[1m--- a/docs/use_cases/UC-08_code-ausfuehren.md[m
+[1m+++ b/docs/use_cases/UC-08_code-ausfuehren.md[m
+[36m@@ -38,6 +38,10 @@[m [mDer Spieler führt den Java-Code aus dem Editor zur Probe aus und sieht die Ausg[m
+ [m
+ ![Sequence diagram UC-08](../diagrams/sequences/UC-08_sequence.png)[m
+ [m
+[32m+[m[32m### 4.4 Activity diagram[m
+[32m+[m
+[32m+[m[32m![Activity diagram UC-08](../diagrams/UC-08_activity.png)[m
+[32m+[m
+ ## 5 Special requirements[m
+ [m
+ NFR-UC08-01: Bei Code, der das Zeitlimit nicht erreicht, erscheint die Ausgabe eines Probelaufs bei 95 % der Läufe innerhalb von 3 s.[m

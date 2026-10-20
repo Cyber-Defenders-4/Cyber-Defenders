@@ -41,6 +41,10 @@ Der Spieler reicht seinen Code ein, und das System prüft ihn automatisch gegen 
 
 ![Sequence diagram UC-04](../diagrams/sequences/UC-04_sequence.png)
 
+### 4.4 Activity diagram
+
+![Activity diagram UC-04](../diagrams/UC-04_activity.png)
+
 ## 5 Special requirements
 
 NFR-UC04-01: Bei Code, der das Zeitlimit nicht erreicht, erscheint das Prüfergebnis bei 95 % der Einreichungen innerhalb von 5 s.

@@ -38,6 +38,10 @@ Der Spieler führt den Java-Code aus dem Editor zur Probe aus und sieht die Ausg
 
 ![Sequence diagram UC-08](../diagrams/sequences/UC-08_sequence.png)
 
+### 4.4 Activity diagram
+
+![Activity diagram UC-08](../diagrams/UC-08_activity.png)
+
 ## 5 Special requirements
 
 NFR-UC08-01: Bei Code, der das Zeitlimit nicht erreicht, erscheint die Ausgabe eines Probelaufs bei 95 % der Läufe innerhalb von 3 s.

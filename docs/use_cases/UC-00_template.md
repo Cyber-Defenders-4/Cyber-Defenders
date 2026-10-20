@@ -65,6 +65,13 @@ Schritt [M] weiter / Der Use Case endet.
 
 ![Sequenzdiagramm UC-[NN]](../diagrams/UC-[NN]_sequence.png)
 
+### 4.4 Aktivitätsdiagramm
+
+<!-- Der Ereignisablauf als UML-Aktivitätsdiagramm.
+     Die Quelldatei zusammen mit dem Bild versionieren. -->
+
+![Aktivitätsdiagramm UC-[NN]](../diagrams/UC-[NN]_activity.png)
+
 ## 5 Besondere Anforderungen
 
 <!-- Qualitätsanforderungen nur für diesen Use Case, jeweils mit einer ID, die in der

@@ -36,6 +36,10 @@ Der Spieler sieht alle Missionen mit ihrem Status (freigeschaltet, gesperrt, gel
 
 ![Sequence diagram UC-01](../diagrams/sequences/UC-01_sequence.png)
 
+### 4.4 Activity diagram
+
+![Activity diagram UC-01](../diagrams/UC-01_activity.png)
+
 ## 5 Special requirements
 
 NFR-UC01-01: Die Missionsübersicht erscheint bei 95 % der Aufrufe innerhalb von 2 s.

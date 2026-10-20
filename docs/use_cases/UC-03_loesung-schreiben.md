@@ -40,6 +40,10 @@ Der Spieler schreibt oder ändert Java-Code in einem Code-Editor, um die Aufgabe
 
 ![Sequence diagram UC-03](../diagrams/sequences/UC-03_sequence.png)
 
+### 4.4 Activity diagram
+
+![Activity diagram UC-03](../diagrams/UC-03_activity.png)
+
 ## 5 Special requirements
 
 NFR-UC03-01: Eingaben im Editor erscheinen bei 95 % der Tastenanschläge innerhalb von 100 ms.

@@ -1,106 +1,81 @@
 # UCR-07 – Hinweis anfordern
 
+| Autor | Realisiert |
+| ----- | ---------- |
+| Leonie | [UC-07 Hinweis anfordern](../use_cases/UC-07_hinweis-anfordern.md) |
+
 ## 1. Einleitung
 
-Diese Use-Case-Realisierung beschreibt, wie ein angemeldeter Spieler während einer Mission einen Hinweis anfordern kann.
+Diese Use-Case-Realisierung beschreibt, wie ein angemeldeter Spieler während einer Mission einen Hinweis anfordert (Erweiterung von UC-03). Sie deckt den Hauptablauf und die Alternativabläufe 2a (keine Hinweise mehr) und 2b (Backend nicht erreichbar) von UC-07 ab.
 
-Das Frontend sendet die Anfrage an das Backend. Das Backend prüft, ob für die aktuelle Mission noch Hinweise verfügbar 
-sind, lädt den nächsten Hinweis und speichert dessen Verwendung. Anschließend zeigt das Frontend den Hinweis und die 
-verbleibende Anzahl an.
+Das Backend prüft, ob für die Mission noch Hinweise übrig sind, liest den nächsten Hinweis und speichert die Nutzung. Anschließend zeigt der Editor den Hinweis und die Zahl der verbleibenden Hinweise an. Die Auswertung der genutzten Hinweise (Dialog „Fall gelöst“, Erfolge) gehört zu UC-05 und UC-06.
 
-Die Realisierung orientiert sich am Figma-Mockup M3 „Mission 01“ und an der vorhandenen Komponente `Assistant`, über 
-die Hinweise beispielsweise durch Floppy vermittelt werden können.
-
-Die konkrete Aufteilung der Backend-Logik in Controller und Service ist ein Entwurf und muss später mit dem 
-tatsächlichen Code abgeglichen werden.
+Die Realisierung orientiert sich am Figma-Mockup M3 „Mission 01“.
 
 ## 2. Realisierung
 
 ### 2.1 Beteiligte Objekte
 
-| Objekt | Typ | Verantwortung |
+| Objekt | Stereotyp | Verantwortung |
 |---|---|---|
-| Spieler | Actor | Fordert einen Hinweis an. |
-| Frontend (Angular) | Boundary | Sendet die Anfrage und zeigt den Hinweis sowie die verbleibende Anzahl an. |
-| Backend (Express) | Control – auf Komponentenebene | Prüft die Verfügbarkeit und koordiniert Laden und Speichern des Hinweises. |
-| Datenbank (Neon) | Entity-Zugriff – auf Komponentenebene | Stellt Hinweise und deren Nutzungsstatus bereit. |
-| `HintController` | Control – vorgeschlagen | Verarbeitet die Anfrage nach einem Hinweis. |
-| `HintService` | Control – vorgeschlagen | Ermittelt den nächsten verfügbaren Hinweis und die verbleibende Anzahl. |
-| `HintRepository` | Datenzugriff – vorgeschlagen | Liest Hinweise und speichert deren Verwendung. |
-| `CodeEditor` | Boundary | Ermöglicht den Aufruf der Hinweisfunktion im Editor. |
-| `Assistant` | Boundary | Präsentiert den Hinweis für den Spieler. |
+| :CodeEditor | boundary | Nimmt die Anfrage des Spielers im Editor entgegen und zeigt Hinweis, verbleibende Hinweise, Meldungen und Fehlermeldungen an. |
+| :HinweisAnfordern | control | Prüft, ob noch Hinweise übrig sind, liest den nächsten Hinweis, speichert die Nutzung und gibt das Ergebnis an die Boundary zurück. |
+| :Missionsfortschritt | entity | Speichert, wie viele Hinweise ein Spieler in einer Mission genutzt hat. |
+| :Hinweis | entity | Speichert die Hinweise einer Mission mit Reihenfolge und Text. |
 
-Hinweis: `HintController`, `HintService` und `HintRepository` sind vorgeschlagene Entwurfsnamen und noch keine 
-bestätigten Implementierungsklassen.
+### 2.2 Sequenzdiagramme
 
-### 2.2 Verfeinertes Sequenzdiagramm
+Das Diagramm zeigt den Hauptablauf und die Alternativabläufe 2a und 2b als Fragmente. Die Nutzung des Hinweises wird gespeichert, bevor :HinweisAnfordern den Hinweis an die Boundary zurückgibt.
 
 ![Sequenzdiagramm UCR-07](../diagrams/UCR-07_sequence.png)
-
-**Hinweis:** Der Ablauf setzt voraus, dass die Verwendung eines Hinweises erst nach erfolgreicher Speicherung als 
-verbraucht gilt. Bei einem Speicherfehler muss die Implementierung sicherstellen, dass der Hinweis nicht als erfolgreich 
-verwendet gemeldet wird. Bei parallelen Anfragen sollte verhindert werden, dass die Anzahl verfügbarer Hinweise 
-unterschritten wird.
 
 ### 2.3 Ablaufbeschreibung
 
 #### Hauptablauf
 
-1. Der Spieler befindet sich in einer gestarteten Mission und hat den Editor geöffnet.
-2. Der Spieler fordert einen Hinweis an.
-3. Das Frontend sendet eine Anfrage für den nächsten Hinweis der aktuellen Mission an das Backend.
-4. Das Backend liest die bereits verwendeten Hinweise und den nächsten verfügbaren Hinweis aus der Datenbank.
-5. Die Datenbank liefert den Hinweis oder meldet, dass keiner mehr verfügbar ist.
-6. Wenn ein Hinweis verfügbar ist, veranlasst das Backend das Speichern seiner Verwendung.
-7. Nach erfolgreicher Speicherung liefert das Backend den Hinweis und die verbleibende Anzahl an das Frontend zurück.
-8. Das Frontend zeigt den Hinweis an und aktualisiert die Anzahl der verbleibenden Hinweise.
+1. Der Spieler fordert im Editor einen Hinweis an (`hinweisAnfordern()` an :CodeEditor).
+2. :CodeEditor fragt bei :HinweisAnfordern den nächsten Hinweis für Spieler und Mission an (`nächstenHinweis`).
+3. :HinweisAnfordern liest bei :Missionsfortschritt, wie viele Hinweise der Spieler in der Mission schon genutzt hat.
+4. Sind es weniger als drei, liest :HinweisAnfordern bei :Hinweis den Hinweis mit der Reihenfolge „genutzte Hinweise + 1“.
+5. :HinweisAnfordern speichert bei :Missionsfortschritt die Nutzung des Hinweises und gibt Hinweis und verbleibende Anzahl an :CodeEditor zurück.
+6. :CodeEditor zeigt den Hinweis und die verbleibenden Hinweise an.
 
-#### Alternativablauf A1 – Keine Hinweise mehr verfügbar
+#### Alternativablauf 2a – Keine Hinweise mehr
 
-1. Das Backend stellt fest, dass für die aktuelle Mission keine Hinweise mehr verfügbar sind.
-2. Das Frontend zeigt die Meldung „Keine weiteren Hinweise“ an.
-3. Es wird kein weiterer Hinweis als verwendet gespeichert.
+1. Bei Schritt 4 hat der Spieler schon drei Hinweise genutzt.
+2. :HinweisAnfordern meldet `keineHinweise` an :CodeEditor und speichert nichts.
+3. :CodeEditor zeigt „Keine weiteren Hinweise“ an. Der Use Case endet.
 
-#### Alternativablauf A2 – Backend nicht erreichbar
+#### Alternativablauf 2b – Backend nicht erreichbar
 
-1. Das Backend kann die Anfrage nicht erfolgreich beantworten.
-2. Das Frontend zeigt eine Fehlermeldung an.
-3. Der Hinweis wird nicht als erfolgreich verwendet gezählt.
-4. Der Spieler kann es erneut versuchen oder zur vorherigen Ansicht zurückkehren.
+1. Bei Schritt 2 antwortet das Backend nicht.
+2. :CodeEditor zeigt eine Fehlermeldung an. Der Hinweis zählt nicht als genutzt.
+3. Der Ablauf geht bei Schritt 1 weiter.
 
-#### Alternativablauf A3 – Hinweis oder Speicherung kann nicht geladen bzw. abgeschlossen werden
+### 2.4 Zustandsautomat
 
-1. Beim Laden des Hinweises oder beim Speichern seiner Verwendung tritt ein Fehler auf.
-2. Das Backend meldet den Fehler an das Frontend.
-3. Das Frontend zeigt eine Fehlermeldung an.
-4. Die Verwendung darf nicht als erfolgreich abgeschlossen behandelt werden, solange die Speicherung nicht erfolgreich 
-   bestätigt wurde.
-5. Der Spieler kann es erneut versuchen.
+Nicht zutreffend. Die Zahl der genutzten Hinweise ist ein Zähler ohne eigene Zustände.
 
-### 2.4 Zustandsautomat (optional)
+### 2.5 Entwurfsklassen
 
-Ein eigener Zustandsautomat ist optional. Der Ablauf wird durch das Sequenzdiagramm ausreichend beschrieben.
-
-### 2.5 Designklassen (für Task 05)
-
-| Analyseobjekt / Komponente | Mögliche Designklasse oder Komponente |
+| Analyseobjekt (2.1) | Entwurfsklasse(n) |
 |---|---|
-| Frontend | Angular-Komponente für Editor und Hinweisaktion |
-| `CodeEditor` | Vorhandene bzw. geplante Editor-Komponente |
-| `Assistant` | UI-Komponente zur Anzeige des Hinweises |
-| Backend | Express-Route und Controller |
-| Hinweislogik | `HintService` |
-| Datenbankzugriff | Repository bzw. Datenzugriffsschicht |
-| Hinweis und Nutzung | Datenmodelle für Hinweise und ihre Verwendung |
+| :CodeEditor «boundary» | CodeEditorComponent, HintApiService |
+| :HinweisAnfordern «control» | HintController, HintService |
+| :Missionsfortschritt «entity» | ProgressRepository (findHintsUsed, incrementHintsUsed) |
+| :Hinweis «entity» | Hint, HintRepository |
 
-Die konkreten Namen sind vorläufig und werden nach der Implementierung an den Code angepasst.
+Zusätzlich bündelt HintResponse den Hinweis, die verbleibende Anzahl und die Angabe `noHintsLeft` für die Antwort an das Frontend.
 
-### 3. Abgeleitete Anforderungen
+![Klassendiagramm UCR-07](../diagrams/UCR-07_classes.png)
 
-- Pro Mission stehen dem Spieler maximal drei Hinweise zur Verfügung.
-- Das System zeigt den Hinweis und die verbleibende Anzahl an.
-- Die Nutzung eines Hinweises wird gespeichert.
-- Bei ausgeschöpftem Kontingent wird kein weiterer Hinweis ausgegeben.
-- Bei einem Lade- oder Speicherfehler wird eine Fehlermeldung angezeigt.
-- Ein nicht erfolgreich abgeschlossener Vorgang darf nicht als erfolgreich genutzter Hinweis behandelt werden.
-- Die Hinweisfunktion verändert den Missionsfortschritt nicht unmittelbar.
+![Sequenzdiagramm UCR-07, Entwurfsklassen](../diagrams/UCR-07_sequence_design.png)
+
+## 3. Abgeleitete Anforderungen
+
+- DR-07-01 — Pro Mission stehen höchstens drei Hinweise zur Verfügung.
+- DR-07-02 — Der nächste Hinweis ist der mit der Reihenfolge „genutzte Hinweise + 1“, die Reihenfolge der Hinweise ist je Mission fest.
+- DR-07-03 — Die Zahl der genutzten Hinweise wird je Spieler und Mission gespeichert.
+- DR-07-04 — Ist das Backend nicht erreichbar, zeigt der Editor eine Fehlermeldung, und der Hinweis zählt nicht als genutzt.
+- DR-07-05 — Sind alle Hinweise genutzt, antwortet das Backend mit „keine Hinweise mehr“ und speichert nichts.
+- DR-07-06 — Das Anfordern eines Hinweises verändert den Missionsstatus nicht.

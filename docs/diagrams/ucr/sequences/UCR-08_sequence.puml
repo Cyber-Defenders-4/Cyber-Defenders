@@ -1,0 +1,41 @@
+@startuml UCR-08_sequence
+' Verfeinertes Sequenzdiagramm UCR-08 mit Analyseobjekten (Abschnitt 2.2 der Realisierung)
+' Autor: Leonie
+title UCR-08 Code ausführen (Analyseobjekte)
+
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Spieler" as S
+boundary ":CodeEditor" as CE
+control ":CodeAusführen" as CA
+boundary ":Ausführungsumgebung" as AU
+
+S -> CE : codeAusführen(code)
+CE -> CA : ausführen(code)
+
+alt 2a: Backend nicht erreichbar
+  CE --> S : Fehlermeldung, Code bleibt im Editor
+else Backend erreichbar
+  CA -> AU : übersetzenUndAusführen(code, 5 s)
+
+  alt fehlerfrei
+    AU --> CA : ausgabe
+    CA --> CE : ausgabe
+    CE --> S : Ausgabe in der Konsole
+  else 3a: Compiler- oder Laufzeitfehler
+    AU --> CA : fehlermeldung
+    CA --> CE : fehlermeldung
+    CE --> S : Fehlermeldung in der Konsole
+  else 3b: Zeitlimit überschritten
+    AU --> CA : zeitlimit
+    CA --> CE : zeitlimit
+    CE --> S : „Zeitlimit überschritten“ in der Konsole
+  end
+
+end
+
+note over CA : Kein Entity-Objekt: ein Probelauf\nwird nicht gespeichert.
+@enduml

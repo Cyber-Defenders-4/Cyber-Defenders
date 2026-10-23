@@ -1,0 +1,38 @@
+@startuml UCR-07_sequence
+' Verfeinertes Sequenzdiagramm UCR-07 mit Analyseobjekten (Abschnitt 2.2 der Realisierung)
+' Autor: Leonie
+title UCR-07 Hinweis anfordern (Analyseobjekte)
+
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+
+actor "Spieler" as S
+boundary ":CodeEditor" as CE
+control ":HinweisAnfordern" as HA
+entity ":Missionsfortschritt" as MF
+entity ":Hinweis" as H
+
+S -> CE : hinweisAnfordern()
+CE -> HA : nächstenHinweis(spieler, mission)
+
+alt 2b: Backend nicht erreichbar
+  CE --> S : Fehlermeldung, Hinweis zählt nicht
+else Backend erreichbar
+  HA -> MF : genutzteHinweiseLesen(spieler, mission)
+  MF --> HA : anzahl
+
+  alt anzahl < 3
+    HA -> H : lesen(mission, anzahl + 1)
+    H --> HA : hinweis
+    HA -> MF : hinweisNutzungSpeichern(spieler, mission)
+    HA --> CE : hinweis, verbleibend
+    CE --> S : Hinweis und verbleibende Hinweise
+  else 2a: keine Hinweise mehr
+    HA --> CE : keineHinweise
+    CE --> S : „Keine weiteren Hinweise“
+  end
+
+end
+@enduml

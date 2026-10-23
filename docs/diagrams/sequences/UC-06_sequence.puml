@@ -2,28 +2,34 @@
 ' Sequenzdiagramm UC-06 (Abschnitt 4.3 der Spezifikation)
 ' Autor: Leonie. Entwurf aus Basic Flow und Alternative Flows, vom Team zu bestaetigen.
 title UC-06 Fortschritt ansehen
+
 skinparam shadowing false
 skinparam defaultFontName Arial
 skinparam sequenceMessageAlign center
 autonumber
+
 actor "Spieler" as S
 participant "Frontend\n(Angular)" as FE
 participant "Backend\n(Express)" as BE
 database "Datenbank\n(Neon)" as DB
+
 S -> FE : Fortschrittsübersicht öffnen
 FE -> BE : Fortschritt anfordern
+
 alt 2b: Backend antwortet nicht
   FE --> S : Fehlermeldung mit "Erneut versuchen"
 else Backend antwortet
   BE -> DB : Fortschritt, Rang und XP lesen
   DB --> BE : Fortschritt
   BE --> FE : Fortschritt
+
   alt Fortschritt vorhanden
     FE --> S : Status jeder Mission (gesperrt, offen, gelöst)
     FE --> S : Rang, XP und Stand bis zum nächsten Rang
   else 2a: Noch kein Fortschritt
     FE --> S : Erste Mission offen, Startrang mit 0 XP,\nHinweis auf die erste Mission
   end
+
   S -> FE : Erfolge öffnen
   FE -> BE : Erfolge anfordern
   BE -> DB : Erfolge des Spielers lesen

@@ -1,0 +1,43 @@
+@startuml UCR-06_sequence
+' Verfeinertes Sequenzdiagramm UCR-06 mit Analyseobjekten (Abschnitt 2.2 der Realisierung)
+' Autor: Leonie
+title UCR-06 Fortschritt ansehen (Analyseobjekte)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+boundary ":Fortschrittsübersicht" as FU
+control ":FortschrittAnzeigen" as FA
+entity ":Missionsfortschritt" as MF
+entity ":Spieler" as SP
+entity ":Rang" as R
+entity ":Erfolg" as E
+
+S -> FU : öffnen()
+FU -> FA : fortschrittLaden(spieler)
+alt 2b: Fortschritt nicht ladbar
+  FA --> FU : Fehler
+  FU --> S : Fehlermeldung mit „Erneut versuchen“
+else Fortschritt ladbar
+  FA -> MF : fürSpielerLesen(spieler)
+  MF --> FA : fortschritte
+  FA -> SP : xpLesen(spieler)
+  SP --> FA : xp
+  FA -> R : rangUndNächstenRangLesen(xp)
+  R --> FA : rang, nächsterRang
+  alt Missionen gelöst
+    FA --> FU : missionsstatus, rang, xp, stand
+    FU --> S : Status jeder Mission, Rang mit XP\nund Stand bis zum nächsten Rang
+  else 2a: noch kein Fortschritt
+    FA --> FU : ersteMissionOffen, startrang, 0 XP
+    FU --> S : Hinweis auf die erste Mission
+  end
+  S -> FU : erfolgeÖffnen()
+  FU -> FA : erfolgeLaden(spieler)
+  FA -> E : alleMitStatusLesen(spieler)
+  E --> FA : erfolge
+  FA --> FU : erfolge
+  FU --> S : Jeder Erfolg mit Status\n(6a: ohne Erfolge alle offen)
+end
+@enduml

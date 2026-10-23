@@ -1,103 +1,91 @@
 # UCR-06 – Fortschritt ansehen
 
+| Autor | Realisiert |
+| ----- | ---------- |
+| Leonie | [UC-06 Fortschritt ansehen](../use_cases/UC-06_fortschritt-ansehen.md) |
+
 ## 1. Einleitung
 
-Diese Use-Case-Realisierung beschreibt, wie ein angemeldeter Spieler seinen gespeicherten Spielfortschritt und seine 
-Erfolge ansehen kann.
+Diese Use-Case-Realisierung beschreibt, wie ein angemeldeter Spieler seinen gespeicherten Spielfortschritt und seine Erfolge ansehen kann. Sie deckt den Hauptablauf und die Alternativabläufe 2a (noch keine Mission gelöst), 2b (Fortschritt nicht ladbar) und 6a (noch kein Erfolg erhalten) von UC-06 ab.
 
-Das System lädt den Fortschritt aus der Datenbank und zeigt die Missionsstatus, den aktuellen Rang, die gesammelten XP 
-und den Fortschritt bis zum nächsten Rang an. Zusätzlich kann der Spieler seine erreichten und noch offenen Erfolge 
-ansehen.
+Die Fortschrittsübersicht zeigt den Status jeder Mission, den Rang mit XP und den Stand bis zum nächsten Rang. Anschließend kann der Spieler seine erhaltenen und noch offenen Erfolge ansehen. Das Speichern des Fortschritts gehört zu UC-05 und ist hier nicht enthalten.
 
-Die Realisierung orientiert sich an den Figma-Mockups M2 „Missionsauswahl“ und M5 „Fall gelöst“. Die dargestellten 
-Steuerungsobjekte sind Entwurfsvorschläge und werden bei der Implementierung an die tatsächliche Architektur angepasst.
+Die Realisierung orientiert sich an den Figma-Mockups M2 „Missionsauswahl“ und M5 „Fall gelöst“.
 
 ## 2. Realisierung
+
 ### 2.1 Beteiligte Objekte
 
-| Objekt | Typ | Verantwortung |
+| Objekt | Stereotyp | Verantwortung |
 |---|---|---|
-| Spieler | Actor | Fordert die Fortschrittsübersicht an und kann die Erfolge öffnen. |
-| Frontend (Angular) | Boundary | Nimmt Benutzeraktionen entgegen und zeigt die Fortschrittsdaten an. |
-| Backend (Express) | Control – auf Komponentenebene | Verarbeitet die Anfragen des Frontends und koordiniert das Laden der Daten. |
-| Datenbank (Neon) | Entity-Zugriff – auf Komponentenebene | Stellt die gespeicherten Fortschritts- und Erfolgsdaten bereit. |
-| `ProgressController` | Control – vorgeschlagen | Steuert das Laden der Fortschrittsdaten. |
-| `ProgressService` | Control – vorgeschlagen | Bereitet Missionsstatus, Rang, XP und Rangfortschritt auf. |
-| `AchievementController` | Control – vorgeschlagen | Steuert das Laden der Erfolge. |
-| `AchievementList` | Boundary – vorgeschlagen | Stellt erreichte und offene Erfolge dar. Die konkrete Oberfläche muss noch festgelegt werden. |
+| :Fortschrittsübersicht | boundary | Nimmt das Öffnen der Übersicht und der Erfolge entgegen und zeigt Missionsstatus, Rang mit XP, Erfolge und Fehlermeldungen an. |
+| :FortschrittAnzeigen | control | Koordiniert das Laden von Missionsfortschritt, XP, Rang und Erfolgen und liefert bei fehlendem Fortschritt den Standardfortschritt. |
+| :Missionsfortschritt | entity | Speichert den Status jeder Mission für einen Spieler (gesperrt, offen oder gelöst). |
+| :Spieler | entity | Speichert die gesammelten XP eines Spielers. |
+| :Rang | entity | Kennt die Ränge mit ihren XP-Schwellen und liefert zu einer XP-Zahl den Rang und den nächsten Rang. |
+| :Erfolg | entity | Speichert die Erfolge und ihren Status (erhalten oder offen) je Spieler. |
 
-Hinweis: Frontend, Backend und Datenbank sind die Komponenten aus dem vorhandenen Sequenzdiagramm. Die zusätzlichen 
-Objekte sind eine mögliche spätere Verfeinerung, keine Behauptung, dass diese Klassen bereits implementiert sind.
+### 2.2 Sequenzdiagramme
 
-### 2.2 Verfeinertes Sequenzdiagramm
-
-Das folgende Diagramm basiert auf dem vorhandenen Architekturdiagramm. Die Erfolge werden optional geladen. Ein 
-Backend-Fehler ermöglicht einen erneuten Versuch.
+Das Diagramm zeigt den Hauptablauf und die Alternativabläufe 2a und 2b als Fragmente. Der Alternativablauf 6a steht in der Beschriftung der letzten Nachricht.
 
 ![Sequenzdiagramm UCR-06](../diagrams/UCR-06_sequence.png)
-
-**Hinweis zum Diagramm:** Für eine endgültige Version sollte der Ablauf des erneuten Versuchs genauso detailliert 
-modelliert werden wie der reguläre Ablauf. Die Datenbankantwort sollte außerdem nur einmal pro Ladevorgang dargestellt 
-werden. Die exakte Fehlerbehandlung hängt von der späteren Implementierung ab.
 
 ### 2.3 Ablaufbeschreibung
 
 #### Hauptablauf
 
-1. Der Spieler öffnet die Fortschrittsübersicht.
-2. Das Frontend fordert den gespeicherten Spielfortschritt beim Backend an.
-3. Das Backend liest die Missionsstatus, den Rang und die XP aus der Datenbank.
-4. Die Datenbank liefert die gespeicherten Daten zurück.
-5. Das Backend übermittelt die Daten an das Frontend.
-6. Das Frontend zeigt den Status jeder Mission (gesperrt, offen oder gelöst), den Rang, die XP und den Fortschritt 
-   bis zum nächsten Rang an.
-7. Optional öffnet der Spieler die Erfolge-Ansicht.
-8. Das Backend lädt die Erfolge und deren Status aus der Datenbank.
-9. Das Frontend zeigt die erreichten und noch offenen Erfolge an.
+1. Der Spieler öffnet die Fortschrittsübersicht (`öffnen()` an :Fortschrittsübersicht). Die Boundary fordert bei :FortschrittAnzeigen den Fortschritt des Spielers an (`fortschrittLaden`).
+2. :FortschrittAnzeigen liest den Status der Missionen aus :Missionsfortschritt, die XP aus :Spieler und zu diesen XP den Rang und den nächsten Rang aus :Rang.
+3. Ist mindestens eine Mission gelöst, gibt :FortschrittAnzeigen Missionsstatus, Rang, XP und den Stand bis zum nächsten Rang an die Boundary zurück.
+4. :Fortschrittsübersicht zeigt den Status jeder Mission, den Rang mit XP und den Stand bis zum nächsten Rang an.
+5. Der Spieler öffnet seine Erfolge (`erfolgeÖffnen()`). Die Boundary fordert sie bei :FortschrittAnzeigen an (`erfolgeLaden`).
+6. :FortschrittAnzeigen liest alle Erfolge mit Status aus :Erfolg und gibt sie zurück. :Fortschrittsübersicht zeigt jeden Erfolg mit seinem Status an.
 
-#### Alternativablauf A1 – Noch kein gespeicherter Fortschritt
+#### Alternativablauf 2a – Noch keine Mission gelöst
 
-1. Es ist noch kein Spielfortschritt gespeichert.
-2. Das System stellt einen Standardfortschritt bereit.
-3. Die erste Mission wird als offen angezeigt; der Spieler beginnt mit Rang 0 und 0 XP.
-4. Das Frontend zeigt einen Hinweis auf die erste Mission an.
+1. Bei Schritt 3 ist noch keine Mission gelöst.
+2. :FortschrittAnzeigen liefert die erste Mission als offen, den Startrang und 0 XP.
+3. :Fortschrittsübersicht zeigt einen Hinweis auf die erste Mission an.
+4. Der Ablauf geht bei Schritt 5 weiter.
 
-#### Alternativablauf A2 – Backend nicht erreichbar
+#### Alternativablauf 2b – Fortschritt nicht ladbar
 
-1. Das Backend kann die Anfrage nicht beantworten.
-2. Das Frontend zeigt eine Fehlermeldung mit der Möglichkeit eines erneuten Versuchs.
-3. Der Spieler kann die Anfrage wiederholen oder zur Startansicht zurückkehren.
+1. Bei Schritt 1 meldet :FortschrittAnzeigen einen Fehler.
+2. :Fortschrittsübersicht zeigt eine Fehlermeldung mit der Möglichkeit „Erneut versuchen“ an.
+3. Der Ablauf geht bei Schritt 1 weiter.
 
-#### Alternativablauf A3 – Keine Erfolge erreicht
+#### Alternativablauf 6a – Noch kein Erfolg erhalten
 
-1. Der Spieler öffnet die Erfolge-Ansicht.
-2. Das System lädt die Erfolge und deren Status.
-3. Es wurden noch keine Erfolge erreicht.
-4. Das Frontend zeigt alle Erfolge als offen an.
+1. Bei Schritt 6 hat der Spieler noch keinen Erfolg erhalten.
+2. :Fortschrittsübersicht zeigt alle Erfolge als offen an.
 
-### 2.4 Zustandsautomat (optional)
+### 2.4 Zustandsautomat
 
-Ein separater Zustandsautomat ist optional. Der Ablauf lässt sich durch das Sequenzdiagramm ausreichend beschreiben.
+Nicht zutreffend. Der Missionsstatus (gesperrt, offen, gelöst) wird in diesem Use Case nur gelesen. Seine Übergänge gehören zu UC-05.
 
-### 2.5 Designklassen (für Task 05)
+### 2.5 Entwurfsklassen
 
-Die folgenden Zuordnungen sind Entwurfsvorschläge und müssen später mit der tatsächlichen Implementierung abgeglichen 
-werden.
-
-| Analyseobjekt / Komponente | Mögliche Designklasse oder Komponente |
+| Analyseobjekt (2.1) | Entwurfsklasse(n) |
 |---|---|
-| Frontend | Angular-Komponente für die Fortschrittsübersicht |
-| Backend | Express-Route und zugehöriger Controller |
-| Fortschrittslogik | `ProgressService` |
-| Erfolgslogik | `AchievementController` oder entsprechender Service |
-| Datenbankzugriff | Repository bzw. Datenzugriffsschicht |
-| Missionsstatus und Rang | Datenmodelle für Spielfortschritt und Missionen |
-| Erfolge-Ansicht | Noch zu konkretisierende Angular-Komponente |
+| :Fortschrittsübersicht «boundary» | ProgressOverviewComponent, ProgressApiService |
+| :FortschrittAnzeigen «control» | ProgressController, ProgressService |
+| :Missionsfortschritt «entity» | MissionProgress, ProgressRepository |
+| :Spieler «entity» | Player, PlayerRepository |
+| :Rang «entity» | Rank, RankRepository |
+| :Erfolg «entity» | AchievementStatus, AchievementRepository |
 
-### 3. Abgeleitete Anforderungen
+Zusätzlich bündeln ProgressOverview und MissionOverviewItem die Daten der Übersicht für die Antwort an das Frontend.
 
-- Die Fortschrittsübersicht soll bei 95 % der Aufrufe innerhalb von zwei Sekunden erscheinen.
-- Der gespeicherte Spielfortschritt darf durch das reine Ansehen nicht verändert werden.
-- Ohne gespeicherten Fortschritt wird die erste Mission als offen angezeigt und der Spieler startet mit Rang 0 und 0 XP.
-- Bei einem Ladefehler wird eine Fehlermeldung angezeigt und ein erneuter Versuch ermöglicht.
-- Die Erfolge-Ansicht zeigt erreichte und offene Erfolge an.
+![Klassendiagramm UCR-06](../diagrams/UCR-06_classes.png)
+
+![Sequenzdiagramm UCR-06, Entwurfsklassen](../diagrams/UCR-06_sequence_design.png)
+
+## 3. Abgeleitete Anforderungen
+
+- DR-06-01 — Das Ansehen des Fortschritts ist rein lesend (HTTP GET) und verändert den gespeicherten Fortschritt nicht.
+- DR-06-02 — Rang und nächster Rang werden aus den XP des Spielers und den Rangschwellen ermittelt und nicht beim Spieler gespeichert.
+- DR-06-03 — Die Erfolge werden erst geladen, wenn der Spieler die Erfolge öffnet (eigene Anfrage `/api/progress/achievements`).
+- DR-06-04 — Hat der Spieler noch keine Mission gelöst, zeigt das System die erste Mission als offen, den Startrang mit 0 XP und einen Hinweis auf die erste Mission.
+- DR-06-05 — Lässt sich der Fortschritt nicht laden, zeigt die Oberfläche eine Fehlermeldung mit „Erneut versuchen“.
+- DR-06-06 — Solange kein Erfolg erhalten wurde, werden alle Erfolge als offen angezeigt.

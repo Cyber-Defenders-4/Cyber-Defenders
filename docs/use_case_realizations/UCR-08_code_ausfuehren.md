@@ -1,108 +1,88 @@
 # UCR-08 – Code ausführen
 
+| Autor | Realisiert |
+| ----- | ---------- |
+| Leonie | [UC-08 Code ausführen](../use_cases/UC-08_code-ausfuehren.md) |
+
 ## 1. Einleitung
 
-Diese Use-Case-Realisierung beschreibt, wie ein angemeldeter Spieler während einer Mission den aktuellen Java-Code aus 
-dem Editor zu Testzwecken ausführen kann.
+Diese Use-Case-Realisierung beschreibt, wie ein angemeldeter Spieler während einer Mission den aktuellen Java-Code aus dem Editor zur Probe ausführt (Erweiterung von UC-03). Sie deckt den Hauptablauf und die Alternativabläufe 2a (Backend nicht erreichbar), 3a (Compiler- oder Laufzeitfehler) und 3b (Zeitlimit überschritten) von UC-08 ab.
 
-Das Frontend übermittelt den aktuellen Code an das Backend. Das Backend veranlasst die Übersetzung und Ausführung in 
-einer isolierten Ausführungsumgebung. Anschließend zeigt das Frontend die Programmausgabe oder eine Fehlermeldung in 
-der Konsole an.
+Der Editor übergibt den Code an das Backend, das ihn in einer isolierten Ausführungsumgebung übersetzen und ausführen lässt. Die Ausgabe oder die Fehlermeldung erscheint in der Konsole.
 
-Die Realisierung orientiert sich am Figma-Mockup M3 „Mission 01“ und an den UI-Komponenten `CodeEditor` und `Console`.
+Die Prüfung gegen die Tests der Mission gehört zu UC-04 und ist hier nicht enthalten. Ein Probelauf ist kein Lösungsversuch und wird nicht gespeichert.
 
-Die automatische Lösungsprüfung aus UC-04 ist von diesem Use Case getrennt. Ein Probelauf dient dem Testen des Codes 
-und ist kein Lösungsversuch.
+Die Realisierung orientiert sich am Figma-Mockup M3 „Mission 01“.
 
 ## 2. Realisierung
 
 ### 2.1 Beteiligte Objekte
 
-| Objekt | Typ | Verantwortung |
+| Objekt | Stereotyp | Verantwortung |
 |---|---|---|
-| Spieler | Actor | Startet die Ausführung des aktuellen Codes. |
-| Frontend (Angular) | Boundary | Sendet den Code und zeigt die Ausgabe oder Fehlermeldung an. |
-| Backend (Express) | Control – auf Komponentenebene | Entgegennahme des Codes, Koordination der Ausführung und Rückgabe des Ergebnisses. |
-| Ausführungsumgebung | Control / externe Laufzeitkomponente | Übersetzt und führt den Java-Code isoliert aus und begrenzt die Ausführungszeit. |
-| `CodeEditor` | Boundary | Stellt den aktuellen Code für die Ausführung bereit. |
-| `Console` | Boundary | Zeigt Programmausgabe, Compilerfehler, Laufzeitfehler und Zeitüberschreitungen an. |
-| `ExecutionController` | Control – vorgeschlagen | Verarbeitet die Anfrage zur Codeausführung. |
-| `ExecutionService` | Control – vorgeschlagen | Koordiniert die Ausführung und bereitet das Ergebnis auf. |
+| :CodeEditor | boundary | Nimmt den Start der Ausführung entgegen, stellt den aktuellen Code bereit und zeigt Ausgabe, Fehlermeldungen und das Zeitlimit in der Konsole an. |
+| :CodeAusführen | control | Nimmt den Code entgegen, übergibt ihn zur Ausführung und gibt Ausgabe, Fehlermeldung oder Zeitlimit zurück. |
+| :Ausführungsumgebung | boundary | Externes System: übersetzt und führt den Code isoliert aus, begrenzt die Laufzeit auf 5 s und meldet Ausgabe, Fehlermeldung oder Zeitlimit. |
 
-Hinweis: `ExecutionController` und `ExecutionService` sind vorgeschlagene Entwurfsnamen. Die konkrete Implementierung 
-der isolierten Java-Ausführung muss noch festgelegt werden.
+Es gibt kein Entity-Objekt, weil ein Probelauf nicht gespeichert wird. Die Konsole gehört im Analysemodell zur Boundary :CodeEditor.
 
-### 2.2 Verfeinertes Sequenzdiagramm
+### 2.2 Sequenzdiagramme
+
+Das Diagramm zeigt den Hauptablauf und die Alternativabläufe 2a, 3a und 3b als Fragmente. Das Zeitlimit wird von der Ausführungsumgebung gemeldet.
 
 ![Sequenzdiagramm UCR-08](../diagrams/UCR-08_sequence.png)
-
-Das Diagramm übernimmt die Architektur aus deinem bisherigen PlantUML-Diagramm und ergänzt beim Timeout den 
-ausdrücklichen Abbruch der Ausführung.
 
 ### 2.3 Ablaufbeschreibung
 
 #### Hauptablauf
 
-1. Der Spieler hat eine Mission gestartet und den Code-Editor geöffnet.
-2. Der Spieler startet die Codeausführung.
-3. Das Frontend übermittelt den aktuellen Code an das Backend.
-4. Das Backend übergibt den Code an die isolierte Ausführungsumgebung.
-5. Die Ausführungsumgebung übersetzt und führt den Code innerhalb des erlaubten Zeitlimits aus.
-6. Bei erfolgreicher Ausführung liefert die Ausführungsumgebung die Programmausgabe an das Backend zurück.
-7. Das Backend übermittelt die Ausgabe an das Frontend.
-8. Das Frontend zeigt die Ausgabe in der Konsole an.
+1. Der Spieler führt seinen Code aus (`codeAusführen(code)` an :CodeEditor).
+2. :CodeEditor übergibt den aktuellen Code an :CodeAusführen (`ausführen(code)`).
+3. :CodeAusführen übergibt den Code an :Ausführungsumgebung (`übersetzenUndAusführen(code, 5 s)`).
+4. Läuft der Code fehlerfrei, liefert :Ausführungsumgebung die Ausgabe an :CodeAusführen, das sie an :CodeEditor zurückgibt.
+5. :CodeEditor zeigt die Ausgabe in der Konsole an.
 
-#### Alternativablauf A1 – Backend nicht erreichbar
+#### Alternativablauf 2a – Backend nicht erreichbar
 
-1. Das Backend kann die Anfrage nicht erfolgreich bearbeiten.
-2. Das Frontend zeigt eine Fehlermeldung an.
-3. Der eingegebene Code bleibt im Editor erhalten.
-4. Der Spieler kann die Ausführung erneut starten.
+1. Bei Schritt 2 antwortet das Backend nicht.
+2. :CodeEditor zeigt eine Fehlermeldung an, der Code bleibt im Editor erhalten.
+3. Der Ablauf geht bei Schritt 1 weiter.
 
-#### Alternativablauf A2 – Compiler- oder Laufzeitfehler
+#### Alternativablauf 3a – Compiler- oder Laufzeitfehler
 
-1. Die Ausführungsumgebung stellt einen Compiler- oder Laufzeitfehler fest.
-2. Sie übermittelt die Fehlerinformationen an das Backend.
-3. Das Backend gibt die Fehlermeldung an das Frontend zurück.
-4. Das Frontend zeigt den Fehler in der Konsole an.
-5. Der Spieler kann den Code korrigieren und erneut ausführen.
+1. Bei Schritt 3 meldet :Ausführungsumgebung eine Fehlermeldung.
+2. :CodeAusführen gibt sie an :CodeEditor zurück.
+3. :CodeEditor zeigt die Fehlermeldung in der Konsole an. Der Use Case endet.
 
-#### Alternativablauf A3 – Zeitlimit überschritten
+#### Alternativablauf 3b – Zeitlimit überschritten
 
-1. Die Ausführung überschreitet das festgelegte Zeitlimit.
-2. Die Ausführungsumgebung bricht die laufende Ausführung ab.
-3. Das Backend erhält die Information über die Zeitüberschreitung.
-4. Das Frontend zeigt „Zeitlimit überschritten“ in der Konsole an.
-5. Der Spieler kann den Code überarbeiten und erneut ausführen.
+1. Bei Schritt 3 meldet :Ausführungsumgebung, dass das Zeitlimit überschritten wurde.
+2. :CodeAusführen gibt die Meldung an :CodeEditor zurück.
+3. :CodeEditor zeigt „Zeitlimit überschritten“ in der Konsole an. Der Use Case endet.
 
-### 2.4 Zustandsautomat (optional)
+### 2.4 Zustandsautomat
 
-Ein separater Zustandsautomat ist optional. Der Ablauf lässt sich durch das Sequenzdiagramm ausreichend beschreiben.
+Nicht zutreffend. Ein Probelauf wird nicht gespeichert, es gibt kein Objekt mit eigenem Status.
 
-### 2.5 Designklassen (für Task 05)
+### 2.5 Entwurfsklassen
 
-| Analyseobjekt / Komponente | Mögliche Designklasse oder Komponente |
+| Analyseobjekt (2.1) | Entwurfsklasse(n) |
 |---|---|
-| Frontend | Angular-Komponente für den Editor und die Ausführungsaktion |
-| `CodeEditor` | Editor-Komponente, die den aktuellen Code bereitstellt |
-| `Console` | UI-Komponente zur Anzeige von Ausgabe und Fehlern |
-| Backend | Express-Route und Controller |
-| Ausführungslogik | `ExecutionService` |
-| Ausführungsumgebung | Isolierter Java-Ausführungsprozess bzw. Sandbox |
-| Ausführungsergebnis | Datenmodell für Ausgabe, Fehler und Timeout |
+| :CodeEditor «boundary» | CodeEditorComponent, ConsoleComponent, RunApiService |
+| :CodeAusführen «control» | RunController, RunService |
+| :Ausführungsumgebung «boundary» | CodeRunner (Schnittstelle), SandboxRunner |
 
-Die konkreten Klassen und Schnittstellen sind Entwurfsvorschläge. Sie müssen bei der Implementierung an die 
-tatsächliche Codebasis angepasst werden.
+Zusätzlich bündelt RunResult Ausgabe, Fehlermeldung und die Angabe `timedOut` für die Antwort.
 
-### 3. Abgeleitete Anforderungen
+![Klassendiagramm UCR-08](../diagrams/UCR-08_classes.png)
 
-- Der aktuelle Code aus dem Editor wird zur Ausführung übermittelt.
-- Der Code wird in einer isolierten Ausführungsumgebung ausgeführt.
-- Die maximale Ausführungszeit beträgt fünf Sekunden.
-- Bei erfolgreicher Ausführung wird die Programmausgabe in der Konsole angezeigt.
-- Compiler- und Laufzeitfehler werden in der Konsole dargestellt.
-- Bei Überschreitung des Zeitlimits wird die Ausführung beendet und eine Fehlermeldung angezeigt.
-- Bei einem Backend-Fehler bleibt der Code im Editor erhalten.
-- Ein Probelauf ist kein Lösungsversuch und verändert den gespeicherten Spielfortschritt nicht.
-- Falls die Leistungsanforderung aus der Use-Case-Spezifikation gilt, sollen 95 % der Ausführungen ohne Timeout ihre 
-  Ausgabe innerhalb von drei Sekunden liefern.
+![Sequenzdiagramm UCR-08, Entwurfsklassen](../diagrams/UCR-08_sequence_design.png)
+
+## 3. Abgeleitete Anforderungen
+
+- DR-08-01 — Der Code wird über die Schnittstelle CodeRunner in einer isolierten Umgebung ausgeführt.
+- DR-08-02 — Die Ausführung ist auf 5 s (5000 ms) begrenzt. Wird das Limit überschritten, meldet die Ausführungsumgebung das Zeitlimit.
+- DR-08-03 — Das Ergebnis enthält die Ausgabe, eine Fehlermeldung und die Angabe, ob das Zeitlimit überschritten wurde.
+- DR-08-04 — Compiler- und Laufzeitfehler werden mit ihrer Fehlermeldung in der Konsole angezeigt.
+- DR-08-05 — Ist das Backend nicht erreichbar, bleibt der Code im Editor erhalten.
+- DR-08-06 — Ein Probelauf wird nicht gespeichert, zählt nicht als Lösungsversuch und ändert den Fortschritt nicht.

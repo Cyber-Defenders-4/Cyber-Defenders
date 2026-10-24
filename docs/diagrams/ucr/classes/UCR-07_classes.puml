@@ -1,0 +1,56 @@
+@startuml UCR-07_classes
+' Klassendiagramm der Designklassen UCR-07 (Abschnitt 2.5 der Realisierung)
+' Autor: Leonie
+title UCR-07 Hinweis anfordern (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classAttributeIconSize 0
+hide empty members
+
+package "Frontend (Angular)" {
+  class CodeEditorComponent {
+    currentHint: Hint
+    hintsRemaining: number
+    requestHint()
+  }
+  class HintApiService {
+    requestNextHint(missionNumber): Observable<HintResponse>
+  }
+}
+
+package "Backend (Express)" {
+  class HintController {
+    nextHint(req, res)
+  }
+  class HintService {
+    getNextHint(playerId, missionNumber): HintResponse
+  }
+  class HintRepository {
+    findByMissionAndOrder(missionId, order): Hint
+  }
+  class ProgressRepository {
+    findHintsUsed(playerId, missionId): number
+    incrementHintsUsed(playerId, missionId)
+  }
+}
+
+package "Modelle (geteilt)" {
+  class Hint {
+    order: number
+    text: string
+  }
+  class HintResponse {
+    hint: Hint
+    remaining: number
+    noHintsLeft: boolean
+  }
+}
+
+CodeEditorComponent --> HintApiService
+HintApiService ..> HintController : HTTP POST\n/api/missions/:number/hints/next
+HintController --> HintService
+HintService --> HintRepository
+HintService --> ProgressRepository
+HintService ..> HintResponse
+HintResponse --> Hint
+@enduml

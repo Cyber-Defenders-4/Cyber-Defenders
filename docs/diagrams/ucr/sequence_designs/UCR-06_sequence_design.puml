@@ -1,0 +1,50 @@
+@startuml UCR-06_sequence_design
+' Sequenzdiagramm UCR-06 mit Designklassen (Abschnitt 2.5 der Realisierung)
+' Autor: Leonie
+title UCR-06 Fortschritt ansehen (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant ":ProgressOverviewComponent" as C
+participant ":ProgressApiService" as API
+participant ":ProgressController" as CTRL
+participant ":ProgressService" as SVC
+participant ":ProgressRepository" as PR
+participant ":PlayerRepository" as PL
+participant ":RankRepository" as RR
+participant ":AchievementRepository" as AR
+
+S -> C : Fortschrittsübersicht öffnen
+C -> API : getProgress()
+API -> CTRL : GET /api/progress
+alt 2b: Backend antwortet nicht
+  API --> C : Fehler
+  C --> S : errorMessage mit „Erneut versuchen“
+else Backend antwortet
+  CTRL -> SVC : getOverview(playerId)
+  SVC -> PR : findByPlayer(playerId)
+  PR --> SVC : MissionProgress[]
+  SVC -> PL : findById(playerId)
+  PL --> SVC : Player
+  SVC -> RR : findForXp(player.xp)
+  RR --> SVC : Rank
+  SVC -> RR : findNext(rank)
+  RR --> SVC : Rank
+  SVC --> CTRL : ProgressOverview
+  CTRL --> API : 200 OK (JSON)
+  API --> C : ProgressOverview
+  C --> S : Missionsstatus, Rang und XP\n(2a: erste Mission offen, 0 XP)
+  S -> C : openAchievements()
+  C -> API : getAchievements()
+  API -> CTRL : GET /api/progress/achievements
+  CTRL -> SVC : getAchievements(playerId)
+  SVC -> AR : findAllWithStatus(playerId)
+  AR --> SVC : AchievementStatus[]
+  SVC --> CTRL : AchievementStatus[]
+  CTRL --> API : 200 OK (JSON)
+  API --> C : AchievementStatus[]
+  C --> S : Erfolge mit Status
+end
+@enduml

@@ -1,0 +1,39 @@
+@startuml UCR-07_sequence_design
+' Sequenzdiagramm UCR-07 mit Designklassen (Abschnitt 2.5 der Realisierung)
+' Autor: Leonie
+title UCR-07 Hinweis anfordern (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant ":CodeEditorComponent" as C
+participant ":HintApiService" as API
+participant ":HintController" as CTRL
+participant ":HintService" as SVC
+participant ":ProgressRepository" as PR
+participant ":HintRepository" as HR
+
+S -> C : requestHint()
+C -> API : requestNextHint(missionNumber)
+API -> CTRL : POST /api/missions/:number/hints/next
+alt 2b: Backend antwortet nicht
+  API --> C : Fehler
+  C --> S : Fehlermeldung, Hinweis zählt nicht
+else Backend antwortet
+  CTRL -> SVC : getNextHint(playerId, missionNumber)
+  SVC -> PR : findHintsUsed(playerId, missionId)
+  PR --> SVC : used
+  alt used < 3
+    SVC -> HR : findByMissionAndOrder(missionId, used + 1)
+    HR --> SVC : Hint
+    SVC -> PR : incrementHintsUsed(playerId, missionId)
+    SVC --> CTRL : HintResponse(hint, 2 - used)
+  else 2a: keine Hinweise mehr
+    SVC --> CTRL : HintResponse(noHintsLeft)
+  end
+  CTRL --> API : 200 OK (JSON)
+  API --> C : HintResponse
+  C --> S : Hinweis und verbleibende Hinweise\noder „Keine weiteren Hinweise“
+end
+@enduml

@@ -1,0 +1,72 @@
+@startuml UCR-06_classes
+' Klassendiagramm der Designklassen UCR-06 (Abschnitt 2.5 der Realisierung)
+' Autor: Leonie
+title UCR-06 Fortschritt ansehen (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classAttributeIconSize 0
+hide empty members
+
+package "Frontend (Angular)" {
+  class ProgressOverviewComponent {
+    overview: ProgressOverview
+    achievements: AchievementStatus[]
+    errorMessage: string
+    ngOnInit()
+    loadProgress()
+    openAchievements()
+  }
+  class ProgressApiService {
+    getProgress(): Observable<ProgressOverview>
+    getAchievements(): Observable<AchievementStatus[]>
+  }
+}
+
+package "Backend (Express)" {
+  class ProgressController {
+    getProgress(req, res)
+    getAchievements(req, res)
+  }
+  class ProgressService {
+    getOverview(playerId): ProgressOverview
+    getAchievements(playerId): AchievementStatus[]
+  }
+  class ProgressRepository {
+    findByPlayer(playerId): MissionProgress[]
+  }
+  class PlayerRepository {
+    findById(playerId): Player
+  }
+  class RankRepository {
+    findForXp(xp): Rank
+    findNext(rank): Rank
+  }
+  class AchievementRepository {
+    findAllWithStatus(playerId): AchievementStatus[]
+  }
+}
+
+package "Modelle (geteilt)" {
+  class ProgressOverview {
+    missions: MissionOverviewItem[]
+    rank: Rank
+    xp: number
+    xpToNextRank: number
+  }
+  class AchievementStatus {
+    name: string
+    description: string
+    earned: boolean
+  }
+}
+
+ProgressOverviewComponent --> ProgressApiService
+ProgressApiService ..> ProgressController : HTTP GET /api/progress,\n/api/progress/achievements
+ProgressController --> ProgressService
+ProgressService --> ProgressRepository
+ProgressService --> PlayerRepository
+ProgressService --> RankRepository
+ProgressService --> AchievementRepository
+ProgressService ..> ProgressOverview
+AchievementRepository ..> AchievementStatus
+@enduml

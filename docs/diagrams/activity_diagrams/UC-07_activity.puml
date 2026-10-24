@@ -1,0 +1,33 @@
+@startuml UC-07_activity
+' Aktivitaetsdiagramm UC-07 (Abschnitt 4.4 der Spezifikation)
+' Autor: Leonie
+title UC-07 Hinweis anfordern
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+|Spieler|
+start
+:Hinweis anfordern (aus UC-03);
+|System|
+:Nächsten Hinweis der Mission laden;
+if (Backend erreichbar?) then ([ja])
+  if (Noch Hinweise übrig?) then ([ja])
+    fork
+      :Hinweis anzeigen und Anzahl
+      verbleibender Hinweise aktualisieren;
+    fork again
+      :Nutzung des Hinweises für
+      die Mission speichern;
+    end fork
+  else ([else])
+    :Melden, dass es keine
+    weiteren Hinweise gibt (2a);
+  endif
+else ([else])
+  :Fehlermeldung anzeigen, Hinweis
+  zählt nicht als genutzt (2b);
+endif
+|Spieler|
+:Weiter im Editor (UC-03);
+stop
+@enduml

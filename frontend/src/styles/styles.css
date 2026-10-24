@@ -162,3 +162,10 @@
   --shadow-window-drop: 4px 4px 0px rgba(0, 0, 0, 0.15);
 }
 
+/* ===============================================
+      APP-BACKGROUND
+   =============================================== */
+body {
+  @apply bg-desktop text-ink antialiased;
+}
+

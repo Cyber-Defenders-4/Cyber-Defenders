@@ -1,3 +1,72 @@
-/* You can add global styles to this file, and also import other style files */
 
+@import url('https://googleapis.com');
 @import 'tailwindcss';
+
+@theme {
+  /* ===============================================
+      TYPOGRAPHIE
+   =============================================== */
+
+  /* TODO */
+}
+
+/* ===============================================
+    STANDARD VALUE PROVIDER (Light Theme)
+   =============================================== */
+:root {
+  /* Pallet & Layout Colors */
+  --color-paper: #fcfcff;
+  --color-line: #c9c6dc;
+  --color-stamp: #b8232a;
+  --color-success: #1d7a3e;
+  --color-danger: #b3261e;
+  --color-warning: #7f5300;
+  --color-progress: #2b6f78;
+  --color-focus: #1c1b2e;
+
+  /* Colors - Desktop & Windows */
+  --color-desktop: #2b6f78;
+  --color-desktop-ink: #ffffff;
+
+  --color-titlebar: #14147a;
+  --color-titlebar-inactive: #6f6d8e;
+  --color-titlebar-ink: #ffffff;
+
+  --color-chrome: #d4d1e3;
+  --color-chrome-light: #ffffff;
+  --color-chrome-dark: #6e6c8a;
+  --color-chrome-ink: #1c1b2e;
+
+  --color-ink: #1c1b2e;
+  --color-ink-muted: #6e6c8a;
+
+  --color-note-paper: #fff6dc;
+  --color-error-line: #fde3e1;
+
+  /* Colors - Code Syntax Elements */
+  --color-code-keyword: #7a2fc7;
+  --color-code-ident: #b2560a;
+  --color-code-string: #1f45c9;
+  --color-code-number: #0b7559;
+  --color-code-type: #a8236f;
+  --color-code-comment: #62667a;
+
+  /* Spacing Scale */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 24px;
+
+  /* Border Radius */
+  --radius-none: 0px;
+  --radius-bubble: 14px;
+  --radius-stamp: 4px;
+
+  /* Shadows */
+  --shadow-bevel-out: inset 1px 1px 0px var(--color-chrome-light), inset -1px -1px 0px var(--color-chrome-dark);
+  --shadow-bevel-in: inset 1px 1px 0px var(--color-chrome-dark), inset -1px -1px 0px var(--color-chrome-light);
+  --shadow-window-drop: 4px 4px 0px rgba(0, 0, 0, 0.15);
+}
+

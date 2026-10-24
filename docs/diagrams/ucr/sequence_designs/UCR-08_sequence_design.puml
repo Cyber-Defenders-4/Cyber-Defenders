@@ -1,0 +1,40 @@
+@startuml UCR-08_sequence_design
+' Sequenzdiagramm UCR-08 mit Designklassen (Abschnitt 2.5 der Realisierung)
+' Autor: Leonie
+title UCR-08 Code ausführen (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant ":CodeEditorComponent" as C
+participant ":ConsoleComponent" as K
+participant ":RunApiService" as API
+participant ":RunController" as CTRL
+participant ":RunService" as SVC
+participant ":SandboxRunner" as RUN
+
+S -> C : runCode()
+C -> API : run(missionNumber, code)
+API -> CTRL : POST /api/missions/:number/runs
+alt 2a: Backend antwortet nicht
+  API --> C : Fehler
+  C -> K : printError("Backend nicht erreichbar")
+  K --> S : Fehlermeldung, Code bleibt im Editor
+else Backend antwortet
+  CTRL -> SVC : run(code)
+  SVC -> RUN : run(code, 5000)
+  RUN --> SVC : RunResult
+  SVC --> CTRL : RunResult
+  CTRL --> API : 200 OK (JSON)
+  API --> C : RunResult
+  alt RunResult.error == null und nicht timedOut
+    C -> K : print(output)
+  else 3a: RunResult.error
+    C -> K : printError(error)
+  else 3b: RunResult.timedOut
+    C -> K : printError("Zeitlimit überschritten")
+  end
+  K --> S : Ausgabe oder Fehlermeldung
+end
+@enduml

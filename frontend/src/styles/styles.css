@@ -7,7 +7,40 @@
       TYPOGRAPHIE
    =============================================== */
 
-  /* TODO: Größen und Fonts */
+  /* Font Family */
+  --font-display: "Pixelify Sans", sans-serif;
+  --font-heading: "Pixelify Sans", sans-serif;
+  --font-title-bar: "Pixelify Sans", sans-serif;
+  --font-ui: "Pixelify Sans", sans-serif;
+  --font-ui-small: "Pixelify Sans", sans-serif;
+  --font-code: "VT323", monospace;
+  --font-table: "VT323", monospace;
+  --font-note: "Patrick Hand", cursive;
+
+  /* Sizes, Heights &  */
+  --text-display: 44px/46px;
+  --font-weight-display: 700;
+
+  --text-heading: 22px/26px;
+  --font-weight-heading: 600;
+
+  --text-title-bar: 15px/18px;
+  --font-weight-title-bar: 600;
+
+  --text-ui: 15px/20px;
+  --font-weight-ui: 400;
+
+  --text-ui-small: 13px/16px;
+  --font-weight-ui-small: 400;
+
+  --text-code: 21px/22px;
+  --font-weight-code: 400;
+
+  --text-table: 19px/20px;
+  --font-weight-table: 400;
+
+  --text-note: 19px/24px;
+  --font-weight-note: 400;
 
   /* ===============================================
       COLORS, SPACING, RADIUS & SHADOWS

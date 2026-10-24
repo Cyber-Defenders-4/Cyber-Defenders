@@ -1,0 +1,37 @@
+@startuml UC-08_activity
+' Aktivitaetsdiagramm UC-08 (Abschnitt 4.4 der Spezifikation)
+' Autor: Leonie
+title UC-08 Code ausführen
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+|Spieler|
+start
+:Code ausführen (aus UC-03);
+|System|
+:Aktuellen Code an das Backend senden;
+if (Backend erreichbar?) then ([ja])
+  |Ausführungsumgebung|
+  :Code isoliert übersetzen und
+  ausführen (max. 5 s);
+  |System|
+  switch (Ergebnis?)
+  case ([fehlerfrei])
+    :Ausgabe des Programms
+    in der Konsole anzeigen;
+  case ([Compiler- oder Laufzeitfehler])
+    :Fehlermeldung in der
+    Konsole anzeigen (3a);
+  case ([Zeitlimit überschritten])
+    :Zeitlimit in der
+    Konsole melden (3b);
+  endswitch
+else ([else])
+  :Fehlermeldung anzeigen,
+  Code bleibt im Editor (2a);
+endif
+|Spieler|
+:Weiter im Editor (UC-03);
+stop
+note right : Ein Probelauf zählt nicht als\nLösungsversuch und ändert\nden Fortschritt nicht.
+@enduml

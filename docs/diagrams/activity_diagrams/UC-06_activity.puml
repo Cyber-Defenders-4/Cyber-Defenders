@@ -1,0 +1,35 @@
+@startuml UC-06_activity
+' Aktivitaetsdiagramm UC-06 (Abschnitt 4.4 der Spezifikation)
+' Autor: Leonie
+title UC-06 Fortschritt ansehen
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+|Spieler|
+start
+repeat
+  :Fortschrittsübersicht öffnen;
+  |System|
+  :Gespeicherten Fortschritt des Spielers laden;
+backward :Fehlermeldung mit „Erneut versuchen“ anzeigen (2b);
+repeat while (Fortschritt geladen?) is ([else]) not ([ja])
+if (Schon eine Mission gelöst?) then ([ja])
+  :Status jeder Mission anzeigen
+  (gesperrt, offen oder gelöst);
+  :Rang mit XP und Stand bis
+  zum nächsten Rang anzeigen;
+else ([else])
+  :Erste Mission offen, Startrang mit 0 XP und
+  Hinweis auf die erste Mission anzeigen (2a);
+endif
+|Spieler|
+:Erfolge öffnen;
+|System|
+if (Schon ein Erfolg erhalten?) then ([ja])
+  :Jeden Erfolg mit Status
+  (erhalten oder offen) anzeigen;
+else ([else])
+  :Alle Erfolge als offen anzeigen (6a);
+endif
+stop
+@enduml

@@ -1,0 +1,55 @@
+@startuml UCR-08_classes
+' Klassendiagramm der Designklassen UCR-08 (Abschnitt 2.5 der Realisierung)
+' Autor: Leonie
+title UCR-08 Code ausführen (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classAttributeIconSize 0
+hide empty members
+
+package "Frontend (Angular)" {
+  class CodeEditorComponent {
+    code: string
+    runCode()
+  }
+  class ConsoleComponent {
+    lines: string[]
+    print(text: string)
+    printError(text: string)
+  }
+  class RunApiService {
+    run(missionNumber, code): Observable<RunResult>
+  }
+}
+
+package "Backend (Express)" {
+  class RunController {
+    run(req, res)
+  }
+  class RunService {
+    run(code): RunResult
+  }
+  interface CodeRunner {
+    run(code, timeoutMs): RunResult
+  }
+  class SandboxRunner {
+    run(code, timeoutMs): RunResult
+  }
+}
+
+package "Modelle (geteilt)" {
+  class RunResult {
+    output: string
+    error: string
+    timedOut: boolean
+  }
+}
+
+CodeEditorComponent --> RunApiService
+CodeEditorComponent --> ConsoleComponent
+RunApiService ..> RunController : HTTP POST\n/api/missions/:number/runs
+RunController --> RunService
+RunService --> CodeRunner
+SandboxRunner ..|> CodeRunner
+RunService ..> RunResult
+@enduml

@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories | Realization |
 | ------ | -------- | ------------ | ----------- |
-| [@MarcoDaquila](https://github.com/MarcoDaquila) | 8 | [#22](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/22), [#23](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/23), [#74](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/74) | [UCR-03 Lösung im Editor schreiben](../use_case_realizations/UCR-03_loesung-schreiben.md) |
+| [@MarcoDaquila](https://github.com/MarcoDaquila) | 8 | [#22](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/22), [#23](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/23), [#74](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/74) | [UCR-03 Lösung im Editor schreiben](../use_case_realizations/UCR-03_Lösung_im_Editor_schreiben.md) |
 
 ## 1 Brief description
 

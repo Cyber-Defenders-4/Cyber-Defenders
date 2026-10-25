@@ -13,11 +13,11 @@ Multiplizitäten als 1, n und m.
 
 ![Domänenmodell, Chen-Notation](diagrams/domain_model.png)
 
-### Min-Max-Notation
+### (min,max)-Notation
 
-Multiplizitäten mit Unter- und Obergrenze, zum Beispiel 0..* oder 0..3. Diese Variante zeigt zusätzlich, dass eine Mission höchstens drei Hinweise hat und dass die erste Mission keine andere voraussetzt.
+Jede Angabe steht an der Klasse, die sie beschreibt, und sagt, an wie vielen Beziehungen ein Objekt mindestens und höchstens beteiligt ist. Beispiel: Spieler (0,*) und Missionsfortschritt (1,1) heißt, ein Spieler hat null bis beliebig viele Missionsfortschritte, jeder Missionsfortschritt gehört zu genau einem Spieler. Diese Variante zeigt zusätzlich, dass eine Mission höchstens drei Hinweise hat (0,3) und dass die erste Mission keine andere voraussetzt (0,1).
 
-![Domänenmodell, Min-Max-Notation](diagrams/domain_model_minmax.png)
+![Domänenmodell, (min,max)-Notation](diagrams/domain_model_minmax.png)
 
 ## Klassen
 

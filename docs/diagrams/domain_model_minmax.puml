@@ -1,7 +1,9 @@
 @startuml domain_model_minmax
 ' Domaenenmodell Cyber Defenders (docs/domain_model.md)
 ' Autoren: siehe docs/domain_model.md
-title Domänenmodell Cyber Defenders (Min-Max-Notation)
+' (min,max)-Notation: Die Angabe steht an der Klasse, die sie beschreibt,
+' z. B. Spieler (0,*): Ein Spieler hat null bis beliebig viele Missionsfortschritte.
+title Domänenmodell Cyber Defenders ((min,max)-Notation)
 skinparam shadowing false
 skinparam defaultFontName Arial
 skinparam classAttributeIconSize 0
@@ -63,16 +65,16 @@ class Rang {
   xpSchwelle: Integer
 }
 
-Mission "1" *-- "1" Fallakte
-Mission "1" *-- "1..*" Beweisdatei
-Mission "1" *-- "1..*" Testfall
-Mission "1" *-- "0..3" Hinweis
-Mission "0..1" -- "0..1" Mission : setzt voraus >
+Mission "(1,1)" *-- "(1,1)" Fallakte
+Mission "(1,*)" *-- "(1,1)" Beweisdatei
+Mission "(1,*)" *-- "(1,1)" Testfall
+Mission "(0,3)" *-- "(1,1)" Hinweis
+Mission "(0,1)" -- "(0,1)" Mission : setzt voraus >
 
-Spieler "1" -- "0..*" Missionsfortschritt
-Missionsfortschritt "0..*" -- "1" Mission
-Spieler "1" -- "0..*" Codeentwurf
-Codeentwurf "0..*" -- "1" Mission
-Spieler "0..*" -- "0..*" Erfolg : erhalten >
-Spieler "0..*" -- "1" Rang : hat >
+Spieler "(0,*)" -- "(1,1)" Missionsfortschritt
+Missionsfortschritt "(1,1)" -- "(0,*)" Mission
+Spieler "(0,*)" -- "(1,1)" Codeentwurf
+Codeentwurf "(1,1)" -- "(0,*)" Mission
+Spieler "(0,*)" -- "(0,*)" Erfolg : erhalten >
+Spieler "(1,1)" -- "(0,*)" Rang : hat >
 @enduml

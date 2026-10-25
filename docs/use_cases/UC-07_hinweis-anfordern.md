@@ -4,6 +4,8 @@
 | ------ | -------- | ------------ |
 | [@webdesign19](https://github.com/webdesign19) | 2 | [#18](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/18), [#63](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/63) |
 
+| Realization | [UCR-07 – Fortschritt ansehen](../use_case_realizations/UCR-07_hinweis_anfordern.md) |
+
 ## 1 Brief description
 
 Kommt der Spieler bei einer Mission nicht weiter, kann er einen Hinweis anfordern. Pro Mission stehen drei Hinweise zur Verfügung. Das System zeigt den nächsten Hinweis, ohne die Lösung zu verraten, und merkt sich die Nutzung für die Auswertung der Mission.

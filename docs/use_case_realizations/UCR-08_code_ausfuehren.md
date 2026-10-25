@@ -2,7 +2,7 @@
 
 | Autor | Realisiert |
 | ----- | ---------- |
-| Leonie | [UC-08 Code ausführen](../use_cases/UC-08_code-ausfuehren.md) |
+| Leonie | [UC-08 – Code ausführen](../use_cases/UC-08_code-ausfuehren.md) |
 
 ## 1. Einleitung
 

@@ -22,7 +22,7 @@ Diese Use-Case-Realisierung beschreibt, wie das System die Fallakte einer gewäh
 
 ### 2.2 Sequenzdiagramme
 
-![Sequenzdiagramm UCR-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/sequences/UCR-02_sequence.png?raw=true)
+[Sequenzdiagramm UCR-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/sequences/UCR-02_sequence.pdf)
 
 ### 2.3 Ablaufbeschreibung
 

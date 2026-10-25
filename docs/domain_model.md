@@ -5,7 +5,19 @@
 
 <!-- Entwurf: Bitte prüft, ob die Entitäten eurer Realisierungen enthalten sind, und tragt euch als Autoren ein. -->
 
-![Domänenmodell](diagrams/domain_model.png)
+Das Domänenmodell gibt es in zwei Varianten, die sich nur in der Schreibweise der Multiplizitäten unterscheiden.
+
+### Chen-Notation
+
+Multiplizitäten als 1, n und m.
+
+![Domänenmodell, Chen-Notation](diagrams/domain_model.png)
+
+### Min-Max-Notation
+
+Multiplizitäten mit Unter- und Obergrenze, zum Beispiel 0..* oder 0..3. Diese Variante zeigt zusätzlich, dass eine Mission höchstens drei Hinweise hat und dass die erste Mission keine andere voraussetzt.
+
+![Domänenmodell, Min-Max-Notation](diagrams/domain_model_minmax.png)
 
 ## Klassen
 

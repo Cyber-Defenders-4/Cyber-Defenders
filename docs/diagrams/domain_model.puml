@@ -2,7 +2,7 @@
 ' Domaenenmodell Cyber Defenders (docs/domain_model.md)
 ' Autoren: siehe docs/domain_model.md
 ' Kardinalitaeten in Chen-Notation (1, n, m)
-title Domänenmodell Cyber Defenders
+title Domänenmodell Cyber Defenders (Chen-Notation)
 skinparam shadowing false
 skinparam defaultFontName Arial
 skinparam classAttributeIconSize 0

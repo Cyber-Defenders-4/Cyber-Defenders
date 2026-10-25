@@ -8,14 +8,14 @@
    =============================================== */
 
   /* Font Family */
-  --font-display: "Pixelify Sans", sans-serif;
-  --font-heading: "Pixelify Sans", sans-serif;
-  --font-title-bar: "Pixelify Sans", sans-serif;
-  --font-ui: "Pixelify Sans", sans-serif;
-  --font-ui-small: "Pixelify Sans", sans-serif;
-  --font-code: "VT323", monospace;
-  --font-table: "VT323", monospace;
-  --font-note: "Patrick Hand", cursive;
+  --font-display: "Pixelify Sans", "Tahoma", system-ui, sans-serif;
+  --font-heading: "Pixelify Sans", "Tahoma", system-ui, sans-serif;
+  --font-title-bar: "Pixelify Sans", "Tahoma", system-ui, sans-serif;
+  --font-ui: "Pixelify Sans", "Tahoma", system-ui, sans-serif;
+  --font-ui-small: "Pixelify Sans", "Tahoma", system-ui, sans-serif;
+  --font-code: "VT323", "Courier New", monospace;
+  --font-table: "VT323", "Courier New", monospace;
+  --font-note: "Patrick Hand", "Comic Sans MS", cursive;
 
   /* Sizes, Heights &  */
   --text-display: 44px/46px;
@@ -109,8 +109,9 @@
   /* Pallet & Layout Colors */
   --color-paper: #fcfcff;
   --color-line: #c9c6dc;
+  --color-selection: #14147a;
   --color-stamp: #b8232a;
-  --color-success: #1d7a3e;
+  --color-success: #1d7a3a;
   --color-danger: #b3261e;
   --color-warning: #7f5300;
   --color-progress: #2b6f78;
@@ -130,7 +131,7 @@
   --color-chrome-ink: #1c1b2e;
 
   --color-ink: #1c1b2e;
-  --color-ink-muted: #6e6c8a;
+  --color-ink-muted: #55536e;
 
   --color-note-paper: #fff6dc;
   --color-error-line: #fde3e1;
@@ -157,9 +158,17 @@
   --radius-stamp: 4px;
 
   /* Shadows */
-  --shadow-bevel-out: inset 1px 1px 0px var(--color-chrome-light), inset -1px -1px 0px var(--color-chrome-dark);
-  --shadow-bevel-in: inset 1px 1px 0px var(--color-chrome-dark), inset -1px -1px 0px var(--color-chrome-light);
-  --shadow-window-drop: 4px 4px 0px rgba(0, 0, 0, 0.15);
+  --shadow-bevel-out: inset -1px -1px 0 #6e6c8a,
+                      inset 1px 1px 0 #ffffff,
+                      inset -2px -2px 0 #a9a7c2,
+                      inset 2px 2px 0 #ebe9f5;
+
+  --shadow-bevel-in:  inset 1px 1px 0 #6e6c8a,
+                      inset -1px -1px 0 #ffffff,
+                      inset 2px 2px 0 #a9a7c2,
+                      inset -2px -2px 0 #ebe9f5;
+
+  --shadow-window-drop: 4px 4px 0 #1c1b2e33;
 }
 
 /* ===============================================
@@ -169,6 +178,7 @@
   /* Pallet & Layout Colors */
   --color-paper: #1a1928;
   --color-line: #3a3954;
+  --color-selection: #3a3aa8;
   --color-stamp: #ff6b6b;
   --color-success: #6fdc8c;
   --color-danger: #ff8a80;
@@ -204,7 +214,9 @@
   --color-code-comment: #9195aa;
 
   /* Shadows */
-  --shadow-window-drop: 4px 4px 0px rgba(0, 0, 0, 0.4);
+  --shadow-bevel-out: inset -1px -1px 0 #0e0d18, inset 1px 1px 0 #4d4b68, inset -2px -2px 0 #1f1e2e, inset 2px 2px 0 #3a3954;
+  --shadow-bevel-in: inset 1px 1px 0 #0e0d18, inset -1px -1px 0 #4d4b68, inset 2px 2px 0 #1f1e2e, inset -2px -2px 0 #3a3954;
+  --shadow-window-drop: 4px 4px 0 #00000066;
 }
 
 /* ===============================================

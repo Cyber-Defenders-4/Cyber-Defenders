@@ -4,6 +4,8 @@
 | ------ | -------- | ------------ |
 | [@FelixHagino](https://github.com/FelixHagino) | 8 | [#26](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/26), [#27](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/27), [#28](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/28), [#29](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/29), technische Grundlage: Epic E10 [#71](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/71) |
 
+| Realization | [UCR-04 – Lösung prüfen](../use_case_realizations/UCR-04_loesung_pruefen.md) |
+
 ## 1 Brief description
 
 Der Spieler reicht seinen Code ein, und das System prüft ihn automatisch gegen die Tests der Mission. Der Spieler erfährt für jeden Test, ob er bestanden wurde, und bekommt bei Fehlern eine Rückmeldung, woran es liegt. Ist die Lösung korrekt, schließt er die Mission ab.

@@ -163,6 +163,51 @@
 }
 
 /* ===============================================
+    REWRITE-OVERRIDE VALUE PROVIDER (Dark Theme)
+   =============================================== */
+.dark {
+  /* Pallet & Layout Colors */
+  --color-paper: #1a1928;
+  --color-line: #3a3954;
+  --color-stamp: #ff6b6b;
+  --color-success: #6fdc8c;
+  --color-danger: #ff8a80;
+  --color-warning: #ffcf5c;
+  --color-progress: #4fb3bf;
+  --color-focus: #ffffff;
+
+  /* Colors - Desktop & Windows */
+  --color-desktop: #142338;
+  --color-desktop-ink: #e8ecf7;
+
+  --color-titlebar: #3a3aa8;
+  --color-titlebar-inactive: #4a4966;
+  --color-titlebar-ink: #ffffff;
+
+  --color-chrome: #2c2b40;
+  --color-chrome-light: #4d4b68;
+  --color-chrome-dark: #0e0d18;
+  --color-chrome-ink: #e6e4f2;
+
+  --color-ink: #ecebf7;
+  --color-ink-muted: #a9a7c2;
+
+  --color-note-paper: #353020;
+  --color-error-line: #4a1f22;
+
+  /* Colors - Code Syntax Elements */
+  --color-code-keyword: #c99bff;
+  --color-code-ident: #ffad66;
+  --color-code-string: #9db6ff;
+  --color-code-number: #6fe0b8;
+  --color-code-type: #ff8cc6;
+  --color-code-comment: #9195aa;
+
+  /* Shadows */
+  --shadow-window-drop: 4px 4px 0px rgba(0, 0, 0, 0.4);
+}
+
+/* ===============================================
       APP-BACKGROUND
    =============================================== */
 body {

@@ -49,6 +49,7 @@
   /* Pallet & Layout Colors */
   --color-paper: var(--color-paper);
   --color-line: var(--color-line);
+  --color-selection: var(--color-selection);
   --color-stamp: var(--color-stamp);
   --color-success: var(--color-success);
   --color-danger: var(--color-danger);
@@ -158,15 +159,15 @@
   --radius-stamp: 4px;
 
   /* Shadows */
-  --shadow-bevel-out: inset -1px -1px 0 #6e6c8a,
-                      inset 1px 1px 0 #ffffff,
-                      inset -2px -2px 0 #a9a7c2,
-                      inset 2px 2px 0 #ebe9f5;
+  --shadow-bevel-out:   inset -1px -1px 0 #6e6c8a,
+                        inset 1px 1px 0 #ffffff,
+                        inset -2px -2px 0 #a9a7c2,
+                        inset 2px 2px 0 #ebe9f5;
 
-  --shadow-bevel-in:  inset 1px 1px 0 #6e6c8a,
-                      inset -1px -1px 0 #ffffff,
-                      inset 2px 2px 0 #a9a7c2,
-                      inset -2px -2px 0 #ebe9f5;
+  --shadow-bevel-in:    inset 1px 1px 0 #6e6c8a,
+                        inset -1px -1px 0 #ffffff,
+                        inset 2px 2px 0 #a9a7c2,
+                        inset -2px -2px 0 #ebe9f5;
 
   --shadow-window-drop: 4px 4px 0 #1c1b2e33;
 }
@@ -214,8 +215,16 @@
   --color-code-comment: #9195aa;
 
   /* Shadows */
-  --shadow-bevel-out: inset -1px -1px 0 #0e0d18, inset 1px 1px 0 #4d4b68, inset -2px -2px 0 #1f1e2e, inset 2px 2px 0 #3a3954;
-  --shadow-bevel-in: inset 1px 1px 0 #0e0d18, inset -1px -1px 0 #4d4b68, inset 2px 2px 0 #1f1e2e, inset -2px -2px 0 #3a3954;
+  --shadow-bevel-out:   inset -1px -1px 0 #0e0d18,
+                        inset 1px 1px 0 #4d4b68,
+                        inset -2px -2px 0 #1f1e2e,
+                        inset 2px 2px 0 #3a3954;
+
+  --shadow-bevel-in:    inset 1px 1px 0 #0e0d18,
+                        inset -1px -1px 0 #4d4b68,
+                        inset 2px 2px 0 #1f1e2e,
+                        inset -2px -2px 0 #3a3954;
+
   --shadow-window-drop: 4px 4px 0 #00000066;
 }
 

@@ -2,7 +2,7 @@
 
 | Autor | Realisiert |
 | ----- | ---------- |
-| Marco D'Aquila | [UC-02 Fallakte lesen](../use_cases/UC-02_fallakte-lesen.md) |
+| Marco D'Aquila | [UC-02 Fallakte lesen](../use_cases/UC-02_fallakte_lesen.md) |
 
 ## 1. Einleitung
 

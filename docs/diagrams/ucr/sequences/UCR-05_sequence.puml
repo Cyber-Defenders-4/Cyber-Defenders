@@ -1,0 +1,44 @@
+@startuml UCR-05_sequence
+' Verfeinertes Sequenzdiagramm UCR-05 mit Analyseobjekten (Abschnitt 2.2 der Realisierung)
+' Autor: Felix
+title UCR-05 Fortschritt speichern (Analyseobjekte)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+boundary ":FallGelöstDialog" as D
+control ":LösungPrüfen" as LP
+control ":FortschrittSpeichern" as FS
+entity ":Spieler" as SP
+entity ":Rang" as R
+entity ":Missionsfortschritt" as MF
+entity ":Mission" as M
+
+LP -> FS : missionAbschließen(spieler, mission, statistik)
+FS -> FS : xpBerechnen(mission, zeit, versuche, hinweise)
+FS -> R : rangFürXpLesen(xpGesamt)
+R --> FS : rang
+opt 2a: Rangaufstieg
+  FS -> SP : rangSetzen(rang)
+end
+loop höchstens 3 Versuche, bis gespeichert
+  FS -> MF : alsGelöstSpeichern(zeitpunkt, zeit, versuche, hinweise, xp)
+end
+alt gespeichert
+  FS -> SP : xpHinzufügen(xp)
+  FS -> M : nächsteMissionLesen(mission)
+  alt nächste Mission vorhanden
+    M --> FS : nächsteMission
+    FS -> MF : freischalten(spieler, nächsteMission)
+  else 4a: letzte Mission gelöst
+    M --> FS : keine
+  end
+  FS -> D : anzeigen(zeit, versuche, hinweise, xp, rang, neueAkte)
+  D --> S : Dialog „Fall gelöst“
+  S -> D : zumDesktop() oder nächsteMissionÖffnen()
+else 3a: Speichern fehlgeschlagen
+  FS -> D : fehlerAnzeigen()
+  D --> S : Fehlermeldung, Speichern später erneut möglich
+end
+@enduml

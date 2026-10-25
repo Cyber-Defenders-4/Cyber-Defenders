@@ -1,0 +1,45 @@
+@startuml UCR-04_sequence
+' Verfeinertes Sequenzdiagramm UCR-04 mit Analyseobjekten (Abschnitt 2.2 der Realisierung)
+' Autor: Felix
+title UCR-04 Lösung prüfen lassen (Analyseobjekte)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+boundary ":CodeEditor" as CE
+control ":LösungPrüfen" as LP
+boundary ":Ausführungsumgebung" as AU
+entity ":Testfall" as T
+entity ":Missionsfortschritt" as MF
+
+S -> CE : lösungEinreichen(code)
+CE -> LP : prüfen(spieler, mission, code)
+alt 2a: Backend nicht erreichbar
+  CE --> S : Fehlermeldung, Code bleibt im Editor
+else Backend erreichbar
+  LP -> T : fürMissionLesen(mission)
+  T --> LP : testfälle
+  LP -> AU : testsAusführen(code, testfälle, 5 s)
+  alt 3a: Compilerfehler
+    AU --> LP : compilerfehler
+    LP --> CE : compilerfehler
+    CE --> S : Fehlermeldung statt Testergebnis
+  else 3b: Zeitlimit überschritten
+    AU --> LP : zeitlimit
+    LP --> CE : zeitlimit
+    CE --> S : Meldung „Zeitlimit überschritten“
+  else Tests ausgeführt
+    AU --> LP : ergebnisJeTest
+    LP -> MF : versuchZählen(spieler, mission)
+    alt alle Tests bestanden
+      LP --> CE : korrekt(ergebnisJeTest)
+      CE --> S : Ergebnis je Test (bestanden)
+      ref over CE, LP, MF : UC-05 Fortschritt speichern
+    else 4a: Tests fehlgeschlagen
+      LP --> CE : falsch(ergebnisJeTest)
+      CE --> S : Anzahl bestandener Tests, je Fehler\nBeschreibung, erwartetes und tatsächliches Ergebnis
+    end
+  end
+end
+@enduml

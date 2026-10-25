@@ -27,7 +27,7 @@ Die Realisierung orientiert sich am Figma-Mockup M3 „Mission 01“.
 
 Das Diagramm zeigt den Hauptablauf und die Alternativabläufe 2a und 2b als Fragmente. Die Nutzung des Hinweises wird gespeichert, bevor :HinweisAnfordern den Hinweis an die Boundary zurückgibt.
 
-![Sequenzdiagramm UCR-07](../diagrams/UCR-07_sequence.png)
+![Sequenzdiagramm UCR-07](../diagrams/ucr/sequences/UCR-07_sequence.pdf)
 
 ### 2.3 Ablaufbeschreibung
 
@@ -67,9 +67,9 @@ Nicht zutreffend. Die Zahl der genutzten Hinweise ist ein Zähler ohne eigene Zu
 
 Zusätzlich bündelt HintResponse den Hinweis, die verbleibende Anzahl und die Angabe `noHintsLeft` für die Antwort an das Frontend.
 
-![Klassendiagramm UCR-07](../diagrams/UCR-07_classes.png)
+![Klassendiagramm UCR-07](../diagrams/ucr/classes/UCR-07_classes.pdf)
 
-![Sequenzdiagramm UCR-07, Entwurfsklassen](../diagrams/UCR-07_sequence_design.png)
+![Sequenzdiagramm UCR-07, Entwurfsklassen](../diagrams/ucr/sequence_designs/UCR-07_sequence_design.pdf)
 
 ## 3. Abgeleitete Anforderungen
 

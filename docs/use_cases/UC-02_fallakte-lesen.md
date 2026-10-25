@@ -37,7 +37,7 @@ Der Spieler liest die Fallakte der gewählten Mission. Sie beschreibt das Szenar
 
 ### 4.4 Activity diagram
 
-![Activity diagram UC-02](../diagrams/UC-02_activity.png)
+[Aktivitätsdiagramm UC-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/activity_diagrams/UC-02_activity.pdf)
 
 ## 5 Special requirements
 

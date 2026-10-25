@@ -40,7 +40,7 @@ Der Spieler sieht alle Missionen mit ihrem Status (freigeschaltet, gesperrt, gel
 
 ### 4.4 Activity diagram
 
-![Activity diagram UC-01](../diagrams/UC-01_activity.png)
+![Activity diagram UC-01](../diagrams/activity_diagrams/UC-01_activity.png)
 
 ## 5 Special requirements
 

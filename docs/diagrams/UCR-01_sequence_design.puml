@@ -1,0 +1,45 @@
+@startuml UCR-01_sequence_design
+' Sequenzdiagramm UCR-01 mit Designklassen (Abschnitt 2.5 der Realisierung)
+' Autor: Dominik
+title UCR-01 Mission auswählen (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant ":MissionOverviewComponent" as C
+participant ":MissionApiService" as API
+participant ":MissionController" as CTRL
+participant ":MissionService" as SVC
+participant ":MissionRepository" as MR
+participant ":ProgressRepository" as PR
+
+S -> C : Missionsübersicht öffnen
+C -> C : ngOnInit() → loadMissions()
+C -> API : getMissions()
+API -> CTRL : GET /api/missions
+alt Missionen ladbar
+  CTRL -> SVC : getMissionsForPlayer(playerId)
+  SVC -> MR : findAll()
+  MR --> SVC : Mission[]
+  SVC -> PR : findByPlayer(playerId)
+  PR --> SVC : MissionProgress[]
+  SVC -> SVC : determineStatus(mission, progress)
+  SVC --> CTRL : MissionOverviewItem[]
+  CTRL --> API : 200 OK (JSON)
+  API --> C : MissionOverviewItem[]
+  C --> S : Missionen mit Status anzeigen
+else 2a: Backend antwortet nicht
+  API --> C : Fehler
+  C --> S : errorMessage mit „Erneut versuchen“
+end
+
+S -> C : selectMission(item)
+alt item.status != LOCKED
+  C -> C : selected = item
+  C --> S : Mission markiert
+  ref over S, C : UC-02 Fallakte lesen (Navigation /missions/:number)
+else 3a: item.status == LOCKED
+  C --> S : „Löse zuerst Mission item.requiredMissionNumber“
+end
+@enduml

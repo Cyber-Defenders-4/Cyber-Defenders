@@ -1,0 +1,78 @@
+@startuml UCR-01_classes
+' Klassendiagramm der Designklassen UCR-01 (Abschnitt 2.5 der Realisierung)
+' Autor: Dominik
+title UCR-01 Mission auswählen (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classAttributeIconSize 0
+hide empty members
+
+package "Frontend (Angular)" {
+  class MissionOverviewComponent {
+    missions: MissionOverviewItem[]
+    selected: MissionOverviewItem
+    errorMessage: string
+    ngOnInit()
+    loadMissions()
+    selectMission(item: MissionOverviewItem)
+  }
+  class MissionApiService {
+    getMissions(): Observable<MissionOverviewItem[]>
+  }
+}
+
+package "Backend (Express)" {
+  class MissionController {
+    getMissions(req, res)
+  }
+  class MissionService {
+    getMissionsForPlayer(playerId): MissionOverviewItem[]
+    - determineStatus(mission, progress): MissionStatus
+  }
+  class MissionRepository {
+    findAll(): Mission[]
+  }
+  class ProgressRepository {
+    findByPlayer(playerId): MissionProgress[]
+  }
+}
+
+package "Modelle (geteilt)" {
+  class MissionOverviewItem {
+    number: number
+    title: string
+    topic: string
+    status: MissionStatus
+    requiredMissionNumber: number
+  }
+  class Mission {
+    id: string
+    number: number
+    title: string
+    topic: string
+    difficulty: string
+  }
+  class MissionProgress {
+    playerId: string
+    missionId: string
+    status: MissionStatus
+  }
+  enum MissionStatus {
+    LOCKED
+    UNLOCKED
+    SOLVED
+  }
+}
+
+MissionOverviewComponent --> MissionApiService
+MissionApiService ..> MissionController : HTTP GET /api/missions
+MissionController --> MissionService
+MissionService --> MissionRepository
+MissionService --> ProgressRepository
+MissionOverviewComponent ..> MissionOverviewItem
+MissionService ..> MissionOverviewItem
+MissionRepository ..> Mission
+ProgressRepository ..> MissionProgress
+MissionOverviewItem --> MissionStatus
+MissionProgress --> MissionStatus
+@enduml

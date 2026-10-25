@@ -1,0 +1,79 @@
+@startuml domain_model
+' Domaenenmodell Cyber Defenders (docs/domain_model.md)
+' Autoren: siehe docs/domain_model.md
+' Kardinalitaeten in Chen-Notation (1, n, m)
+title Domänenmodell Cyber Defenders
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classAttributeIconSize 0
+hide empty methods
+hide circle
+
+class Spieler {
+  name: String
+  xp: Integer
+}
+class Mission {
+  nummer: Integer
+  name: String
+  thema: String
+  schwierigkeitsgrad: String
+  codeGeruest: String
+}
+class Fallakte {
+  szenario: String
+  auftrag: String
+  lernziele: String
+  nachrichtDerVorgesetzten: String
+}
+class Beweisdatei {
+  dateiname: String
+  inhalt: String
+}
+class Testfall {
+  beschreibung: String
+  erwartetesErgebnis: String
+}
+class Hinweis {
+  reihenfolge: Integer
+  text: String
+}
+class Missionsfortschritt {
+  status: Missionsstatus
+  versuche: Integer
+  genutzteHinweise: Integer
+  benoetigteZeit: Duration
+  geloestAm: DateTime
+  xp: Integer
+}
+class Codeentwurf {
+  code: String
+  gespeichertAm: DateTime
+}
+class Erfolg {
+  name: String
+  beschreibung: String
+}
+enum Missionsstatus {
+  GESPERRT
+  OFFEN
+  GELOEST
+}
+class Rang {
+  name: String
+  xpSchwelle: Integer
+}
+
+Mission "1" *-- "1" Fallakte
+Mission "1" *-- "n" Beweisdatei
+Mission "1" *-- "n" Testfall
+Mission "1" *-- "n" Hinweis
+Mission "1" -- "1" Mission : setzt voraus >
+
+Spieler "1" -- "n" Missionsfortschritt
+Missionsfortschritt "n" -- "1" Mission
+Spieler "1" -- "n" Codeentwurf
+Codeentwurf "n" -- "1" Mission
+Spieler "n" -- "m" Erfolg : erhalten >
+Spieler "n" -- "1" Rang : hat >
+@enduml

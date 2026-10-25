@@ -42,7 +42,7 @@ Wurde eine Lösung als korrekt bewertet, berechnet das System XP und Rang und sp
 
 ### 4.4 Activity diagram
 
-![Activity diagram UC-05](../diagrams/UC-05_activity.png)
+![Activity diagram UC-05](../diagrams/activity_diagrams/UC-05_activity.pdf)
 
 ## 5 Special requirements
 

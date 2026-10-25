@@ -43,7 +43,7 @@ Der Spieler reicht seinen Code ein, und das System prüft ihn automatisch gegen 
 
 ### 4.4 Activity diagram
 
-![Activity diagram UC-04](../diagrams/UC-04_activity.png)
+![Activity diagram UC-04](../diagrams/activity_diagrams/UC-04_activity.pdf)
 
 ## 5 Special requirements
 

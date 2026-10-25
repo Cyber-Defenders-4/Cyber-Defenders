@@ -1,0 +1,80 @@
+@startuml UCR-05_classes
+' Klassendiagramm der Designklassen UCR-05 (Abschnitt 2.5 der Realisierung)
+' Autor: Felix
+title UCR-05 Fortschritt speichern (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classAttributeIconSize 0
+hide empty members
+
+package "Frontend (Angular)" {
+  class CaseSolvedDialogComponent {
+    result: MissionCompletedResult
+    goToDesktop()
+    openNextMission()
+  }
+}
+
+package "Backend (Express)" {
+  class SubmissionService {
+    evaluate(playerId, missionNumber, code): SubmissionResult
+  }
+  class ProgressService {
+    completeMission(playerId, missionNumber, stats): MissionCompletedResult
+    - calculateXp(mission, stats): number
+    - saveWithRetry(progress, maxAttempts = 3)
+  }
+  class ProgressRepository {
+    saveSolved(progress: MissionProgress)
+    unlock(playerId, missionId)
+  }
+  class PlayerRepository {
+    findById(playerId): Player
+    update(player: Player)
+  }
+  class RankRepository {
+    findForXp(xp): Rank
+  }
+  class MissionRepository {
+    findNext(missionNumber): Mission
+  }
+}
+
+package "Modelle (geteilt)" {
+  class Player {
+    name: string
+    xp: number
+    rank: Rank
+  }
+  class Rank {
+    name: string
+    xpThreshold: number
+  }
+  class MissionProgress {
+    status: MissionStatus
+    attempts: number
+    hintsUsed: number
+    duration: number
+    solvedAt: Date
+    xp: number
+  }
+  class MissionCompletedResult {
+    duration: number
+    attempts: number
+    hintsUsed: number
+    xp: number
+    rank: Rank
+    rankUp: boolean
+    nextMissionNumber: number
+  }
+}
+
+SubmissionService --> ProgressService
+ProgressService --> ProgressRepository
+ProgressService --> PlayerRepository
+ProgressService --> RankRepository
+ProgressService --> MissionRepository
+CaseSolvedDialogComponent ..> MissionCompletedResult
+ProgressService ..> MissionCompletedResult
+Player --> Rank
+@enduml

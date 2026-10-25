@@ -1,0 +1,80 @@
+@startuml UCR-04_classes
+' Klassendiagramm der Designklassen UCR-04 (Abschnitt 2.5 der Realisierung)
+' Autor: Felix
+title UCR-04 Lösung prüfen lassen (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classAttributeIconSize 0
+hide empty members
+
+package "Frontend (Angular)" {
+  class CodeEditorComponent {
+    code: string
+    submissionResult: SubmissionResult
+    submitSolution()
+  }
+  class SubmissionApiService {
+    submit(missionNumber, code): Observable<SubmissionResult>
+  }
+}
+
+package "Backend (Express)" {
+  class SubmissionController {
+    submit(req, res)
+  }
+  class SubmissionService {
+    evaluate(playerId, missionNumber, code): SubmissionResult
+  }
+  interface CodeRunner {
+    runTests(code, tests: TestCase[], timeoutMs): RunResult
+  }
+  class SandboxRunner {
+    runTests(code, tests: TestCase[], timeoutMs): RunResult
+  }
+  class TestCaseRepository {
+    findByMission(missionId): TestCase[]
+  }
+  class ProgressRepository {
+    incrementAttempts(playerId, missionId)
+  }
+  class ProgressService {
+    completeMission(playerId, missionNumber): MissionCompletedResult
+  }
+}
+
+package "Modelle (geteilt)" {
+  class TestCase {
+    description: string
+    expected: string
+  }
+  class RunResult {
+    compileError: string
+    timedOut: boolean
+    testResults: TestResult[]
+  }
+  class TestResult {
+    description: string
+    passed: boolean
+    expected: string
+    actual: string
+  }
+  class SubmissionResult {
+    correct: boolean
+    passedCount: number
+    totalCount: number
+    errorMessage: string
+  }
+}
+
+CodeEditorComponent --> SubmissionApiService
+SubmissionApiService ..> SubmissionController : HTTP POST\n/api/missions/:number/submissions
+SubmissionController --> SubmissionService
+SubmissionService --> CodeRunner
+SandboxRunner ..|> CodeRunner
+SubmissionService --> TestCaseRepository
+SubmissionService --> ProgressRepository
+SubmissionService --> ProgressService : bei korrekter Lösung (UC-05)
+RunResult "1" *-- "0..*" TestResult
+SubmissionResult --> "0..*" TestResult
+TestCaseRepository ..> TestCase
+@enduml

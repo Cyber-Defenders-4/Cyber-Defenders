@@ -1,0 +1,77 @@
+@startuml UCR-02_classes
+' Klassendiagramm der Designklassen UCR-02 (Abschnitt 2.5 der Realisierung)
+' Autor: Marco
+title UCR-02 Fallakte lesen (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classAttributeIconSize 0
+hide empty members
+
+package "Frontend (Angular)" {
+  class CaseFileComponent {
+    caseFile: CaseFile
+    errorMessage: string
+    ngOnInit()
+    loadCaseFile(missionNumber: number)
+    startMission()
+  }
+  class WorkspaceComponent {
+    workspace: WorkspaceData
+  }
+  class MissionApiService {
+    getCaseFile(missionNumber): Observable<CaseFile>
+    getWorkspace(missionNumber): Observable<WorkspaceData>
+  }
+}
+
+package "Backend (Express)" {
+  class MissionController {
+    getCaseFile(req, res)
+    getWorkspace(req, res)
+  }
+  class MissionService {
+    getCaseFile(missionNumber): CaseFile
+    getWorkspace(missionNumber): WorkspaceData
+  }
+  class MissionRepository {
+    findByNumber(number): Mission
+  }
+  class EvidenceRepository {
+    findByMission(missionId): EvidenceFile[]
+  }
+}
+
+package "Modelle (geteilt)" {
+  class Mission {
+    number: number
+    title: string
+    difficulty: string
+    codeTemplate: string
+  }
+  class CaseFile {
+    scenario: string
+    assignment: string
+    learningGoals: string[]
+    supervisorMessage: string
+  }
+  class EvidenceFile {
+    fileName: string
+    content: string
+  }
+  class WorkspaceData {
+    codeTemplate: string
+  }
+}
+
+CaseFileComponent --> MissionApiService
+CaseFileComponent ..> WorkspaceComponent : Navigation /missions/:number/workspace
+WorkspaceComponent --> MissionApiService
+MissionApiService ..> MissionController : HTTP GET
+MissionController --> MissionService
+MissionService --> MissionRepository
+MissionService --> EvidenceRepository
+Mission "1" *-- "1" CaseFile
+Mission "1" *-- "1..*" EvidenceFile
+WorkspaceData --> CaseFile
+WorkspaceData --> "1..*" EvidenceFile
+@enduml

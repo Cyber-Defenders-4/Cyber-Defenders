@@ -1,3 +1,237 @@
-/* You can add global styles to this file, and also import other style files */
 
+@import url('https://googleapis.com');
 @import 'tailwindcss';
+
+@theme {
+  /* ===============================================
+      TYPOGRAPHIE
+   =============================================== */
+
+  /* Font Family */
+  --font-display: "Pixelify Sans", "Tahoma", system-ui, sans-serif;
+  --font-heading: "Pixelify Sans", "Tahoma", system-ui, sans-serif;
+  --font-title-bar: "Pixelify Sans", "Tahoma", system-ui, sans-serif;
+  --font-ui: "Pixelify Sans", "Tahoma", system-ui, sans-serif;
+  --font-ui-small: "Pixelify Sans", "Tahoma", system-ui, sans-serif;
+  --font-code: "VT323", "Courier New", monospace;
+  --font-table: "VT323", "Courier New", monospace;
+  --font-note: "Patrick Hand", "Comic Sans MS", cursive;
+
+  /* Sizes, Heights &  */
+  --text-display: 44px/46px;
+  --font-weight-display: 700;
+
+  --text-heading: 22px/26px;
+  --font-weight-heading: 600;
+
+  --text-title-bar: 15px/18px;
+  --font-weight-title-bar: 600;
+
+  --text-ui: 15px/20px;
+  --font-weight-ui: 400;
+
+  --text-ui-small: 13px/16px;
+  --font-weight-ui-small: 400;
+
+  --text-code: 21px/22px;
+  --font-weight-code: 400;
+
+  --text-table: 19px/20px;
+  --font-weight-table: 400;
+
+  --text-note: 19px/24px;
+  --font-weight-note: 400;
+
+  /* ===============================================
+      COLORS, SPACING, RADIUS & SHADOWS
+   =============================================== */
+
+  /* Pallet & Layout Colors */
+  --color-paper: var(--color-paper);
+  --color-line: var(--color-line);
+  --color-selection: var(--color-selection);
+  --color-stamp: var(--color-stamp);
+  --color-success: var(--color-success);
+  --color-danger: var(--color-danger);
+  --color-warning: var(--color-warning);
+  --color-progress: var(--color-progress);
+  --color-focus: var(--color-focus);
+
+  /* Colors - Desktop & Windows */
+  --color-desktop: var(--color-desktop);
+  --color-desktop-ink: var(--color-desktop-ink);
+
+  --color-titlebar: var(--color-titlebar);
+  --color-titlebar-inactive: var(--color-titlebar-inactive);
+  --color-titlebar-ink: var(--color-titlebar-ink);
+
+  --color-chrome: var(--color-chrome);
+  --color-chrome-light: var(--color-chrome-light);
+  --color-chrome-dark: var(--color-chrome-dark);
+  --color-chrome-ink: var(--color-chrome-ink);
+
+  --color-ink: var(--color-ink);
+  --color-ink-muted: var(--color-ink-muted);
+
+  --color-note-paper: var(--color-note-paper);
+  --color-error-line: var(--color-error-line);
+
+  /* Colors - Code Syntax Elements */
+  --color-code-keyword: var(--color-code-keyword);
+  --color-code-ident: var(--color-code-ident);
+  --color-code-string: var(--color-code-string);
+  --color-code-number: var(--color-code-number);
+  --color-code-type: var(--color-code-type);
+  --color-code-comment: var(--color-code-comment);
+
+  /* Spacing Scale */
+  --spacing-scale-1: var(--space-1);
+  --spacing-scale-2: var(--space-2);
+  --spacing-scale-3: var(--space-3);
+  --spacing-scale-4: var(--space-4);
+  --spacing-scale-5: var(--space-5);
+  --spacing-scale-6: var(--space-6);
+
+  /* Border Radius */
+  --border-radius-none: var(--radius-none);
+  --border-radius-bubble: var(--radius-bubble);
+  --border-radius-stamp: var(--radius-stamp);
+
+  /* Shadows */
+  --shadow-bevel-out: var(--shadow-bevel-out);
+  --shadow-bevel-in: var(--shadow-bevel-in);
+  --shadow-window-drop: var(--shadow-window-drop);
+}
+
+/* ===============================================
+    STANDARD VALUE PROVIDER (Light Theme)
+   =============================================== */
+:root {
+  /* Pallet & Layout Colors */
+  --color-paper: #fcfcff;
+  --color-line: #c9c6dc;
+  --color-selection: #14147a;
+  --color-stamp: #b8232a;
+  --color-success: #1d7a3a;
+  --color-danger: #b3261e;
+  --color-warning: #7f5300;
+  --color-progress: #2b6f78;
+  --color-focus: #1c1b2e;
+
+  /* Colors - Desktop & Windows */
+  --color-desktop: #2b6f78;
+  --color-desktop-ink: #ffffff;
+
+  --color-titlebar: #14147a;
+  --color-titlebar-inactive: #6f6d8e;
+  --color-titlebar-ink: #ffffff;
+
+  --color-chrome: #d4d1e3;
+  --color-chrome-light: #ffffff;
+  --color-chrome-dark: #6e6c8a;
+  --color-chrome-ink: #1c1b2e;
+
+  --color-ink: #1c1b2e;
+  --color-ink-muted: #55536e;
+
+  --color-note-paper: #fff6dc;
+  --color-error-line: #fde3e1;
+
+  /* Colors - Code Syntax Elements */
+  --color-code-keyword: #7a2fc7;
+  --color-code-ident: #b2560a;
+  --color-code-string: #1f45c9;
+  --color-code-number: #0b7559;
+  --color-code-type: #a8236f;
+  --color-code-comment: #62667a;
+
+  /* Spacing Scale */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 24px;
+
+  /* Border Radius */
+  --radius-none: 0px;
+  --radius-bubble: 14px;
+  --radius-stamp: 4px;
+
+  /* Shadows */
+  --shadow-bevel-out:   inset -1px -1px 0 #6e6c8a,
+                        inset 1px 1px 0 #ffffff,
+                        inset -2px -2px 0 #a9a7c2,
+                        inset 2px 2px 0 #ebe9f5;
+
+  --shadow-bevel-in:    inset 1px 1px 0 #6e6c8a,
+                        inset -1px -1px 0 #ffffff,
+                        inset 2px 2px 0 #a9a7c2,
+                        inset -2px -2px 0 #ebe9f5;
+
+  --shadow-window-drop: 4px 4px 0 #1c1b2e33;
+}
+
+/* ===============================================
+    REWRITE-OVERRIDE VALUE PROVIDER (Dark Theme)
+   =============================================== */
+.dark {
+  /* Pallet & Layout Colors */
+  --color-paper: #1a1928;
+  --color-line: #3a3954;
+  --color-selection: #3a3aa8;
+  --color-stamp: #ff6b6b;
+  --color-success: #6fdc8c;
+  --color-danger: #ff8a80;
+  --color-warning: #ffcf5c;
+  --color-progress: #4fb3bf;
+  --color-focus: #ffffff;
+
+  /* Colors - Desktop & Windows */
+  --color-desktop: #142338;
+  --color-desktop-ink: #e8ecf7;
+
+  --color-titlebar: #3a3aa8;
+  --color-titlebar-inactive: #4a4966;
+  --color-titlebar-ink: #ffffff;
+
+  --color-chrome: #2c2b40;
+  --color-chrome-light: #4d4b68;
+  --color-chrome-dark: #0e0d18;
+  --color-chrome-ink: #e6e4f2;
+
+  --color-ink: #ecebf7;
+  --color-ink-muted: #a9a7c2;
+
+  --color-note-paper: #353020;
+  --color-error-line: #4a1f22;
+
+  /* Colors - Code Syntax Elements */
+  --color-code-keyword: #c99bff;
+  --color-code-ident: #ffad66;
+  --color-code-string: #9db6ff;
+  --color-code-number: #6fe0b8;
+  --color-code-type: #ff8cc6;
+  --color-code-comment: #9195aa;
+
+  /* Shadows */
+  --shadow-bevel-out:   inset -1px -1px 0 #0e0d18,
+                        inset 1px 1px 0 #4d4b68,
+                        inset -2px -2px 0 #1f1e2e,
+                        inset 2px 2px 0 #3a3954;
+
+  --shadow-bevel-in:    inset 1px 1px 0 #0e0d18,
+                        inset -1px -1px 0 #4d4b68,
+                        inset 2px 2px 0 #1f1e2e,
+                        inset -2px -2px 0 #3a3954;
+
+  --shadow-window-drop: 4px 4px 0 #00000066;
+}
+
+/* ===============================================
+      APP-BACKGROUND
+   =============================================== */
+body {
+  @apply bg-desktop text-ink antialiased;
+}
+

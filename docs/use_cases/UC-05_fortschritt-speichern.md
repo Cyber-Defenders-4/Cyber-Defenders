@@ -4,6 +4,8 @@
 | ------ | -------- | ------------ |
 | [@FelixHagino](https://github.com/FelixHagino) | 3 | [#30](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/30), [#57](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/57), [#61](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/61), [#72](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/72), [#75](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/75) |
 
+| Realization | [UCR-05 – Fortschritt speichern](../use_case_realizations/UCR-05_fortschritt_speichern.md) |
+
 ## 1 Brief description
 
 Wurde eine Lösung als korrekt bewertet, berechnet das System XP und Rang und speichert den Fortschritt des Spielers. Die Mission gilt als gelöst, die nächste Mission wird freigeschaltet, und der Spieler sieht den Dialog "Fall gelöst". Bei der nächsten Anmeldung ist der Stand wieder da.
@@ -42,7 +44,7 @@ Wurde eine Lösung als korrekt bewertet, berechnet das System XP und Rang und sp
 
 ### 4.4 Activity diagram
 
-![Activity diagram UC-05](../diagrams/UC-05_activity.png)
+![Activity diagram UC-05](../diagrams/activity_diagrams/UC-05_activity.pdf)
 
 ## 5 Special requirements
 

@@ -1,0 +1,46 @@
+@startuml UCR-05_sequence_design
+' Sequenzdiagramm UCR-05 mit Designklassen (Abschnitt 2.5 der Realisierung)
+' Autor: Felix
+title UCR-05 Fortschritt speichern (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant ":CaseSolvedDialogComponent" as D
+participant ":SubmissionService" as SUB
+participant ":ProgressService" as SVC
+participant ":PlayerRepository" as PL
+participant ":RankRepository" as RR
+participant ":ProgressRepository" as PR
+participant ":MissionRepository" as MR
+
+SUB -> SVC : completeMission(playerId, missionNumber, stats)
+SVC -> SVC : calculateXp(mission, stats)
+SVC -> PL : findById(playerId)
+PL --> SVC : Player
+SVC -> RR : findForXp(player.xp + xp)
+RR --> SVC : Rank
+SVC -> SVC : saveWithRetry(progress, 3)
+loop höchstens 3 Versuche, bis gespeichert
+  SVC -> PR : saveSolved(progress)
+end
+alt gespeichert
+  SVC -> PL : update(player mit xp und rank)
+  SVC -> MR : findNext(missionNumber)
+  alt nächste Mission vorhanden
+    MR --> SVC : Mission
+    SVC -> PR : unlock(playerId, nextMissionId)
+  else 4a: letzte Mission
+    MR --> SVC : null
+  end
+  SVC --> SUB : MissionCompletedResult
+  SUB --> D : SubmissionResult mit MissionCompletedResult
+  D --> S : Dialog „Fall gelöst“
+  S -> D : goToDesktop() oder openNextMission()
+else 3a: Speichern fehlgeschlagen
+  SVC --> SUB : Fehler
+  SUB --> D : Fehler
+  D --> S : Fehlermeldung, Speichern später erneut möglich
+end
+@enduml

@@ -1,0 +1,41 @@
+@startuml UC-04_activity
+' Aktivitaetsdiagramm UC-04 (Abschnitt 4.4 der Spezifikation)
+' Autor: Felix
+title UC-04 Lösung prüfen lassen
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+|Spieler|
+start
+:Lösung einreichen;
+|System|
+:Code an das Backend senden;
+if (Backend erreichbar?) then ([ja])
+  |Ausführungsumgebung|
+  :Code isoliert gegen die Tests
+  der Mission ausführen (max. 5 s);
+  |System|
+  switch (Ergebnis?)
+  case ([Compilerfehler])
+    :Fehlermeldung statt Testergebnis anzeigen (3a);
+  case ([Zeitlimit überschritten])
+    :Zeitlimit statt Testergebnis melden (3b);
+  case ([Tests ausgeführt])
+    :Ergebnis je Test anzeigen;
+    :Versuch zählen;
+    if (Alle Tests bestanden?) then ([ja])
+      :Mission abschließen (UC-05);
+      stop
+    else ([else])
+      :Anzahl bestandener Tests und je Fehler Beschreibung,
+      erwartetes und tatsächliches Ergebnis anzeigen (4a);
+    endif
+  endswitch
+else ([else])
+  :Fehlermeldung anzeigen,
+  Code bleibt im Editor (2a);
+endif
+|Spieler|
+:Weiter im Editor (UC-03);
+stop
+@enduml

@@ -1,0 +1,38 @@
+@startuml UC-05_activity
+' Aktivitaetsdiagramm UC-05 (Abschnitt 4.4 der Spezifikation)
+' Autor: Felix
+title UC-05 Fortschritt speichern
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+|Spieler|
+|System|
+start
+:Korrekte Lösung erkennen (aus UC-04);
+:XP und Rang aus Mission, Zeit, Versuchen
+und genutzten Hinweisen berechnen;
+if (Schwelle des nächsten Rangs erreicht?) then ([ja])
+  :Neuen Rang setzen (2a);
+else ([else])
+endif
+repeat
+  :Mission als gelöst mit Zeitpunkt, Zeit, Versuchen,
+  Hinweisen, XP und Rang speichern;
+repeat while (Speichern fehlgeschlagen und\nweniger als 3 Versuche?) is ([ja]) not ([else])
+if (Gespeichert?) then ([ja])
+  if (Weitere Mission vorhanden?) then ([ja])
+    :Nächste Mission freischalten;
+  else ([else])
+    :Freischalten überspringen (4a);
+  endif
+  :Dialog „Fall gelöst“ anzeigen;
+  |Spieler|
+  :Zum Desktop zurückkehren oder
+  nächste Mission öffnen;
+  stop
+else ([else])
+  :Fehlermeldung anzeigen, Speichern
+  später erneut möglich (3a);
+  stop
+endif
+@enduml

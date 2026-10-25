@@ -2,7 +2,7 @@
 
 | Author | Estimate | User stories | Realization |
 | ------ | -------- | ------------ | ----------- |
-| [@MarcoDaquila](https://github.com/MarcoDaquila) | 2 | [#14](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/14), [#17](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/17), [#19](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/19), [#20](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/20), [#73](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/73) | [UCR-02 Fallakte lesen](../use_case_realizations/UCR-02_fallakte-lesen.md) |
+| [@MarcoDaquila](https://github.com/MarcoDaquila) | 2 | [#14](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/14), [#17](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/17), [#19](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/19), [#20](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/20), [#73](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/73) | [UCR-02 Fallakte lesen](../use_case_realizations/UCR-02_Fallakte_lesen.md) |
 
 ## 1 Brief description
 
@@ -37,7 +37,7 @@ Der Spieler liest die Fallakte der gewählten Mission. Sie beschreibt das Szenar
 
 ### 4.4 Activity diagram
 
-![Activity diagram UC-02](../diagrams/UC-02_activity.png)
+[Aktivitätsdiagramm UC-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/activity_diagrams/UC-02_activity.pdf)
 
 ## 5 Special requirements
 

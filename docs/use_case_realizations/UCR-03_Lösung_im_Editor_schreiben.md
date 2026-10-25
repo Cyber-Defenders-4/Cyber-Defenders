@@ -21,7 +21,7 @@ Diese Use-Case-Realisierung beschreibt, wie das System Eingaben im Code-Editor v
 
 ### 2.2 Sequenzdiagramme
 
-![Sequenzdiagramm UCR-03](../diagrams/UCR-03_sequence.png)
+![Sequenzdiagramm UC-03](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/sequences/UC-03_sequence.png?raw=true)
 
 ### 2.3 Ablaufbeschreibung
 
@@ -54,9 +54,9 @@ Nicht zutreffend. Es werden nur Entwürfe aktualisiert, aber keine Statusüberg�
 | :Codeentwurf | CodeDraft, DraftRepository |
 | :Mission | Mission, MissionRepository |
 
-![Klassendiagramm UCR-03](../diagrams/UCR-03_classes.png)
+[Klassendiagramm UCR-03](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/classes/UCR-03_classes.pdf)
 
-![Sequenzdiagramm UCR-03, Entwurfsklassen](../diagrams/UCR-03_sequence_design.png)
+[Sequenz-Design UCR-03](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/sequence_designs/UCR-03_sequence_design.pdf)
 
 ## 3. Abgeleitete Anforderungen
 

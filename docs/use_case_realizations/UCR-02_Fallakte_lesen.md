@@ -2,7 +2,7 @@
 
 | Autor | Realisiert |
 | ----- | ---------- |
-| Marco D'Aquila | [UC-02 Fallakte lesen](../use_cases/UC-02_fallakte-lesen.md) |
+| Marco D'Aquila | [UC-02 Fallakte lesen](../use_cases/UC-02_fallakte_lesen.md) |
 
 ## 1. Einleitung
 
@@ -22,7 +22,7 @@ Diese Use-Case-Realisierung beschreibt, wie das System die Fallakte einer gewäh
 
 ### 2.2 Sequenzdiagramme
 
-![Sequenzdiagramm UCR-02](../diagrams/UCR-02_sequence.png)
+![Sequenzdiagramm UC-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/sequences/UC-02_sequence.png?raw=true)
 
 ### 2.3 Ablaufbeschreibung
 
@@ -57,9 +57,9 @@ Nicht zutreffend. Die Missions- und Fallaktendaten werden hier lediglich ausgele
 | :Mission | Mission, MissionRepository |
 | :Beweisdatei | EvidenceFile, EvidenceRepository |
 
-![Klassendiagramm UCR-02](../diagrams/UCR-02_classes.png)
+[Klassendiagramm UCR-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/classes/UCR-02_classes.pdf)
 
-![Sequenzdiagramm UCR-02, Entwurfsklassen](../diagrams/UCR-02_sequence_design.png)
+[Sequenz-Design UCR-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/sequence_designs/UCR-02_sequence_design.pdf)
 
 ## 3. Abgeleitete Anforderungen
 

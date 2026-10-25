@@ -29,7 +29,7 @@ Die Realisierung orientiert sich an den Figma-Mockups M2 „Missionsauswahl“ u
 
 Das Diagramm zeigt den Hauptablauf und die Alternativabläufe 2a und 2b als Fragmente. Der Alternativablauf 6a steht in der Beschriftung der letzten Nachricht.
 
-![Sequenzdiagramm UCR-06](../diagrams/UCR-06_sequence.png)
+![Sequenzdiagramm UCR-06](../diagrams/ucr/sequences/UCR-06_sequence.pdf)
 
 ### 2.3 Ablaufbeschreibung
 
@@ -77,9 +77,9 @@ Nicht zutreffend. Der Missionsstatus (gesperrt, offen, gelöst) wird in diesem U
 
 Zusätzlich bündeln ProgressOverview und MissionOverviewItem die Daten der Übersicht für die Antwort an das Frontend.
 
-![Klassendiagramm UCR-06](../diagrams/UCR-06_classes.png)
+![Klassendiagramm UCR-06](../diagrams/ucr/classes/UCR-06_classes.pdf)
 
-![Sequenzdiagramm UCR-06, Entwurfsklassen](../diagrams/UCR-06_sequence_design.png)
+![Sequenzdiagramm UCR-06, Entwurfsklassen](../diagrams/ucr/sequence_designs/UCR-06_sequence_design.pdf)
 
 ## 3. Abgeleitete Anforderungen
 

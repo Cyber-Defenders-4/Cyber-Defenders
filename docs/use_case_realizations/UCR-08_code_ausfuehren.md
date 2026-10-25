@@ -30,7 +30,7 @@ Es gibt kein Entity-Objekt, weil ein Probelauf nicht gespeichert wird. Die Konso
 
 Das Diagramm zeigt den Hauptablauf und die Alternativabläufe 2a, 3a und 3b als Fragmente. Das Zeitlimit wird von der Ausführungsumgebung gemeldet.
 
-![Sequenzdiagramm UCR-08](../diagrams/UCR-08_sequence.png)
+![Sequenzdiagramm UCR-08](../diagrams/ucr/sequences/UCR-08_sequence.pdf)
 
 ### 2.3 Ablaufbeschreibung
 
@@ -74,9 +74,9 @@ Nicht zutreffend. Ein Probelauf wird nicht gespeichert, es gibt kein Objekt mit 
 
 Zusätzlich bündelt RunResult Ausgabe, Fehlermeldung und die Angabe `timedOut` für die Antwort.
 
-![Klassendiagramm UCR-08](../diagrams/UCR-08_classes.png)
+![Klassendiagramm UCR-08](../diagrams/ucr/classes/UCR-08_classes.pdf)
 
-![Sequenzdiagramm UCR-08, Entwurfsklassen](../diagrams/UCR-08_sequence_design.png)
+![Sequenzdiagramm UCR-08, Entwurfsklassen](../diagrams/ucr/sequence_designs/UCR-08_sequence_design.pdf)
 
 ## 3. Abgeleitete Anforderungen
 

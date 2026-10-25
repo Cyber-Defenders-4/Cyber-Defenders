@@ -21,7 +21,7 @@ Diese Realisierung beschreibt, welche Objekte UC-01 „Mission auswählen“ ums
 
 ### 2.2 Sequenzdiagramme
 
-![Sequenzdiagramm UCR-01](../diagrams/UCR-01_sequence.png)
+![Sequenzdiagramm UCR-01](../diagrams/ucr/sequences/UCR-01_sequence.png)
 
 ### 2.3 Ablaufbeschreibung
 
@@ -44,9 +44,9 @@ Nicht zutreffend. Der Status einer Mission (gesperrt, freigeschaltet, gelöst) w
 
 Die Prüfung, ob die gewählte Mission freigeschaltet ist, übernimmt im Design die `MissionOverviewComponent`: Der `MissionService` liefert jede Mission bereits mit Status und der vorausgesetzten Mission (`MissionOverviewItem`), sodass für die Auswahl kein weiterer Aufruf ans Backend nötig ist.
 
-![Klassendiagramm UCR-01](../diagrams/UCR-01_classes.png)
+![Klassendiagramm UCR-01](../diagrams/ucr/classes/UCR-01_classes.png)
 
-![Sequenzdiagramm UCR-01, Designklassen](../diagrams/UCR-01_sequence_design.png)
+![Sequenzdiagramm UCR-01, Designklassen](../diagrams/ucr/sequence_designs/UCR-01_sequence_design.png)
 
 ## 3 Abgeleitete Anforderungen
 

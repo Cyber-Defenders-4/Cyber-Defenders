@@ -42,7 +42,7 @@ Der Spieler schreibt oder ändert Java-Code in einem Code-Editor, um die Aufgabe
 
 ### 4.4 Activity diagram
 
-![Activity diagram UC-03](../diagrams/UC-03_activity.png)
+[Aktivitätsdiagramm UC-03](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/activity_diagrams/UC-03_activity.pdf)
 
 ## 5 Special requirements
 

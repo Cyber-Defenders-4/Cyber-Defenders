@@ -57,9 +57,9 @@ Nicht zutreffend. Die Missions- und Fallaktendaten werden hier lediglich ausgele
 | :Mission | Mission, MissionRepository |
 | :Beweisdatei | EvidenceFile, EvidenceRepository |
 
-![Klassendiagramm UCR-02](../diagrams/UCR-02_classes.png)
+![Klassendiagramm UCR-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/classes/UCR-02_classes.png?raw=true)
 
-![Sequenzdiagramm UCR-02, Entwurfsklassen](../diagrams/UCR-02_sequence_design.png)
+![Sequenz-Design UCR-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/sequence_designs/UCR-02_sequence_design.png?raw=true)
 
 ## 3. Abgeleitete Anforderungen
 

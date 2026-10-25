@@ -1,0 +1,40 @@
+@startuml UCR-01_sequence
+' Verfeinertes Sequenzdiagramm UCR-01 mit Analyseobjekten (Abschnitt 2.2 der Realisierung)
+' Autor: Dominik
+title UCR-01 Mission auswählen (Analyseobjekte)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+boundary ":Missionsübersicht" as MU
+control ":MissionAuswählen" as MA
+entity ":Mission" as M
+entity ":Missionsfortschritt" as MF
+
+S -> MU : öffnen()
+MU -> MA : missionenLaden(spieler)
+alt Missionen ladbar
+  MA -> M : alleLesen()
+  M --> MA : missionen
+  MA -> MF : fürSpielerLesen(spieler)
+  MF --> MA : fortschritte
+  MA -> MA : statusBestimmen(missionen, fortschritte)
+  MA --> MU : missionen mit Status
+  MU --> S : Missionen mit Nummer, Name, Thema, Status\nund Anzahl verfügbarer Missionen
+else 2a: Missionen nicht ladbar
+  MA --> MU : Fehler
+  MU --> S : Fehlermeldung mit „Erneut versuchen“
+end
+
+S -> MU : missionAuswählen(nummer)
+MU -> MA : auswählen(spieler, mission)
+alt Mission freigeschaltet
+  MA --> MU : ok
+  MU --> S : Mission markiert
+  ref over S, MU, MA : UC-02 Fallakte lesen
+else 3a: Mission gesperrt
+  MA --> MU : gesperrt(vorausgesetzteMission)
+  MU --> S : „Löse zuerst Mission …“
+end
+@enduml

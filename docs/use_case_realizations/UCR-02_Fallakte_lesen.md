@@ -22,7 +22,7 @@ Diese Use-Case-Realisierung beschreibt, wie das System die Fallakte einer gewäh
 
 ### 2.2 Sequenzdiagramme
 
-![Sequenzdiagramm UCR-02](../diagrams/UCR-02_sequence.png)
+![Sequenzdiagramm UCR-02](../diagrams/ucr/sequences/UCR-02_sequence.png)
 
 ### 2.3 Ablaufbeschreibung
 

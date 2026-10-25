@@ -1,0 +1,80 @@
+@startuml domain_model_minmax
+' Domaenenmodell Cyber Defenders (docs/domain_model.md)
+' Autoren: siehe docs/domain_model.md
+' (min,max)-Notation: Die Angabe steht an der Klasse, die sie beschreibt,
+' z. B. Spieler (0,*): Ein Spieler hat null bis beliebig viele Missionsfortschritte.
+title Domänenmodell Cyber Defenders ((min,max)-Notation)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classAttributeIconSize 0
+hide empty methods
+hide circle
+
+class Spieler {
+  name: String
+  xp: Integer
+}
+class Mission {
+  nummer: Integer
+  name: String
+  thema: String
+  schwierigkeitsgrad: String
+  codeGeruest: String
+}
+class Fallakte {
+  szenario: String
+  auftrag: String
+  lernziele: String
+  nachrichtDerVorgesetzten: String
+}
+class Beweisdatei {
+  dateiname: String
+  inhalt: String
+}
+class Testfall {
+  beschreibung: String
+  erwartetesErgebnis: String
+}
+class Hinweis {
+  reihenfolge: Integer
+  text: String
+}
+class Missionsfortschritt {
+  status: Missionsstatus
+  versuche: Integer
+  genutzteHinweise: Integer
+  benoetigteZeit: Duration
+  geloestAm: DateTime
+  xp: Integer
+}
+class Codeentwurf {
+  code: String
+  gespeichertAm: DateTime
+}
+class Erfolg {
+  name: String
+  beschreibung: String
+}
+enum Missionsstatus {
+  GESPERRT
+  OFFEN
+  GELOEST
+}
+class Rang {
+  name: String
+  xpSchwelle: Integer
+}
+
+Mission "(1,1)" *-- "(1,1)" Fallakte
+Mission "(1,*)" *-- "(1,1)" Beweisdatei
+Mission "(1,*)" *-- "(1,1)" Testfall
+Mission "(0,3)" *-- "(1,1)" Hinweis
+Mission "(0,1)" -- "(0,1)" Mission : setzt voraus >
+
+Spieler "(0,*)" -- "(1,1)" Missionsfortschritt
+Missionsfortschritt "(1,1)" -- "(0,*)" Mission
+Spieler "(0,*)" -- "(1,1)" Codeentwurf
+Codeentwurf "(1,1)" -- "(0,*)" Mission
+Spieler "(0,*)" -- "(0,*)" Erfolg : erhalten >
+Spieler "(1,1)" -- "(0,*)" Rang : hat >
+@enduml

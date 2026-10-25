@@ -5,7 +5,19 @@
 
 <!-- Entwurf: Bitte prüft, ob die Entitäten eurer Realisierungen enthalten sind, und tragt euch als Autoren ein. -->
 
-![Domänenmodell](diagrams/domain_model.png)
+Das Domänenmodell gibt es in zwei Varianten, die sich nur in der Schreibweise der Multiplizitäten unterscheiden.
+
+### Chen-Notation
+
+Multiplizitäten als 1, n und m.
+
+![Domänenmodell, Chen-Notation](diagrams/domain_model.png)
+
+### (min,max)-Notation
+
+Jede Angabe steht an der Klasse, die sie beschreibt, und sagt, an wie vielen Beziehungen ein Objekt mindestens und höchstens beteiligt ist. Beispiel: Spieler (0,*) und Missionsfortschritt (1,1) heißt, ein Spieler hat null bis beliebig viele Missionsfortschritte, jeder Missionsfortschritt gehört zu genau einem Spieler. Diese Variante zeigt zusätzlich, dass eine Mission höchstens drei Hinweise hat (0,3) und dass die erste Mission keine andere voraussetzt (0,1).
+
+![Domänenmodell, (min,max)-Notation](diagrams/domain_model_minmax.png)
 
 ## Klassen
 

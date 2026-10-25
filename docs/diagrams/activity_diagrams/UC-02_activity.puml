@@ -1,0 +1,30 @@
+@startuml UC-02_activity
+' Aktivitaetsdiagramm UC-02 (Abschnitt 4.4 der Spezifikation)
+' Autor: Marco
+title UC-02 Fallakte lesen
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+|Spieler|
+|System|
+start
+repeat
+  :Fallakte der gewählten Mission laden;
+backward :Fehlermeldung mit „Erneut versuchen“ anzeigen (1a);
+repeat while (Fallakte geladen?) is ([else]) not ([ja])
+:Fallakte mit Nummer, Name, Schwierigkeitsgrad, Szenario,
+Lernzielen und Nachricht der Vorgesetzten anzeigen;
+|Spieler|
+:Fallakte lesen;
+:Mission starten;
+|System|
+:Mission laden;
+if (Mission geladen?) then ([ja])
+  :Arbeitsansicht mit Beweisdatei, Einsatzbericht,
+  Code-Editor (UC-03) und Konsole öffnen;
+else ([else])
+  :Fehlermeldung anzeigen (3a);
+  :Zur Missionsübersicht zurückkehren (UC-01);
+endif
+stop
+@enduml

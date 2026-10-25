@@ -1,0 +1,49 @@
+@startuml UCR-03_sequence
+' Verfeinertes Sequenzdiagramm UCR-03 mit Analyseobjekten (Abschnitt 2.2 der Realisierung)
+' Autor: Marco
+title UCR-03 Lösung im Editor schreiben (Analyseobjekte)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+boundary ":CodeEditor" as CE
+control ":EntwurfBearbeiten" as EB
+entity ":Codeentwurf" as CD
+entity ":Mission" as M
+
+S -> CE : öffnen()
+CE -> EB : entwurfLaden(spieler, mission)
+EB -> CD : lesen(spieler, mission)
+alt Entwurf vorhanden
+  CD --> EB : entwurf
+else kein Entwurf
+  EB -> M : codeGerüstLesen()
+  M --> EB : codeGerüst
+end
+EB --> CE : code
+CE --> S : Code mit Zeilennummern und Syntaxhervorhebung
+
+loop solange der Spieler arbeitet
+  S -> CE : codeÄndern(code)
+  CE -> EB : entwurfSpeichern(code)
+  alt speicherbar
+    EB -> CD : speichern(code)
+    EB --> CE : gespeichert
+  else 4a: Entwurf nicht speicherbar
+    EB --> CE : Fehler
+    CE --> S : Hinweis, Code bleibt im Editor
+  end
+end
+
+opt 3c: Code zurücksetzen
+  S -> CE : zurücksetzen()
+  CE -> EB : zurücksetzen(spieler, mission)
+  EB -> M : codeGerüstLesen()
+  M --> EB : codeGerüst
+  EB -> CD : speichern(codeGerüst)
+  EB --> CE : codeGerüst
+  CE --> S : Code-Gerüst anzeigen
+end
+note over S, CE : 3a: Hinweis anfordern (UC-07)\n3b: Code ausführen (UC-08)
+@enduml

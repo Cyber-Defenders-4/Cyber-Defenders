@@ -59,7 +59,7 @@ Nicht zutreffend. Die Missions- und Fallaktendaten werden hier lediglich ausgele
 
 [Klassendiagramm UCR-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/classes/UCR-02_classes.pdf)
 
-Sequenz-Design UCR-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/sequence_designs/UCR-02_sequence_design.pdf)
+[Sequenz-Design UCR-02](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/ucr/sequence_designs/UCR-02_sequence_design.pdf)
 
 ## 3. Abgeleitete Anforderungen
 

@@ -1,0 +1,61 @@
+@startuml UCR-03_sequence_design
+' Sequenzdiagramm UCR-03 mit Designklassen (Abschnitt 2.5 der Realisierung)
+' Autor: Marco
+title UCR-03 Lösung im Editor schreiben (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant ":CodeEditorComponent" as C
+participant ":DraftApiService" as API
+participant ":DraftController" as CTRL
+participant ":DraftService" as SVC
+participant ":DraftRepository" as DR
+participant ":MissionRepository" as MR
+
+C -> API : getDraft(missionNumber)
+API -> CTRL : GET /api/missions/:number/draft
+CTRL -> SVC : getDraftOrTemplate(playerId, missionNumber)
+SVC -> DR : find(playerId, missionId)
+alt Entwurf vorhanden
+  DR --> SVC : CodeDraft
+else kein Entwurf
+  DR --> SVC : null
+  SVC -> MR : findByNumber(missionNumber)
+  MR --> SVC : Mission (codeTemplate)
+end
+SVC --> CTRL : CodeDraft
+CTRL --> API : 200 OK (JSON)
+API --> C : CodeDraft
+C --> S : Code anzeigen
+
+loop alle 10 s, wenn sich der Code geändert hat
+  S -> C : onCodeChange(code)
+  C -> C : autoSave()
+  C -> API : saveDraft(missionNumber, code)
+  API -> CTRL : PUT /api/missions/:number/draft
+  alt speicherbar
+    CTRL -> SVC : saveDraft(playerId, missionNumber, code)
+    SVC -> DR : save(draft)
+    CTRL --> API : 204 No Content
+  else 4a: Backend antwortet nicht
+    API --> C : Fehler
+    C --> S : saveError-Hinweis, Code bleibt im Editor
+  end
+end
+
+opt 3c: Code zurücksetzen
+  S -> C : resetCode()
+  C -> API : resetDraft(missionNumber)
+  API -> CTRL : DELETE /api/missions/:number/draft
+  CTRL -> SVC : resetDraft(playerId, missionNumber)
+  SVC -> MR : findByNumber(missionNumber)
+  MR --> SVC : Mission (codeTemplate)
+  SVC -> DR : save(draft mit codeTemplate)
+  SVC --> CTRL : CodeDraft
+  CTRL --> API : 200 OK (JSON)
+  API --> C : CodeDraft
+  C --> S : Code-Gerüst anzeigen
+end
+@enduml

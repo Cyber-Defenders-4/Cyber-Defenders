@@ -1,0 +1,28 @@
+@startuml UC-01_activity
+' Aktivitaetsdiagramm UC-01 (Abschnitt 4.4 der Spezifikation)
+' Autor: Dominik
+title UC-01 Mission auswählen
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+|Spieler|
+start
+repeat
+  :Missionsübersicht öffnen;
+  |System|
+  :Missionen und Fortschritt des Spielers laden;
+backward :Fehlermeldung mit „Erneut versuchen“ anzeigen (2a);
+repeat while (Missionen geladen?) is ([else]) not ([ja])
+:Missionen mit Nummer, Name, Thema und Status
+und Anzahl verfügbarer Missionen anzeigen;
+repeat
+  |Spieler|
+  :Mission auswählen;
+  |System|
+backward :Anzeigen, welche Mission zuerst
+gelöst werden muss (3a);
+repeat while (Mission freigeschaltet?) is ([else]) not ([ja])
+:Gewählte Mission markieren;
+:Fallakte anzeigen (UC-02);
+stop
+@enduml

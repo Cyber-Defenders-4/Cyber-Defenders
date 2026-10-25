@@ -1,0 +1,42 @@
+@startuml UCR-02_sequence
+' Verfeinertes Sequenzdiagramm UCR-02 mit Analyseobjekten (Abschnitt 2.2 der Realisierung)
+' Autor: Marco
+title UCR-02 Fallakte lesen (Analyseobjekte)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+boundary ":Fallaktenansicht" as FA
+control ":MissionStarten" as MS
+entity ":Mission" as M
+entity ":Fallakte" as F
+entity ":Beweisdatei" as BD
+
+note over S, FA : Mission wurde in UC-01 ausgewählt
+FA -> MS : fallakteLaden(mission)
+alt Fallakte ladbar
+  MS -> F : lesen(mission)
+  F --> MS : fallakte
+  MS --> FA : fallakte
+  FA --> S : Nummer, Name, Schwierigkeitsgrad, Szenario,\nLernziele, Nachricht der Vorgesetzten
+else 1a: Fallakte nicht ladbar
+  MS --> FA : Fehler
+  FA --> S : Fehlermeldung mit „Erneut versuchen“
+end
+
+S -> FA : missionStarten()
+FA -> MS : starten(mission)
+alt Mission ladbar
+  MS -> M : codeGerüstLesen(mission)
+  M --> MS : codeGerüst
+  MS -> BD : lesen(mission)
+  BD --> MS : beweisdateien
+  MS --> FA : Arbeitsansicht-Daten
+  FA --> S : Arbeitsansicht mit Beweisdatei, Einsatzbericht,\nCode-Editor und Konsole
+else 3a: Mission nicht ladbar
+  MS --> FA : Fehler
+  FA --> S : Fehlermeldung
+  ref over S, FA : UC-01 Mission auswählen
+end
+@enduml

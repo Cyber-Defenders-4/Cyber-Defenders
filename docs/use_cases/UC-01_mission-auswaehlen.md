@@ -4,6 +4,8 @@
 | ------ | -------- | ------------ |
 | [@keckamreck](https://github.com/keckamreck) | 3 | [#12](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/12), [#13](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/13), [#15](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/15) |
 
+Realisierung: [UCR-01 Mission auswählen](../use_case_realizations/UCR-01_mission_auswaehlen.md)
+
 ## 1 Brief description
 
 Der Spieler sieht alle Missionen mit ihrem Status (freigeschaltet, gesperrt, gelöst) und wählt eine freigeschaltete Mission aus, um sie zu spielen. Der Use Case ist der Einstieg in jede Mission und führt zur Fallakte und zum Editor.

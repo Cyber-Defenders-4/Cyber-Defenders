@@ -1,0 +1,44 @@
+@startuml UC-03_activity
+' Aktivitaetsdiagramm UC-03 (Abschnitt 4.4 der Spezifikation)
+' Autor: Marco
+title UC-03 Lösung im Editor schreiben
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+|Spieler|
+start
+:Im Editor der gestarteten Mission arbeiten;
+|System|
+if (Entwurf vorhanden?) then ([ja])
+  :Zuletzt gespeicherten Entwurf anzeigen;
+else ([else])
+  :Code-Gerüst der Mission anzeigen;
+endif
+repeat
+  |Spieler|
+  if (Was tut der Spieler?) then ([Code ändern])
+    :Code schreiben oder ändern;
+    |System|
+    :Entwurf zwischenspeichern;
+    if (gespeichert?) then ([ja])
+    else ([else])
+      :Hinweis anzeigen, Code bleibt
+      im Editor erhalten (4a);
+    endif
+  elseif () then ([zurücksetzen])
+    |Spieler|
+    :Code zurücksetzen;
+    |System|
+    :Entwurf durch Code-Gerüst ersetzen (3c);
+  elseif () then ([kommt nicht weiter])
+    |Spieler|
+    :Hinweis anfordern (UC-07, 3a);
+  else ([Code ausprobieren])
+    |Spieler|
+    :Code ausführen (UC-08, 3b);
+  endif
+  |Spieler|
+repeat while (Weiter bearbeiten?) is ([ja]) not ([else])
+:Lösung einreichen (UC-04);
+stop
+@enduml

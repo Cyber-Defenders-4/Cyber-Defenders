@@ -1,0 +1,67 @@
+@startuml UCR-03_classes
+' Klassendiagramm der Designklassen UCR-03 (Abschnitt 2.5 der Realisierung)
+' Autor: Marco
+title UCR-03 Lösung im Editor schreiben (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam classAttributeIconSize 0
+hide empty members
+
+package "Frontend (Angular)" {
+  class CodeEditorComponent {
+    code: string
+    saveError: boolean
+    ngOnInit()
+    onCodeChange(code: string)
+    autoSave()
+    resetCode()
+  }
+  class DraftApiService {
+    getDraft(missionNumber): Observable<CodeDraft>
+    saveDraft(missionNumber, code): Observable<void>
+    resetDraft(missionNumber): Observable<CodeDraft>
+  }
+}
+
+package "Backend (Express)" {
+  class DraftController {
+    getDraft(req, res)
+    putDraft(req, res)
+    deleteDraft(req, res)
+  }
+  class DraftService {
+    getDraftOrTemplate(playerId, missionNumber): CodeDraft
+    saveDraft(playerId, missionNumber, code)
+    resetDraft(playerId, missionNumber): CodeDraft
+  }
+  class DraftRepository {
+    find(playerId, missionId): CodeDraft
+    save(draft: CodeDraft)
+  }
+  class MissionRepository {
+    findByNumber(number): Mission
+  }
+}
+
+package "Modelle (geteilt)" {
+  class CodeDraft {
+    playerId: string
+    missionId: string
+    code: string
+    savedAt: Date
+  }
+  class Mission {
+    number: number
+    codeTemplate: string
+  }
+}
+
+CodeEditorComponent --> DraftApiService
+DraftApiService ..> DraftController : HTTP GET/PUT/DELETE\n/api/missions/:number/draft
+DraftController --> DraftService
+DraftService --> DraftRepository
+DraftService --> MissionRepository
+DraftRepository ..> CodeDraft
+MissionRepository ..> Mission
+note bottom of CodeEditorComponent : autoSave() alle 10 s (NFR-R-01)
+@enduml

@@ -1,8 +1,8 @@
 # UC-03 Lösung im Editor schreiben
 
-| Author | Estimate | User stories |
-| ------ | -------- | ------------ |
-| [@MarcoDaquila](https://github.com/MarcoDaquila) | 8 | [#22](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/22), [#23](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/23), [#74](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/74) |
+| Author | Estimate | User stories | Realization |
+| ------ | -------- | ------------ | ----------- |
+| [@MarcoDaquila](https://github.com/MarcoDaquila) | 8 | [#22](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/22), [#23](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/23), [#74](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/74) | [UCR-03 Lösung im Editor schreiben](../use_case_realizations/UCR-03_Lösung_im_Editor_schreiben.md) |
 
 ## 1 Brief description
 
@@ -22,7 +22,7 @@ Der Spieler schreibt oder ändert Java-Code in einem Code-Editor, um die Aufgabe
 ### 4.1 Basic flow
 
 1. Der Spieler arbeitet im Editor der gestarteten Mission.
-2. Das System zeigt das Code-Gerüst der Mission oder den zuletzt gespeicherten Entwurf.
+​2. Das System zeigt das Code-Gerüst der Mission oder den zuletzt gespeicherten Entwurf.
 3. Der Spieler schreibt oder ändert den Code.
 4. Das System speichert den Entwurf zwischen.
 
@@ -42,7 +42,7 @@ Der Spieler schreibt oder ändert Java-Code in einem Code-Editor, um die Aufgabe
 
 ### 4.4 Activity diagram
 
-![Activity diagram UC-03](../diagrams/UC-03_activity.png)
+[Aktivitätsdiagramm UC-03](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/MarcoDaquila-patch-links/docs/diagrams/activity_diagrams/UC-03_activity.pdf)
 
 ## 5 Special requirements
 

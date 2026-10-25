@@ -4,6 +4,8 @@
 | ------ | -------- | ------------ |
 | [@webdesign19](https://github.com/webdesign19) | 5 | [#24](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/24), technische Grundlage: Epic E10 [#71](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/71) |
 
+| Realization | [UCR-08 – Fortschritt ansehen](../use_case_realizations/UCR-08_code_ausfuehren.md) |
+
 ## 1 Brief description
 
 Der Spieler führt den Java-Code aus dem Editor zur Probe aus und sieht die Ausgabe oder Fehlermeldungen in der Konsole. So kann er seinen Ansatz ausprobieren, bevor er die Lösung zur Prüfung einreicht. Ein Probelauf wird nicht bewertet.

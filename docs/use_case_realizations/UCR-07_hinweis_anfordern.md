@@ -2,7 +2,7 @@
 
 | Autor | Realisiert |
 | ----- | ---------- |
-| Leonie | [UC-07 Hinweis anfordern](../use_cases/UC-07_hinweis-anfordern.md) |
+| Leonie | [UC-07 – Hinweis anfordern](../use_cases/UC-07_hinweis-anfordern.md) |
 
 ## 1. Einleitung
 

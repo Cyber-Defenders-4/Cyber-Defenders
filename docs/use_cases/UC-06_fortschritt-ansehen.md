@@ -4,6 +4,8 @@
 | ------ | -------- | ------------ |
 | [@webdesign19](https://github.com/webdesign19) | 5 | [#58](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/58), [#59](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/59), [#62](https://github.com/Cyber-Defenders-4/Cyber-Defenders/issues/62) |
 
+| Realization | [UCR-06 – Fortschritt ansehen](../use_case_realizations/UCR-06_fortschritt_ansehen.md) |
+
 ## 1 Brief description
 
 Der Spieler sieht seinen Spielfortschritt: den Status jeder Mission (gesperrt, offen oder gelöst), seinen Rang mit den gesammelten XP und seine Erfolge. So behält er den Überblick und weiß, womit er weitermachen kann.

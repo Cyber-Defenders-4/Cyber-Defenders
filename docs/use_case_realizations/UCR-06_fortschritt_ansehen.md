@@ -2,7 +2,7 @@
 
 | Autor | Realisiert |
 | ----- | ---------- |
-| Leonie | [UC-06 Fortschritt ansehen](../use_cases/UC-06_fortschritt-ansehen.md) |
+| Leonie | [UC-06 – Fortschritt ansehen](../use_cases/UC-06_fortschritt-ansehen.md) |
 
 ## 1. Einleitung
 

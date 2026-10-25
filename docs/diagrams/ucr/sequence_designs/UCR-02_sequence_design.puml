@@ -1,0 +1,51 @@
+@startuml UCR-02_sequence_design
+' Sequenzdiagramm UCR-02 mit Designklassen (Abschnitt 2.5 der Realisierung)
+' Autor: Marco
+title UCR-02 Fallakte lesen (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant ":CaseFileComponent" as C
+participant ":WorkspaceComponent" as W
+participant ":MissionApiService" as API
+participant ":MissionController" as CTRL
+participant ":MissionService" as SVC
+participant ":MissionRepository" as MR
+participant ":EvidenceRepository" as ER
+
+C -> API : getCaseFile(missionNumber)
+API -> CTRL : GET /api/missions/:number/case-file
+alt Fallakte ladbar
+  CTRL -> SVC : getCaseFile(missionNumber)
+  SVC -> MR : findByNumber(missionNumber)
+  MR --> SVC : Mission
+  SVC --> CTRL : CaseFile
+  CTRL --> API : 200 OK (JSON)
+  API --> C : CaseFile
+  C --> S : Fallakte anzeigen
+else 1a: Backend antwortet nicht
+  API --> C : Fehler
+  C --> S : errorMessage mit „Erneut versuchen“
+end
+
+S -> C : startMission()
+C -> W : Navigation /missions/:number/workspace
+W -> API : getWorkspace(missionNumber)
+API -> CTRL : GET /api/missions/:number/workspace
+alt Mission ladbar
+  CTRL -> SVC : getWorkspace(missionNumber)
+  SVC -> MR : findByNumber(missionNumber)
+  MR --> SVC : Mission
+  SVC -> ER : findByMission(missionId)
+  ER --> SVC : EvidenceFile[]
+  SVC --> CTRL : WorkspaceData
+  CTRL --> API : 200 OK (JSON)
+  API --> W : WorkspaceData
+  W --> S : Arbeitsansicht anzeigen
+else 3a: Backend antwortet nicht
+  API --> W : Fehler
+  W --> S : Fehlermeldung, Navigation zur Missionsübersicht (UC-01)
+end
+@enduml

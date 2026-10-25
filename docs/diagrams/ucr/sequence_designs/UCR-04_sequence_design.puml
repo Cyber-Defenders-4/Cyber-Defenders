@@ -1,0 +1,47 @@
+@startuml UCR-04_sequence_design
+' Sequenzdiagramm UCR-04 mit Designklassen (Abschnitt 2.5 der Realisierung)
+' Autor: Felix
+title UCR-04 Lösung prüfen lassen (Designklassen)
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam sequenceMessageAlign center
+autonumber
+actor "Spieler" as S
+participant ":CodeEditorComponent" as C
+participant ":SubmissionApiService" as API
+participant ":SubmissionController" as CTRL
+participant ":SubmissionService" as SVC
+participant ":TestCaseRepository" as TR
+participant ":SandboxRunner" as RUN
+participant ":ProgressRepository" as PR
+participant ":ProgressService" as PS
+
+S -> C : submitSolution()
+C -> API : submit(missionNumber, code)
+API -> CTRL : POST /api/missions/:number/submissions
+alt 2a: Backend antwortet nicht
+  API --> C : Fehler
+  C --> S : Fehlermeldung, Code bleibt im Editor
+else Backend antwortet
+  CTRL -> SVC : evaluate(playerId, missionNumber, code)
+  SVC -> TR : findByMission(missionId)
+  TR --> SVC : TestCase[]
+  SVC -> RUN : runTests(code, tests, 5000)
+  RUN --> SVC : RunResult
+  alt 3a: RunResult.compileError
+    SVC --> CTRL : SubmissionResult (errorMessage)
+  else 3b: RunResult.timedOut
+    SVC --> CTRL : SubmissionResult (Zeitlimit)
+  else Tests ausgeführt
+    SVC -> PR : incrementAttempts(playerId, missionId)
+    opt alle Tests bestanden
+      SVC -> PS : completeMission(playerId, missionNumber)
+      ref over SVC, PS : UC-05 Fortschritt speichern
+    end
+    SVC --> CTRL : SubmissionResult (correct, passedCount, testResults)
+  end
+  CTRL --> API : 200 OK (JSON)
+  API --> C : SubmissionResult
+  C --> S : Ergebnis je Test oder Fehlermeldung
+end
+@enduml

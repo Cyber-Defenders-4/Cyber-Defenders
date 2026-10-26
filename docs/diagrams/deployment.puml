@@ -1,6 +1,6 @@
 @startuml deployment
 ' Deployment-Diagramm Cyber Defenders (SAD Abschnitt 7, Deployment-Sicht)
-' Autor: Dominik
+' Autor: Leonie
 title Deployment-Diagramm Cyber Defenders (geplanter Betrieb)
 skinparam shadowing false
 skinparam defaultFontName Arial

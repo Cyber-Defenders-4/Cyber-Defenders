@@ -1,6 +1,6 @@
 @startuml database_schema
 ' Datenbankschema Cyber Defenders (SAD Abschnitt 9, Datensicht)
-' Autor: Dominik. Abgeleitet aus dem Domaenenmodell, noch nicht implementiert.
+' Autor: Leonie. Abgeleitet aus dem Domaenenmodell, noch nicht implementiert.
 title Datenbankschema Cyber Defenders (Entwurf)
 skinparam shadowing false
 skinparam defaultFontName Arial

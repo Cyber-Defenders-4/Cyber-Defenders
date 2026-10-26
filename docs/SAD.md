@@ -38,19 +38,19 @@ The Git history of this file is the revision history.
 
 ### 1.1 Purpose
 
-*Author: Dominik*
+*Author: Marco*
 
 Dieses Dokument beschreibt die Architektur von Cyber Defenders: aus welchen Teilen die Anwendung besteht, wie sie zusammenhängen und wo sie laufen. Es richtet sich an unser Team, an alle, die das Projekt später übernehmen, und an den Dozenten in der Rolle des Investors.
 
 ### 1.2 Scope
 
-*Author: Dominik*
+*Author: Marco*
 
 Das Dokument deckt die gesamte Anwendung ab: das Angular-Frontend im Browser, das Express-Backend, die Datenbank bei Neon und die isolierte Umgebung, in der Java-Code der Spieler ausgeführt wird. Der fachliche Umfang ist in [SRS 1.2](SRS.md#12-umfang-scope) beschrieben.
 
 ### 1.3 Definitions, acronyms and abbreviations
 
-*Author: Dominik*
+*Author: Marco*
 
 | Term | Meaning |
 | ---- | ------- |
@@ -63,7 +63,7 @@ Das Dokument deckt die gesamte Anwendung ab: das Angular-Frontend im Browser, da
 
 ### 1.4 References
 
-*Author: Dominik*
+*Author: Marco*
 
 | Title | Link |
 | ----- | ---- |
@@ -79,7 +79,7 @@ by view, following the RUP template.
 
 ## 2 Architectural representation
 
-*Author: Dominik*
+*Author: Marco*
 
 | View | Question it answers | Diagram | Section |
 | ---- | ------------------- | ------- | ------- |
@@ -102,7 +102,7 @@ Alle Diagramme sind mit PlantUML erstellt. Die Quelldateien (`.puml`) liegen neb
 
 ## 4 Use-case view
 
-*Author: Dominik*
+*Author: Felix*
 
 The use case diagram of the whole application is in [SRS 2.2](SRS.md#22-use-case-diagramm). The
 use cases most important for the architecture are UC-04 „Lösung prüfen lassen“ und UC-08 „Code ausführen“, weil sie Nutzer-Code in einer isolierten Sandbox ausführen und dafür eine eigene Komponente und einen eigenen Knoten brauchen, sowie UC-05 „Fortschritt speichern“, weil er den Spielstand dauerhaft in der Datenbank ablegt.
@@ -147,13 +147,13 @@ Die Designklassen jedes Use Cases stehen in Abschnitt 2.5 der Realisierung, mit 
 
 ## 6 Process view
 
-*Author: Dominik*
+*Author: Felix*
 
 Zur Laufzeit gibt es vier Prozesse: die Angular-App im Browser des Spielers, der Node.js-Prozess mit dem Express-Backend, der Datenbankserver bei Neon und je Ausführung von Spieler-Code ein kurzlebiger Prozess in der Sandbox. Das Backend startet diesen Sandbox-Prozess für jeden Probelauf (UC-08) und jede Prüfung (UC-04) neu und beendet ihn spätestens nach 5 s (NFR-P-01). Im Hintergrund erzeugt außerdem eine GitHub Action täglich das Burndown-Chart, sie gehört aber nicht zur Anwendung.
 
 ## 7 Deployment view
 
-*Author: Dominik*
+*Author: Leonie*
 
 Das Diagramm zeigt den geplanten Betrieb für die Abschlussdemo.
 
@@ -203,7 +203,7 @@ Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über d
 
 ## 9 Data view
 
-*Author: Dominik*
+*Author: Leonie*
 
 Das Datenbankschema leitet sich aus dem Domänenmodell ab: Jede Klasse wird zu einer Tabelle mit technischem Primärschlüssel, die Beziehungen werden zu Fremdschlüsseln, und die Beziehung zwischen Spieler und Erfolg wird über die Tabelle `player_achievement` abgebildet. Das Schema ist ein Entwurf und wird bei der Anbindung von Neon umgesetzt.
 

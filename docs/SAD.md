@@ -15,9 +15,9 @@ ANLEITUNG ZUR VERWENDUNG DIESER VORLAGE
   https://cin.ufpe.br/~if682/RUP/webtmpl/templates/a_and_d/rup_sad.htm
 -->
 
-| Team       | Version | Letzte Änderung |
-|------------|---------|-----------------|
-| [Teamname] | [0.1]   | [TT.MM.JJJJ]    |
+| Team | Version | Letzte Änderung |
+| ---- | ------- | --------------- |
+| [Teamname] | [0.1] | [TT.MM.JJJJ] |
 
 Die Versionshistorie dieser Datei wird durch die Git-Historie abgebildet.
 
@@ -44,8 +44,7 @@ Die Versionshistorie dieser Datei wird durch die Git-Historie abgebildet.
 <!-- Ein Absatz: Was beschreibt dieses Dokument und wer liest es – euer Team,
      Entwickler, die das Projekt übernehmen, und der Dozent als Auftraggeber? -->
 
-Dieses Dokument beschreibt die Architektur von [Projektname]: aus welchen Komponenten die Anwendung besteht, wie diese
-miteinander verbunden sind und wo sie ausgeführt werden. […]
+Dieses Dokument beschreibt die Architektur von [Projektname]: aus welchen Komponenten die Anwendung besteht, wie diese miteinander verbunden sind und wo sie ausgeführt werden. […]
 
 ### 1.2 Umfang
 
@@ -64,28 +63,27 @@ miteinander verbunden sind und wo sie ausgeführt werden. […]
 <!-- Fachbegriffe aus dem Anwendungsbereich stehen in der SRS und im Domänenmodell.
      Füge nur technische Begriffe hinzu, die Leser dieses Dokuments kennen müssen. -->
 
-| Begriff   | Bedeutung                                                       |
-|-----------|-----------------------------------------------------------------|
-| SAD       | Softwarearchitekturdokument (Software Architecture Document)    |
-| SRS       | Anforderungsspezifikation (Software Requirements Specification) |
-| UCR       | Anwendungsfallrealisierung (Use-Case Realization)               |
-| [Begriff] | [Bedeutung]                                                     |
+| Begriff | Bedeutung |
+| ------- | --------- |
+| SAD | Softwarearchitekturdokument (Software Architecture Document) |
+| SRS | Anforderungsspezifikation (Software Requirements Specification) |
+| UCR | Anwendungsfallrealisierung (Use-Case Realization) |
+| [Begriff] | [Bedeutung] |
 
 ### 1.4 Referenzen
 
 *Autor: [Vorname]*
 
-| Titel         | Link                               |
-|---------------|------------------------------------|
-| SRS           | [SRS.md](SRS.md)                   |
+| Titel | Link |
+| ----- | ---- |
+| SRS | [SRS.md](SRS.md) |
 | Domänenmodell | [domain_model.md](domain_model.md) |
-| Repository    | [Link]                             |
-| Projektboard  | [Link zum GitHub-Projects-Board]   |
+| Repository | [Link] |
+| Projektboard | [Link zum GitHub-Projects-Board] |
 
 ### 1.5 Überblick
 
-Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3 bis 11 beschreiben die Architektur
-Sicht für Sicht und folgen dabei der RUP-Vorlage.
+Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3 bis 11 beschreiben die Architektur Sicht für Sicht und folgen dabei der RUP-Vorlage.
 
 ## 2 Architekturdarstellung
 
@@ -96,13 +94,13 @@ Sicht für Sicht und folgen dabei der RUP-Vorlage.
      hinzufügst oder entfernst. Spätere Vorlesungen ergänzen hier den Architekturstil und
      die Architekturentscheidungen. -->
 
-| Sicht                 | Welche Frage beantwortet sie?                                  | Diagramm                                             | Abschnitt |
-|-----------------------|----------------------------------------------------------------|------------------------------------------------------|-----------|
-| Anwendungsfallsicht   | Was macht das System und für wen?                              | Anwendungsfalldiagramm, Anwendungsfallrealisierungen | 4         |
-| Logische Sicht        | Welche Klassen gibt es und wie sind sie miteinander verbunden? | Klassendiagramme                                     | 5         |
-| Prozesssicht          | Was wird gleichzeitig ausgeführt?                              | Kurzbeschreibung                                     | 6         |
-| Verteilungssicht      | Was läuft wo und wie ist es verbunden?                         | Verteilungsdiagramm                                  | 7         |
-| Implementierungssicht | Aus welchen Teilen besteht der Code?                           | Komponentendiagramm, Paketdiagramm                   | 8         |
+| Sicht | Welche Frage beantwortet sie? | Diagramm | Abschnitt |
+| ----- | ---------------------------- | -------- | --------- |
+| Anwendungsfallsicht | Was macht das System und für wen? | Anwendungsfalldiagramm, Anwendungsfallrealisierungen | 4 |
+| Logische Sicht | Welche Klassen gibt es und wie sind sie miteinander verbunden? | Klassendiagramme | 5 |
+| Prozesssicht | Was wird gleichzeitig ausgeführt? | Kurzbeschreibung | 6 |
+| Verteilungssicht | Was läuft wo und wie ist es verbunden? | Verteilungsdiagramm | 7 |
+| Implementierungssicht | Aus welchen Teilen besteht der Code? | Komponentendiagramm, Paketdiagramm | 8 |
 
 ## 3 Architekturziele und Einschränkungen
 
@@ -119,16 +117,15 @@ Sicht für Sicht und folgen dabei der RUP-Vorlage.
 <!-- Die für die Architektur wichtigsten Anwendungsfälle – normalerweise diejenigen,
      die ihr in Aufgabe 4 realisiert habt. Verlinke das Anwendungsfalldiagramm, statt es zu kopieren. -->
 
-Das Anwendungsfalldiagramm der gesamten Anwendung befindet sich in [SRS 2.2](SRS.md#22-use-case-diagram). Die für die
-Architektur wichtigsten Anwendungsfälle sind: […]
+Das Anwendungsfalldiagramm der gesamten Anwendung befindet sich in [SRS 2.2](SRS.md#22-use-case-diagram). Die für die Architektur wichtigsten Anwendungsfälle sind: […]
 
 ### 4.1 Anwendungsfallrealisierungen
 
 <!-- Eine Zeile pro Realisierung aus Aufgabe 4. Keine neuen Diagramme erstellen:
      Verlinke die vorhandenen Dateien. -->
 
-| Anwendungsfall                                       | Realisierung                                     | Autor     |
-|------------------------------------------------------|--------------------------------------------------|-----------|
+| Anwendungsfall | Realisierung | Autor |
+| -------------- | ------------ | ----- |
 | [UC-02 Einen Raum buchen](use_cases/UC-02_[name].md) | [UCR-02](use_case_realizations/UCR-02_[name].md) | [Vorname] |
 
 ## 5 Logische Sicht
@@ -160,7 +157,7 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). […]
 
 […]
 
-## 7 Deployment view
+## 7 Verteilungssicht
 
 *Autor: [Vorname]*
 
@@ -171,11 +168,11 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). […]
 
 ![Verteilungsdiagramm](diagrams/deployment.png)
 
-| Knoten   | Was läuft dort?      | Verbunden mit    |
-|----------|----------------------|------------------|
+| Knoten | Was läuft dort? | Verbunden mit |
+| ------ | --------------- | ------------- |
 | [Server] | [Backend, Datenbank] | [Browser: HTTPS] |
 
-## 8 Implementation view
+## 8 Implementierungssicht
 
 ### 8.1 Überblick
 
@@ -188,8 +185,8 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). […]
 
 ![Komponentendiagramm](diagrams/components.png)
 
-| Komponente     | Verantwortlichkeit          | Klassen (Aufgabe 5)             |
-|----------------|-----------------------------|---------------------------------|
+| Komponente | Verantwortlichkeit | Klassen (Aufgabe 5) |
+| ---------- | ------------------ | ------------------- |
 | [Buchungskern] | [Bucht und storniert Räume] | [BookingService, Room, Booking] |
 
 ### 8.2 Schichten

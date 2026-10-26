@@ -1,0 +1,39 @@
+@startuml deployment
+' Deployment-Diagramm Cyber Defenders (SAD Abschnitt 7, Deployment-Sicht)
+' Autor: Dominik
+title Deployment-Diagramm Cyber Defenders (geplanter Betrieb)
+skinparam shadowing false
+skinparam defaultFontName Arial
+
+node "Rechner des Spielers" <<device>> as PC {
+  node "Webbrowser" <<executionEnvironment>> as BR {
+    artifact "Angular-App\n(geladen aus dem Frontend-Build)" as A_APP
+  }
+}
+
+node "Vercel" <<cloud>> as VERCEL {
+  node "Static Hosting / CDN" <<executionEnvironment>> as CDN {
+    artifact "Frontend-Build\n(index.html, *.js, *.css)" as A_FE
+  }
+  node "Node.js-Laufzeit" <<executionEnvironment>> as NODE {
+    artifact "Backend\n(Express, dist/index.js)" as A_BE
+  }
+}
+
+node "Neon" <<cloud>> as NEON {
+  database "PostgreSQL" <<executionEnvironment>> as PG {
+    artifact "Datenbankschema\ncyber_defenders" as A_DB
+  }
+}
+
+node "Ausführungsserver (geplant)" <<device>> as EXEC {
+  node "Docker" <<executionEnvironment>> as DOCKER {
+    artifact "Java-Sandbox-Image\n(JDK, Zeitlimit 5 s)" as A_SB
+  }
+}
+
+BR -- CDN : HTTPS\n(lädt die App)
+BR -- NODE : HTTPS\n(REST, JSON)
+NODE -- PG : TCP 5432\n(PostgreSQL, TLS)
+NODE -- DOCKER : HTTPS\n(Code ausführen)
+@enduml

@@ -1,0 +1,106 @@
+@startuml database_schema
+' Datenbankschema Cyber Defenders (SAD Abschnitt 9, Datensicht)
+' Autor: Dominik. Abgeleitet aus dem Domaenenmodell, noch nicht implementiert.
+title Datenbankschema Cyber Defenders (Entwurf)
+skinparam shadowing false
+skinparam defaultFontName Arial
+hide circle
+hide methods
+skinparam linetype ortho
+
+entity player {
+  * id : uuid <<PK>>
+  --
+  * name : text
+  * xp : integer
+  * rank_id : integer <<FK>>
+}
+entity rank {
+  * id : integer <<PK>>
+  --
+  * name : text
+  * xp_threshold : integer
+}
+entity mission {
+  * id : integer <<PK>>
+  --
+  * number : integer
+  * title : text
+  * topic : text
+  * difficulty : text
+  * code_template : text
+  prerequisite_mission_id : integer <<FK>>
+}
+entity case_file {
+  * mission_id : integer <<PK, FK>>
+  --
+  * scenario : text
+  * assignment : text
+  * learning_goals : text
+  * supervisor_message : text
+}
+entity evidence_file {
+  * id : integer <<PK>>
+  --
+  * mission_id : integer <<FK>>
+  * file_name : text
+  * content : text
+}
+entity test_case {
+  * id : integer <<PK>>
+  --
+  * mission_id : integer <<FK>>
+  * description : text
+  * expected : text
+}
+entity hint {
+  * id : integer <<PK>>
+  --
+  * mission_id : integer <<FK>>
+  * hint_order : integer
+  * text : text
+}
+entity mission_progress {
+  * player_id : uuid <<PK, FK>>
+  * mission_id : integer <<PK, FK>>
+  --
+  * status : text
+  * attempts : integer
+  * hints_used : integer
+  duration_seconds : integer
+  solved_at : timestamptz
+  xp : integer
+}
+entity code_draft {
+  * player_id : uuid <<PK, FK>>
+  * mission_id : integer <<PK, FK>>
+  --
+  * code : text
+  * saved_at : timestamptz
+}
+entity achievement {
+  * id : integer <<PK>>
+  --
+  * name : text
+  * description : text
+}
+entity player_achievement {
+  * player_id : uuid <<PK, FK>>
+  * achievement_id : integer <<PK, FK>>
+  --
+  * earned_at : timestamptz
+}
+
+rank ||--o{ player
+mission |o--o{ mission : prerequisite
+mission ||--|| case_file
+mission ||--|{ evidence_file
+mission ||--|{ test_case
+mission ||--o{ hint
+player ||--o{ mission_progress
+mission ||--o{ mission_progress
+player ||--o{ code_draft
+mission ||--o{ code_draft
+player ||--o{ player_achievement
+achievement ||--o{ player_achievement
+@enduml

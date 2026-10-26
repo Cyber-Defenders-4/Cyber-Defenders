@@ -1,0 +1,46 @@
+@startuml components
+' Komponentendiagramm Cyber Defenders (SAD Abschnitt 8, Implementierungssicht)
+' Autor: Dominik
+title Komponentendiagramm Cyber Defenders
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam componentStyle uml2
+
+package "Frontend (Angular, im Browser)" {
+  component "Missionen-UI" as MUI <<component>>
+  component "Arbeitsansicht-UI" as WUI <<component>>
+  component "Fortschritt-UI" as PUI <<component>>
+  component "API-Client" as API <<component>>
+}
+
+package "Backend (Express, Node.js)" {
+  component "REST-API" as REST <<component>>
+  component "Spiellogik" as LOGIC <<component>>
+  component "Persistenz" as PERS <<component>>
+  component "Ausführungs-Adapter" as ADP <<component>>
+}
+
+database "Neon PostgreSQL" as DB <<component>>
+component "Ausführungsumgebung\n(isolierte Java-Sandbox)" as SB <<component>>
+
+interface "REST-API\n(HTTPS, JSON)" as IREST
+interface "SQL\n(TCP 5432, TLS)" as ISQL
+interface "Code ausführen\n(max. 5 s)" as IEXEC
+
+MUI -down.> API
+WUI -down.> API
+PUI -down.> API
+
+API -down-( IREST
+IREST -down- REST
+
+REST -down.> LOGIC : nutzt
+LOGIC -down.> PERS : nutzt
+LOGIC -right.> ADP : nutzt\n(CodeRunner)
+
+PERS -down-( ISQL
+ISQL -down- DB
+
+ADP -down-( IEXEC
+IEXEC -down- SB
+@enduml

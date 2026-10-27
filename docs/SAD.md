@@ -157,20 +157,36 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). […]
 
 […]
 
-## 7 Verteilungssicht
+## 7 Deployment view
 
-*Autor: [Vorname]*
+*Autor: Leonie*
 
 <!-- Ein UML-Verteilungsdiagramm: Knoten (Geräte, Ausführungsumgebungen), die darauf
      laufenden Artefakte und die Kommunikationsverbindungen einschließlich ihrer Protokolle.
      Stelle die Umgebung dar, die ihr für eure Abschlussdemonstration plant oder aktuell
      verwendet, und gib an, welche Variante gezeigt wird. -->
 
+Das Verteilungsdiagramm zeigt den geplanten Deployment-Betrieb für die Abschlussdemo.
+
 ![Verteilungsdiagramm](diagrams/deployment.png)
 
-| Knoten | Was läuft dort? | Verbunden mit |
+| Node | What runs there? | Connected to |
 | ------ | --------------- | ------------- |
-| [Server] | [Backend, Datenbank] | [Browser: HTTPS] |
+| Rechner des Spielers (Webbrowser) | Angular-App | Vercel CDN: HTTPS; Backend: HTTPS (REST, JSON) |
+| Vercel (Static Hosting/CDN) | Frontend-Build (index.html, JavaScript, CSS) | Browser: HTTPS |
+| Vercel (Node.js-Laufzeit) | Backend (Express) | Browser: HTTPS; Neon: TCP 5432 (TLS); Ausführungsserver: HTTPS |
+| Neon | PostgreSQL-Datenbank (cyber_defenders) | Backend: TCP 5432 (TLS) |
+| Geplanter Ausführungsserver (Docker, Hosting noch offen) | Java-Sandbox (JDK, Zeitlimit 5 s) | Backend: HTTPS |
+
+Frontend und Backend sollen bei Vercel betrieben werden (SRS 3.6, DC-04). 
+Die PostgreSQL-Datenbank wird als separater Knoten bei Neon betrieben (DC-03). 
+Der Hostingort für die Java-Sandbox ist noch offen. Da die benötigte Docker-Ausführungsumgebung nicht direkt bei Vercel 
+betrieben werden kann, ist sie als separater Server dargestellt.
+
+Aktuell läuft die Anwendung lokal auf den Rechnern des Teams: 
+Das Frontend wird mit ng serve auf Port 4100 gestartet, 
+das Backend mit npm run dev auf Port 3100 (siehe ![README](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/main/README.md)).
+Die Datenbank und die Sandbox sind noch nicht eingerichtet und angebunden.
 
 ## 8 Implementierungssicht
 

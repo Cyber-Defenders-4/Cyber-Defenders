@@ -148,15 +148,13 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). […]
 
 […]
 
-## 6 Prozesssicht
+## 6 Process view
 
-*Autor: [Vorname]*
+*Autor: Felix*
 
-<!-- Derzeit optional. Ein oder zwei Sätze: Welche Prozesse laufen, beispielsweise das
-     Frontend im Browser, das Backend und die Datenbank? Gibt es Hintergrundprozesse,
-     etwa einen zeitgesteuerten Job? -->
+**Aktuelle Entwicklungsumgebung:** Das Angular-Frontend wird lokal über `ng serve` (Port 4100) bereitgestellt und im Browser ausgeführt, während das Express-Backend als separater Node.js-Prozess (`npm run dev`, Port 3100) läuft; Datenbank und Sandbox sind derzeit noch nicht angebunden.
 
-[…]
+**Geplanter Betrieb:** Das Frontend kommuniziert über HTTPS und REST/JSON mit dem auf Vercel bereitgestellten Backend, das auf die externe Neon-PostgreSQL-Datenbank zugreift und für UC-04 und UC-08 einen separaten Sandbox-Dienst aufrufen soll; dieser führt den Java-Code des Spielers je Anfrage isoliert und mit einem Ausführungslimit von fünf Sekunden aus.
 
 ## 7 Verteilungssicht
 

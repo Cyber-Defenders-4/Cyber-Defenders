@@ -110,14 +110,11 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 
 *Wird in Vorlesung 7 behandelt.*
 
-## 4 Anwendungsfallsicht
+## 4 Use-case view
 
-*Autor: [Vorname]*
+*Autor: Felix*
 
-<!-- Die für die Architektur wichtigsten Anwendungsfälle – normalerweise diejenigen,
-     die ihr in Aufgabe 4 realisiert habt. Verlinke das Anwendungsfalldiagramm, statt es zu kopieren. -->
-
-Das Anwendungsfalldiagramm der gesamten Anwendung befindet sich in [SRS 2.2](SRS.md#22-use-case-diagram). Die für die Architektur wichtigsten Anwendungsfälle sind: […]
+Das Use-Case-Diagramm der gesamten Anwendung befindet sich in [SRS 2.2](SRS.md#22-use-case-diagramm). Für die Architektur sind insbesondere UC-04 „Lösung prüfen lassen“, UC-08 „Code ausführen“ und UC-05 „Fortschritt speichern“ relevant. UC-04 und UC-08 sehen die isolierte Ausführung von Java-Code über eine separate Ausführungsumgebung vor, die über die Schnittstelle `CodeRunner` angebunden werden soll. UC-05 benötigt die dauerhafte Speicherung von Missionsfortschritt und Erfahrungspunkten in der Datenbank. Diese Anwendungsfälle sind deshalb besonders wichtig für die Ausführungs- und Persistenzkomponenten (siehe Abschnitte 7 und 8).
 
 ### 4.1 Anwendungsfallrealisierungen
 

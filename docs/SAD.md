@@ -200,7 +200,14 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). […]
 
 <!-- Derzeit optional. Später: das Datenbankschema oder ER-Modell, abgeleitet aus eurem Domänenmodell. -->
 
-*Wird später behandelt.*
+*Autor: Leonie*
+
+Das Datenbankschema wurde aus dem Domänenmodell abgeleitet: Jede Klasse wird zu einer Entitätstabelle mit einem 
+Primärschlüssel, die Beziehungen werden mittels Fremdschlüssel realisiert und die Beziehung zwischen dem Spieler und 
+seinem Erfolg wird über die Tabelle player_achievement abgebildet. Das folgende Schema ist ein Entwurf und wird bei der 
+Anbindung von Neon umgesetzt.
+
+![Datenbankschema](diagrams/data.png)
 
 ## 10 Umfang und Leistung
 

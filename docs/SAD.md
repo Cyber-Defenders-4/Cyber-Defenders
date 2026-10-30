@@ -110,23 +110,24 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 
 *Wird in Vorlesung 7 behandelt.*
 
-## 4 Anwendungsfallsicht
+## 4 Use-case view
 
-*Autor: [Vorname]*
+*Autor: Felix*
 
-<!-- Die für die Architektur wichtigsten Anwendungsfälle – normalerweise diejenigen,
-     die ihr in Aufgabe 4 realisiert habt. Verlinke das Anwendungsfalldiagramm, statt es zu kopieren. -->
+Das Use-Case-Diagramm der gesamten Anwendung befindet sich in [SRS 2.2](SRS.md#22-use-case-diagramm). Für die Architektur sind insbesondere UC-04 „Lösung prüfen lassen“, UC-08 „Code ausführen“ und UC-05 „Fortschritt speichern“ relevant. UC-04 und UC-08 sehen die isolierte Ausführung von Java-Code über eine separate Ausführungsumgebung vor, die über die Schnittstelle `CodeRunner` angebunden werden soll. UC-05 benötigt die dauerhafte Speicherung von Missionsfortschritt und Erfahrungspunkten in der Datenbank. Diese Anwendungsfälle sind deshalb besonders wichtig für die Ausführungs- und Persistenzkomponenten (siehe Abschnitte 7 und 8).
 
-Das Anwendungsfalldiagramm der gesamten Anwendung befindet sich in [SRS 2.2](SRS.md#22-use-case-diagram). Die für die Architektur wichtigsten Anwendungsfälle sind: […]
+### 4.1 Use-case realizations
 
-### 4.1 Anwendungsfallrealisierungen
-
-<!-- Eine Zeile pro Realisierung aus Aufgabe 4. Keine neuen Diagramme erstellen:
-     Verlinke die vorhandenen Dateien. -->
-
-| Anwendungsfall | Realisierung | Autor |
-| -------------- | ------------ | ----- |
-| [UC-02 Einen Raum buchen](use_cases/UC-02_[name].md) | [UCR-02](use_case_realizations/UCR-02_[name].md) | [Vorname] |
+| Use case | Realization | Author |
+| --- | --- | --- |
+| [UC-01 Mission auswählen](use_cases/UC-01_mission-auswaehlen.md) | [UCR-01](use_case_realizations/UCR-01_mission_auswaehlen.md) | Dominik |
+| [UC-02 Fallakte lesen](use_cases/UC-02_fallakte-lesen.md) | [UCR-02](use_case_realizations/UCR-02_Fallakte_lesen.md) | Marco |
+| [UC-03 Lösung im Editor schreiben](use_cases/UC-03_loesung-schreiben.md) | [UCR-03](use_case_realizations/UCR-03_Lösung_im_Editor_schreiben.md) | Marco |
+| [UC-04 Lösung prüfen lassen](use_cases/UC-04_loesung-pruefen.md) | [UCR-04](use_case_realizations/UCR-04_loesung_pruefen.md) | Felix |
+| [UC-05 Fortschritt speichern](use_cases/UC-05_fortschritt-speichern.md) | [UCR-05](use_case_realizations/UCR-05_fortschritt_speichern.md) | Felix |
+| [UC-06 Fortschritt ansehen](use_cases/UC-06_fortschritt-ansehen.md) | [UCR-06](use_case_realizations/UCR-06_fortschritt_ansehen.md) | Leonie |
+| [UC-07 Hinweis anfordern](use_cases/UC-07_hinweis-anfordern.md) | [UCR-07](use_case_realizations/UCR-07_hinweis_anfordern.md) | Leonie |
+| [UC-08 Code ausführen](use_cases/UC-08_code-ausfuehren.md) | [UCR-08](use_case_realizations/UCR-08_code_ausfuehren.md) | Leonie |
 
 ## 5 Logische Sicht
 
@@ -147,15 +148,13 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). […]
 
 […]
 
-## 6 Prozesssicht
+## 6 Process view
 
-*Autor: [Vorname]*
+*Autor: Felix*
 
-<!-- Derzeit optional. Ein oder zwei Sätze: Welche Prozesse laufen, beispielsweise das
-     Frontend im Browser, das Backend und die Datenbank? Gibt es Hintergrundprozesse,
-     etwa einen zeitgesteuerten Job? -->
+**Aktuelle Entwicklungsumgebung:** Das Angular-Frontend wird lokal über `ng serve` (Port 4100) bereitgestellt und im Browser ausgeführt, während das Express-Backend als separater Node.js-Prozess (`npm run dev`, Port 3100) läuft; Datenbank und Sandbox sind derzeit noch nicht angebunden.
 
-[…]
+**Geplanter Betrieb:** Das Frontend kommuniziert über HTTPS und REST/JSON mit dem auf Vercel bereitgestellten Backend, das auf die externe Neon-PostgreSQL-Datenbank zugreift und für UC-04 und UC-08 einen separaten Sandbox-Dienst aufrufen soll; dieser führt den Java-Code des Spielers je Anfrage isoliert und mit einem Ausführungslimit von fünf Sekunden aus.
 
 ## 7 Verteilungssicht
 

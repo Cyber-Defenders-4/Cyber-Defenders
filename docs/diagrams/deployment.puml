@@ -1,0 +1,50 @@
+@startuml
+title Deployment-Diagramm Cyber Defenders (geplanter Betrieb)
+
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam componentStyle uml2
+skinparam linetype polyline
+skinparam nodesep 60
+skinparam ranksep 70
+
+' Rechner des Spielers
+node "Rechner des Spielers" <<device>> as player {
+  node "Webbrowser" <<executionEnvironment>> as browser {
+    artifact "Angular-App\n(geladen aus dem Frontend-Build)" as angular
+  }
+}
+
+' Hosting bei Vercel
+node "Vercel" as vercel {
+  node "Static Hosting / CDN" <<executionEnvironment>> as static {
+    artifact "Frontend-Build\n(index.html, *.js, *.css)" as frontend
+  }
+
+  node "Node.js-Laufzeit" <<executionEnvironment>> as nodejs {
+    artifact "Backend\n(Express, dist/index.js)" as backend
+  }
+}
+
+' Gehostete PostgreSQL-Datenbank
+node "Neon" as neon {
+  database "PostgreSQL" as postgres {
+    artifact "Datenbankschema\ncyber_defenders" as schema
+  }
+}
+
+' Separater Server für die Java-Sandbox; Hosting noch offen
+node "Ausführungsserver (geplant)" <<device>> as executionServer {
+  node "Docker" <<executionEnvironment>> as docker {
+    artifact "Java-Sandbox-Image\n(JDK, Zeitlimit 5 s)" as sandbox
+  }
+}
+
+left to right direction
+
+browser -- static : HTTPS\n(lädt die App)
+browser -- nodejs : HTTPS\n(REST, JSON)
+nodejs -- postgres : TCP 5432\n(PostgreSQL, TLS)
+nodejs -- docker : HTTPS\n(Code ausführen)
+
+@enduml

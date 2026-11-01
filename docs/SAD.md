@@ -1,4 +1,4 @@
-# [Projektname] — Softwarearchitekturdokument
+# Cyber Defenders — Softwarearchitekturdokument
 
 <!--
 ANLEITUNG ZUR VERWENDUNG DIESER VORLAGE
@@ -17,7 +17,7 @@ ANLEITUNG ZUR VERWENDUNG DIESER VORLAGE
 
 | Team | Version | Letzte Änderung |
 | ---- | ------- | --------------- |
-| [Teamname] | [0.1] | [TT.MM.JJJJ] |
+| FMLD Studios | 0.1 | 01.11.2026 |
 
 Die Versionshistorie dieser Datei wird durch die Git-Historie abgebildet.
 
@@ -39,47 +39,38 @@ Die Versionshistorie dieser Datei wird durch die Git-Historie abgebildet.
 
 ### 1.1 Zweck
 
-*Autor: [Vorname]*
+*Autor: Marco*
 
-<!-- Ein Absatz: Was beschreibt dieses Dokument und wer liest es – euer Team,
-     Entwickler, die das Projekt übernehmen, und der Dozent als Auftraggeber? -->
-
-Dieses Dokument beschreibt die Architektur von [Projektname]: aus welchen Komponenten die Anwendung besteht, wie diese miteinander verbunden sind und wo sie ausgeführt werden. […]
+Dieses Dokument beschreibt die Softwarearchitektur des Lernspiels Cyber Defenders: aus welchen Komponenten die Anwendung besteht, wie diese miteinander verbunden sind und wo sie ausgeführt werden. Es dient als zentrale architektonische Referenz für das aktuelle Entwicklerteam, für zukünftige Entwickler, die das Projekt übernehmen, sowie für die Dozenten als Auftraggeber.
 
 ### 1.2 Umfang
 
-*Autor: [Vorname]*
+*Autor: Marco*
 
-<!-- Ein oder zwei Sätze: Welche Software wird in diesem Dokument behandelt?
-     Beispielsweise die gesamte Anwendung mit Frontend, Backend und Datenbank.
-     Der funktionale Umfang ist in Abschnitt 1.2 der SRS beschrieben – verlinke ihn. -->
-
-[…] Der funktionale Umfang ist in [SRS 1.2](SRS.md#12-scope) beschrieben.
+Dieses Dokument deckt die Architektur der gesamten Cyber Defenders-Anwendung ab. Dazu gehören die Angular-Web-Oberfläche, die serverseitige Node.js-Spiellogik, die persistente PostgreSQL-Datenspeicherung und die geplante isolierte Sandbox-Ausführungsumgebung. Der funktionale Umfang ist in [SRS 1.2](SRS.md#12-scope) beschrieben.
 
 ### 1.3 Definitionen, Akronyme und Abkürzungen
 
-*Autor: [Vorname]*
-
-<!-- Fachbegriffe aus dem Anwendungsbereich stehen in der SRS und im Domänenmodell.
-     Füge nur technische Begriffe hinzu, die Leser dieses Dokuments kennen müssen. -->
+*Autor: Marco*
 
 | Begriff | Bedeutung |
 | ------- | --------- |
 | SAD | Softwarearchitekturdokument (Software Architecture Document) |
 | SRS | Anforderungsspezifikation (Software Requirements Specification) |
 | UCR | Anwendungsfallrealisierung (Use-Case Realization) |
-| [Begriff] | [Bedeutung] |
+| Sandbox | Isolierte Ausführungsumgebung (Docker) für nicht vertrauenswürdigen Java-Code der Spieler |
+| CDN | Content Delivery Network (Vercel) |
 
 ### 1.4 Referenzen
 
-*Autor: [Vorname]*
+*Autor: Marco*
 
 | Titel | Link |
 | ----- | ---- |
 | SRS | [SRS.md](SRS.md) |
 | Domänenmodell | [domain_model.md](domain_model.md) |
-| Repository | [Link] |
-| Projektboard | [Link zum GitHub-Projects-Board] |
+| Repository | [https://github.com/Cyber-Defenders-4/Cyber-Defenders](https://github.com/Cyber-Defenders-4/Cyber-Defenders) |
+| Projektboard | [https://github.com/orgs/Cyber-Defenders-4/projects/2](https://github.com/orgs/Cyber-Defenders-4/projects/2) |
 
 ### 1.5 Überblick
 
@@ -87,26 +78,22 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 
 ## 2 Architekturdarstellung
 
-*Autor: [Vorname]*
-
-<!-- Welche Sichten werden verwendet und welches Diagramm stellt die jeweilige Sicht dar?
-     Die Tabelle enthält bereits die Sichten aus Vorlesung 6. Passe sie an, wenn du Sichten
-     hinzufügst oder entfernst. Spätere Vorlesungen ergänzen hier den Architekturstil und
-     die Architekturentscheidungen. -->
+*Autor: Marco*
 
 | Sicht | Welche Frage beantwortet sie? | Diagramm | Abschnitt |
 | ----- | ---------------------------- | -------- | --------- |
 | Anwendungsfallsicht | Was macht das System und für wen? | Anwendungsfalldiagramm, Anwendungsfallrealisierungen | 4 |
-| Logische Sicht | Welche Klassen gibt es und wie sind sie miteinander verbunden? | Klassendiagramme | 5 |
+| Logische Sicht | Welche Klassen gibt es und wie sind sie miteinander verbunden? | Domänenmodell, Design-Klassen | 5 |
 | Prozesssicht | Was wird gleichzeitig ausgeführt? | Kurzbeschreibung | 6 |
 | Verteilungssicht | Was läuft wo und wie ist es verbunden? | Verteilungsdiagramm | 7 |
-| Implementierungssicht | Aus welchen Teilen besteht der Code? | Komponentendiagramm, Paketdiagramm | 8 |
+| Implementierungssicht | Aus welchen Teilen besteht der Code? | Komponentendiagramm | 8 |
+| Datensicht | Wie werden persistente Daten gespeichert? | Datenbankschema | 9 |
 
 ## 3 Architekturziele und Einschränkungen
 
 <!-- Vorlesung 7. Anforderungen und Einschränkungen, die eure Architektur beeinflussen:
-     Qualitätsziele wie Verfügbarkeit oder Sicherheit sowie Einschränkungen wie euer Tech-Stack
-     (SRS 3.6), Teamgröße oder Zeitplan. Bis dahin bleibt dieser Abschnitt unverändert. -->
+  Qualitätsziele wie Verfügbarkeit oder Sicherheit sowie Einschränkungen wie euer Tech-Stack
+  (SRS 3.6), Teamgröße oder Zeitplan. Bis dahin bleibt dieser Abschnitt unverändert. -->
 
 *Wird in Vorlesung 7 behandelt.*
 
@@ -136,8 +123,8 @@ Das Use-Case-Diagramm der gesamten Anwendung befindet sich in [SRS 2.2](SRS.md#2
 *Autor: Dominik*
 
 <!-- Verlinke euer Domänenmodell aus Aufgabe 5. Falls ihr ein Paketdiagramm habt,
-     füge es hier ein: Es zeigt die Pakete eures Codes und ihre Abhängigkeiten,
-     die keine Zyklen bilden dürfen. -->
+  füge es hier ein: Es zeigt die Pakete eures Codes und ihre Abhängigkeiten,
+  die keine Zyklen bilden dürfen. -->
 
 Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). Es zeigt, was die Anwendung speichert: Spieler mit Rang, Missionen mit Fallakte, Beweisdateien, Testfällen und Hinweisen, dazu Missionsfortschritt, Codeentwurf und Erfolge. Ein Paketdiagramm gibt es noch nicht, es folgt, sobald die Ordnerstruktur von Frontend und Backend mit Code gefüllt ist.
 
@@ -146,7 +133,7 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). Es zeigt
 *Autor: Dominik*
 
 <!-- Derzeit optional. Verlinke die Entwurfsklassen eurer Anwendungsfallrealisierungen
-     (Abschnitt 2.5 der UCR) oder beschreibe eure wichtigsten Pakete jeweils in einem Satz. -->
+  (Abschnitt 2.5 der UCR) oder beschreibe eure wichtigsten Pakete jeweils in einem Satz. -->
 
 Die Entwurfsklassen jedes Anwendungsfalls stehen in Abschnitt 2.5 der Realisierung, mit Klassendiagramm und Sequenzdiagramm:
 
@@ -174,9 +161,9 @@ Die Entwurfsklassen jedes Anwendungsfalls stehen in Abschnitt 2.5 der Realisieru
 *Autor: Leonie*
 
 <!-- Ein UML-Verteilungsdiagramm: Knoten (Geräte, Ausführungsumgebungen), die darauf
-     laufenden Artefakte und die Kommunikationsverbindungen einschließlich ihrer Protokolle.
-     Stelle die Umgebung dar, die ihr für eure Abschlussdemonstration plant oder aktuell
-     verwendet, und gib an, welche Variante gezeigt wird. -->
+  laufenden Artefakte und die Kommunikationsverbindungen einschließlich ihrer Protokolle.
+  Stelle die Umgebung dar, die ihr für eure Abschlussdemonstration plant oder aktuell
+  verwendet, und gib an, welche Variante gezeigt wird. -->
 
 Das Verteilungsdiagramm zeigt den geplanten Deployment-Betrieb für die Abschlussdemo.
 
@@ -207,9 +194,9 @@ Die Datenbank und die Sandbox sind noch nicht eingerichtet und angebunden.
 *Autor: Dominik*
 
 <!-- Ein UML-Komponentendiagramm der gesamten Anwendung: Frontend, Backend, Datenbank,
-     externe Dienste und die Schnittstellen zwischen ihnen (Kugel = stellt bereit,
-     Buchse = benötigt). Zwei bis fünf Komponenten innerhalb des Backends sind eine
-     angemessene Größenordnung. -->
+  externe Dienste und die Schnittstellen zwischen ihnen (Kugel = stellt bereit,
+  Buchse = benötigt). Zwei bis fünf Komponenten innerhalb des Backends sind eine
+  angemessene Größenordnung. -->
 
 ![Komponentendiagramm](diagrams/components.png)
 
@@ -231,7 +218,7 @@ Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über d
 ### 8.2 Schichten
 
 <!-- Vorlesungen 8 und 9. Die Schichten eurer Anwendung und die Regeln für ihre
-     Abhängigkeiten. Bis dahin bleibt dieser Abschnitt unverändert. -->
+  Abhängigkeiten. Bis dahin bleibt dieser Abschnitt unverändert. -->
 
 *Wird in Vorlesung 8 und 9 behandelt.*
 
@@ -260,15 +247,15 @@ beiden Notationen. Die Diagramme unterscheiden sich somit lediglich aufgrund ihr
 ## 10 Umfang und Leistung
 
 <!-- Vorlesung 7. Kennzahlen, die eure Architektur beeinflussen, beispielsweise die erwartete
-     Anzahl von Benutzern und Daten sowie die Leistungsanforderungen aus SRS 3.4.
-     Bis dahin bleibt dieser Abschnitt unverändert. -->
+  Anzahl von Benutzern und Daten sowie die Leistungsanforderungen aus SRS 3.4.
+  Bis dahin bleibt dieser Abschnitt unverändert. -->
 
 *Wird in Vorlesung 7 behandelt.*
 
 ## 11 Qualität
 
 <!-- Vorlesungen 7 bis 9. Wie unterstützt eure Architektur die erforderlichen Qualitätsmerkmale,
-     beispielsweise Verfügbarkeit, Sicherheit und Wartbarkeit? Bis dahin bleibt dieser
-     Abschnitt unverändert. -->
+  beispielsweise Verfügbarkeit, Sicherheit und Wartbarkeit? Bis dahin bleibt dieser
+  Abschnitt unverändert. -->
 
 *Wird in Vorlesung 7 bis 9 behandelt.*

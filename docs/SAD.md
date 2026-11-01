@@ -185,7 +185,7 @@ betrieben werden kann, ist sie als separater Server dargestellt.
 
 Aktuell läuft die Anwendung lokal auf den Rechnern des Teams: 
 Das Frontend wird mit ng serve auf Port 4100 gestartet, 
-das Backend mit npm run dev auf Port 3100 (siehe ![README](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/main/README.md)).
+das Backend mit npm run dev auf Port 3100 (siehe [README](https://github.com/Cyber-Defenders-4/Cyber-Defenders/blob/main/README.md)).
 Die Datenbank und die Sandbox sind noch nicht eingerichtet und angebunden.
 
 ## 8 Implementierungssicht

@@ -1,4 +1,4 @@
-# [Projektname] — Softwarearchitekturdokument
+# Cyber Defenders — Softwarearchitekturdokument
 
 <!--
 ANLEITUNG ZUR VERWENDUNG DIESER VORLAGE
@@ -17,7 +17,7 @@ ANLEITUNG ZUR VERWENDUNG DIESER VORLAGE
 
 | Team | Version | Letzte Änderung |
 | ---- | ------- | --------------- |
-| [Teamname] | [0.1] | [TT.MM.JJJJ] |
+| [Teamname einfügen] | 0.1 | [TT.MM.JJJJ] |
 
 Die Versionshistorie dieser Datei wird durch die Git-Historie abgebildet.
 
@@ -39,47 +39,38 @@ Die Versionshistorie dieser Datei wird durch die Git-Historie abgebildet.
 
 ### 1.1 Zweck
 
-*Autor: [Vorname]*
+*Autor: Marco*
 
-<!-- Ein Absatz: Was beschreibt dieses Dokument und wer liest es – euer Team,
-     Entwickler, die das Projekt übernehmen, und der Dozent als Auftraggeber? -->
-
-Dieses Dokument beschreibt die Architektur von [Projektname]: aus welchen Komponenten die Anwendung besteht, wie diese miteinander verbunden sind und wo sie ausgeführt werden. […]
+Dieses Dokument beschreibt die Softwarearchitektur des Lernspiels Cyber Defenders: aus welchen Komponenten die Anwendung besteht, wie diese miteinander verbunden sind und wo sie ausgeführt werden. Es dient als zentrale architektonische Referenz für das aktuelle Entwicklerteam, für zukünftige Entwickler, die das Projekt übernehmen, sowie für die Dozenten als Auftraggeber.
 
 ### 1.2 Umfang
 
-*Autor: [Vorname]*
+*Autor: Marco*
 
-<!-- Ein oder zwei Sätze: Welche Software wird in diesem Dokument behandelt?
-     Beispielsweise die gesamte Anwendung mit Frontend, Backend und Datenbank.
-     Der funktionale Umfang ist in Abschnitt 1.2 der SRS beschrieben – verlinke ihn. -->
-
-[…] Der funktionale Umfang ist in [SRS 1.2](SRS.md#12-scope) beschrieben.
+Dieses Dokument deckt die Architektur der gesamten Cyber Defenders-Anwendung ab. Dazu gehören die Angular-Web-Oberfläche, die serverseitige Node.js-Spiellogik, die persistente PostgreSQL-Datenspeicherung und die geplante isolierte Sandbox-Ausführungsumgebung. Der funktionale Umfang ist in [SRS 1.2](SRS.md#12-scope) beschrieben.
 
 ### 1.3 Definitionen, Akronyme und Abkürzungen
 
-*Autor: [Vorname]*
-
-<!-- Fachbegriffe aus dem Anwendungsbereich stehen in der SRS und im Domänenmodell.
-     Füge nur technische Begriffe hinzu, die Leser dieses Dokuments kennen müssen. -->
+*Autor: Marco*
 
 | Begriff | Bedeutung |
 | ------- | --------- |
 | SAD | Softwarearchitekturdokument (Software Architecture Document) |
 | SRS | Anforderungsspezifikation (Software Requirements Specification) |
 | UCR | Anwendungsfallrealisierung (Use-Case Realization) |
-| [Begriff] | [Bedeutung] |
+| Sandbox | Isolierte Ausführungsumgebung (Docker) für nicht vertrauenswürdigen Java-Code der Spieler |
+| CDN | Content Delivery Network (Vercel) |
 
 ### 1.4 Referenzen
 
-*Autor: [Vorname]*
+*Autor: Marco*
 
 | Titel | Link |
 | ----- | ---- |
 | SRS | [SRS.md](SRS.md) |
 | Domänenmodell | [domain_model.md](domain_model.md) |
-| Repository | [Link] |
-| Projektboard | [Link zum GitHub-Projects-Board] |
+| Repository | [Link zum GitHub-Repo einfügen] |
+| Projektboard | [Link zum GitHub-Projects-Board einfügen] |
 
 ### 1.5 Überblick
 
@@ -87,20 +78,14 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 
 ## 2 Architekturdarstellung
 
-*Autor: [Vorname]*
-
-<!-- Welche Sichten werden verwendet und welches Diagramm stellt die jeweilige Sicht dar?
-     Die Tabelle enthält bereits die Sichten aus Vorlesung 6. Passe sie an, wenn du Sichten
-     hinzufügst oder entfernst. Spätere Vorlesungen ergänzen hier den Architekturstil und
-     die Architekturentscheidungen. -->
+*Autor: Marco*
 
 | Sicht | Welche Frage beantwortet sie? | Diagramm | Abschnitt |
 | ----- | ---------------------------- | -------- | --------- |
 | Anwendungsfallsicht | Was macht das System und für wen? | Anwendungsfalldiagramm, Anwendungsfallrealisierungen | 4 |
-| Logische Sicht | Welche Klassen gibt es und wie sind sie miteinander verbunden? | Klassendiagramme | 5 |
+| Logische Sicht | Welche Klassen gibt es und wie sind sie miteinander verbunden? | Domänenmodell, Design-Klassen | 5 |
 | Prozesssicht | Was wird gleichzeitig ausgeführt? | Kurzbeschreibung | 6 |
-| Verteilungssicht | Was läuft wo und wie ist es verbunden? | Verteilungsdiagramm | 7 |
-| Implementierungssicht | Aus welchen Teilen besteht der Code? | Komponentendiagramm, Paketdiagramm | 8 |
+| Implementierungssicht | Aus welchen Teilen besteht der Code? | Komponentendiagramm | 8 |
 
 ## 3 Architekturziele und Einschränkungen
 

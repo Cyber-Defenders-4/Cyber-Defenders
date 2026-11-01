@@ -17,7 +17,7 @@ ANLEITUNG ZUR VERWENDUNG DIESER VORLAGE
 
 | Team | Version | Letzte Änderung |
 | ---- | ------- | --------------- |
-| Cyber Defenders | 0.1 | [TT.MM.JJJJ] |
+| FMLD Studios | 0.1 | 01.11.2026 |
 
 Die Versionshistorie dieser Datei wird durch die Git-Historie abgebildet.
 
@@ -85,7 +85,9 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 | Anwendungsfallsicht | Was macht das System und für wen? | Anwendungsfalldiagramm, Anwendungsfallrealisierungen | 4 |
 | Logische Sicht | Welche Klassen gibt es und wie sind sie miteinander verbunden? | Domänenmodell, Design-Klassen | 5 |
 | Prozesssicht | Was wird gleichzeitig ausgeführt? | Kurzbeschreibung | 6 |
+| Verteilungssicht | Was läuft wo und wie ist es verbunden? | Verteilungsdiagramm | 7 |
 | Implementierungssicht | Aus welchen Teilen besteht der Code? | Komponentendiagramm | 8 |
+| Datensicht | Wie werden persistente Daten gespeichert? | Datenbankschema | 9 |
 
 ## 3 Architekturziele und Einschränkungen
 

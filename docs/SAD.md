@@ -17,7 +17,7 @@ ANLEITUNG ZUR VERWENDUNG DIESER VORLAGE
 
 | Team | Version | Letzte Änderung |
 | ---- | ------- | --------------- |
-| [Teamname einfügen] | 0.1 | [TT.MM.JJJJ] |
+| Cyber Defenders | 0.1 | [TT.MM.JJJJ] |
 
 Die Versionshistorie dieser Datei wird durch die Git-Historie abgebildet.
 
@@ -69,8 +69,8 @@ Dieses Dokument deckt die Architektur der gesamten Cyber Defenders-Anwendung ab.
 | ----- | ---- |
 | SRS | [SRS.md](SRS.md) |
 | Domänenmodell | [domain_model.md](domain_model.md) |
-| Repository | [Link zum GitHub-Repo einfügen] |
-| Projektboard | [Link zum GitHub-Projects-Board einfügen] |
+| Repository | [https://github.com/Cyber-Defenders-4/Cyber-Defenders](https://github.com/Cyber-Defenders-4/Cyber-Defenders) |
+| Projektboard | [https://github.com/orgs/Cyber-Defenders-4/projects/2](https://github.com/orgs/Cyber-Defenders-4/projects/2) |
 
 ### 1.5 Überblick
 
@@ -90,8 +90,8 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 ## 3 Architekturziele und Einschränkungen
 
 <!-- Vorlesung 7. Anforderungen und Einschränkungen, die eure Architektur beeinflussen:
-     Qualitätsziele wie Verfügbarkeit oder Sicherheit sowie Einschränkungen wie euer Tech-Stack
-     (SRS 3.6), Teamgröße oder Zeitplan. Bis dahin bleibt dieser Abschnitt unverändert. -->
+  Qualitätsziele wie Verfügbarkeit oder Sicherheit sowie Einschränkungen wie euer Tech-Stack
+  (SRS 3.6), Teamgröße oder Zeitplan. Bis dahin bleibt dieser Abschnitt unverändert. -->
 
 *Wird in Vorlesung 7 behandelt.*
 
@@ -121,8 +121,8 @@ Das Use-Case-Diagramm der gesamten Anwendung befindet sich in [SRS 2.2](SRS.md#2
 *Autor: Dominik*
 
 <!-- Verlinke euer Domänenmodell aus Aufgabe 5. Falls ihr ein Paketdiagramm habt,
-     füge es hier ein: Es zeigt die Pakete eures Codes und ihre Abhängigkeiten,
-     die keine Zyklen bilden dürfen. -->
+  füge es hier ein: Es zeigt die Pakete eures Codes und ihre Abhängigkeiten,
+  die keine Zyklen bilden dürfen. -->
 
 Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). Es zeigt, was die Anwendung speichert: Spieler mit Rang, Missionen mit Fallakte, Beweisdateien, Testfällen und Hinweisen, dazu Missionsfortschritt, Codeentwurf und Erfolge. Ein Paketdiagramm gibt es noch nicht, es folgt, sobald die Ordnerstruktur von Frontend und Backend mit Code gefüllt ist.
 
@@ -131,7 +131,7 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). Es zeigt
 *Autor: Dominik*
 
 <!-- Derzeit optional. Verlinke die Entwurfsklassen eurer Anwendungsfallrealisierungen
-     (Abschnitt 2.5 der UCR) oder beschreibe eure wichtigsten Pakete jeweils in einem Satz. -->
+  (Abschnitt 2.5 der UCR) oder beschreibe eure wichtigsten Pakete jeweils in einem Satz. -->
 
 Die Entwurfsklassen jedes Anwendungsfalls stehen in Abschnitt 2.5 der Realisierung, mit Klassendiagramm und Sequenzdiagramm:
 
@@ -159,9 +159,9 @@ Die Entwurfsklassen jedes Anwendungsfalls stehen in Abschnitt 2.5 der Realisieru
 *Autor: [Vorname]*
 
 <!-- Ein UML-Verteilungsdiagramm: Knoten (Geräte, Ausführungsumgebungen), die darauf
-     laufenden Artefakte und die Kommunikationsverbindungen einschließlich ihrer Protokolle.
-     Stelle die Umgebung dar, die ihr für eure Abschlussdemonstration plant oder aktuell
-     verwendet, und gib an, welche Variante gezeigt wird. -->
+  laufenden Artefakte und die Kommunikationsverbindungen einschließlich ihrer Protokolle.
+  Stelle die Umgebung dar, die ihr für eure Abschlussdemonstration plant oder aktuell
+  verwendet, und gib an, welche Variante gezeigt wird. -->
 
 ![Verteilungsdiagramm](diagrams/deployment.png)
 
@@ -176,9 +176,9 @@ Die Entwurfsklassen jedes Anwendungsfalls stehen in Abschnitt 2.5 der Realisieru
 *Autor: Dominik*
 
 <!-- Ein UML-Komponentendiagramm der gesamten Anwendung: Frontend, Backend, Datenbank,
-     externe Dienste und die Schnittstellen zwischen ihnen (Kugel = stellt bereit,
-     Buchse = benötigt). Zwei bis fünf Komponenten innerhalb des Backends sind eine
-     angemessene Größenordnung. -->
+  externe Dienste und die Schnittstellen zwischen ihnen (Kugel = stellt bereit,
+  Buchse = benötigt). Zwei bis fünf Komponenten innerhalb des Backends sind eine
+  angemessene Größenordnung. -->
 
 ![Komponentendiagramm](diagrams/components.png)
 
@@ -200,7 +200,7 @@ Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über d
 ### 8.2 Schichten
 
 <!-- Vorlesungen 8 und 9. Die Schichten eurer Anwendung und die Regeln für ihre
-     Abhängigkeiten. Bis dahin bleibt dieser Abschnitt unverändert. -->
+  Abhängigkeiten. Bis dahin bleibt dieser Abschnitt unverändert. -->
 
 *Wird in Vorlesung 8 und 9 behandelt.*
 
@@ -213,15 +213,15 @@ Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über d
 ## 10 Umfang und Leistung
 
 <!-- Vorlesung 7. Kennzahlen, die eure Architektur beeinflussen, beispielsweise die erwartete
-     Anzahl von Benutzern und Daten sowie die Leistungsanforderungen aus SRS 3.4.
-     Bis dahin bleibt dieser Abschnitt unverändert. -->
+  Anzahl von Benutzern und Daten sowie die Leistungsanforderungen aus SRS 3.4.
+  Bis dahin bleibt dieser Abschnitt unverändert. -->
 
 *Wird in Vorlesung 7 behandelt.*
 
 ## 11 Qualität
 
 <!-- Vorlesungen 7 bis 9. Wie unterstützt eure Architektur die erforderlichen Qualitätsmerkmale,
-     beispielsweise Verfügbarkeit, Sicherheit und Wartbarkeit? Bis dahin bleibt dieser
-     Abschnitt unverändert. -->
+  beispielsweise Verfügbarkeit, Sicherheit und Wartbarkeit? Bis dahin bleibt dieser
+  Abschnitt unverändert. -->
 
 *Wird in Vorlesung 7 bis 9 behandelt.*

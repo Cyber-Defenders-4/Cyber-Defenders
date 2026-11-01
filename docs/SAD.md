@@ -239,7 +239,23 @@ Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über d
 
 <!-- Derzeit optional. Später: das Datenbankschema oder ER-Modell, abgeleitet aus eurem Domänenmodell. -->
 
-*Wird später behandelt.*
+*Autor: Leonie*
+
+Das Datenbankschema wurde aus dem Domänenmodell abgeleitet: Jede Klasse wird zu einer Entitätstabelle mit einem 
+Primärschlüssel, die Beziehungen werden mittels Fremdschlüssel realisiert. Die Beziehung zwischen dem Spieler und 
+seinem Erfolg wird über die Tabelle player_achievement abgebildet. Das Schema ist ein Entwurf und wird bei der 
+Anbindung von Neon umgesetzt.
+
+Das Domainmodel liegt sowohl in Min-Max- als auch in Chen-Notation vor, daher gibt es auch das Data-View-Model in 
+beiden Notationen. Die Diagramme unterscheiden sich somit lediglich aufgrund ihrer Kardinalitäten.
+
+**Min-Max-Notation**
+
+![Datenbankschema in Min-Max Notaion](diagrams/data_view_model_minmax.png)
+
+**Chen-Notation**
+
+![Datenbankschema in Chen-Notation](diagrams/data_view_model_chen.png)
 
 ## 10 Umfang und Leistung
 

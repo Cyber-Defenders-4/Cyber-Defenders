@@ -132,20 +132,33 @@ Das Anwendungsfalldiagramm der gesamten Anwendung befindet sich in [SRS 2.2](SRS
 
 ### 5.1 Überblick
 
-*Autor: [Vorname]*
+*Autor: Dominik*
 
 <!-- Verlinke euer Domänenmodell aus Aufgabe 5. Falls ihr ein Paketdiagramm habt,
      füge es hier ein: Es zeigt die Pakete eures Codes und ihre Abhängigkeiten,
      die keine Zyklen bilden dürfen. -->
 
-Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). […]
+Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). Es zeigt, was die Anwendung speichert: Spieler mit Rang, Missionen mit Fallakte, Beweisdateien, Testfällen und Hinweisen, dazu Missionsfortschritt, Codeentwurf und Erfolge. Ein Paketdiagramm gibt es noch nicht, es folgt, sobald die Ordnerstruktur von Frontend und Backend mit Code gefüllt ist.
 
 ### 5.2 Architektonisch relevante Entwurfspakete
+
+*Autor: Dominik*
 
 <!-- Derzeit optional. Verlinke die Entwurfsklassen eurer Anwendungsfallrealisierungen
      (Abschnitt 2.5 der UCR) oder beschreibe eure wichtigsten Pakete jeweils in einem Satz. -->
 
-[…]
+Die Entwurfsklassen jedes Anwendungsfalls stehen in Abschnitt 2.5 der Realisierung, mit Klassendiagramm und Sequenzdiagramm:
+
+| Realisierung | Wichtigste Entwurfsklassen |
+| ------------ | -------------------------- |
+| [UCR-01](use_case_realizations/UCR-01_mission_auswaehlen.md) | MissionOverviewComponent, MissionService, MissionRepository, ProgressRepository |
+| [UCR-02](use_case_realizations/UCR-02_Fallakte_lesen.md) | CaseFileComponent, WorkspaceComponent, MissionService, EvidenceRepository |
+| [UCR-03](use_case_realizations/UCR-03_L%C3%B6sung_im_Editor_schreiben.md) | CodeEditorComponent, DraftService, DraftRepository |
+| [UCR-04](use_case_realizations/UCR-04_loesung_pruefen.md) | SubmissionService, CodeRunner, SandboxRunner, TestCaseRepository |
+| [UCR-05](use_case_realizations/UCR-05_fortschritt_speichern.md) | CaseSolvedDialogComponent, ProgressService, PlayerRepository, RankRepository |
+| [UCR-06](use_case_realizations/UCR-06_fortschritt_ansehen.md) | ProgressOverviewComponent, ProgressService, AchievementRepository |
+| [UCR-07](use_case_realizations/UCR-07_hinweis_anfordern.md) | CodeEditorComponent, HintService, HintRepository |
+| [UCR-08](use_case_realizations/UCR-08_code_ausfuehren.md) | ConsoleComponent, RunService, CodeRunner, SandboxRunner |
 
 ## 6 Prozesssicht
 
@@ -176,7 +189,7 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). […]
 
 ### 8.1 Überblick
 
-*Autor: [Vorname]*
+*Autor: Dominik*
 
 <!-- Ein UML-Komponentendiagramm der gesamten Anwendung: Frontend, Backend, Datenbank,
      externe Dienste und die Schnittstellen zwischen ihnen (Kugel = stellt bereit,
@@ -187,7 +200,18 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). […]
 
 | Komponente | Verantwortlichkeit | Klassen (Aufgabe 5) |
 | ---------- | ------------------ | ------------------- |
-| [Buchungskern] | [Bucht und storniert Räume] | [BookingService, Room, Booking] |
+| Missionen-UI | Missionsübersicht und Fallakte anzeigen | MissionOverviewComponent, CaseFileComponent |
+| Arbeitsansicht-UI | Code-Editor, Konsole, Hinweise und Dialog „Fall gelöst“ | WorkspaceComponent, CodeEditorComponent, ConsoleComponent, CaseSolvedDialogComponent |
+| Fortschritt-UI | Fortschritt, Rang und Erfolge anzeigen | ProgressOverviewComponent |
+| API-Client | Ruft die REST-API des Backends auf | MissionApiService, DraftApiService, SubmissionApiService, RunApiService, HintApiService, ProgressApiService |
+| REST-API | Nimmt HTTP-Anfragen an und gibt JSON zurück | MissionController, DraftController, SubmissionController, RunController, HintController, ProgressController |
+| Spiellogik | Fachliche Abläufe: Missionsstatus, Prüfung, XP und Rang, Hinweise | MissionService, DraftService, SubmissionService, RunService, HintService, ProgressService |
+| Persistenz | Liest und schreibt die Daten in der Datenbank | MissionRepository, EvidenceRepository, DraftRepository, TestCaseRepository, HintRepository, ProgressRepository, PlayerRepository, RankRepository, AchievementRepository |
+| Ausführungs-Adapter | Schickt Code an die Sandbox und liefert das Ergebnis | CodeRunner (Schnittstelle), SandboxRunner |
+| Neon PostgreSQL | Speichert Missionen, Spieler und Fortschritt | — (externer Dienst) |
+| Ausführungsumgebung | Übersetzt und führt Java-Code isoliert aus, höchstens 5 s | — (externer Dienst) |
+
+Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über die Persistenz und die Sandbox nur über die Schnittstelle `CodeRunner`. So lässt sich die Sandbox austauschen, ohne die Spiellogik zu ändern.
 
 ### 8.2 Schichten
 

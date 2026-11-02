@@ -91,11 +91,71 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 
 ## 3 Architekturziele und Einschränkungen
 
-<!-- Vorlesung 7. Anforderungen und Einschränkungen, die eure Architektur beeinflussen:
-  Qualitätsziele wie Verfügbarkeit oder Sicherheit sowie Einschränkungen wie euer Tech-Stack
-  (SRS 3.6), Teamgröße oder Zeitplan. Bis dahin bleibt dieser Abschnitt unverändert. -->
+Abschnitt 3 listet die Anforderungen, die unsere Architektur prägen: unsere Qualitätsziele als
+Szenarien, bewertet nach Business Value und Technical Risk, und die Einschränkungen, um die wir
+herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, folgt in Abschnitt 11.
 
-*Wird in Vorlesung 7 behandelt.*
+### 3.1 Qualitätsziele
+
+*Autor: [Vorname]*
+
+| ID    | Qualität    | Verfeinerung   | Szenario, kurz                   | Value | Risk | Autor     |
+| ----- | ----------- | -------------- | -------------------------------- | :---: | :--: | --------- |
+| QS-01 | [Qualität]  | [Verfeinerung] | [Stimulus] → [Reaktionsmaß]      | [H]   | [L]  | [Vorname] |
+| QS-02 | [Qualität]  | [Verfeinerung] | [Stimulus] → [Reaktionsmaß]      | [H]   | [M]  | [Vorname] |
+| QS-03 | [Qualität]  | [Verfeinerung] | [Stimulus] → [Reaktionsmaß]      | [M]   | [M]  | [Vorname] |
+
+[Ein bis zwei Sätze: Welches Szenario kommt zuerst und warum? (H, H) kommt vor allem anderen.]
+
+#### QS-01 [Name]
+
+| QS-01 [Name]  | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
+| ------------- | ---------------------------------------- |
+| Quelle        | [wer oder was löst es aus]               |
+| Stimulus      | [was beim System ankommt]               |
+| Artefakt      | [welcher Teil des Systems betroffen ist] |
+| Umgebung      | [in welchem Zustand das System ist]      |
+| Reaktion      | [was das System tut]                     |
+| Reaktionsmaß  | [die Zahl, an der man den Erfolg misst]  |
+
+Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
+
+#### QS-02 [Name]
+
+| QS-02 [Name]  | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
+| ------------- | ---------------------------------------- |
+| Quelle        | [wer oder was löst es aus]               |
+| Stimulus      | [was beim System ankommt]               |
+| Artefakt      | [welcher Teil des Systems betroffen ist] |
+| Umgebung      | [in welchem Zustand das System ist]      |
+| Reaktion      | [was das System tut]                     |
+| Reaktionsmaß  | [die Zahl, an der man den Erfolg misst]  |
+
+Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
+
+#### QS-03 [Name]
+
+| QS-03 [Name]  | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
+| ------------- | ---------------------------------------- |
+| Quelle        | [wer oder was löst es aus]               |
+| Stimulus      | [was beim System ankommt]               |
+| Artefakt      | [welcher Teil des Systems betroffen ist] |
+| Umgebung      | [in welchem Zustand das System ist]      |
+| Reaktion      | [was das System tut]                     |
+| Reaktionsmaß  | [die Zahl, an der man den Erfolg misst]  |
+
+Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
+
+### 3.2 Einschränkungen
+
+*Autor: [Vorname]*
+
+| ID   | Art            | Einschränkung                                                  | Was bedeutet das für unsere Architektur? |
+| ---- | -------------- | -------------------------------------------------------------- | ---------------------------------------- |
+| C-01 | Technisch      | [unser Stack, siehe [SRS 3.6](SRS.md#36-entwurfsrandbedingungen)] | [Konsequenz]                          |
+| C-02 | Organisatorisch | [Teamgröße, Zeit]                                             | [Konsequenz]                             |
+| C-03 | [Art]          | [Einschränkung]                                                | [Konsequenz]                             |
+
 
 ## 4 Use-case view
 

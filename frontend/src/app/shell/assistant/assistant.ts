@@ -1,6 +1,5 @@
 import {Component, input, output} from '@angular/core';
-
-export type FloppyMood = 'think' | 'happy' | 'oops' | 'cheer';
+import { FloppyMood } from './assistant.service';
 
 @Component({
   imports: [],

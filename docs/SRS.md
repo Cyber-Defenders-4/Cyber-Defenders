@@ -44,7 +44,8 @@ Die Git-Historie dieser Datei ist die Änderungshistorie.
 <!-- Ein Absatz: Was beschreibt dieses Dokument, und wer liest es
      (euer Team, der Dozent als Investor, die Person, die das Projekt übernimmt)? -->
 
-Dieses Dokument spezifiziert die Anforderungen an Cyber Defenders, ein Lernspiel für Java und IT-Sicherheit. Es richtet sich an unser Team, an den Dozenten in der Rolle des Investors und an alle, die das Projekt später weiterentwickeln.
+Dieses Dokument spezifiziert die Anforderungen an Cyber Defenders, ein Lernspiel für Java und IT-Sicherheit. Es richtet 
+sich an unser Team, an den Dozenten in der Rolle des Investors und an alle, die das Projekt später weiterentwickeln.
 
 ### 1.2 Umfang (Scope)
 
@@ -55,7 +56,8 @@ Dieses Dokument spezifiziert die Anforderungen an Cyber Defenders, ein Lernspiel
      Begründung. Nicht im Umfang = euer MoSCoW-"Won't have this time". Spätere Änderungen
      dokumentiert ihr hier. -->
 
-Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. Spieler wählen eine Mission, lösen darin Rätsel zu Java und IT-Sicherheit in einem Code-Editor und sehen ihren Fortschritt. Der Fortschritt wird dauerhaft gespeichert.
+Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. Spieler wählen eine Mission, lösen darin 
+Rätsel zu Java und IT-Sicherheit in einem Code-Editor und sehen ihren Fortschritt. Der Fortschritt wird dauerhaft gespeichert.
 
 | Im Umfang | Begründung |
 | --------- | ---------- |
@@ -96,7 +98,8 @@ Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. 
 
 ### 1.5 Überblick
 
-Abschnitt 2 beschreibt das Produkt als Ganzes: Vision und Use-Case-Diagramm. Abschnitt 3 listet die spezifischen Anforderungen auf: die Use Cases (3.1) sowie die Qualitätsanforderungen und Randbedingungen (3.2 bis 3.12).
+Abschnitt 2 beschreibt das Produkt als Ganzes: Vision und Use-Case-Diagramm. Abschnitt 3 listet die spezifischen 
+Anforderungen auf: die Use Cases (3.1) sowie die Qualitätsanforderungen und Randbedingungen (3.2 bis 3.12).
 
 ## 2 Allgemeine Beschreibung
 
@@ -108,7 +111,12 @@ Abschnitt 2 beschreibt das Produkt als Ganzes: Vision und Use-Case-Diagramm. Abs
      der Nutzen und die Abgrenzung zu Alternativen. Der Investor soll sie in zwei Minuten
      verstehen. -->
 
-Cyber Defenders ist ein Lernspiel, das einen virtuellen Escape Room mit einem Detektiv- und Rätselspiel verbindet. In einzelnen Missionen, zum Beispiel in einem gehackten Serverraum oder einem Firmennetzwerk, lernen Spieler spielerisch fortgeschrittene Java-Programmierung und grundlegende Prinzipien der IT-Sicherheit. Eine Rollenwahl (Cyber-Defender oder White-Hat-Hacker), mit der Spieler IT-Sicherheit aus zwei Blickwinkeln lernen, ist als spätere Erweiterung vorgesehen und nicht im aktuellen Umfang (siehe 1.2). Die Oberfläche folgt einem Retro-PC-Design mit eigenem Maskottchen.
+Cyber Defenders ist ein Lernspiel, das einen virtuellen Escape Room mit einem Detektiv- und Rätselspiel verbindet. 
+In einzelnen Missionen, zum Beispiel in einem gehackten Serverraum oder einem Firmennetzwerk, lernen Spieler spielerisch 
+fortgeschrittene Java-Programmierung und grundlegende Prinzipien der IT-Sicherheit. 
+Eine Rollenwahl (Cyber-Defender oder White-Hat-Hacker), mit der Spieler IT-Sicherheit aus zwei Blickwinkeln lernen, 
+ist als spätere Erweiterung vorgesehen und nicht im aktuellen Umfang (siehe 1.2). Die Oberfläche folgt einem 
+Retro-PC-Design mit eigenem Maskottchen.
 
 - **Zielgruppe:** Studierende, Schüler und Einsteiger, die Java und IT-Sicherheit lernen wollen.
 - **Stakeholder:** Spieler (Lernende), unser Entwicklungsteam, der Dozent als Investor.
@@ -144,35 +152,43 @@ Wir nutzen Neon (PostgreSQL) als gehostete Datenbank und sind damit von diesem D
 
 #### 3.1.1 UC-01 Mission auswählen
 
-*Autor: Dominik* · Der Spieler sieht alle Missionen mit ihrem Status (freigeschaltet, gesperrt, gelöst) und wählt eine freigeschaltete Mission aus. · Stories: #12, #13, #15 · [Spezifikation](use_cases/UC-01_mission-auswaehlen.md)
+*Autor: Dominik* · Der Spieler sieht alle Missionen mit ihrem Status (freigeschaltet, gesperrt, gelöst) und wählt eine 
+freigeschaltete Mission aus. · Stories: #12, #13, #15 · [Spezifikation](use_cases/UC-01_mission-auswaehlen.md)
 
 #### 3.1.2 UC-02 Fallakte lesen
 
-*Autor: Marco* · Der Spieler liest die Fallakte der gewählten Mission und startet sie, danach öffnet sich die Arbeitsansicht. · Stories: #14, #17, #19, #20, #73 · [Spezifikation](use_cases/UC-02_fallakte-lesen.md)
+*Autor: Marco* · Der Spieler liest die Fallakte der gewählten Mission und startet sie, danach öffnet sich die 
+Arbeitsansicht. · Stories: #14, #17, #19, #20, #73 · [Spezifikation](use_cases/UC-02_fallakte-lesen.md)
 
 #### 3.1.3 UC-03 Lösung im Editor schreiben
 
-*Autor: Marco* · Der Spieler schreibt Java-Code im Editor mit vorgegebenem Gerüst, der Entwurf wird automatisch zwischengespeichert. · Stories: #22, #23, #74 · [Spezifikation](use_cases/UC-03_loesung-schreiben.md)
+*Autor: Marco* · Der Spieler schreibt Java-Code im Editor mit vorgegebenem Gerüst, der Entwurf wird automatisch 
+zwischengespeichert. · Stories: #22, #23, #74 · [Spezifikation](use_cases/UC-03_loesung-schreiben.md)
 
 #### 3.1.4 UC-04 Lösung prüfen lassen
 
-*Autor: Felix* · Der Spieler reicht seinen Code ein, das System prüft ihn gegen die Tests der Mission und gibt pro Test eine Rückmeldung. · Stories: #26, #27, #28, #29, Epic #71 · [Spezifikation](use_cases/UC-04_loesung-pruefen.md)
+*Autor: Felix* · Der Spieler reicht seinen Code ein, das System prüft ihn gegen die Tests der Mission und gibt pro Test 
+eine Rückmeldung. · Stories: #26, #27, #28, #29, Epic #71 · [Spezifikation](use_cases/UC-04_loesung-pruefen.md)
 
 #### 3.1.5 UC-05 Fortschritt speichern
 
-*Autor: Felix* · Nach einer korrekten Lösung berechnet das System XP und Rang, speichert den Fortschritt und schaltet die nächste Mission frei. · Stories: #30, #57, #61, #72, #75 · [Spezifikation](use_cases/UC-05_fortschritt-speichern.md)
+*Autor: Felix* · Nach einer korrekten Lösung berechnet das System XP und Rang, speichert den Fortschritt und schaltet 
+die nächste Mission frei. · Stories: #30, #57, #61, #72, #75 · [Spezifikation](use_cases/UC-05_fortschritt-speichern.md)
 
 #### 3.1.6 UC-06 Fortschritt ansehen
 
-*Autor: Leonie* · Der Spieler sieht den Status jeder Mission, seinen Rang mit den gesammelten XP und seine Erfolge. · Stories: #58, #59, #62 · [Spezifikation](use_cases/UC-06_fortschritt-ansehen.md)
+*Autor: Leonie* · Der Spieler sieht den Status jeder Mission, seinen Rang mit den gesammelten XP und seine 
+Erfolge. · Stories: #58, #59, #62 · [Spezifikation](use_cases/UC-06_fortschritt-ansehen.md)
 
 #### 3.1.7 UC-07 Hinweis anfordern
 
-*Autor: Leonie* · Kommt der Spieler nicht weiter, fordert er einen von drei Hinweisen pro Mission an, ohne dass die Lösung verraten wird. · Stories: #18, #63 · [Spezifikation](use_cases/UC-07_hinweis-anfordern.md)
+*Autor: Leonie* · Kommt der Spieler nicht weiter, fordert er einen von drei Hinweisen pro Mission an, ohne dass die 
+Lösung verraten wird. · Stories: #18, #63 · [Spezifikation](use_cases/UC-07_hinweis-anfordern.md)
 
 #### 3.1.8 UC-08 Code ausführen
 
-*Autor: Leonie* · Der Spieler führt seinen Code zur Probe aus und sieht Ausgabe oder Fehlermeldungen in der Konsole, ohne Bewertung. · Stories: #24, Epic #71 · [Spezifikation](use_cases/UC-08_code-ausfuehren.md)
+*Autor: Leonie* · Der Spieler führt seinen Code zur Probe aus und sieht Ausgabe oder Fehlermeldungen in der Konsole, 
+ohne Bewertung. · Stories: #24, Epic #71 · [Spezifikation](use_cases/UC-08_code-ausfuehren.md)
 
 <!-- QUALITÄTSANFORDERUNGEN (3.2 bis 3.5)
      Mindestens eine pro Abschnitt. Jede mit ID, einem Satz mit "soll", einer Zahl, die man
@@ -199,11 +215,12 @@ Wir nutzen Neon (PostgreSQL) als gehostete Datenbank und sind damit von diesem D
 | -- | ----------- | ----- |
 | NFR-P-01 | Um das Backend vor typischen Programmierfehlern (z. B. Endlosschleifen) zu schützen, bricht das System die Ausführung von eingereichtem Nutzer-Code zwingend nach maximal 5 Sekunden ab und gibt in der Konsole eine Timeout-Warnung aus. | Marco |
 
-### 3.5 Wartbarkeit und Erweiterbarkeit ()
+### 3.5 Wartbarkeit und Erweiterbarkeit (Maintainability and Extensibility)
 
 | ID | Anforderung | Autor |
 | -- | ----------- | ----- |
 | NFR-S-01 | Um die unabhängige Weiterentwicklung im Team zu gewährleisten, müssen 100 % der im Express-Backend implementierten REST-API-Endpunkte (z. B. für Missionsdaten oder Lösungsabgaben) in einer zentralen OpenAPI/Swagger-Spezifikation mit exakten Request- und Response-Formaten dokumentiert sein. | Marco |
+
 
 ### 3.6 Entwurfsrandbedingungen
 
@@ -257,7 +274,8 @@ Das Backend (Express) greift auf die Datenbank bei Neon (PostgreSQL) zu. [Weiter
 
 <!-- Z. B. HTTPS zwischen Frontend und Backend. -->
 
-Das Frontend (Angular) kommuniziert mit dem Backend (Express) über HTTP(S). Lokal laufen das Frontend auf Port 4100 und das Backend auf Port 3100. [Format der Schnittstelle bestätigen, z. B. REST mit JSON]
+Das Frontend (Angular) kommuniziert mit dem Backend (Express) über HTTP(S). Lokal laufen das Frontend auf Port 4100 
+und das Backend auf Port 3100. [Format der Schnittstelle bestätigen, z. B. REST mit JSON]
 
 ### 3.10 Lizenzanforderungen
 
@@ -282,6 +300,12 @@ Das Frontend (Angular) kommuniziert mit dem Backend (Express) über HTTP(S). Lok
 <!-- Z. B. WCAG 2.2 Stufe AA, ein Coding-Standard. -->
 
 […]
+
+### 3.13 Sicherheit (Security)
+| ID | Anforderung | Autor |
+| -- | ----------- | ----- |
+| NFR-SE-01 | Vom Nutzer eingereichter Code führt das System ausschließlich isoliert aus: Außerhalb der Isolation erfolgt bei 3 definierten Zugriffsversuchen (auf Dateisystem, Netztwerk oder Datenbank) kein Zugriff. | Leonie |
+
 
 ## 4 Ergänzende Informationen
 

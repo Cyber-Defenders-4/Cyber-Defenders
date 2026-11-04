@@ -1,0 +1,95 @@
+
+:host { display: block; }
+
+.cd-assistant {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+.cd-mascot {
+  width: 112px;
+  height: 112px;
+  flex: none;
+}
+
+.ln { stroke: var(--color-ink); }
+
+.ln:not([fill]) { fill: none; }
+
+.fl { fill: var(--color-ink); }
+
+.cd-bubble {
+  position: relative;
+  max-width: 300px;
+  margin-bottom: 70px;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-note-paper);
+  color: var(--color-ink);
+  border: 2px solid var(--color-ink);
+  border-radius: var(--radius-bubble);
+  font: 400 19px/24px var(--font-note);
+  box-shadow: 3px 3px 0 #00000033;
+}
+
+.cd-bubble::after {
+  content: "";
+  position: absolute;
+  right: -14px;
+  bottom: 18px;
+  width: 14px;
+  height: 14px;
+  background: var(--color-note-paper);
+  border-right: 2px solid var(--color-ink);
+  border-bottom: 2px solid var(--color-ink);
+  transform: skewY(-35deg);
+}
+
+.cd-options {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.cd-bubble-option {
+  font: 400 14px/18px var(--font-ui);
+  background: var(--color-chrome);
+  color: var(--color-chrome-ink);
+  box-shadow: var(--shadow-bevel-out);
+  padding: 3px 8px;
+  border: 0;
+  text-align: center;
+  cursor: default;
+}
+
+.cd-bubble-option:active { box-shadow: var(--shadow-bevel-in); }
+
+.cd-bubble-option:focus-visible {
+  outline: 1px dotted var(--color-focus);
+  outline-offset: -3px;
+}
+
+.floppy { animation: bob 1.2s steps(2) infinite; }
+
+.eyes {
+  animation: blink 4s steps(1) infinite;
+  transform-origin: 60px 66px;
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes blink {
+  94%, 100% {
+    transform: scaleY(.1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floppy, .eyes {
+    animation: none;
+  }
+}

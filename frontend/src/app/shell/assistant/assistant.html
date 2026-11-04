@@ -1,0 +1,177 @@
+<p>assistant works!</p>
+
+<div class="cd-assistant">
+  @if (message()) {
+    <div class="cd-bubble" role="status" aria-live="polite">
+      {{ message() }}
+      @if (options().length) {
+        <div class="cd-bubble-options">
+          @for (o of options(); track o) {
+            <button type="button"
+                    class="cd-bubble-option"
+                    (click)="picked.emit(o)">
+              {{ o }}
+            </button>
+          }
+        </div>
+      }
+    </div>
+  }
+
+  <svg class="cd-mascot floppy" [class]="'floppy mood-' + mood()"
+       viewBox="0 0 120 120" role="img" aria-label="Floppy, der Assistant">
+    <!-- arms -->
+    @switch (mood()) {
+      @case ('cheer') {
+        <path d="M14 64L4 44M106 64l10-20"
+              class="ln"
+              stroke-width="5"
+              stroke-linecap="round"
+        />
+      }
+      @case ('think') {
+        <path d="M14 70L4 84M106 72l-12 14"
+              class="ln"
+              stroke-width="5"
+              stroke-linecap="round"
+        />
+      }
+      @default {
+        <path d="M14 70L4 84M106 70l10 14"
+              class="ln"
+              stroke-width="5"
+              stroke-linecap="round"
+        />
+      }
+    }
+
+    <!-- body -->
+    <path d="M16 14h80l10 10v88H16z"
+          fill="#2a2f9e"
+          class="ln"
+          stroke-width="4"
+          stroke-linejoin="round"
+    />
+    <rect x="36" y="14"
+          width="46" height="26"
+          fill="#c9c6dc"
+          class="ln"
+          stroke-width="4"
+    />
+    <rect x="64" y="19"
+          width="10" height="16"
+          fill="#2a2f9e"
+    />
+    <rect x="26" y="50"
+          width="68" height="52"
+          rx="3"
+          fill="#fff6dc"
+          class="ln"
+          stroke-width="4"
+    />
+    <circle cx="34" cy="78"
+            r="5"
+            fill="#ffb3a8"
+    />
+    <circle cx="86" cy="78"
+            r="5"
+            fill="#ffb3a8"
+    />
+
+    <!-- eyes -->
+    @switch (mood()) {
+      @case ('think') {
+        <rect x="40"
+              y="65"
+              width="8"
+              height="4"
+              class="fl"
+        />
+        <rect x="73"
+              y="62"
+              width="7"
+              height="9"
+              class="fl"
+        />
+        <path d="M70 55l12-3"
+              class="ln"
+              stroke-width="3"
+        />
+      }
+
+      @case ('happy') {
+        <g class="eyes">
+          <rect x="40"
+                y="62"
+                width="7"
+                height="9"
+                class="fl"
+          />
+          <rect x="73"
+                y="62"
+                width="7"
+                height="9"
+                class="fl"
+          />
+        </g>
+      }
+      @case ('oops') {
+        <path d="M38 60l10 10M48 60l-10 10M72 60l10 10M82 60l-10 10"
+              class="ln"
+              stroke-width="3"
+        />
+      }
+
+      @case ('cheer') {
+        <path d="M38 70l5-7 5 7M72 70l5-7 5 7"
+              class="ln"
+              stroke-width="3"
+        />
+      }
+    }
+
+    <!-- mouth -->
+    @switch (mood()) {
+      @case ('think') {
+        <path d="M54 82h12"
+              class="ln"
+              stroke-width="3"
+        />
+      }
+
+      @case ('happy') {
+        <path d="M52 80q8 7 16 0"
+              class="ln"
+              stroke-width="3"
+        />
+      }
+
+      @case ('oops') {
+        <ellipse cx="60"
+                 cy="83"
+                 rx="5"
+                 ry="6"
+                 class="fl"
+        />
+      }
+
+      @case ('cheer') {
+        <path d="M50 78h20q-2 12-10 12t-10-12z"
+              class="fl"
+        />
+        <path d="M54 85h12"
+              stroke="#ff8a80"
+              stroke-width="3"
+              fill="none"
+        />
+      }
+    }
+
+    <!-- feet -->
+    <path d="M44 112v6M76 112v6"
+          class="ln"
+          stroke-width="5"
+          stroke-linecap="round"
+    />
+  </svg>
+</div>

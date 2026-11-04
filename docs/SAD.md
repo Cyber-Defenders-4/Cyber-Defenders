@@ -141,14 +141,14 @@ Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Sat
 | Stimulus      | Spieler-Code versucht Dateien zu lesen, Netzwerk zu öffnen oder auf die Datenbank zuzugreifen |
 | Artefakt      | Ausführungsumgebung |
 | Umgebung      | Normalbetrieb |
-| Reaktion      | Zugriff auf Dateien, Netzwerk und Datenbank wird verweigert, eine Fehlermeldung in der Konsole ausgegeben und Server sowie Daten anderer Spieler bleiben unberührt |
+| Reaktion      | Zugriff auf Dateien, Netzwerk und Datenbank wird verweigert, eine Fehlermeldung wird in der Konsole ausgegeben und Server sowie Daten anderer Spieler bleiben unberührt |
 | Reaktionsmaß  | 0 erfolgreiche Zugriffe bei 5 definierten Zugriffsversuchen |
 
 Business Value H: Fehlender Schutz führt zu fatalem Datenverlust, Systemmanipulationen und dem sofortigen Stillstand 
 des gesamten Spielbetriebs. 
 
-Technical Risk H: Die Bereitstellung einer performanten und sicheren Sandbox-Umgebung innerhalb der serverlosen 
-Architektur birgt unvorhersehbare Latenzrisiken bei der Code-Ausführung.
+Technical Risk H: Die Bereitstellung einer isolierten Ausführungsumgebung für fremden Code ist für das Team neu, das 
+Hosting der Sandbox ist noch offen und der Erfolg zeigt sich nur durch gezielte Angriffsversuche.
 
 ### 3.2 Einschränkungen
 

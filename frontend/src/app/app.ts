@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Assistant } from './shell/assistant/assistant';
 import { AssistantService } from './shell/assistant/assistant.service';
@@ -10,5 +10,5 @@ import { AssistantService } from './shell/assistant/assistant.service';
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly assistant = signal(AssistantService);
+  protected readonly assistant = inject(AssistantService);
 }

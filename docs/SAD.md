@@ -133,18 +133,22 @@ Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Sat
 
 Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
 
-#### QS-03 [Name]
+#### QS-03 Isolation fremden Codes
 
-| QS-03 [Name]  | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
+| QS-03 Isolation fremden Codes  | *Autor: Leonie* · Verfeinert NFR-SE-01 |
 | ------------- | ---------------------------------------- |
-| Quelle        | [wer oder was löst es aus]               |
-| Stimulus      | [was beim System ankommt]               |
-| Artefakt      | [welcher Teil des Systems betroffen ist] |
-| Umgebung      | [in welchem Zustand das System ist]      |
-| Reaktion      | [was das System tut]                     |
-| Reaktionsmaß  | [die Zahl, an der man den Erfolg misst]  |
+| Quelle        | Spieler, absichtlich oder versehentlich |
+| Stimulus      | Spieler-Code versucht Dateien zu lesen, Netzwerk zu öffnen oder auf die Datenbank zuzugreifen |
+| Artefakt      | Ausführungsumgebung |
+| Umgebung      | Normalbetrieb |
+| Reaktion      | Zugriff auf Dateien, Netzwerk und Datenbank wird verweigert, eine Fehlermeldung in der Konsole ausgegeben und Server sowie Daten anderer Spieler bleiben unberührt |
+| Reaktionsmaß  | 0 erfolgreiche Zugriffe bei 5 definierten Zugriffsversuchen |
 
-Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
+Business Value H: Fehlender Schutz führt zu fatalem Datenverlust, Systemmanipulationen und dem sofortigen Stillstand 
+des gesamten Spielbetriebs. 
+
+Technical Risk H: Die Bereitstellung einer performanten und sicheren Sandbox-Umgebung innerhalb der serverlosen 
+Architektur birgt unvorhersehbare Latenzrisiken bei der Code-Ausführung.
 
 ### 3.2 Einschränkungen
 

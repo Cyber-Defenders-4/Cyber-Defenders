@@ -1,5 +1,11 @@
 
-:host { display: block; }
+:host {
+  display: block;
+  position: fixed;
+  right: var(--space-6);
+  bottom: 40px;
+  z-index: 40;
+}
 
 .cd-assistant {
   display: flex;

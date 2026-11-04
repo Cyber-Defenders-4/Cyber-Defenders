@@ -103,7 +103,7 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 | ----- | ----------- | -------------- | -------------------------------- | :---: | :--: | --------- |
 | QS-01 | [Qualität]  | [Verfeinerung] | [Stimulus] → [Reaktionsmaß]      | [H]   | [L]  | [Vorname] |
 | QS-02 | [Qualität]  | [Verfeinerung] | [Stimulus] → [Reaktionsmaß]      | [H]   | [M]  | [Vorname] |
-| QS-03 | [Qualität]  | [Verfeinerung] | [Stimulus] → [Reaktionsmaß]      | [M]   | [M]  | [Vorname] |
+| QS-03 | Security  | Isolation fremden Codes | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich      | H | H | Leonie |
 
 [Ein bis zwei Sätze: Welches Szenario kommt zuerst und warum? (H, H) kommt vor allem anderen.]
 

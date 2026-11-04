@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Assistant } from './shell/assistant/assistant';
+import { AssistantService } from './shell/assistant/assistant.service';
 
 @Component({
   imports: [RouterOutlet, Assistant],
@@ -9,5 +10,5 @@ import { Assistant } from './shell/assistant/assistant';
   templateUrl: './app.html',
 })
 export class App {
-  protected readonly title = signal('frontend');
+  protected readonly assistant = signal(AssistantService);
 }

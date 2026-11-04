@@ -11,11 +11,12 @@
 
     <div class="right-side">
     </div>
-      <cd-assistant mood="happy"
-                    message="assistant.message()"
+    @if (assistant.visible()) {
+      <cd-assistant [mood]="assistant.mood()"
+                    [message]="assistant.message()"
+                    [options]="assistant.options()"
       />
-
-
+    }
   </div>
 </main>
 

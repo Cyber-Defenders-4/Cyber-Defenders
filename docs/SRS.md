@@ -304,7 +304,7 @@ und das Backend auf Port 3100. [Format der Schnittstelle bestätigen, z. B. REST
 ### 3.13 Sicherheit (Security)
 | ID | Anforderung | Autor |
 | -- | ----------- | ----- |
-| NFR-SE-01 | Vom Nutzer eingereichter Code führt das System ausschließlich isoliert aus: Außerhalb der Isolation erfolgt bei 3 definierten Zugriffsversuchen (auf Dateisystem, Netztwerk oder Datenbank) kein Zugriff. | Leonie |
+| NFR-SE-01 | Vom Nutzer eingereichter Code führt das System ausschließlich isoliert aus: Außerhalb der Isolation erfolgt bei 3 definierten Zugriffsversuchen (auf Dateisystem, Netzwerk oder Datenbank) kein Zugriff. | Leonie |
 
 
 ## 4 Ergänzende Informationen

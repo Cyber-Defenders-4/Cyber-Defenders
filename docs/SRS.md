@@ -15,16 +15,16 @@ SO NUTZT IHR DIESE VORLAGE
   https://cin.ufpe.br/~if682/RUP/webtmpl/templates/req/rup_srs.htm
 -->
 
-| Team | Version | Letzte Änderung |
-| ---- | ------- | --------------- |
-| FMLD-Studios | 0.3 | 15.10.2026 |
+| Team         | Version | Letzte Änderung |
+|--------------|---------|-----------------|
+| FMLD-Studios | 0.3     | 15.10.2026      |
 
-| Autor | GitHub |
-| ----- | ------ |
-| Felix Hagino | [@FelixHagino](https://github.com/FelixHagino) |
-| Marco Daquila | [@MarcoDaquila](https://github.com/MarcoDaquila) |
-| Leonie Röse | [@webdesign19](https://github.com/webdesign19) |
-| Dominik Stengele | [@keckamreck](https://github.com/keckamreck) |
+| Autor            | GitHub                                           |
+|------------------|--------------------------------------------------|
+| Felix Hagino     | [@FelixHagino](https://github.com/FelixHagino)   |
+| Marco Daquila    | [@MarcoDaquila](https://github.com/MarcoDaquila) |
+| Leonie Röse      | [@webdesign19](https://github.com/webdesign19)   |
+| Dominik Stengele | [@keckamreck](https://github.com/keckamreck)     |
 
 Die Git-Historie dieser Datei ist die Änderungshistorie.
 
@@ -59,42 +59,42 @@ sich an unser Team, an den Dozenten in der Rolle des Investors und an alle, die 
 Cyber Defenders ist ein webbasiertes Lernspiel für Studierende und Einsteiger. Spieler wählen eine Mission, lösen darin 
 Rätsel zu Java und IT-Sicherheit in einem Code-Editor und sehen ihren Fortschritt. Der Fortschritt wird dauerhaft gespeichert.
 
-| Im Umfang | Begründung |
-| --------- | ---------- |
-| Missionen anzeigen, auswählen und starten (Fallakte mit Schwierigkeitsgrad, Auftrag und Lernzielen) | Mindestumfang aus unserer Vision: mindestens eine spielbare Mission |
-| Java-Code-Editor mit automatischer Prüfung der Lösung | Teil des Mindestumfangs aus Task 1 [Umfang nach der Entscheidung zum Feedback zu Task 1 anpassen] |
-| Fortschritt, Level und Punkte speichern und einsehen | Mindestumfang aus unserer Vision, die Anwendung muss Daten dauerhaft speichern |
-| Missionen und Rätsel verwalten (neue Missionen anlegen) | In Task 1 als Use Case genannt, wird in späteren Sprints spezifiziert |
+| Im Umfang                                                                                           | Begründung                                                                                        |
+|-----------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------|
+| Missionen anzeigen, auswählen und starten (Fallakte mit Schwierigkeitsgrad, Auftrag und Lernzielen) | Mindestumfang aus unserer Vision: mindestens eine spielbare Mission                               |
+| Java-Code-Editor mit automatischer Prüfung der Lösung                                               | Teil des Mindestumfangs aus Task 1 [Umfang nach der Entscheidung zum Feedback zu Task 1 anpassen] |
+| Fortschritt, Level und Punkte speichern und einsehen                                                | Mindestumfang aus unserer Vision, die Anwendung muss Daten dauerhaft speichern                    |
+| Missionen und Rätsel verwalten (neue Missionen anlegen)                                             | In Task 1 als Use Case genannt, wird in späteren Sprints spezifiziert                             |
 
-| Nicht im Umfang | Begründung |
-| --------------- | ---------- |
-| Rolle auswählen (Cyber-Defender oder White-Hat-Hacker) | Nice-to-have um IT-Sicherheit aus zwei Blickwinkeln lernen, jedoch nicht entscheiden für den allgemeinen Spielablauf |
-| echte Ausführung von Nutzer-Code, noch zu entscheiden (erstmal nur durch Vergleich einer korrekten Lösung) | Aufwand und Sicherheit (abgesicherte Ausführung) |
+| Nicht im Umfang                                                                                            | Begründung                                                                                                           |
+|------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| Rolle auswählen (Cyber-Defender oder White-Hat-Hacker)                                                     | Nice-to-have um IT-Sicherheit aus zwei Blickwinkeln lernen, jedoch nicht entscheiden für den allgemeinen Spielablauf |
+| echte Ausführung von Nutzer-Code, noch zu entscheiden (erstmal nur durch Vergleich einer korrekten Lösung) | Aufwand und Sicherheit (abgesicherte Ausführung)                                                                     |
 
 ### 1.3 Definitionen, Akronyme und Abkürzungen
 
 *Autor: Leonie*
 
-| Begriff | Bedeutung |
-| ------- | --------- |
-| SRS | Software Requirements Specification (Software-Anforderungsspezifikation) |
-| UC | Use Case (Anwendungsfall) |
-| NFR | Nicht-funktionale Anforderung (Qualitätsanforderung oder Randbedingung) |
-| MVP | Minimum Viable Product, die kleinste spielbare Version |
-| Mission | Ein einzelner Spielabschnitt, zum Beispiel „Gehackter Serverraum“, mit Fallakte und Rätseln |
-| Fallakte | Beschreibung einer Mission mit Schwierigkeitsgrad, Auftrag und Lernzielen |
-| Cyber-Defender, (White-Hat-Hacker) | Die beiden wählbaren Rollen, aus deren Sicht der Spieler IT-Sicherheit lernt |
-| Agent | Bezeichnung für den Spieler in unseren User Stories |
+| Begriff                            | Bedeutung                                                                                   |
+|------------------------------------|---------------------------------------------------------------------------------------------|
+| SRS                                | Software Requirements Specification (Software-Anforderungsspezifikation)                    |
+| UC                                 | Use Case (Anwendungsfall)                                                                   |
+| NFR                                | Nicht-funktionale Anforderung (Qualitätsanforderung oder Randbedingung)                     |
+| MVP                                | Minimum Viable Product, die kleinste spielbare Version                                      |
+| Mission                            | Ein einzelner Spielabschnitt, zum Beispiel „Gehackter Serverraum“, mit Fallakte und Rätseln |
+| Fallakte                           | Beschreibung einer Mission mit Schwierigkeitsgrad, Auftrag und Lernzielen                   |
+| Cyber-Defender, (White-Hat-Hacker) | Die beiden wählbaren Rollen, aus deren Sicht der Spieler IT-Sicherheit lernt                |
+| Agent                              | Bezeichnung für den Spieler in unseren User Stories                                         |
 
 ### 1.4 Referenzen
 
 *Autor: Leonie*
 
-| Titel | Link |
-| ----- | ---- |
-| Blog | https://github.com/Cyber-Defenders-4/Cyber-Defenders/discussions |
-| Board | https://github.com/orgs/Cyber-Defenders-4/projects/2/views/1 |
-| Repository | https://github.com/Cyber-Defenders-4/Cyber-Defenders |
+| Titel      | Link                                                             |
+|------------|------------------------------------------------------------------|
+| Blog       | https://github.com/Cyber-Defenders-4/Cyber-Defenders/discussions |
+| Board      | https://github.com/orgs/Cyber-Defenders-4/projects/2/views/1     |
+| Repository | https://github.com/Cyber-Defenders-4/Cyber-Defenders             |
 
 ### 1.5 Überblick
 
@@ -199,26 +199,26 @@ ohne Bewertung. · Stories: #24, Epic #71 · [Spezifikation](use_cases/UC-08_cod
 
 ### 3.2 Benutzbarkeit (Usability)
 
-| ID | Anforderung | Autor |
-| -- | ----------- | ----- |
+| ID       | Anforderung                                                                                                                                                                                                                                                                            | Autor |
+|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
 | NFR-U-01 | Da das Spiel ein altes Betriebssystem simuliert, muss die gesamte Arbeitsansicht (inklusive Code-Editor und Fallakte) bei der definierten Referenzauflösung von 1280 × 720 Pixeln vollständig und ohne horizontales oder vertikales Scrollen des Browser-Hauptfensters bedienbar sein. | Marco |
 
 ### 3.3 Zuverlässigkeit (Reliability)
 
-| ID | Anforderung | Autor |
-| -- | ----------- | ----- |
+| ID       | Anforderung                                                                                                                                                                                                                              | Autor |
+|----------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
 | NFR-R-01 | Das System speichert den Code-Entwurf des Nutzers im Editor (UC-03) alle 10 Sekunden automatisch zwischen, sodass bei einem plötzlichen Schließen des Browsers oder Verbindungsabbruch maximal die Arbeit von 10 Sekunden verloren geht. | Marco |
 
 ### 3.4 Leistung (Performance)
 
-| ID | Anforderung | Autor |
-| -- | ----------- | ----- |
+| ID       | Anforderung                                                                                                                                                                                                                               | Autor |
+|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
 | NFR-P-01 | Um das Backend vor typischen Programmierfehlern (z. B. Endlosschleifen) zu schützen, bricht das System die Ausführung von eingereichtem Nutzer-Code zwingend nach maximal 5 Sekunden ab und gibt in der Konsole eine Timeout-Warnung aus. | Marco |
 
 ### 3.5 Wartbarkeit und Erweiterbarkeit (Maintainability and Extensibility)
 
-| ID | Anforderung | Autor |
-| -- | ----------- | ----- |
+| ID       | Anforderung                                                                                                                                                                                                                                                                                        | Autor |
+|----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
 | NFR-S-01 | Um die unabhängige Weiterentwicklung im Team zu gewährleisten, müssen 100 % der im Express-Backend implementierten REST-API-Endpunkte (z. B. für Missionsdaten oder Lösungsabgaben) in einer zentralen OpenAPI/Swagger-Spezifikation mit exakten Request- und Response-Formaten dokumentiert sein. | Marco |
 
 
@@ -228,12 +228,12 @@ ohne Bewertung. · Stories: #24, Epic #71 · [Spezifikation](use_cases/UC-08_cod
 
 <!-- Feststehende Entscheidungen, nicht pro Funktion gewählt: euer Stack. -->
 
-| ID | Randbedingung |
-| -- | ------------- |
+| ID    | Randbedingung                                     |
+|-------|---------------------------------------------------|
 | DC-01 | Frontend: TypeScript mit Angular und Tailwind CSS |
-| DC-02 | Backend: TypeScript mit Express |
-| DC-03 | Datenbank: Neon (PostgreSQL) |
-| DC-04 | Bereitstellung: Vercel |
+| DC-02 | Backend: TypeScript mit Express                   |
+| DC-03 | Datenbank: Neon (PostgreSQL)                      |
+| DC-04 | Bereitstellung: Vercel                            |
 
 ### 3.7 Anforderungen an Online-Benutzerdokumentation und Hilfesystem
 

@@ -121,18 +121,27 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 
 Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
 
-#### QS-02 [Name]
+#### QS-02 Entwurf nach Abbruch
 
-| QS-02 [Name] | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
-|--------------|------------------------------------------|
-| Quelle       | [wer oder was löst es aus]               |
-| Stimulus     | [was beim System ankommt]                |
-| Artefakt     | [welcher Teil des Systems betroffen ist] |
-| Umgebung     | [in welchem Zustand das System ist]      |
-| Reaktion     | [was das System tut]                     |
-| Reaktionsmaß | [die Zahl, an der man den Erfolg misst]  |
+| QS-02 Entwurf nach Abbruch | *Autor: Marco* · Verfeinert NFR-R-01 |
 
-Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
+| -------------------------- | ---------------------------------------- |
+
+| Quelle | Ein Spieler (Student) |
+
+| Stimulus | Schließt versehentlich den Browser-Tab oder verliert die Verbindung während der Code-Eingabe |
+
+| Artefakt | Arbeitsansicht-UI und Persistenz |
+
+| Umgebung | Normalbetrieb während der Bearbeitung einer Mission |
+
+| Reaktion | Das System speichert Entwürfe periodisch im Hintergrund und stellt den letzten Stand beim erneuten Öffnen der Fallakte nahtlos wieder her |
+
+| Reaktionsmaß | Maximal 30 Sekunden getippter Code gehen verloren; 100 % der gespeicherten Entwürfe werden beim Wiederöffnen korrekt in den Editor geladen |
+
+
+
+Business Value H: Ein Verlust von getipptem Code frustriert Spieler massiv und zerstört den Spielfluss. Technical Risk M: Die Synchronisation zwischen periodischem Autosave im Frontend und der Persistenz über die API erfordert eine saubere Debounce- und Fehlerbehandlungs-Logik.
 
 #### QS-03 Isolation fremden Codes
 

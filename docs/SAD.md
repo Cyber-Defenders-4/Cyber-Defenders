@@ -15,9 +15,9 @@ ANLEITUNG ZUR VERWENDUNG DIESER VORLAGE
   https://cin.ufpe.br/~if682/RUP/webtmpl/templates/a_and_d/rup_sad.htm
 -->
 
-| Team | Version | Letzte Änderung |
-| ---- | ------- | --------------- |
-| FMLD Studios | 0.1 | 01.11.2026 |
+| Team         | Version | Letzte Änderung |
+|--------------|---------|-----------------|
+| FMLD Studios | 0.1     | 01.11.2026      |
 
 Die Versionshistorie dieser Datei wird durch die Git-Historie abgebildet.
 
@@ -53,24 +53,24 @@ Dieses Dokument deckt die Architektur der gesamten Cyber Defenders-Anwendung ab.
 
 *Autor: Marco*
 
-| Begriff | Bedeutung |
-| ------- | --------- |
-| SAD | Softwarearchitekturdokument (Software Architecture Document) |
-| SRS | Anforderungsspezifikation (Software Requirements Specification) |
-| UCR | Anwendungsfallrealisierung (Use-Case Realization) |
+| Begriff | Bedeutung                                                                                 |
+|---------|-------------------------------------------------------------------------------------------|
+| SAD     | Softwarearchitekturdokument (Software Architecture Document)                              |
+| SRS     | Anforderungsspezifikation (Software Requirements Specification)                           |
+| UCR     | Anwendungsfallrealisierung (Use-Case Realization)                                         |
 | Sandbox | Isolierte Ausführungsumgebung (Docker) für nicht vertrauenswürdigen Java-Code der Spieler |
-| CDN | Content Delivery Network (Vercel) |
+| CDN     | Content Delivery Network (Vercel)                                                         |
 
 ### 1.4 Referenzen
 
 *Autor: Marco*
 
-| Titel | Link |
-| ----- | ---- |
-| SRS | [SRS.md](SRS.md) |
-| Domänenmodell | [domain_model.md](domain_model.md) |
-| Repository | [https://github.com/Cyber-Defenders-4/Cyber-Defenders](https://github.com/Cyber-Defenders-4/Cyber-Defenders) |
-| Projektboard | [https://github.com/orgs/Cyber-Defenders-4/projects/2](https://github.com/orgs/Cyber-Defenders-4/projects/2) |
+| Titel         | Link                                                                                                         |
+|---------------|--------------------------------------------------------------------------------------------------------------|
+| SRS           | [SRS.md](SRS.md)                                                                                             |
+| Domänenmodell | [domain_model.md](domain_model.md)                                                                           |
+| Repository    | [https://github.com/Cyber-Defenders-4/Cyber-Defenders](https://github.com/Cyber-Defenders-4/Cyber-Defenders) |
+| Projektboard  | [https://github.com/orgs/Cyber-Defenders-4/projects/2](https://github.com/orgs/Cyber-Defenders-4/projects/2) |
 
 ### 1.5 Überblick
 
@@ -80,14 +80,14 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 
 *Autor: Marco*
 
-| Sicht | Welche Frage beantwortet sie? | Diagramm | Abschnitt |
-| ----- | ---------------------------- | -------- | --------- |
-| Anwendungsfallsicht | Was macht das System und für wen? | Anwendungsfalldiagramm, Anwendungsfallrealisierungen | 4 |
-| Logische Sicht | Welche Klassen gibt es und wie sind sie miteinander verbunden? | Domänenmodell, Design-Klassen | 5 |
-| Prozesssicht | Was wird gleichzeitig ausgeführt? | Kurzbeschreibung | 6 |
-| Verteilungssicht | Was läuft wo und wie ist es verbunden? | Verteilungsdiagramm | 7 |
-| Implementierungssicht | Aus welchen Teilen besteht der Code? | Komponentendiagramm | 8 |
-| Datensicht | Wie werden persistente Daten gespeichert? | Datenbankschema | 9 |
+| Sicht                 | Welche Frage beantwortet sie?                                  | Diagramm                                             | Abschnitt |
+|-----------------------|----------------------------------------------------------------|------------------------------------------------------|-----------|
+| Anwendungsfallsicht   | Was macht das System und für wen?                              | Anwendungsfalldiagramm, Anwendungsfallrealisierungen | 4         |
+| Logische Sicht        | Welche Klassen gibt es und wie sind sie miteinander verbunden? | Domänenmodell, Design-Klassen                        | 5         |
+| Prozesssicht          | Was wird gleichzeitig ausgeführt?                              | Kurzbeschreibung                                     | 6         |
+| Verteilungssicht      | Was läuft wo und wie ist es verbunden?                         | Verteilungsdiagramm                                  | 7         |
+| Implementierungssicht | Aus welchen Teilen besteht der Code?                           | Komponentendiagramm                                  | 8         |
+| Datensicht            | Wie werden persistente Daten gespeichert?                      | Datenbankschema                                      | 9         |
 
 ## 3 Architekturziele und Einschränkungen
 
@@ -99,50 +99,51 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 
 *Autor: [Vorname]*
 
-| ID    | Qualität    | Verfeinerung   | Szenario, kurz                   | Value | Risk | Autor     |
-| ----- | ----------- | -------------- | -------------------------------- | :---: | :--: | --------- |
-| QS-01 | [Qualität]  | [Verfeinerung] | [Stimulus] → [Reaktionsmaß]      | [H]   | [L]  | [Vorname] |
-| QS-02 | [Qualität]  | [Verfeinerung] | [Stimulus] → [Reaktionsmaß]      | [H]   | [M]  | [Vorname] |
-| QS-03 | Security  | Isolation fremden Codes | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich      | H | H | Leonie |
+| ID    | Qualität   | Verfeinerung            | Szenario, kurz                                                                              | Value | Risk | Autor     |
+|-------|------------|-------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|-----------|
+| QS-03 | Security   | Isolation fremden Codes | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie    |
+| QS-01 | [Qualität] | [Verfeinerung]          | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [L]  | [Vorname] |
+| QS-02 | [Qualität] | [Verfeinerung]          | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [M]  | [Vorname] |
+
 
 [Ein bis zwei Sätze: Welches Szenario kommt zuerst und warum? (H, H) kommt vor allem anderen.]
 
 #### QS-01 [Name]
 
-| QS-01 [Name]  | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
-| ------------- | ---------------------------------------- |
-| Quelle        | [wer oder was löst es aus]               |
-| Stimulus      | [was beim System ankommt]               |
-| Artefakt      | [welcher Teil des Systems betroffen ist] |
-| Umgebung      | [in welchem Zustand das System ist]      |
-| Reaktion      | [was das System tut]                     |
-| Reaktionsmaß  | [die Zahl, an der man den Erfolg misst]  |
+| QS-01 [Name] | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
+|--------------|------------------------------------------|
+| Quelle       | [wer oder was löst es aus]               |
+| Stimulus     | [was beim System ankommt]                |
+| Artefakt     | [welcher Teil des Systems betroffen ist] |
+| Umgebung     | [in welchem Zustand das System ist]      |
+| Reaktion     | [was das System tut]                     |
+| Reaktionsmaß | [die Zahl, an der man den Erfolg misst]  |
 
 Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
 
 #### QS-02 [Name]
 
-| QS-02 [Name]  | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
-| ------------- | ---------------------------------------- |
-| Quelle        | [wer oder was löst es aus]               |
-| Stimulus      | [was beim System ankommt]               |
-| Artefakt      | [welcher Teil des Systems betroffen ist] |
-| Umgebung      | [in welchem Zustand das System ist]      |
-| Reaktion      | [was das System tut]                     |
-| Reaktionsmaß  | [die Zahl, an der man den Erfolg misst]  |
+| QS-02 [Name] | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
+|--------------|------------------------------------------|
+| Quelle       | [wer oder was löst es aus]               |
+| Stimulus     | [was beim System ankommt]                |
+| Artefakt     | [welcher Teil des Systems betroffen ist] |
+| Umgebung     | [in welchem Zustand das System ist]      |
+| Reaktion     | [was das System tut]                     |
+| Reaktionsmaß | [die Zahl, an der man den Erfolg misst]  |
 
 Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
 
 #### QS-03 Isolation fremden Codes
 
-| QS-03 Isolation fremden Codes  | *Autor: Leonie* · Verfeinert NFR-SE-01 |
-| ------------- | ---------------------------------------- |
-| Quelle        | Spieler, absichtlich oder versehentlich |
-| Stimulus      | Spieler-Code versucht Dateien zu lesen, Netzwerk zu öffnen oder auf die Datenbank zuzugreifen |
-| Artefakt      | Ausführungsumgebung |
-| Umgebung      | Normalbetrieb |
-| Reaktion      | Zugriff auf Dateien, Netzwerk und Datenbank wird verweigert, eine Fehlermeldung wird in der Konsole ausgegeben und Server sowie Daten anderer Spieler bleiben unberührt |
-| Reaktionsmaß  | 0 erfolgreiche Zugriffe bei 5 definierten Zugriffsversuchen |
+| QS-03 Isolation fremden Codes | *Autor: Leonie* · Verfeinert NFR-SE-01                                                                                                                                  |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Quelle                        | Spieler, absichtlich oder versehentlich                                                                                                                                 |
+| Stimulus                      | Spieler-Code versucht Dateien zu lesen, Netzwerk zu öffnen oder auf die Datenbank zuzugreifen                                                                           |
+| Artefakt                      | Ausführungsumgebung                                                                                                                                                     |
+| Umgebung                      | Normalbetrieb                                                                                                                                                           |
+| Reaktion                      | Zugriff auf Dateien, Netzwerk und Datenbank wird verweigert, eine Fehlermeldung wird in der Konsole ausgegeben und Server sowie Daten anderer Spieler bleiben unberührt |
+| Reaktionsmaß                  | 0 erfolgreiche Zugriffe bei 5 definierten Zugriffsversuchen                                                                                                             |
 
 Business Value H: Fehlender Schutz führt zu fatalem Datenverlust, Systemmanipulationen und dem sofortigen Stillstand 
 des gesamten Spielbetriebs. 
@@ -154,11 +155,11 @@ Hosting der Sandbox ist noch offen und der Erfolg zeigt sich nur durch gezielte 
 
 *Autor: [Vorname]*
 
-| ID   | Art            | Einschränkung                                                  | Was bedeutet das für unsere Architektur? |
-| ---- | -------------- | -------------------------------------------------------------- | ---------------------------------------- |
-| C-01 | Technisch      | [unser Stack, siehe [SRS 3.6](SRS.md#36-entwurfsrandbedingungen)] | [Konsequenz]                          |
-| C-02 | Organisatorisch | [Teamgröße, Zeit]                                             | [Konsequenz]                             |
-| C-03 | [Art]          | [Einschränkung]                                                | [Konsequenz]                             |
+| ID   | Art             | Einschränkung                                                     | Was bedeutet das für unsere Architektur? |
+|------|-----------------|-------------------------------------------------------------------|------------------------------------------|
+| C-01 | Technisch       | [unser Stack, siehe [SRS 3.6](SRS.md#36-entwurfsrandbedingungen)] | [Konsequenz]                             |
+| C-02 | Organisatorisch | [Teamgröße, Zeit]                                                 | [Konsequenz]                             |
+| C-03 | [Art]           | [Einschränkung]                                                   | [Konsequenz]                             |
 
 
 ## 4 Use-case view
@@ -169,16 +170,16 @@ Das Use-Case-Diagramm der gesamten Anwendung befindet sich in [SRS 2.2](SRS.md#2
 
 ### 4.1 Use-case realizations
 
-| Use case | Realization | Author |
-| --- | --- | --- |
-| [UC-01 Mission auswählen](use_cases/UC-01_mission-auswaehlen.md) | [UCR-01](use_case_realizations/UCR-01_mission_auswaehlen.md) | Dominik |
-| [UC-02 Fallakte lesen](use_cases/UC-02_fallakte-lesen.md) | [UCR-02](use_case_realizations/UCR-02_Fallakte_lesen.md) | Marco |
-| [UC-03 Lösung im Editor schreiben](use_cases/UC-03_loesung-schreiben.md) | [UCR-03](use_case_realizations/UCR-03_Lösung_im_Editor_schreiben.md) | Marco |
-| [UC-04 Lösung prüfen lassen](use_cases/UC-04_loesung-pruefen.md) | [UCR-04](use_case_realizations/UCR-04_loesung_pruefen.md) | Felix |
-| [UC-05 Fortschritt speichern](use_cases/UC-05_fortschritt-speichern.md) | [UCR-05](use_case_realizations/UCR-05_fortschritt_speichern.md) | Felix |
-| [UC-06 Fortschritt ansehen](use_cases/UC-06_fortschritt-ansehen.md) | [UCR-06](use_case_realizations/UCR-06_fortschritt_ansehen.md) | Leonie |
-| [UC-07 Hinweis anfordern](use_cases/UC-07_hinweis-anfordern.md) | [UCR-07](use_case_realizations/UCR-07_hinweis_anfordern.md) | Leonie |
-| [UC-08 Code ausführen](use_cases/UC-08_code-ausfuehren.md) | [UCR-08](use_case_realizations/UCR-08_code_ausfuehren.md) | Leonie |
+| Use case                                                                 | Realization                                                          | Author  |
+|--------------------------------------------------------------------------|----------------------------------------------------------------------|---------|
+| [UC-01 Mission auswählen](use_cases/UC-01_mission-auswaehlen.md)         | [UCR-01](use_case_realizations/UCR-01_mission_auswaehlen.md)         | Dominik |
+| [UC-02 Fallakte lesen](use_cases/UC-02_fallakte-lesen.md)                | [UCR-02](use_case_realizations/UCR-02_Fallakte_lesen.md)             | Marco   |
+| [UC-03 Lösung im Editor schreiben](use_cases/UC-03_loesung-schreiben.md) | [UCR-03](use_case_realizations/UCR-03_Lösung_im_Editor_schreiben.md) | Marco   |
+| [UC-04 Lösung prüfen lassen](use_cases/UC-04_loesung-pruefen.md)         | [UCR-04](use_case_realizations/UCR-04_loesung_pruefen.md)            | Felix   |
+| [UC-05 Fortschritt speichern](use_cases/UC-05_fortschritt-speichern.md)  | [UCR-05](use_case_realizations/UCR-05_fortschritt_speichern.md)      | Felix   |
+| [UC-06 Fortschritt ansehen](use_cases/UC-06_fortschritt-ansehen.md)      | [UCR-06](use_case_realizations/UCR-06_fortschritt_ansehen.md)        | Leonie  |
+| [UC-07 Hinweis anfordern](use_cases/UC-07_hinweis-anfordern.md)          | [UCR-07](use_case_realizations/UCR-07_hinweis_anfordern.md)          | Leonie  |
+| [UC-08 Code ausführen](use_cases/UC-08_code-ausfuehren.md)               | [UCR-08](use_case_realizations/UCR-08_code_ausfuehren.md)            | Leonie  |
 
 ## 5 Logische Sicht
 
@@ -201,16 +202,16 @@ Das Domänenmodell befindet sich in [domain_model.md](domain_model.md). Es zeigt
 
 Die Entwurfsklassen jedes Anwendungsfalls stehen in Abschnitt 2.5 der Realisierung, mit Klassendiagramm und Sequenzdiagramm:
 
-| Realisierung | Wichtigste Entwurfsklassen |
-| ------------ | -------------------------- |
-| [UCR-01](use_case_realizations/UCR-01_mission_auswaehlen.md) | MissionOverviewComponent, MissionService, MissionRepository, ProgressRepository |
-| [UCR-02](use_case_realizations/UCR-02_Fallakte_lesen.md) | CaseFileComponent, WorkspaceComponent, MissionService, EvidenceRepository |
-| [UCR-03](use_case_realizations/UCR-03_L%C3%B6sung_im_Editor_schreiben.md) | CodeEditorComponent, DraftService, DraftRepository |
-| [UCR-04](use_case_realizations/UCR-04_loesung_pruefen.md) | SubmissionService, CodeRunner, SandboxRunner, TestCaseRepository |
-| [UCR-05](use_case_realizations/UCR-05_fortschritt_speichern.md) | CaseSolvedDialogComponent, ProgressService, PlayerRepository, RankRepository |
-| [UCR-06](use_case_realizations/UCR-06_fortschritt_ansehen.md) | ProgressOverviewComponent, ProgressService, AchievementRepository |
-| [UCR-07](use_case_realizations/UCR-07_hinweis_anfordern.md) | CodeEditorComponent, HintService, HintRepository |
-| [UCR-08](use_case_realizations/UCR-08_code_ausfuehren.md) | ConsoleComponent, RunService, CodeRunner, SandboxRunner |
+| Realisierung                                                              | Wichtigste Entwurfsklassen                                                      |
+|---------------------------------------------------------------------------|---------------------------------------------------------------------------------|
+| [UCR-01](use_case_realizations/UCR-01_mission_auswaehlen.md)              | MissionOverviewComponent, MissionService, MissionRepository, ProgressRepository |
+| [UCR-02](use_case_realizations/UCR-02_Fallakte_lesen.md)                  | CaseFileComponent, WorkspaceComponent, MissionService, EvidenceRepository       |
+| [UCR-03](use_case_realizations/UCR-03_L%C3%B6sung_im_Editor_schreiben.md) | CodeEditorComponent, DraftService, DraftRepository                              |
+| [UCR-04](use_case_realizations/UCR-04_loesung_pruefen.md)                 | SubmissionService, CodeRunner, SandboxRunner, TestCaseRepository                |
+| [UCR-05](use_case_realizations/UCR-05_fortschritt_speichern.md)           | CaseSolvedDialogComponent, ProgressService, PlayerRepository, RankRepository    |
+| [UCR-06](use_case_realizations/UCR-06_fortschritt_ansehen.md)             | ProgressOverviewComponent, ProgressService, AchievementRepository               |
+| [UCR-07](use_case_realizations/UCR-07_hinweis_anfordern.md)               | CodeEditorComponent, HintService, HintRepository                                |
+| [UCR-08](use_case_realizations/UCR-08_code_ausfuehren.md)                 | ConsoleComponent, RunService, CodeRunner, SandboxRunner                         |
 
 ## 6 Process view
 
@@ -233,13 +234,13 @@ Das Verteilungsdiagramm zeigt den geplanten Deployment-Betrieb für die Abschlus
 
 ![Verteilungsdiagramm](diagrams/deployment.png)
 
-| Node | What runs there? | Connected to |
-| ------ | --------------- | ------------- |
-| Rechner des Spielers (Webbrowser) | Angular-App | Vercel CDN: HTTPS; Backend: HTTPS (REST, JSON) |
-| Vercel (Static Hosting/CDN) | Frontend-Build (index.html, JavaScript, CSS) | Browser: HTTPS |
-| Vercel (Node.js-Laufzeit) | Backend (Express) | Browser: HTTPS; Neon: TCP 5432 (TLS); Ausführungsserver: HTTPS |
-| Neon | PostgreSQL-Datenbank (cyber_defenders) | Backend: TCP 5432 (TLS) |
-| Geplanter Ausführungsserver (Docker, Hosting noch offen) | Java-Sandbox (JDK, Zeitlimit 5 s) | Backend: HTTPS |
+| Node                                                     | What runs there?                             | Connected to                                                   |
+|----------------------------------------------------------|----------------------------------------------|----------------------------------------------------------------|
+| Rechner des Spielers (Webbrowser)                        | Angular-App                                  | Vercel CDN: HTTPS; Backend: HTTPS (REST, JSON)                 |
+| Vercel (Static Hosting/CDN)                              | Frontend-Build (index.html, JavaScript, CSS) | Browser: HTTPS                                                 |
+| Vercel (Node.js-Laufzeit)                                | Backend (Express)                            | Browser: HTTPS; Neon: TCP 5432 (TLS); Ausführungsserver: HTTPS |
+| Neon                                                     | PostgreSQL-Datenbank (cyber_defenders)       | Backend: TCP 5432 (TLS)                                        |
+| Geplanter Ausführungsserver (Docker, Hosting noch offen) | Java-Sandbox (JDK, Zeitlimit 5 s)            | Backend: HTTPS                                                 |
 
 Frontend und Backend sollen bei Vercel betrieben werden (SRS 3.6, DC-04). 
 Die PostgreSQL-Datenbank wird als separater Knoten bei Neon betrieben (DC-03). 
@@ -264,18 +265,18 @@ Die Datenbank und die Sandbox sind noch nicht eingerichtet und angebunden.
 
 ![Komponentendiagramm](diagrams/components.png)
 
-| Komponente | Verantwortlichkeit | Klassen (Aufgabe 5) |
-| ---------- | ------------------ | ------------------- |
-| Missionen-UI | Missionsübersicht und Fallakte anzeigen | MissionOverviewComponent, CaseFileComponent |
-| Arbeitsansicht-UI | Code-Editor, Konsole, Hinweise und Dialog „Fall gelöst“ | WorkspaceComponent, CodeEditorComponent, ConsoleComponent, CaseSolvedDialogComponent |
-| Fortschritt-UI | Fortschritt, Rang und Erfolge anzeigen | ProgressOverviewComponent |
-| API-Client | Ruft die REST-API des Backends auf | MissionApiService, DraftApiService, SubmissionApiService, RunApiService, HintApiService, ProgressApiService |
-| REST-API | Nimmt HTTP-Anfragen an und gibt JSON zurück | MissionController, DraftController, SubmissionController, RunController, HintController, ProgressController |
-| Spiellogik | Fachliche Abläufe: Missionsstatus, Prüfung, XP und Rang, Hinweise | MissionService, DraftService, SubmissionService, RunService, HintService, ProgressService |
-| Persistenz | Liest und schreibt die Daten in der Datenbank | MissionRepository, EvidenceRepository, DraftRepository, TestCaseRepository, HintRepository, ProgressRepository, PlayerRepository, RankRepository, AchievementRepository |
-| Ausführungs-Adapter | Schickt Code an die Sandbox und liefert das Ergebnis | CodeRunner (Schnittstelle), SandboxRunner |
-| Neon PostgreSQL | Speichert Missionen, Spieler und Fortschritt | — (externer Dienst) |
-| Ausführungsumgebung | Übersetzt und führt Java-Code isoliert aus, höchstens 5 s | — (externer Dienst) |
+| Komponente          | Verantwortlichkeit                                                | Klassen (Aufgabe 5)                                                                                                                                                     |
+|---------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missionen-UI        | Missionsübersicht und Fallakte anzeigen                           | MissionOverviewComponent, CaseFileComponent                                                                                                                             |
+| Arbeitsansicht-UI   | Code-Editor, Konsole, Hinweise und Dialog „Fall gelöst“           | WorkspaceComponent, CodeEditorComponent, ConsoleComponent, CaseSolvedDialogComponent                                                                                    |
+| Fortschritt-UI      | Fortschritt, Rang und Erfolge anzeigen                            | ProgressOverviewComponent                                                                                                                                               |
+| API-Client          | Ruft die REST-API des Backends auf                                | MissionApiService, DraftApiService, SubmissionApiService, RunApiService, HintApiService, ProgressApiService                                                             |
+| REST-API            | Nimmt HTTP-Anfragen an und gibt JSON zurück                       | MissionController, DraftController, SubmissionController, RunController, HintController, ProgressController                                                             |
+| Spiellogik          | Fachliche Abläufe: Missionsstatus, Prüfung, XP und Rang, Hinweise | MissionService, DraftService, SubmissionService, RunService, HintService, ProgressService                                                                               |
+| Persistenz          | Liest und schreibt die Daten in der Datenbank                     | MissionRepository, EvidenceRepository, DraftRepository, TestCaseRepository, HintRepository, ProgressRepository, PlayerRepository, RankRepository, AchievementRepository |
+| Ausführungs-Adapter | Schickt Code an die Sandbox und liefert das Ergebnis              | CodeRunner (Schnittstelle), SandboxRunner                                                                                                                               |
+| Neon PostgreSQL     | Speichert Missionen, Spieler und Fortschritt                      | — (externer Dienst)                                                                                                                                                     |
+| Ausführungsumgebung | Übersetzt und führt Java-Code isoliert aus, höchstens 5 s         | — (externer Dienst)                                                                                                                                                     |
 
 Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über die Persistenz und die Sandbox nur über die Schnittstelle `CodeRunner`. So lässt sich die Sandbox austauschen, ohne die Spiellogik zu ändern.
 

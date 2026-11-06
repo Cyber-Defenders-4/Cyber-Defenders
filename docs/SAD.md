@@ -108,18 +108,20 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 
 [Ein bis zwei Sätze: Welches Szenario kommt zuerst und warum? (H, H) kommt vor allem anderen.]
 
-#### QS-01 [Name]
+#### QS-01 Endlosschleife abbrechen
 
-| QS-01 [Name] | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
-|--------------|------------------------------------------|
-| Quelle       | [wer oder was löst es aus]               |
-| Stimulus     | [was beim System ankommt]                |
-| Artefakt     | [welcher Teil des Systems betroffen ist] |
-| Umgebung     | [in welchem Zustand das System ist]      |
-| Reaktion     | [was das System tut]                     |
-| Reaktionsmaß | [die Zahl, an der man den Erfolg misst]  |
+| QS-01 Endlosschleife abbrechen | *Autor: Dominik* · Verfeinert NFR-P-01                                                                                     |
+|--------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| Quelle                         | Ein Spieler                                                                                                                |
+| Stimulus                       | Führt Code mit einer Endlosschleife aus oder reicht ihn ein                                                                |
+| Artefakt                       | Ausführungs-Adapter und Ausführungsumgebung                                                                                |
+| Umgebung                       | Normalbetrieb, bis zu 21 Spieler gleichzeitig online                                                                       |
+| Reaktion                       | Bricht die Ausführung ab und gibt eine Timeout-Warnung in der Konsole aus; das Backend bedient die anderen Spieler weiter |
+| Reaktionsmaß                   | Abbruch nach höchstens 5 s                                                                                                 |
 
-Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
+Business Value H: Ohne Abbruch blockiert ein einziger Fehler im Spieler-Code das Backend für alle Spieler.
+Technical Risk M: Ein Zeitlimit ist technisch Standard, hängt aber an der Ausführungsumgebung aus QS-03, deren Hosting
+noch offen ist.
 
 #### QS-02 [Name]
 

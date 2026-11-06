@@ -65,10 +65,10 @@ Dieses Dokument deckt die Architektur der gesamten Cyber Defenders-Anwendung ab.
 
 *Autor: Marco*
 
-| Titel         | Link                                                                                                         |
-|---------------|--------------------------------------------------------------------------------------------------------------|
-| SRS           | [SRS.md](SRS.md)                                                                                             |
-| Domänenmodell | [domain_model.md](domain_model.md)                                                                           |
+| Titel         | Link                                                                         |
+|---------------|------------------------------------------------------------------------------|
+| SRS           | [SRS.md](SRS.md)                                                             |
+| Domänenmodell | [domain_model.md](domain_model.md)                                           |
 | Repository    | [https://github.com/Cyber-Defenders-4/Cyber-Defenders](https://github.com/Cyber-Defenders-4/Cyber-Defenders) |
 | Projektboard  | [https://github.com/orgs/Cyber-Defenders-4/projects/2](https://github.com/orgs/Cyber-Defenders-4/projects/2) |
 
@@ -99,11 +99,11 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 
 *Autor: [Vorname]*
 
-| ID    | Qualität   | Verfeinerung            | Szenario, kurz                                                                              | Value | Risk | Autor     |
-|-------|------------|-------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|-----------|
-| QS-03 | Security   | Isolation fremden Codes | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie    |
-| QS-01 | [Qualität] | [Verfeinerung]          | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [L]  | [Vorname] |
-| QS-02 | [Qualität] | [Verfeinerung]          | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [M]  | [Vorname] |
+| ID    | Qualität        | Verfeinerung           | Szenario, kurz                                                                              | Value | Risk | Autor     |
+|-------|-----------------|------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|-----------|
+| QS-03 | Security        | Isolation fremden Codes| Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie    |
+| QS-01 | [Qualität]      | [Verfeinerung]         | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [L]  | [Vorname] |
+| QS-02 | Zuverlässigkeit | Datenwiederherstellung | Tab schließt oder Verbindung bricht ab → Entwurf bis auf max. 10 s wiederhergestellt        |   H   |  M   | Marco     |
 
 
 [Ein bis zwei Sätze: Welches Szenario kommt zuerst und warum? (H, H) kommt vor allem anderen.]
@@ -124,24 +124,17 @@ Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Sat
 #### QS-02 Entwurf nach Abbruch
 
 | QS-02 Entwurf nach Abbruch | *Autor: Marco* · Verfeinert NFR-R-01 |
-
 | -------------------------- | ---------------------------------------- |
-
 | Quelle | Ein Spieler (Student) |
-
 | Stimulus | Schließt versehentlich den Browser-Tab oder verliert die Verbindung während der Code-Eingabe |
-
 | Artefakt | Arbeitsansicht-UI und Persistenz |
-
 | Umgebung | Normalbetrieb während der Bearbeitung einer Mission |
-
 | Reaktion | Das System speichert Entwürfe periodisch im Hintergrund und stellt den letzten Stand beim erneuten Öffnen der Fallakte nahtlos wieder her |
+| Reaktionsmaß | Maximal 10 Sekunden getippter Code gehen verloren; 100 % der gespeicherten Entwürfe werden beim Wiederöffnen korrekt in den Editor geladen |
 
-| Reaktionsmaß | Maximal 30 Sekunden getippter Code gehen verloren; 100 % der gespeicherten Entwürfe werden beim Wiederöffnen korrekt in den Editor geladen |
+Business Value H: Ein Verlust von getipptem Code frustriert Spieler massiv und zerstört den Spielfluss. 
 
-
-
-Business Value H: Ein Verlust von getipptem Code frustriert Spieler massiv und zerstört den Spielfluss. Technical Risk M: Die Synchronisation zwischen periodischem Autosave im Frontend und der Persistenz über die API erfordert eine saubere Debounce- und Fehlerbehandlungs-Logik.
+Technical Risk M: Die Synchronisation zwischen periodischem Autosave im Frontend und der Persistenz über die API erfordert eine saubere Debounce- und Fehlerbehandlungs-Logik.
 
 #### QS-03 Isolation fremden Codes
 
@@ -274,18 +267,18 @@ Die Datenbank und die Sandbox sind noch nicht eingerichtet und angebunden.
 
 ![Komponentendiagramm](diagrams/components.png)
 
-| Komponente          | Verantwortlichkeit                                                | Klassen (Aufgabe 5)                                                                                                                                                     |
-|---------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missionen-UI        | Missionsübersicht und Fallakte anzeigen                           | MissionOverviewComponent, CaseFileComponent                                                                                                                             |
-| Arbeitsansicht-UI   | Code-Editor, Konsole, Hinweise und Dialog „Fall gelöst“           | WorkspaceComponent, CodeEditorComponent, ConsoleComponent, CaseSolvedDialogComponent                                                                                    |
-| Fortschritt-UI      | Fortschritt, Rang und Erfolge anzeigen                            | ProgressOverviewComponent                                                                                                                                               |
-| API-Client          | Ruft die REST-API des Backends auf                                | MissionApiService, DraftApiService, SubmissionApiService, RunApiService, HintApiService, ProgressApiService                                                             |
-| REST-API            | Nimmt HTTP-Anfragen an und gibt JSON zurück                       | MissionController, DraftController, SubmissionController, RunController, HintController, ProgressController                                                             |
-| Spiellogik          | Fachliche Abläufe: Missionsstatus, Prüfung, XP und Rang, Hinweise | MissionService, DraftService, SubmissionService, RunService, HintService, ProgressService                                                                               |
+| Komponente          | Verantwortlichkeit                                                | Klassen (Aufgabe 5)                                                                                                                     |
+|---------------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Missionen-UI        | Missionsübersicht und Fallakte anzeigen                           | MissionOverviewComponent, CaseFileComponent                                                                                             |
+| Arbeitsansicht-UI   | Code-Editor, Konsole, Hinweise und Dialog „Fall gelöst“           | WorkspaceComponent, CodeEditorComponent, ConsoleComponent, CaseSolvedDialogComponent                                                    |
+| Fortschritt-UI      | Fortschritt, Rang und Erfolge anzeigen                            | ProgressOverviewComponent                                                                                                               |
+| API-Client          | Ruft die REST-API des Backends auf                                | MissionApiService, DraftApiService, SubmissionApiService, RunApiService, HintApiService, ProgressApiService                             |
+| REST-API            | Nimmt HTTP-Anfragen an und gibt JSON zurück                       | MissionController, DraftController, SubmissionController, RunController, HintController, ProgressController                             |
+| Spiellogik          | Fachliche Abläufe: Missionsstatus, Prüfung, XP und Rang, Hinweise | MissionService, DraftService, SubmissionService, RunService, HintService, ProgressService                                               |
 | Persistenz          | Liest und schreibt die Daten in der Datenbank                     | MissionRepository, EvidenceRepository, DraftRepository, TestCaseRepository, HintRepository, ProgressRepository, PlayerRepository, RankRepository, AchievementRepository |
-| Ausführungs-Adapter | Schickt Code an die Sandbox und liefert das Ergebnis              | CodeRunner (Schnittstelle), SandboxRunner                                                                                                                               |
-| Neon PostgreSQL     | Speichert Missionen, Spieler und Fortschritt                      | — (externer Dienst)                                                                                                                                                     |
-| Ausführungsumgebung | Übersetzt und führt Java-Code isoliert aus, höchstens 5 s         | — (externer Dienst)                                                                                                                                                     |
+| Ausführungs-Adapter | Schickt Code an die Sandbox und liefert das Ergebnis              | CodeRunner (Schnittstelle), SandboxRunner                                                                                               |
+| Neon PostgreSQL     | Speichert Missionen, Spieler und Fortschritt                      | — (externer Dienst)                                                                                                                     |
+| Ausführungsumgebung | Übersetzt und führt Java-Code isoliert aus, höchstens 5 s         | — (externer Dienst)                                                                                                                     |
 
 Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über die Persistenz und die Sandbox nur über die Schnittstelle `CodeRunner`. So lässt sich die Sandbox austauschen, ohne die Spiellogik zu ändern.
 
@@ -324,7 +317,13 @@ beiden Notationen. Die Diagramme unterscheiden sich somit lediglich aufgrund ihr
   Anzahl von Benutzern und Daten sowie die Leistungsanforderungen aus SRS 3.4.
   Bis dahin bleibt dieser Abschnitt unverändert. -->
 
-*Wird in Vorlesung 7 behandelt.*
+*Autor: Leonie*
+
+- Erwartete Spieler: Kurs plus Robin, also höchstens 21 gleichzeitige Spieler zu erwarten.
+- Datenmenge: 1 Mission, mit je 5 Testfällen und 3 Hinweise. Jeder Spieler hat pro Mission einen Entwurf und einen 
+              aktuellen Fortschrittsstand. Bei 21 Spieler und einer Speicherung alle 10 s (NFR-R-01) kommt es im besten 
+              Fall zu etwa 2 Schreibzugriffen pro Sekunde.
+- Code-Ausführung: Jede Ausführung hat ein Limit von 5 s (NFR-P-01), jedoch erfolgen höchstens 21 gleichzeitig.
 
 ## 11 Qualität
 

@@ -318,7 +318,7 @@ beiden Notationen. Die Diagramme unterscheiden sich somit lediglich aufgrund ihr
 *Autor: Leonie*
 
 - Erwartete Spieler: Kurs plus Robin, also höchstens 21 gleichzeitige Spieler zu erwarten.
-- Datenmenge: 5 Missionen, mit je 5 Testfällen und 3 Hinweise. Jeder Spieler hat pro Mission einen Entwurf und einen 
+- Datenmenge: 1 Mission, mit je 5 Testfällen und 3 Hinweise. Jeder Spieler hat pro Mission einen Entwurf und einen 
               aktuellen Fortschrittsstand. Bei 21 Spieler und einer Speicherung alle 10 s (NFR-R-01) kommt es im besten 
               Fall zu etwa 2 Schreibzugriffen pro Sekunde.
 - Code-Ausführung: Jede Ausführung hat ein Limit von 5 s (NFR-P-01), jedoch erfolgen höchstens 21 gleichzeitig.

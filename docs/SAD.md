@@ -102,7 +102,7 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 | ID    | Qualität   | Verfeinerung            | Szenario, kurz                                                                              | Value | Risk | Autor     |
 |-------|------------|-------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|-----------|
 | QS-03 | Security   | Isolation fremden Codes | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie    |
-| QS-01 | [Qualität] | [Verfeinerung]          | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [L]  | [Vorname] |
+| QS-01 | Performance | Laufzeitbegrenzung      | Endlosschleife im Spieler-Code → Abbruch nach höchstens 5 s                                 |   H   |  M   | Dominik   |
 | QS-02 | [Qualität] | [Verfeinerung]          | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [M]  | [Vorname] |
 
 

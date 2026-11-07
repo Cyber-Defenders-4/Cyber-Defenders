@@ -65,10 +65,10 @@ Dieses Dokument deckt die Architektur der gesamten Cyber Defenders-Anwendung ab.
 
 *Autor: Marco*
 
-| Titel         | Link                                                                                                         |
-|---------------|--------------------------------------------------------------------------------------------------------------|
-| SRS           | [SRS.md](SRS.md)                                                                                             |
-| Domänenmodell | [domain_model.md](domain_model.md)                                                                           |
+| Titel         | Link                                                                         |
+|---------------|------------------------------------------------------------------------------|
+| SRS           | [SRS.md](SRS.md)                                                             |
+| Domänenmodell | [domain_model.md](domain_model.md)                                           |
 | Repository    | [https://github.com/Cyber-Defenders-4/Cyber-Defenders](https://github.com/Cyber-Defenders-4/Cyber-Defenders) |
 | Projektboard  | [https://github.com/orgs/Cyber-Defenders-4/projects/2](https://github.com/orgs/Cyber-Defenders-4/projects/2) |
 
@@ -97,16 +97,15 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 
 ### 3.1 Qualitätsziele
 
-*Autor: [Vorname]*
+*Autor: Marco*
 
-| ID    | Qualität   | Verfeinerung            | Szenario, kurz                                                                              | Value | Risk | Autor     |
-|-------|------------|-------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|-----------|
-| QS-03 | Security   | Isolation fremden Codes | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie    |
-| QS-01 | Performance | Laufzeitbegrenzung      | Endlosschleife im Spieler-Code → Abbruch nach höchstens 5 s                                 |   H   |  M   | Dominik   |
-| QS-02 | [Qualität] | [Verfeinerung]          | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [M]  | [Vorname] |
+| ID    | Qualität        | Verfeinerung             | Szenario, kurz                                                                              | Value | Risk | Autor   |
+|-------|-----------------|--------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|---------|
+| QS-03 | Security        | Isolation fremden Codes  | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie  |
+| QS-01 | Performance     | Laufzeitbegrenzung       | Endlosschleife im Spieler-Code → Abbruch nach höchstens 5 s                                 |   H   |  M   | Dominik |
+| QS-02 | Zuverlässigkeit | Datenwiederherstellung   | Tab schließt oder Verbindung bricht ab → Entwurf bis auf max. 10 s wiederhergestellt        |   H   |  M   | Marco   |
 
-
-[Ein bis zwei Sätze: Welches Szenario kommt zuerst und warum? (H, H) kommt vor allem anderen.]
+Das Szenario zur Isolation fremden Codes (QS-03) kommt an erster Stelle, da es als einziges mit (H, H) bewertet wurde. Schädlicher Code gefährdet den gesamten Spielbetrieb, weshalb dieses Ziel unsere Systemarchitektur am stärksten beeinflusst.
 
 #### QS-01 Endlosschleife abbrechen
 
@@ -116,25 +115,25 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 | Stimulus                       | Führt Code mit einer Endlosschleife aus oder reicht ihn ein                                                                |
 | Artefakt                       | Ausführungs-Adapter und Ausführungsumgebung                                                                                |
 | Umgebung                       | Normalbetrieb, bis zu 21 Spieler gleichzeitig online                                                                       |
-| Reaktion                       | Bricht die Ausführung ab und gibt eine Timeout-Warnung in der Konsole aus; das Backend bedient die anderen Spieler weiter |
+| Reaktion                       | Bricht die Ausführung ab und gibt eine Timeout-Warnung in der Konsole aus; das Backend bedient die anderen Spieler weiter  |
 | Reaktionsmaß                   | Abbruch nach höchstens 5 s                                                                                                 |
 
 Business Value H: Ohne Abbruch blockiert ein einziger Fehler im Spieler-Code das Backend für alle Spieler.
-Technical Risk M: Ein Zeitlimit ist technisch Standard, hängt aber an der Ausführungsumgebung aus QS-03, deren Hosting
-noch offen ist.
+Technical Risk M: Ein Zeitlimit ist technisch Standard, hängt aber an der Ausführungsumgebung aus QS-03, deren Hosting noch offen ist.
 
-#### QS-02 [Name]
+#### QS-02 Entwurf nach Abbruch
 
-| QS-02 [Name] | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
-|--------------|------------------------------------------|
-| Quelle       | [wer oder was löst es aus]               |
-| Stimulus     | [was beim System ankommt]                |
-| Artefakt     | [welcher Teil des Systems betroffen ist] |
-| Umgebung     | [in welchem Zustand das System ist]      |
-| Reaktion     | [was das System tut]                     |
-| Reaktionsmaß | [die Zahl, an der man den Erfolg misst]  |
+| QS-02 Entwurf nach Abbruch | *Autor: Marco* · Verfeinert NFR-R-01 |
+| -------------------------- | ---------------------------------------- |
+| Quelle                     | Ein Spieler (Student) |
+| Stimulus                   | Schließt versehentlich den Browser-Tab oder verliert die Verbindung während der Code-Eingabe |
+| Artefakt                   | Arbeitsansicht-UI und Persistenz |
+| Umgebung                   | Normalbetrieb während der Bearbeitung einer Mission |
+| Reaktion                   | Das System speichert Entwürfe periodisch im Hintergrund und stellt den letzten Stand beim erneuten Öffnen der Fallakte nahtlos wieder her |
+| Reaktionsmaß               | Maximal 10 Sekunden getippter Code gehen verloren; 100 % der gespeicherten Entwürfe werden beim Wiederöffnen korrekt in den Editor geladen |
 
-Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
+Business Value H: Ein Verlust von getipptem Code frustriert Spieler massiv und zerstört den Spielfluss. 
+Technical Risk M: Die Synchronisation zwischen periodischem Autosave im Frontend und der Persistenz über die API erfordert eine saubere Debounce- und Fehlerbehandlungs-Logik.
 
 #### QS-03 Isolation fremden Codes
 
@@ -147,21 +146,18 @@ Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Sat
 | Reaktion                      | Zugriff auf Dateien, Netzwerk und Datenbank wird verweigert, eine Fehlermeldung wird in der Konsole ausgegeben und Server sowie Daten anderer Spieler bleiben unberührt |
 | Reaktionsmaß                  | 0 erfolgreiche Zugriffe bei 5 definierten Zugriffsversuchen                                                                                                             |
 
-Business Value H: Fehlender Schutz führt zu fatalem Datenverlust, Systemmanipulationen und dem sofortigen Stillstand 
-des gesamten Spielbetriebs. 
-
-Technical Risk H: Die Bereitstellung einer isolierten Ausführungsumgebung für fremden Code ist für das Team neu, das 
-Hosting der Sandbox ist noch offen und der Erfolg zeigt sich nur durch gezielte Angriffsversuche.
+Business Value H: Fehlender Schutz führt zu fatalem Datenverlust, Systemmanipulationen und dem sofortigen Stillstand des gesamten Spielbetriebs. 
+Technical Risk H: Die Bereitstellung einer isolierten Ausführungsumgebung für fremden Code ist für das Team neu, das Hosting der Sandbox ist noch offen und der Erfolg zeigt sich nur durch gezielte Angriffsversuche.
 
 ### 3.2 Einschränkungen
 
-*Autor: [Vorname]*
+*Autor: Marco*
 
-| ID   | Art             | Einschränkung                                                     | Was bedeutet das für unsere Architektur? |
-|------|-----------------|-------------------------------------------------------------------|------------------------------------------|
-| C-01 | Technisch       | [unser Stack, siehe [SRS 3.6](SRS.md#36-entwurfsrandbedingungen)] | [Konsequenz]                             |
-| C-02 | Organisatorisch | [Teamgröße, Zeit]                                                 | [Konsequenz]                             |
-| C-03 | [Art]           | [Einschränkung]                                                   | [Konsequenz]                             |
+| ID   | Art             | Einschränkung                                                                  | Was bedeutet das für unsere Architektur? |
+|------|-----------------|--------------------------------------------------------------------------------|------------------------------------------|
+| C-01 | Technisch       | Unser Stack: Angular, Node.js (Express), Neon PostgreSQL, Docker (siehe [SRS 3.6](SRS.md#36-design-constraints)) | Frontend und Backend werden serverseitig getrennt gehostet (Vercel), die Sandbox erfordert einen eigenen Server, da Vercel kein Docker unterstützt. |
+| C-02 | Organisatorisch | Teamgröße von 4 Personen, begrenzter Zeitplan bis zur Abschlussdemo            | Die Architektur muss modular, aber simpel bleiben. Die Schnittstelle `CodeRunner` isoliert die Sandbox, damit das Team unabhängig am Backend arbeiten kann. |
+| C-03 | Wirtschaftlich  | Kein Budget vorhanden, Nutzung von kostenlosen Free-Tier-Hostings              | Vercel setzt das Backend bei Inaktivität schlafen, was Cold Starts verursacht. Der Ausführungsserver (Docker) muss für die Demo ggf. lokal oder auf einem Free-Host betrieben werden. |
 
 
 ## 4 Use-case view
@@ -267,18 +263,18 @@ Die Datenbank und die Sandbox sind noch nicht eingerichtet und angebunden.
 
 ![Komponentendiagramm](diagrams/components.png)
 
-| Komponente          | Verantwortlichkeit                                                | Klassen (Aufgabe 5)                                                                                                                                                     |
-|---------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Missionen-UI        | Missionsübersicht und Fallakte anzeigen                           | MissionOverviewComponent, CaseFileComponent                                                                                                                             |
-| Arbeitsansicht-UI   | Code-Editor, Konsole, Hinweise und Dialog „Fall gelöst“           | WorkspaceComponent, CodeEditorComponent, ConsoleComponent, CaseSolvedDialogComponent                                                                                    |
-| Fortschritt-UI      | Fortschritt, Rang und Erfolge anzeigen                            | ProgressOverviewComponent                                                                                                                                               |
-| API-Client          | Ruft die REST-API des Backends auf                                | MissionApiService, DraftApiService, SubmissionApiService, RunApiService, HintApiService, ProgressApiService                                                             |
-| REST-API            | Nimmt HTTP-Anfragen an und gibt JSON zurück                       | MissionController, DraftController, SubmissionController, RunController, HintController, ProgressController                                                             |
-| Spiellogik          | Fachliche Abläufe: Missionsstatus, Prüfung, XP und Rang, Hinweise | MissionService, DraftService, SubmissionService, RunService, HintService, ProgressService                                                                               |
+| Komponente          | Verantwortlichkeit                                                | Klassen (Aufgabe 5)                                                                                                                     |
+|---------------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
+| Missionen-UI        | Missionsübersicht und Fallakte anzeigen                           | MissionOverviewComponent, CaseFileComponent                                                                                             |
+| Arbeitsansicht-UI   | Code-Editor, Konsole, Hinweise und Dialog „Fall gelöst“           | WorkspaceComponent, CodeEditorComponent, ConsoleComponent, CaseSolvedDialogComponent                                                    |
+| Fortschritt-UI      | Fortschritt, Rang und Erfolge anzeigen                            | ProgressOverviewComponent                                                                                                               |
+| API-Client          | Ruft die REST-API des Backends auf                                | MissionApiService, DraftApiService, SubmissionApiService, RunApiService, HintApiService, ProgressApiService                             |
+| REST-API            | Nimmt HTTP-Anfragen an und gibt JSON zurück                       | MissionController, DraftController, SubmissionController, RunController, HintController, ProgressController                             |
+| Spiellogik          | Fachliche Abläufe: Missionsstatus, Prüfung, XP und Rang, Hinweise | MissionService, DraftService, SubmissionService, RunService, HintService, ProgressService                                               |
 | Persistenz          | Liest und schreibt die Daten in der Datenbank                     | MissionRepository, EvidenceRepository, DraftRepository, TestCaseRepository, HintRepository, ProgressRepository, PlayerRepository, RankRepository, AchievementRepository |
-| Ausführungs-Adapter | Schickt Code an die Sandbox und liefert das Ergebnis              | CodeRunner (Schnittstelle), SandboxRunner                                                                                                                               |
-| Neon PostgreSQL     | Speichert Missionen, Spieler und Fortschritt                      | — (externer Dienst)                                                                                                                                                     |
-| Ausführungsumgebung | Übersetzt und führt Java-Code isoliert aus, höchstens 5 s         | — (externer Dienst)                                                                                                                                                     |
+| Ausführungs-Adapter | Schickt Code an die Sandbox und liefert das Ergebnis              | CodeRunner (Schnittstelle), SandboxRunner                                                                                               |
+| Neon PostgreSQL     | Speichert Missionen, Spieler und Fortschritt                      | — (externer Dienst)                                                                                                                     |
+| Ausführungsumgebung | Übersetzt und führt Java-Code isoliert aus, höchstens 5 s         | — (externer Dienst)                                                                                                                     |
 
 Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über die Persistenz und die Sandbox nur über die Schnittstelle `CodeRunner`. So lässt sich die Sandbox austauschen, ohne die Spiellogik zu ändern.
 

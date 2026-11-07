@@ -151,13 +151,13 @@ Technical Risk H: Die Bereitstellung einer isolierten Ausführungsumgebung für 
 
 ### 3.2 Einschränkungen
 
-*Autor: [Vorname]*
+*Autor: Marco*
 
-| ID   | Art             | Einschränkung                                                     | Was bedeutet das für unsere Architektur? |
-|------|-----------------|-------------------------------------------------------------------|------------------------------------------|
-| C-01 | Technisch       | [unser Stack, siehe [SRS 3.6](SRS.md#36-entwurfsrandbedingungen)] | [Konsequenz]                             |
-| C-02 | Organisatorisch | [Teamgröße, Zeit]                                                 | [Konsequenz]                             |
-| C-03 | [Art]           | [Einschränkung]                                                   | [Konsequenz]                             |
+| ID   | Art             | Einschränkung                                                                  | Was bedeutet das für unsere Architektur? |
+|------|-----------------|--------------------------------------------------------------------------------|------------------------------------------|
+| C-01 | Technisch       | Unser Stack: Angular, Node.js (Express), Neon PostgreSQL, Docker (siehe [SRS 3.6](SRS.md#36-design-constraints)) | Frontend und Backend werden serverseitig getrennt gehostet (Vercel), die Sandbox erfordert einen eigenen Server, da Vercel kein Docker unterstützt. |
+| C-02 | Organisatorisch | Teamgröße von 4 Personen, begrenzter Zeitplan bis zur Abschlussdemo            | Die Architektur muss modular, aber simpel bleiben. Die Schnittstelle `CodeRunner` isoliert die Sandbox, damit das Team unabhängig am Backend arbeiten kann. |
+| C-03 | Wirtschaftlich  | Kein Budget vorhanden, Nutzung von kostenlosen Free-Tier-Hostings              | Vercel setzt das Backend bei Inaktivität schlafen, was Cold Starts verursacht. Der Ausführungsserver (Docker) muss für die Demo ggf. lokal oder auf einem Free-Host betrieben werden. |
 
 
 ## 4 Use-case view

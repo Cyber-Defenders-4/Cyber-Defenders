@@ -97,43 +97,42 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 
 ### 3.1 Qualitätsziele
 
-*Autor: [Vorname]*
+*Autor: Marco*
 
-| ID    | Qualität        | Verfeinerung           | Szenario, kurz                                                                              | Value | Risk | Autor     |
-|-------|-----------------|------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|-----------|
-| QS-03 | Security        | Isolation fremden Codes| Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie    |
-| QS-01 | [Qualität]      | [Verfeinerung]         | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [L]  | [Vorname] |
-| QS-02 | Zuverlässigkeit | Datenwiederherstellung | Tab schließt oder Verbindung bricht ab → Entwurf bis auf max. 10 s wiederhergestellt        |   H   |  M   | Marco     |
+| ID    | Qualität        | Verfeinerung             | Szenario, kurz                                                                              | Value | Risk | Autor   |
+|-------|-----------------|--------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|---------|
+| QS-03 | Security        | Isolation fremden Codes  | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie  |
+| QS-01 | Performance     | Laufzeitbegrenzung       | Endlosschleife im Spieler-Code → Abbruch nach höchstens 5 s                                 |   H   |  M   | Dominik |
+| QS-02 | Zuverlässigkeit | Datenwiederherstellung   | Tab schließt oder Verbindung bricht ab → Entwurf bis auf max. 10 s wiederhergestellt        |   H   |  M   | Marco   |
 
+Das Szenario zur Isolation fremden Codes (QS-03) kommt an erster Stelle, da es als einziges mit (H, H) bewertet wurde. Schädlicher Code gefährdet den gesamten Spielbetrieb, weshalb dieses Ziel unsere Systemarchitektur am stärksten beeinflusst.
 
-[Ein bis zwei Sätze: Welches Szenario kommt zuerst und warum? (H, H) kommt vor allem anderen.]
+#### QS-01 Endlosschleife abbrechen
 
-#### QS-01 [Name]
+| QS-01 Endlosschleife abbrechen | *Autor: Dominik* · Verfeinert NFR-P-01                                                                                     |
+|--------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| Quelle                         | Ein Spieler                                                                                                                |
+| Stimulus                       | Führt Code mit einer Endlosschleife aus oder reicht ihn ein                                                                |
+| Artefakt                       | Ausführungs-Adapter und Ausführungsumgebung                                                                                |
+| Umgebung                       | Normalbetrieb, bis zu 21 Spieler gleichzeitig online                                                                       |
+| Reaktion                       | Bricht die Ausführung ab und gibt eine Timeout-Warnung in der Konsole aus; das Backend bedient die anderen Spieler weiter  |
+| Reaktionsmaß                   | Abbruch nach höchstens 5 s                                                                                                 |
 
-| QS-01 [Name] | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
-|--------------|------------------------------------------|
-| Quelle       | [wer oder was löst es aus]               |
-| Stimulus     | [was beim System ankommt]                |
-| Artefakt     | [welcher Teil des Systems betroffen ist] |
-| Umgebung     | [in welchem Zustand das System ist]      |
-| Reaktion     | [was das System tut]                     |
-| Reaktionsmaß | [die Zahl, an der man den Erfolg misst]  |
-
-Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
+Business Value H: Ohne Abbruch blockiert ein einziger Fehler im Spieler-Code das Backend für alle Spieler.
+Technical Risk M: Ein Zeitlimit ist technisch Standard, hängt aber an der Ausführungsumgebung aus QS-03, deren Hosting noch offen ist.
 
 #### QS-02 Entwurf nach Abbruch
 
 | QS-02 Entwurf nach Abbruch | *Autor: Marco* · Verfeinert NFR-R-01 |
 | -------------------------- | ---------------------------------------- |
-| Quelle | Ein Spieler (Student) |
-| Stimulus | Schließt versehentlich den Browser-Tab oder verliert die Verbindung während der Code-Eingabe |
-| Artefakt | Arbeitsansicht-UI und Persistenz |
-| Umgebung | Normalbetrieb während der Bearbeitung einer Mission |
-| Reaktion | Das System speichert Entwürfe periodisch im Hintergrund und stellt den letzten Stand beim erneuten Öffnen der Fallakte nahtlos wieder her |
-| Reaktionsmaß | Maximal 10 Sekunden getippter Code gehen verloren; 100 % der gespeicherten Entwürfe werden beim Wiederöffnen korrekt in den Editor geladen |
+| Quelle                     | Ein Spieler (Student) |
+| Stimulus                   | Schließt versehentlich den Browser-Tab oder verliert die Verbindung während der Code-Eingabe |
+| Artefakt                   | Arbeitsansicht-UI und Persistenz |
+| Umgebung                   | Normalbetrieb während der Bearbeitung einer Mission |
+| Reaktion                   | Das System speichert Entwürfe periodisch im Hintergrund und stellt den letzten Stand beim erneuten Öffnen der Fallakte nahtlos wieder her |
+| Reaktionsmaß               | Maximal 10 Sekunden getippter Code gehen verloren; 100 % der gespeicherten Entwürfe werden beim Wiederöffnen korrekt in den Editor geladen |
 
 Business Value H: Ein Verlust von getipptem Code frustriert Spieler massiv und zerstört den Spielfluss. 
-
 Technical Risk M: Die Synchronisation zwischen periodischem Autosave im Frontend und der Persistenz über die API erfordert eine saubere Debounce- und Fehlerbehandlungs-Logik.
 
 #### QS-03 Isolation fremden Codes
@@ -147,11 +146,8 @@ Technical Risk M: Die Synchronisation zwischen periodischem Autosave im Frontend
 | Reaktion                      | Zugriff auf Dateien, Netzwerk und Datenbank wird verweigert, eine Fehlermeldung wird in der Konsole ausgegeben und Server sowie Daten anderer Spieler bleiben unberührt |
 | Reaktionsmaß                  | 0 erfolgreiche Zugriffe bei 5 definierten Zugriffsversuchen                                                                                                             |
 
-Business Value H: Fehlender Schutz führt zu fatalem Datenverlust, Systemmanipulationen und dem sofortigen Stillstand 
-des gesamten Spielbetriebs. 
-
-Technical Risk H: Die Bereitstellung einer isolierten Ausführungsumgebung für fremden Code ist für das Team neu, das 
-Hosting der Sandbox ist noch offen und der Erfolg zeigt sich nur durch gezielte Angriffsversuche.
+Business Value H: Fehlender Schutz führt zu fatalem Datenverlust, Systemmanipulationen und dem sofortigen Stillstand des gesamten Spielbetriebs. 
+Technical Risk H: Die Bereitstellung einer isolierten Ausführungsumgebung für fremden Code ist für das Team neu, das Hosting der Sandbox ist noch offen und der Erfolg zeigt sich nur durch gezielte Angriffsversuche.
 
 ### 3.2 Einschränkungen
 

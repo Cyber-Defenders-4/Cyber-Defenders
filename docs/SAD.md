@@ -102,24 +102,26 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 | ID    | Qualität   | Verfeinerung            | Szenario, kurz                                                                              | Value | Risk | Autor     |
 |-------|------------|-------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|-----------|
 | QS-03 | Security   | Isolation fremden Codes | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie    |
-| QS-01 | [Qualität] | [Verfeinerung]          | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [L]  | [Vorname] |
+| QS-01 | Performance | Laufzeitbegrenzung      | Endlosschleife im Spieler-Code → Abbruch nach höchstens 5 s                                 |   H   |  M   | Dominik   |
 | QS-02 | [Qualität] | [Verfeinerung]          | [Stimulus] → [Reaktionsmaß]                                                                 |  [H]  | [M]  | [Vorname] |
 
 
 [Ein bis zwei Sätze: Welches Szenario kommt zuerst und warum? (H, H) kommt vor allem anderen.]
 
-#### QS-01 [Name]
+#### QS-01 Endlosschleife abbrechen
 
-| QS-01 [Name] | *Autor: [Vorname]* · Verfeinert [NFR-ID] |
-|--------------|------------------------------------------|
-| Quelle       | [wer oder was löst es aus]               |
-| Stimulus     | [was beim System ankommt]                |
-| Artefakt     | [welcher Teil des Systems betroffen ist] |
-| Umgebung     | [in welchem Zustand das System ist]      |
-| Reaktion     | [was das System tut]                     |
-| Reaktionsmaß | [die Zahl, an der man den Erfolg misst]  |
+| QS-01 Endlosschleife abbrechen | *Autor: Dominik* · Verfeinert NFR-P-01                                                                                     |
+|--------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| Quelle                         | Ein Spieler                                                                                                                |
+| Stimulus                       | Führt Code mit einer Endlosschleife aus oder reicht ihn ein                                                                |
+| Artefakt                       | Ausführungs-Adapter und Ausführungsumgebung                                                                                |
+| Umgebung                       | Normalbetrieb, bis zu 21 Spieler gleichzeitig online                                                                       |
+| Reaktion                       | Bricht die Ausführung ab und gibt eine Timeout-Warnung in der Konsole aus; das Backend bedient die anderen Spieler weiter |
+| Reaktionsmaß                   | Abbruch nach höchstens 5 s                                                                                                 |
 
-Business Value [H/M/L]: [ein Satz Begründung]. Technical Risk [H/M/L]: [ein Satz Begründung].
+Business Value H: Ohne Abbruch blockiert ein einziger Fehler im Spieler-Code das Backend für alle Spieler.
+Technical Risk M: Ein Zeitlimit ist technisch Standard, hängt aber an der Ausführungsumgebung aus QS-03, deren Hosting
+noch offen ist.
 
 #### QS-02 [Name]
 

@@ -101,7 +101,7 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 
 | ID    | Qualität        | Verfeinerung             | Szenario, kurz                                                                              | Value | Risk | Autor   |
 |-------|-----------------|--------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|---------|
-| QS-03 | Security        | Isolation fremden Codes  | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie  |
+| QS-03 | Security        | Isolation fremden Codes  | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 3 Zugriffen erfolgreich |   H   |  H   | Leonie  |
 | QS-01 | Performance     | Laufzeitbegrenzung       | Endlosschleife im Spieler-Code → Abbruch nach höchstens 5 s                                 |   H   |  M   | Dominik |
 | QS-02 | Zuverlässigkeit | Datenwiederherstellung   | Tab schließt oder Verbindung bricht ab → Entwurf bis auf max. 10 s wiederhergestellt        |   H   |  M   | Marco   |
 
@@ -144,7 +144,7 @@ Technical Risk M: Die Synchronisation zwischen periodischem Autosave im Frontend
 | Artefakt                      | Ausführungsumgebung                                                                                                                                                     |
 | Umgebung                      | Normalbetrieb                                                                                                                                                           |
 | Reaktion                      | Zugriff auf Dateien, Netzwerk und Datenbank wird verweigert, eine Fehlermeldung wird in der Konsole ausgegeben und Server sowie Daten anderer Spieler bleiben unberührt |
-| Reaktionsmaß                  | 0 erfolgreiche Zugriffe bei 5 definierten Zugriffsversuchen                                                                                                             |
+| Reaktionsmaß                  | 0 erfolgreiche Zugriffe bei 3 definierten Zugriffsversuchen                                                                                                             |
 
 Business Value H: Fehlender Schutz führt zu fatalem Datenverlust, Systemmanipulationen und dem sofortigen Stillstand des gesamten Spielbetriebs. 
 Technical Risk H: Die Bereitstellung einer isolierten Ausführungsumgebung für fremden Code ist für das Team neu, das Hosting der Sandbox ist noch offen und der Erfolg zeigt sich nur durch gezielte Angriffsversuche.

@@ -13,12 +13,12 @@ Lernspiel für Java und IT-Sicherheit
 
 ## Links
 
-| Titel | Link |
-| ----- | ---- |
-| Projekt-Board | https://github.com/orgs/Cyber-Defenders-4/projects/2/views/1 |
-| Software Requirements Specification | [docs/SRS.md](docs/SRS.md) |
-| Use Cases | [docs/use_cases/](docs/use_cases/) |
-| Blog | https://github.com/Cyber-Defenders-4/Cyber-Defenders/discussions |
+| Titel                               | Link                                                             |
+|-------------------------------------|------------------------------------------------------------------|
+| Projekt-Board                       | https://github.com/orgs/Cyber-Defenders-4/projects/2/views/1     |
+| Software Requirements Specification | [docs/SRS.md](docs/SRS.md)                                       |
+| Use Cases                           | [docs/use_cases/](docs/use_cases/)                               |
+| Blog                                | https://github.com/Cyber-Defenders-4/Cyber-Defenders/discussions |
 
 ## Beschreibung
 

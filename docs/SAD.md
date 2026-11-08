@@ -160,14 +160,19 @@ Technical Risk H: Die Bereitstellung einer isolierten Ausführungsumgebung für 
 
 ### 3.2 Einschränkungen
 
-*Autor: Marco*
+*Autor: Felix*
 
-| ID   | Art             | Einschränkung                                                                  | Was bedeutet das für unsere Architektur? |
-|------|-----------------|--------------------------------------------------------------------------------|------------------------------------------|
-| C-01 | Technisch       | Unser Stack: Angular, Node.js (Express), Neon PostgreSQL, Docker (siehe [SRS 3.6](SRS.md#36-design-constraints)) | Frontend und Backend werden serverseitig getrennt gehostet (Vercel), die Sandbox erfordert einen eigenen Server, da Vercel kein Docker unterstützt. |
-| C-02 | Organisatorisch | Teamgröße von 4 Personen, begrenzter Zeitplan bis zur Abschlussdemo            | Die Architektur muss modular, aber simpel bleiben. Die Schnittstelle `CodeRunner` isoliert die Sandbox, damit das Team unabhängig am Backend arbeiten kann. |
-| C-03 | Wirtschaftlich  | Kein Budget vorhanden, Nutzung von kostenlosen Free-Tier-Hostings              | Vercel setzt das Backend bei Inaktivität schlafen, was Cold Starts verursacht. Der Ausführungsserver (Docker) muss für die Demo ggf. lokal oder auf einem Free-Host betrieben werden. |
+Unsere Architektur wird durch technische, organisatorische und wirtschaftliche Rahmenbedingungen eingeschränkt. Diese müssen bei der Auswahl und Umsetzung der Architektur berücksichtigt werden.
 
+| ID | Art | Einschränkung | Was bedeutet das für unsere Architektur? |
+|---|---|---|---|
+| C-01 | Technisch | Festgelegter Technologie-Stack: Angular mit TypeScript, Express mit TypeScript, Neon PostgreSQL und geplantes Hosting über Vercel (siehe [SRS 3.6](SRS.md#36-entwurfsrandbedingungen)). | Die Anwendung wird in Frontend, Backend und Datenbank aufgeteilt. Die Lösung zur Code-Prüfung muss sich in diese Architektur integrieren lassen. Bei einer echten Java-Ausführung ist zusätzlich eine sichere und isolierte Ausführungsumgebung erforderlich. |
+| C-02 | Organisatorisch | Vier Entwickler und begrenzte Entwicklungszeit im Rahmen des Hochschulprojekts. Für den MVP ist zunächst eine spielbare Mission vorgesehen. | Wir benötigen eine möglichst einfache, wartbare Architektur mit klar getrennten Verantwortlichkeiten. Zusätzliche Komponenten sollen nur eingesetzt werden, wenn sie für den geplanten Funktionsumfang notwendig sind. |
+| C-03 | Wirtschaftlich | Kein Budget für kostenpflichtiges Hosting. Wir sind auf kostenlose Hosting-Angebote und deren Nutzungslimits angewiesen. | Die Hosting-Lösung muss innerhalb der kostenlosen Ressourcenlimits funktionieren. Besonders bei einer echten Java-Ausführung müssen wir prüfen, ob eine isolierte Ausführungsumgebung ohne zusätzliche Kosten betrieben werden kann. Auch mögliche Cold Starts müssen bei der Bereitstellung berücksichtigt werden. |
+
+**Auswirkung auf unsere Architektur:**
+
+Die größte Einschränkung ergibt sich aus der Kombination von C-01 und C-03. Für eine echte Java-Ausführung benötigen wir eine sichere Ausführungsumgebung, deren Bereitstellung mit unserem vorgesehenen Hosting und Budget vereinbar sein muss. Deshalb haben wir die Code-Prüfung über die Schnittstelle `CodeRunner` von der übrigen Spiellogik getrennt. So können wir unterschiedliche Prüfverfahren untersuchen, ohne die Spiellogik grundsätzlich ändern zu müssen.
 
 ## 4 Use-case view
 

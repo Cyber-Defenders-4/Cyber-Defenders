@@ -113,9 +113,12 @@ Im Utility Tree bewerten wir jedes Szenario nach Business Value und Technical Ri
 
 QS-03 hat für uns die höchste Priorität, da es als einziges Szenario sowohl einen hohen Business Value als auch ein hohes technisches Risiko besitzt. Bei einer echten Ausführung von Java-Code könnte ein unzureichend isoliertes Programm auf Ressourcen zugreifen, die nicht für den Spieler bestimmt sind. Gleichzeitig ist die sichere Ausführung fremden Codes für unser Team technisch anspruchsvoll und die konkrete Umsetzung noch offen.
 
-QS-01 und QS-02 haben ebenfalls einen hohen Business Value, werden aber mit einem mittleren technischen Risiko bewertet. Die Laufzeitbegrenzung hängt von der später gewählten Ausführungsumgebung ab. Bei der Wiederherstellung von Code-Entwürfen besteht die Herausforderung vor allem darin, das automatische Speichern zwischen Frontend, Backend und Datenbank zuverlässig umzusetzen.
+QS-01 und QS-02 haben ebenfalls einen hohen Business Value und ein mittleres technisches Risiko. Wir haben QS-01 dennoch vor QS-02 eingeordnet, da die Laufzeitbegrenzung direkt mit der Ausführungsumgebung aus QS-03 zusammenhängt. Bei einer echten Java-Ausführung müssen wir frühzeitig entscheiden, wie der Code isoliert und seine Laufzeit begrenzt wird. Diese Entscheidung beeinflusst den Aufbau und die Bereitstellung unserer Architektur.
 
-Da wir noch zwischen echter Java-Ausführung und einem Vergleich mit einer Musterlösung entscheiden, müssen wir QS-01 und QS-03 bei dieser Architekturentscheidung erneut betrachten.
+QS-02 ist ebenfalls wichtig, lässt sich aber weitgehend mit unseren bereits vorgesehenen Komponenten umsetzen. Die Herausforderung besteht vor allem darin, das automatische Speichern zwischen Frontend, Backend und Datenbank zuverlässig zu koordinieren. Dafür benötigen wir voraussichtlich keine zusätzliche Infrastruktur.
+
+Die Reihenfolge von QS-01 und QS-02 ist damit keine Folge unterschiedlicher Bewertungen, sondern ergibt sich aus ihrem Einfluss auf unsere nächsten Architekturentscheidungen. Sollten wir uns gegen eine echte Java-Ausführung und für einen Vergleich mit einer Musterlösung entscheiden, müssten wir QS-01 und QS-03 erneut überprüfen und die Priorisierung entsprechend anpassen.
+
 #### QS-01 Endlosschleife abbrechen
 
 | QS-01 Endlosschleife abbrechen | *Autor: Dominik* · Verfeinert NFR-P-01                                                                                     |

@@ -156,7 +156,7 @@ Technical Risk M: Die Synchronisation zwischen periodischem Autosave im Frontend
 | Artefakt                      | Ausführungsumgebung                                                                                                                                                     |
 | Umgebung                      | Normalbetrieb                                                                                                                                                           |
 | Reaktion                      | Zugriff auf Dateien, Netzwerk und Datenbank wird verweigert, eine Fehlermeldung wird in der Konsole ausgegeben und Server sowie Daten anderer Spieler bleiben unberührt |
-| Reaktionsmaß                  | 0 erfolgreiche Zugriffe bei 5 definierten Zugriffsversuchen                                                                                                             |
+| Reaktionsmaß                  | 0 erfolgreiche Zugriffe bei 3 definierten Zugriffsversuchen                                                                                                             |
 
 Business Value H: Fehlender Schutz führt zu fatalem Datenverlust, Systemmanipulationen und dem sofortigen Stillstand des gesamten Spielbetriebs. 
 Technical Risk H: Die Bereitstellung einer isolierten Ausführungsumgebung für fremden Code ist für das Team neu, das Hosting der Sandbox ist noch offen und der Erfolg zeigt sich nur durch gezielte Angriffsversuche.

@@ -97,16 +97,25 @@ herum entwerfen müssen. Wie die Architektur die einzelnen Szenarien erreicht, f
 
 ### 3.1 Qualitätsziele
 
-*Autor: Marco*
+*Autor: Felix*
 
-| ID    | Qualität        | Verfeinerung             | Szenario, kurz                                                                              | Value | Risk | Autor   |
-|-------|-----------------|--------------------------|---------------------------------------------------------------------------------------------|:-----:|:----:|---------|
-| QS-03 | Security        | Isolation fremden Codes  | Spieler-Code greift auf Dateien, Netzwerk oder Datenbank zu → 0 von 5 Zugriffen erfolgreich |   H   |  H   | Leonie  |
-| QS-01 | Performance     | Laufzeitbegrenzung       | Endlosschleife im Spieler-Code → Abbruch nach höchstens 5 s                                 |   H   |  M   | Dominik |
-| QS-02 | Zuverlässigkeit | Datenwiederherstellung   | Tab schließt oder Verbindung bricht ab → Entwurf bis auf max. 10 s wiederhergestellt        |   H   |  M   | Marco   |
+Für unsere Architektur haben wir drei Qualitätsanforderungen aus der SRS ausgewählt und als Quality Scenarios konkretisiert. Die Szenarien beschreiben, wie das System in bestimmten Situationen reagieren muss und woran sich die Erfüllung der Anforderungen messen lässt.
 
-Das Szenario zur Isolation fremden Codes (QS-03) kommt an erster Stelle, da es als einziges mit (H, H) bewertet wurde. Schädlicher Code gefährdet den gesamten Spielbetrieb, weshalb dieses Ziel unsere Systemarchitektur am stärksten beeinflusst.
+Im Utility Tree bewerten wir jedes Szenario nach Business Value und Technical Risk. Dabei steht H für hoch, M für mittel und L für niedrig.
 
+| ID | Qualität | Verfeinerung | Szenario, kurz | Value | Risk | Autor |
+|---|---|---|---|:---:|:---:|---|
+| QS-03 | Security | Isolation fremden Codes | Spieler-Code versucht auf Dateien, Netzwerk oder Datenbank zuzugreifen → alle definierten Zugriffsversuche werden verhindert | H | H | Leonie |
+| QS-01 | Performance | Laufzeitbegrenzung | Endlosschleife im Spieler-Code → Abbruch nach höchstens 5 s | H | M | Dominik |
+| QS-02 | Zuverlässigkeit | Datenwiederherstellung | Browser wird geschlossen oder Verbindung bricht ab → maximal 10 s Codeverlust | H | M | Marco |
+
+**Priorisierung:**
+
+QS-03 hat für uns die höchste Priorität, da es als einziges Szenario sowohl einen hohen Business Value als auch ein hohes technisches Risiko besitzt. Bei einer echten Ausführung von Java-Code könnte ein unzureichend isoliertes Programm auf Ressourcen zugreifen, die nicht für den Spieler bestimmt sind. Gleichzeitig ist die sichere Ausführung fremden Codes für unser Team technisch anspruchsvoll und die konkrete Umsetzung noch offen.
+
+QS-01 und QS-02 haben ebenfalls einen hohen Business Value, werden aber mit einem mittleren technischen Risiko bewertet. Die Laufzeitbegrenzung hängt von der später gewählten Ausführungsumgebung ab. Bei der Wiederherstellung von Code-Entwürfen besteht die Herausforderung vor allem darin, das automatische Speichern zwischen Frontend, Backend und Datenbank zuverlässig umzusetzen.
+
+Da wir noch zwischen echter Java-Ausführung und einem Vergleich mit einer Musterlösung entscheiden, müssen wir QS-01 und QS-03 bei dieser Architekturentscheidung erneut betrachten.
 #### QS-01 Endlosschleife abbrechen
 
 | QS-01 Endlosschleife abbrechen | *Autor: Dominik* · Verfeinert NFR-P-01                                                                                     |

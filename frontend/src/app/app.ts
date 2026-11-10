@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Assistant } from './shell/assistant/assistant';
-import { AssistantService } from './shell/assistant/assistant.service';
+import { AssistantService } from './core/services/assistant.service';
 
 @Component({
   imports: [RouterOutlet, Assistant],

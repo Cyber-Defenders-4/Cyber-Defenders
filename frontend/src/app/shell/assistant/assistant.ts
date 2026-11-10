@@ -1,5 +1,5 @@
 import {Component, input, output} from '@angular/core';
-import { FloppyMood } from './assistant.service';
+import { FloppyMood } from '../../core/services/assistant.service';
 
 @Component({
   imports: [],

@@ -302,18 +302,18 @@ Die Datenbank und die Sandbox sind noch nicht eingerichtet und angebunden.
 
 ![Komponentendiagramm](diagrams/components.png)
 
-| Komponente          | Verantwortlichkeit                                                | Klassen (Aufgabe 5)                                                                                                                     |
-|---------------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------|
-| Missionen-UI        | Missionsübersicht und Fallakte anzeigen                           | MissionOverviewComponent, CaseFileComponent                                                                                             |
-| Arbeitsansicht-UI   | Code-Editor, Konsole, Hinweise und Dialog „Fall gelöst“           | WorkspaceComponent, CodeEditorComponent, ConsoleComponent, CaseSolvedDialogComponent                                                    |
-| Fortschritt-UI      | Fortschritt, Rang und Erfolge anzeigen                            | ProgressOverviewComponent                                                                                                               |
-| API-Client          | Ruft die REST-API des Backends auf                                | MissionApiService, DraftApiService, SubmissionApiService, RunApiService, HintApiService, ProgressApiService                             |
-| REST-API            | Nimmt HTTP-Anfragen an und gibt JSON zurück                       | MissionController, DraftController, SubmissionController, RunController, HintController, ProgressController                             |
-| Spiellogik          | Fachliche Abläufe: Missionsstatus, Prüfung, XP und Rang, Hinweise | MissionService, DraftService, SubmissionService, RunService, HintService, ProgressService                                               |
+| Komponente          | Verantwortlichkeit                                                | Klassen (Aufgabe 5)                                                                                                                                                     |
+|---------------------|-------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Missionen-UI        | Missionsübersicht und Fallakte anzeigen                           | MissionOverviewComponent, CaseFileComponent                                                                                                                             |
+| Arbeitsansicht-UI   | Code-Editor, Konsole, Hinweise und Dialog „Fall gelöst“           | WorkspaceComponent, CodeEditorComponent, ConsoleComponent, CaseSolvedDialogComponent                                                                                    |
+| Fortschritt-UI      | Fortschritt, Rang und Erfolge anzeigen                            | ProgressOverviewComponent                                                                                                                                               |
+| API-Client          | Ruft die REST-API des Backends auf                                | MissionApiService, DraftApiService, SubmissionApiService, RunApiService, HintApiService, ProgressApiService                                                             |
+| REST-API            | Nimmt HTTP-Anfragen an und gibt JSON zurück                       | MissionController, DraftController, SubmissionController, RunController, HintController, ProgressController                                                             |
+| Spiellogik          | Fachliche Abläufe: Missionsstatus, Prüfung, XP und Rang, Hinweise | MissionService, DraftService, SubmissionService, RunService, HintService, ProgressService                                                                               |
 | Persistenz          | Liest und schreibt die Daten in der Datenbank                     | MissionRepository, EvidenceRepository, DraftRepository, TestCaseRepository, HintRepository, ProgressRepository, PlayerRepository, RankRepository, AchievementRepository |
-| Ausführungs-Adapter | Schickt Code an die Sandbox und liefert das Ergebnis              | CodeRunner (Schnittstelle), SandboxRunner                                                                                               |
-| Neon PostgreSQL     | Speichert Missionen, Spieler und Fortschritt                      | — (externer Dienst)                                                                                                                     |
-| Ausführungsumgebung | Übersetzt und führt Java-Code isoliert aus, höchstens 5 s         | — (externer Dienst)                                                                                                                     |
+| Ausführungs-Adapter | Schickt Code an die Sandbox und liefert das Ergebnis              | CodeRunner (Schnittstelle), SandboxRunner                                                                                                                               |
+| Neon PostgreSQL     | Speichert Missionen, Spieler und Fortschritt                      | — (externer Dienst)                                                                                                                                                     |
+| Ausführungsumgebung | Übersetzt und führt Java-Code isoliert aus, höchstens 5 s         | — (externer Dienst)                                                                                                                                                     |
 
 Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über die Persistenz und die Sandbox nur über die Schnittstelle `CodeRunner`. So lässt sich die Sandbox austauschen, ohne die Spiellogik zu ändern.
 
@@ -376,12 +376,13 @@ beiden Notationen. Die Diagramme unterscheiden sich somit lediglich aufgrund ihr
 
 So erreicht unsere Architektur die Szenarien aus Abschnitt 3.1:
 
-| Szenario        | Taktiken   | Wo            | Status     | Preis   | Entscheidung    |
-| --------------- | ---------- | ------------- | ---------- | ------- | --------------- |
-| QS-01 [Name]    | [Taktik]   | [Komponente]  | [Status]   | [Preis] | [— oder ADR-xx] |
-| QS-02 [Name]    | [Taktik]   | [Komponente]  | [Status]   | [Preis] | [— oder ADR-xx] |
-| QS-03 [Name]    | [Taktik]   | [Komponente]  | [Status]   | [Preis] | [— oder ADR-xx] |
+| Szenario                               | Taktiken                                                                                                                                                                                                                            | Wo                                        | Status                                            | Preis                                                                                          | Entscheidung |
+|----------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------|---------------------------------------------------|------------------------------------------------------------------------------------------------|--------------|
+| QS-03 Leonie Isolation fremden Codes   | Je Ausführung läuft der Spieler-Code in neuem Docker-Container, ohne Netzwerk (´--network none´), mit schreibgeschütztem Dateisystem und ohne Zugang zu Datenbank-Daten; Zugriff wird nur über Schnittstelle `CodeRuner` ermöglicht | Ausführungsumgebung, Ausführungs-Adapter  | geplant (siehe Schnittstelle ´CodeRunner´ in 8.1) | zusätzliche Startzeit je Ausführung, separater Server notwendig                                | ADR-01       |
+| QS-01 Dominik Endlosschleife abbrechen | Festes Zeitlimit von 5 s in der Ausführungsumgebung, was bei Überschreitung den Container beendet; zusätzliches Timeout beim Aufruf im Ausführung-Adapter                                                                           | Ausführungsumgebung, Ausführungs-Adapter  | geplant                                           | Lange, aber korrekte Programme werden abgebrochen                                              | —            |
+| QS-02 Marco Entwurf nach Abbruch       | der Autosave des Entwurfs erfolgt alle 10 s (mit Debounce) über die API in der Datenbank; beim Öffnen der Fallakte wird der letzte gespeicherte Entwurf geladen                                                                     | Arbeitsansicht-UI, API-CLient, Persistenz | geplant                                           | bei 21 Spielern etwa 2 Spielzugriffe pro Sekunde, bei Verbindungsabbruch Verlust von etwa 10 s | —            |
 
 [Zwei bis drei Sätze zum am höchsten bewerteten Szenario: Warum diese Taktiken, und welche
 Alternative haben wir nicht genommen? Falls eine Taktik „nicht geplant" ist, begründe das in
 einem Satz.]
+

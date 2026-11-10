@@ -319,20 +319,22 @@ Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über d
 
 ### 8.2 Layers
 
-*Autor: [Vorname]*
+*Autor: Dominik*
 
-| Layer         | Ordner         | Enthält                 | Darf nutzen            |
-| ------------- | -------------- | ----------------------- | ---------------------- |
-| [Web]         | `[src/web]`    | [Routen, Validierung]   | [Core]                 |
-| [Core]        | `[src/core]`   | [Services, Domäne]      | [nichts unterhalb, oder nur die eigenen Interfaces] |
-| [Persistence] | `[src/db]`     | [Repositories, SQL]     | [die Datenbank]        |
+| Layer               | Ordner                                        | Enthält                                                                                 | Darf nutzen                                    |
+|---------------------|-----------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------|
+| Web                 | `backend/src/routes`, `schemas`, `middleware` | Express-Routen (Controller), Validierung der Anfragen, Fehlerbehandlung                 | Core                                           |
+| Core                | `backend/src/services`                        | Spiellogik: Missionsstatus, Prüfung der Lösung gegen die hinterlegte Musterlösung, XP und Rang, Hinweise | Persistence |
+| Persistence         | `backend/src/repositories`, `db`              | Repositories mit SQL, Verbindung zu Neon PostgreSQL                                     | die Datenbank                                  |
 
-[Unsere Module sind …, und sie sprechen miteinander über … — oder diese Zeile löschen, falls
-ihr keine Module habt.]
+Wir haben keine fachlichen Module, das Backend ist nur technisch geschnitten. `types`, `errors` und
+`config` dürfen alle Schichten nutzen. Sie selbst nutzen keine Schicht.
 
-**Im Code geprüft.** Wir haben [UC-xx Name] verfolgt: `[Datei]` → `[Datei]` → `[Datei]`.
-[Die Regel gilt. / Wir haben eine Abkürzung gefunden: `[Datei]` importiert `[was]` direkt
-(Zeile [n]). Sie steht auf unserem Board.]
+**Im Code geprüft.** Wir wollten UC-01 Mission auswählen verfolgen: `routes` → `services` →
+`repositories`. Dafür gibt es noch keinen Code: Die Ordner sind angelegt, enthalten aber nur
+`.gitkeep`. Der einzige Endpunkt `GET /api/status` liegt direkt in `backend/src/index.ts`
+(Zeile 9). Er liest keine Daten und verletzt die Regel deshalb nicht. Sobald UC-01 umgesetzt ist,
+prüfen wir die Imports erneut.
 
 ## 9 Datensicht
 

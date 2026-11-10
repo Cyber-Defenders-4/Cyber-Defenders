@@ -89,6 +89,28 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 | Implementierungssicht | Aus welchen Teilen besteht der Code?                           | Komponentendiagramm                                  | 8         |
 | Datensicht            | Wie werden persistente Daten gespeichert?                      | Datenbankschema                                      | 9         |
 
+
+### 2.1 Architekturstil
+
+*Autor: Felix*
+
+**Hauptstil.** [Unser Backend ist ein …: ein Satz zum Hauptstil und wo er gilt.]
+[Wo wir davon abweichen, z. B. Client-Server zwischen Browser und Backend, ein Event für Mails.]
+
+**Warum.** (1) [Grund mit ID, z. B. C-02 oder QS-02, und was der Stil dafür leistet].
+(2) [Grund mit ID]. (3) [optional: ein dritter Grund].
+
+**Verworfene Alternative.** [Der Stil, den wir erwogen haben], der uns [seine Stärke] gebracht
+hätte. Wir haben ihn nicht gewählt, weil [Grund mit ID]. [Optional: wann wir anders entscheiden würden.]
+
+### 2.2 Architekturentscheidungen
+
+*Autor: [Name]*
+
+| ADR    | Entscheidung                                               | Status       | Datum        |
+| ------ | ---------------------------------------------------------- | ------------ | ------------ |
+| ADR-01 | [[Kurztitel]](decisions/ADR-01_[kurztitel].md)             | [akzeptiert] | [TT.MM.JJJJ] |
+
 ## 3 Architekturziele und Einschränkungen
 
 Abschnitt 3 listet die Anforderungen, die unsere Architektur prägen: unsere Qualitätsziele als
@@ -295,12 +317,22 @@ Die Datenbank und die Sandbox sind noch nicht eingerichtet und angebunden.
 
 Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über die Persistenz und die Sandbox nur über die Schnittstelle `CodeRunner`. So lässt sich die Sandbox austauschen, ohne die Spiellogik zu ändern.
 
-### 8.2 Schichten
+### 8.2 Layers
 
-<!-- Vorlesungen 8 und 9. Die Schichten eurer Anwendung und die Regeln für ihre
-  Abhängigkeiten. Bis dahin bleibt dieser Abschnitt unverändert. -->
+*Autor: [Vorname]*
 
-*Wird in Vorlesung 8 und 9 behandelt.*
+| Layer         | Ordner         | Enthält                 | Darf nutzen            |
+| ------------- | -------------- | ----------------------- | ---------------------- |
+| [Web]         | `[src/web]`    | [Routen, Validierung]   | [Core]                 |
+| [Core]        | `[src/core]`   | [Services, Domäne]      | [nichts unterhalb, oder nur die eigenen Interfaces] |
+| [Persistence] | `[src/db]`     | [Repositories, SQL]     | [die Datenbank]        |
+
+[Unsere Module sind …, und sie sprechen miteinander über … — oder diese Zeile löschen, falls
+ihr keine Module habt.]
+
+**Im Code geprüft.** Wir haben [UC-xx Name] verfolgt: `[Datei]` → `[Datei]` → `[Datei]`.
+[Die Regel gilt. / Wir haben eine Abkürzung gefunden: `[Datei]` importiert `[was]` direkt
+(Zeile [n]). Sie steht auf unserem Board.]
 
 ## 9 Datensicht
 
@@ -340,8 +372,16 @@ beiden Notationen. Die Diagramme unterscheiden sich somit lediglich aufgrund ihr
 
 ## 11 Qualität
 
-<!-- Vorlesungen 7 bis 9. Wie unterstützt eure Architektur die erforderlichen Qualitätsmerkmale,
-  beispielsweise Verfügbarkeit, Sicherheit und Wartbarkeit? Bis dahin bleibt dieser
-  Abschnitt unverändert. -->
+*Autor: [Vorname]*
 
-*Wird in Vorlesung 7 bis 9 behandelt.*
+So erreicht unsere Architektur die Szenarien aus Abschnitt 3.1:
+
+| Szenario        | Taktiken   | Wo            | Status     | Preis   | Entscheidung    |
+| --------------- | ---------- | ------------- | ---------- | ------- | --------------- |
+| QS-01 [Name]    | [Taktik]   | [Komponente]  | [Status]   | [Preis] | [— oder ADR-xx] |
+| QS-02 [Name]    | [Taktik]   | [Komponente]  | [Status]   | [Preis] | [— oder ADR-xx] |
+| QS-03 [Name]    | [Taktik]   | [Komponente]  | [Status]   | [Preis] | [— oder ADR-xx] |
+
+[Zwei bis drei Sätze zum am höchsten bewerteten Szenario: Warum diese Taktiken, und welche
+Alternative haben wir nicht genommen? Falls eine Taktik „nicht geplant" ist, begründe das in
+einem Satz.]

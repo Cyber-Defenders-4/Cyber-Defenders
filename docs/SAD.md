@@ -324,8 +324,9 @@ Das Frontend kennt nur die REST-API, das Backend kennt die Datenbank nur über d
 | Layer               | Ordner                                        | Enthält                                                                                 | Darf nutzen                                    |
 |---------------------|-----------------------------------------------|-----------------------------------------------------------------------------------------|------------------------------------------------|
 | Web                 | `backend/src/routes`, `schemas`, `middleware` | Express-Routen (Controller), Validierung der Anfragen, Fehlerbehandlung                 | Core                                           |
-| Core                | `backend/src/services`                        | Spiellogik: Missionsstatus, Prüfung der Lösung gegen die hinterlegte Musterlösung, XP und Rang, Hinweise | Persistence |
+| Core                | `backend/src/services`                        | Spiellogik: Missionsstatus, Prüfung der Lösung, XP und Rang, Hinweise. Schnittstelle `CodeRunner` | Persistence. Judge0 nur über `CodeRunner` |
 | Persistence         | `backend/src/repositories`, `db`              | Repositories mit SQL, Verbindung zu Neon PostgreSQL                                     | die Datenbank                                  |
+| Ausführungs-Adapter | noch kein Ordner                              | `Judge0Runner`, implementiert `CodeRunner`                                              | Judge0 über REST                               |
 
 Wir haben keine fachlichen Module, das Backend ist nur technisch geschnitten. `types`, `errors` und
 `config` dürfen alle Schichten nutzen. Sie selbst nutzen keine Schicht.

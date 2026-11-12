@@ -103,13 +103,13 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 **Verworfene Alternative.** [Der Stil, den wir erwogen haben], der uns [seine Stärke] gebracht
 hätte. Wir haben ihn nicht gewählt, weil [Grund mit ID]. [Optional: wann wir anders entscheiden würden.]
 
-### 2.2 Architekturentscheidungen
+### 2.2 Architecture decisions
 
-*Autor: [Name]*
+*Author: Marco*
 
-| ADR    | Entscheidung                                               | Status       | Datum        |
-| ------ | ---------------------------------------------------------- | ------------ | ------------ |
-| ADR-01 | [[Kurztitel]](decisions/ADR-01_[kurztitel].md)             | [akzeptiert] | [TT.MM.JJJJ] |
+| ADR    | Decision                                                                     | Status   | Date       |
+| ------ | ---------------------------------------------------------------------------- | -------- | ---------- |
+| ADR-01 | [Client-Server-Architektur](decisions/ADR-01_client-server-architecture.md)  | accepted | 12.11.2026 |
 
 ## 3 Architekturziele und Einschränkungen
 

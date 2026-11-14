@@ -94,14 +94,11 @@ Abschnitt 2 benennt die in diesem Dokument verwendeten Sichten. Die Abschnitte 3
 
 *Autor: Felix*
 
-**Hauptstil.** [Unser Backend ist ein …: ein Satz zum Hauptstil und wo er gilt.]
-[Wo wir davon abweichen, z. B. Client-Server zwischen Browser und Backend, ein Event für Mails.]
+**Hauptstil.** Unser Backend folgt einer monolithischen Schichtenarchitektur (Layered Monolith). Es wird als eine Node.js-Anwendung mit Express betrieben und ist in die Schichten Routes/Controller, Services und Repositories unterteilt. Diese trennen die Verarbeitung von HTTP-Anfragen, die Spiellogik und den Datenbankzugriff voneinander. Zwischen dem Angular-Frontend und dem Backend verwenden wir eine Client-Server-Architektur mit REST/JSON-Kommunikation. Eine Ausnahme bildet die geplante Java-Sandbox, die aus Sicherheitsgründen als separater Dienst betrieben und über die Schnittstelle CodeRunner angebunden werden soll.
 
-**Warum.** (1) [Grund mit ID, z. B. C-02 oder QS-02, und was der Stil dafür leistet].
-(2) [Grund mit ID]. (3) [optional: ein dritter Grund].
+**Warum.** (1) Unser Team besteht aus vier Entwicklern mit begrenzter Entwicklungszeit (C-02). Ein monolithisches Backend reduziert den Aufwand für Entwicklung, Bereitstellung und Wartung, während die Schichten eine klare Trennung der Verantwortlichkeiten ermöglichen. (2) Da uns kein Budget für kostenpflichtiges Hosting zur Verfügung steht (C-03), möchten wir möglichst wenige eigenständige Dienste betreiben. (3) Die sichere Ausführung von Spieler-Code (QS-03) erfordert dennoch eine isolierte Umgebung. Durch die separate Sandbox und die Schnittstelle CodeRunner kann die Ausführung von der übrigen Spiellogik getrennt und die Laufzeitbegrenzung (QS-01) unabhängig vom Backend umgesetzt werden.
 
-**Verworfene Alternative.** [Der Stil, den wir erwogen haben], der uns [seine Stärke] gebracht
-hätte. Wir haben ihn nicht gewählt, weil [Grund mit ID]. [Optional: wann wir anders entscheiden würden.]
+**Verworfene Alternative.** Eine mögliche Alternative wäre eine Microservices-Architektur, bei der einzelne Funktionen des Backends als unabhängige Dienste bereitgestellt werden. Dies würde eine unabhängige Skalierung und Bereitstellung ermöglichen, allerdings auch den Entwicklungs- und Verwaltungsaufwand erhöhen. Aufgrund unserer begrenzten Entwicklungszeit (C-02), des fehlenden Hosting-Budgets (C-03) und des überschaubaren Funktionsumfangs haben wir uns für einen monolithischen Aufbau entschieden. Nur die Ausführung von fremdem Java-Code soll aufgrund der Sicherheitsanforderungen (QS-03) ausgelagert werden.
 
 ### 2.2 Architekturentscheidungen
 

@@ -1,6 +1,6 @@
 # Risikoliste (RMMM)
 
-*Projekt: [Projektname] · Team: [Namen]*
+*Projekt: Cyber Defenders · Team: FMLD-Studios (Felix Hagino, Marco Daquila, Leonie Röse, Dominik Stengele)*
 
 RMMM steht für Risk Mitigation, Monitoring and Management (Risikominderung,
 Überwachung und Management). Diese Liste ist ein lebendes Dokument: Wir
@@ -35,7 +35,7 @@ Score = Wahrscheinlichkeit × Auswirkung.
 |------|------------------------------|-----------|---|---|-------|----------------|--------|--------------|
 | R-01 | [ein paar Worte]             | technical |   |   |       | [Name]         | open   | [TT.MM.JJ]   |
 | R-02 | [ein paar Worte]             |           |   |   |       | [Name]         | open   | [TT.MM.JJ]   |
-| R-03 | Abhängigkeit von der Neon-DB | technical | 2 | 5 | 10    | Leonie         | open   | 18.11.2026   |
+| R-03 | Abhängigkeit von der Neon-DB | technical | 2 | 5 | 10    | Leonie         | open   | 18.11.26     |
 
 <!-- Ein Risiko mit Auswirkung 5, das ihr nicht vollständig ausschreibt: hier ein
      Satz, was ihr tun würdet, wenn es eintritt. -->
@@ -64,30 +64,34 @@ weniger schlimm wird. Oder: akzeptiert, weil …]
 
 *Verantwortlich: Leonie*
 
-**Risiko.** Weil die Persistenz vollständig von dem Anbieter Neon und dessen kostenlosem Plan abhängt, 
-könnte Neon am Demo-Tag nicht erreichbar sein, ein Limit überschritten werden oder Nutzungsbedingungen ändern, 
-sodass der Spielerfortschritt nicht gespeichert wird und ein Anbieterwechsel zusätzlichen Migrationsaufwand verursacht.
+**Risiko.** Weil die Persistenz von dem Anbieter Neon und dessen kostenlosem Plan abhängt, 
+könnte Neon am Demo-Tag nicht erreichbar sein, ein Limit überschritten werden oder Nutzungsbedingungen ändern sich, 
+sodass der Spielerfortschritt nicht gespeichert wird, der UseCase nicht persistent demonstriert werden kann. Die Demo 
+kann damit gefährdet werden und durch den benötigten Anbieterwechsel zusätzlicher Migrationsaufwand verursacht werden.
 
-**Bewertung.** Wahrscheinlichkeit 2 × Auswirkung 5 = 10. Ein Ausfall oder eine Limit-Überschreitung kurz vor dem Final
-eher unwahrscheinlich, da bisher noch keine Verbindungsprobleme oder Warnungen auftraten. Wir hänger aber von den Nutzungsbedingungen 
-des kostenlosen Plans ab. Deshalb der Wert 2. Die Auswirkung betrifft mindestens einen UseCase, im schlimmsten Fall fällt jedoch 
-die Demo aufgrund verlorener Daten aus. Daher der Wert 5.
+**Bewertung.** Wahrscheinlichkeit 2 × Auswirkung 5 = 10. Die Demo ist nur für wenige Nutzer ausgelegt und macht
+eine Limit-Überschreitung kurz vor dem Final eher unwahrscheinlich. Jedoch besteht eine gewisse Unsicherheit, da die 
+Datenbank bisher noch nicht eingerichtet und getestet wurde. Deshalb der Wert 2, welchen wir neu bewerten, sobald die 
+Datenbank läuft. Die Auswirkung betrifft mindestens einen UseCase, im schlimmsten Fall fällt jedoch die Demo 
+aufgrund verlorener Daten aus. Daher der Wert 5.
 
-**Mitigation.** Wir nutzen ausschließlich Standardfunktionen von PostgreSQL und kapseln den Datenbankzugriff, 
+**Mitigation.** Wir werden ausschließlich Standardfunktionen von PostgreSQL nutzen und kapseln den Datenbankzugriff, 
 damit bei einem Wechsel nur die Konfiguration davon betroffen ist. 
-Dominik erstellt außerdem mindestens einmal pro Sprint eine Backup-Datei und legt sie im privaten 
-Discord Server im Kanal Backup ab. Mit dieser Datei testen wir einmal einen Restore. 
-Zudem erstellen wir eine lokale PostgreSQL-Instanz, mit der wir die Setup-Schritte aus der README testen. 
+Dominik wird nach der Einrichtung der Datenbank außerdem mindestens einmal pro Sprint eine Backup-Datei
+erstellen und diese im privaten Discord Server im Kanal Backup ablegen. Mit dieser Datei wird einmalig ein Restore getestet. 
+Die Datenbank wird bis Anfang des vierten Semesters eingerichtet, das erste Backup erstellt und damit der Restore getestet. 
+Zudem richten wir eine lokale PostgreSQL-Instanz ein und testen damit den Notfallbetrieb anhand der Setup-Schritte in der README. 
 
-**Indikator.** Wir greifen direkt ein, wenn Neon Warnmeldungen zum kostenlosen Plan oder zu geänderten Nutzungsbedingungen sendet, wenn mindestens fünf 
-Verbindungsfehler auftreten oder das letzte Backup älter als ein Sprint ist. Dann erstellen wir direkt ein neues Backup und testen den Restore.
+**Indikator.** Wir greifen direkt ein, wenn Neon Warnmeldungen zu Limits oder Änderungen des kostenlosen Plans sendet, 
+wenn mindestens fünf Verbindungsfehler innerhalb von 10 Minuten auftreten oder das letzte Backup älter als ein Sprint ist. 
 
 **Contingency.** Es werden zwei Fälle unterschieden: Entweder ist Neon ausgefallen, aber es bleibt noch Zeit, das letzte vorhandene 
 Backup in einer alternativen PostgreSQL-Datenbank einzuspielen oder der Ausfall tritt erst am Demo-Tag ein und wir benötigen 
 eine lokale PostgreSQL-Instanz.
 Die Schritte stehen in der README, jedes Teammitglied kann sie befolgen:
 - Die Backup-Datei im privaten Discord-Kanal Backup abrufen
-- Backup in einer alternativen PostgreSQL-Datenbank wiederherstellen
+- Backup in einer alternativen PostgreSQL-Datenbank (lokal) wiederherstellen
 - alle notwendigen Verbindungsdaten in den Umgebungsvariablen anpassen
 - das Backend wie in der README beschrieben neu starten 
 - die neue Datenbankverbindung testen
+- das Laden von Spielerfortschritten überprüfen

@@ -1,6 +1,6 @@
 # Risikoliste (RMMM)
 
-*Projekt: Cyber Defenders · Team: FMLD-Studios (Felix Hagino, Marco Daquila, Leonie Röse, Dominik Stengele)*
+*Projekt: Cyber Defenders · Team: FMLD-Studios (Felix Hagino, Marco D'Aquila, Leonie Röse, Dominik Stengele)*
 
 RMMM steht für Risk Mitigation, Monitoring and Management (Risikominderung,
 Überwachung und Management). Diese Liste ist ein lebendes Dokument: Wir

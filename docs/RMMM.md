@@ -34,7 +34,7 @@ Score = Wahrscheinlichkeit × Auswirkung.
 | ID   | Risiko, kurz                 | Art       | W | A | Score | Verantwortlich | Status | Aktualisiert |
 |------|------------------------------|-----------|---|---|-------|----------------|--------|--------------|
 | R-01 | Judge0-Hosting               | technical | 4 | 5 | 20    | Dominik        | open   | 21.11.26     |
-| R-02 | [ein paar Worte]             |           |   |   |       | [Name]         | open   | [TT.MM.JJ]   |
+| R-02 | Umfang zu groß               | project   | 4 | 4 | 16    | Marco          | open   | 21.11.26     |
 | R-03 | Abhängigkeit von der Neon-DB | technical | 2 | 5 | 10    | Leonie         | open   | 18.11.26     |
 
 <!-- Ein Risiko mit Auswirkung 5, das ihr nicht vollständig ausschreibt: hier ein
@@ -80,6 +80,56 @@ diese Schritte befolgen:
 5. Judge0 dort nach der offiziellen Judge0-Anleitung aufsetzen und Schritt 2 und 3 wiederholen.
 
 Die Spiellogik bleibt dabei gleich, weil sie Judge0 nur über `CodeRunner` anspricht.
+
+### R-02 Umfang zu groß
+
+*Verantwortlich: Marco*
+
+**Risiko.** Weil wir acht Use Cases (UC-01 bis UC-08) sowie Nutzerverwaltung und
+Desktop-Shell geplant haben, Frontend und Backend aktuell aber erst als
+Grundgerüst mit ersten Frontend-Komponenten existieren und im 4. Semester
+zusätzlich CI/CD-Pipeline, Tests, Refactoring, Metriken und Security Check
+anstehen, könnte unsere verfügbare Entwicklungszeit bis zum Projektende nicht
+ausreichen, sodass geplante Use Cases bis zur benoteten Final-Demo nicht
+fertiggestellt werden.
+
+**Bewertung.** Wahrscheinlichkeit 4 × Auswirkung 4 = 16. Im Repository steht
+aktuell erst das Grundgerüst mit ersten Frontend-Komponenten, und im aktuellen
+Sprint (13 Tickets, 14,5 SP Estimate) liegt noch kein Implementierungs-Ticket für
+die acht Use Cases oder das Backend, während erste Aufgaben bereits deutlich
+über dem Estimate liegen (z. B. #37 mit 7 h Aufwand bei 2 SP Estimate). Bei
+diesem Stand im Vergleich zum ausstehenden Umfang (acht Use Cases plus geplante
+Semester-4-Anforderungen) ist ein zeitlicher Engpass wahrscheinlich (4). Ein
+fehlender Use Case in der Final-Demo entspricht direkt Stufe 4 unserer Skala.
+
+**Mitigation.** Konkretes Board-Item „Alle offenen Tickets im Prioritized
+backlog in Must-Have (P0/P1) und Optional (P2) aufteilen“ (Assignee: Marco, 
+fällig vor Sprintwechsel 5 am `30.11.2026`): Alle offenen Issues auf dem
+GitHub-Board werden verbindlich priorisiert in Must-Have (Kern-Workflow:
+Anmeldung, UC-01 bis UC-05, UC-08) und Optional (UC-06 Fortschritt ansehen,
+UC-07 Hinweis anfordern, Profilverwaltung). Neue Sprints werden erst mit
+Optional-Tickets gefüllt, wenn keine offenen Must-Have-Tickets mehr vorliegen.
+
+**Indikator.** Das Burndown-Chart liegt an zwei aufeinanderfolgenden
+Sprintwechseln über der Ideallinie, oder vier Wochen vor der Final-Demo steht
+noch mindestens ein Must-Have-Use-Case nicht mindestens auf „In Progress“.
+
+**Contingency.** Sobald der Indikator anschlägt, wird der Funktionsumfang wie
+folgt gekürzt:
+- **Entscheidung (Wer & Wann):** Marco meldet das Auslösen des Indikators direkt
+  im Team-Chat. Felix entscheidet als Product Owner spätestens beim unmittelbar
+  nächsten Sprintwechsel (bei weniger als vier Wochen bis zur Final-Demo
+  innerhalb von 48 Stunden in einem kurzen Meeting), welche Features
+  gestrichen werden.
+- **Umsetzung auf dem Board:** Die gestrichenen Optional-Tickets (P2) werden in
+  fester Reihenfolge (1. Profilverwaltung, 2. UC-07 Hinweis anfordern, 3. UC-06
+  Fortschritt ansehen) mit dem Label `deferred` markiert und im Backlog belassen.
+- **Feature-Freeze:** Es werden keine neuen Features mehr in den laufenden
+  Sprint aufgenommen. Die verbleibende Zeit fließt ausschließlich in den
+  lauffähigen Kern-Workflow sowie die geplanten Semester-4-Anforderungen
+  (CI-Pipeline, Tests, Refactoring, Metriken).
+- **Dokumentation:** Die bewusste Scope-Reduktion wird in den Projektdokumenten
+  festgehalten und in der Final-Präsentation transparent begründet.
 
 ### R-03 Abhängigkeit von Neon-DB
 

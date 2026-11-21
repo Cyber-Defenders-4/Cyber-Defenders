@@ -9,10 +9,6 @@ wir anfassen.
 
 ## Unsere Skala
 
-<!-- Eure Skala, eure Worte. Vorlesung 10, Folie 18 zeigt ein Beispiel, von dem
-     ihr ausgehen könnt – ändert die Worte, bis ihr alle dasselbe unter jeder
-     Zahl versteht. Fünf Stufen sind üblich; drei funktionieren auch. -->
-
 | Wert | Wahrscheinlichkeit          | Auswirkung                       |
 | :--: | --------------------------- | -------------------------------- |
 |  1   | fast nie                    | eine Stunde verloren             |
@@ -26,10 +22,6 @@ Score = Wahrscheinlichkeit × Auswirkung.
 **Unsere Schwellenwerte:** ab 15: sofort handeln · zwischen 5 und 14: planen · darunter: beobachten
 
 ## Risiken
-
-<!-- Eine Zeile pro Risiko, nach Score sortiert, höchster zuerst. Art: Projekt,
-     technisch oder geschäftlich (project, technical, business). Status: open,
-     occurred oder closed. Aktualisiert: Datum der letzten Änderung. -->
 
 | ID   | Risiko, kurz     | Art       | W | A | Score | Verantwortlich | Status | Aktualisiert |
 | ---- | ---------------- | --------- | - | - | ----- | -------------- | ------ | ------------ |
@@ -74,19 +66,19 @@ fertiggestellt werden.
 
 **Bewertung.** Wahrscheinlichkeit 4 × Auswirkung 4 = 16. Im Repository steht
 aktuell erst das Grundgerüst mit ersten Frontend-Komponenten, und im aktuellen
-Sprint (13 Tickets, 14,5 h Estimate) liegt noch kein Implementierungs-Ticket für
+Sprint (13 Tickets, 14,5 SP Estimate) liegt noch kein Implementierungs-Ticket für
 die acht Use Cases oder das Backend, während erste Aufgaben bereits deutlich
-über dem Estimate liegen (z. B. #37 mit 7 h Aufwand bei 2 h Estimate). Bei
+über dem Estimate liegen (z. B. #37 mit 7 h Aufwand bei 2 SP Estimate). Bei
 diesem Stand im Vergleich zum ausstehenden Umfang (acht Use Cases plus geplante
-Semester-4-Anforderungen) ist ein zeitlicher Engpass wahrscheinlich (4); ein
+Semester-4-Anforderungen) ist ein zeitlicher Engpass wahrscheinlich (4). Ein
 fehlender Use Case in der Final-Demo entspricht direkt Stufe 4 unserer Skala.
 
 **Mitigation.** Konkretes Board-Item „Alle offenen Tickets im Prioritized
-backlog in Must-Have (P0/P1) und Optional (P2) aufteilen“ (Assignee: Marco,
-fällig vor Sprintwechsel 4 am `[TT.MM.2026]`): Alle offenen Issues auf dem
+backlog in Must-Have (P0/P1) und Optional (P2) aufteilen“ (fällig vor Sprintwechsel 5 
+am `30.11.2026`): Alle offenen Issues auf dem
 GitHub-Board werden verbindlich priorisiert in Must-Have (Kern-Workflow:
 Anmeldung, UC-01 bis UC-05, UC-08) und Optional (UC-06 Fortschritt ansehen,
-UC-07 Hinweis anfordern, Profilverwaltung); neue Sprints werden erst mit
+UC-07 Hinweis anfordern, Profilverwaltung). Neue Sprints werden erst mit
 Optional-Tickets gefüllt, wenn keine offenen Must-Have-Tickets mehr vorliegen.
 
 **Indikator.** Das Burndown-Chart liegt an zwei aufeinanderfolgenden
@@ -98,13 +90,13 @@ folgt gekürzt:
 - **Entscheidung (Wer & Wann):** Marco meldet das Auslösen des Indikators direkt
   im Team-Chat. Felix entscheidet als Product Owner spätestens beim unmittelbar
   nächsten Sprintwechsel (bei weniger als vier Wochen bis zur Final-Demo
-  innerhalb von 48 Stunden in einem kurzen Ad-hoc-Call), welche Features
+  innerhalb von 48 Stunden in einem kurzen Meeting), welche Features
   gestrichen werden.
 - **Umsetzung auf dem Board:** Die gestrichenen Optional-Tickets (P2) werden in
   fester Reihenfolge (1. Profilverwaltung, 2. UC-07 Hinweis anfordern, 3. UC-06
   Fortschritt ansehen) mit dem Label `deferred` markiert und im Backlog belassen.
 - **Feature-Freeze:** Es werden keine neuen Features mehr in den laufenden
-  Sprint aufgenommen; die verbleibende Zeit fließt ausschließlich in den
+  Sprint aufgenommen. Die verbleibende Zeit fließt ausschließlich in den
   lauffähigen Kern-Workflow sowie die geplanten Semester-4-Anforderungen
   (CI-Pipeline, Tests, Refactoring, Metriken).
 - **Dokumentation:** Die bewusste Scope-Reduktion wird in den Projektdokumenten

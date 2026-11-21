@@ -66,32 +66,46 @@ weniger schlimm wird. Oder: akzeptiert, weil …]
 
 **Risiko.** Weil wir acht Use Cases (UC-01 bis UC-08) sowie Nutzerverwaltung und
 Desktop-Shell geplant haben, Frontend und Backend aktuell aber erst als
-Grundgerüst existieren und im 4. Semester zusätzlich CI/CD-Pipeline, Tests,
-Refactoring, Metriken und Security Check anstehen, könnte unsere verfügbare
-Entwicklungszeit bis zum Projektende nicht ausreichen, sodass geplante Use Cases
-bis zur benoteten Final-Demo nicht fertiggestellt werden.
+Grundgerüst mit ersten Frontend-Komponenten existieren und im 4. Semester
+zusätzlich CI/CD-Pipeline, Tests, Refactoring, Metriken und Security Check
+anstehen, könnte unsere verfügbare Entwicklungszeit bis zum Projektende nicht
+ausreichen, sodass geplante Use Cases bis zur benoteten Final-Demo nicht
+fertiggestellt werden.
 
-**Bewertung.** Wahrscheinlichkeit 4 × Auswirkung 4 = 16. Der geplante
-Funktionsumfang ist neben Klausuren und den geplanten Semester-4-Anforderungen
-realistisch schwer vollständig zu schaffen (wahrscheinlich = 4), und fehlende
-Features in der Final-Demo entsprechen direkt Stufe 4 unserer Skala.
+**Bewertung.** Wahrscheinlichkeit 4 × Auswirkung 4 = 16. Im Repository steht
+aktuell erst das Grundgerüst mit ersten Frontend-Komponenten, und im aktuellen
+Sprint (13 Tickets, 14,5 h Estimate) liegt noch kein Implementierungs-Ticket für
+die acht Use Cases oder das Backend, während erste Aufgaben bereits deutlich
+über dem Estimate liegen (z. B. #37 mit 7 h Aufwand bei 2 h Estimate). Bei
+diesem Stand im Vergleich zum ausstehenden Umfang (acht Use Cases plus geplante
+Semester-4-Anforderungen) ist ein zeitlicher Engpass wahrscheinlich (4); ein
+fehlender Use Case in der Final-Demo entspricht direkt Stufe 4 unserer Skala.
 
-**Mitigation.** Wir teilen bis zum nächsten Sprintwechsel alle offenen Tickets
-auf dem GitHub-Board verbindlich in Must-Have (Kern-Workflow: Anmeldung sowie
-UC-01 bis UC-05 und UC-08) und Optional (UC-06 Fortschritt ansehen, UC-07 Hinweis
-anfordern, Profilverwaltung) ein, bearbeiten zuerst ausschließlich
-Must-Have-Tickets und prüfen das Burndown-Chart bei jedem Sprintwechsel.
+**Mitigation.** Konkretes Board-Item „Alle offenen Tickets im Prioritized
+backlog in Must-Have (P0/P1) und Optional (P2) aufteilen“ (Assignee: Marco,
+fällig vor Sprintwechsel 4 am `[TT.MM.2026]`): Alle offenen Issues auf dem
+GitHub-Board werden verbindlich priorisiert in Must-Have (Kern-Workflow:
+Anmeldung, UC-01 bis UC-05, UC-08) und Optional (UC-06 Fortschritt ansehen,
+UC-07 Hinweis anfordern, Profilverwaltung); neue Sprints werden erst mit
+Optional-Tickets gefüllt, wenn keine offenen Must-Have-Tickets mehr vorliegen.
 
 **Indikator.** Das Burndown-Chart liegt an zwei aufeinanderfolgenden
 Sprintwechseln über der Ideallinie, oder vier Wochen vor der Final-Demo steht
 noch mindestens ein Must-Have-Use-Case nicht mindestens auf „In Progress“.
 
-**Contingency.** Jedes Teammitglied kann den Plan B direkt auf dem Board umsetzen:
-- Alle noch nicht begonnenen Optional-Tickets (UC-07 Hinweis anfordern, UC-06
-  Fortschritt ansehen, Profilverwaltung) zurück ins Backlog schieben und als
-  verschoben markieren
-- Keine neuen Features mehr in den laufenden Sprint aufnehmen; Fokus strikt auf
-  den durchgängigen Kern-Workflow (Anmeldung, UC-01 bis UC-05, UC-08) sowie die
-  geplanten Semester-4-Anforderungen (CI-Pipeline, Tests, Refactoring, Metriken)
-- Die bewusste Scope-Reduktion in der Dokumentation festhalten und in der
-  Final-Präsentation transparent begründen
+**Contingency.** Sobald der Indikator anschlägt, wird der Funktionsumfang wie
+folgt gekürzt:
+- **Entscheidung (Wer & Wann):** Marco meldet das Auslösen des Indikators direkt
+  im Team-Chat. Felix entscheidet als Product Owner spätestens beim unmittelbar
+  nächsten Sprintwechsel (bei weniger als vier Wochen bis zur Final-Demo
+  innerhalb von 48 Stunden in einem kurzen Ad-hoc-Call), welche Features
+  gestrichen werden.
+- **Umsetzung auf dem Board:** Die gestrichenen Optional-Tickets (P2) werden in
+  fester Reihenfolge (1. Profilverwaltung, 2. UC-07 Hinweis anfordern, 3. UC-06
+  Fortschritt ansehen) mit dem Label `deferred` markiert und im Backlog belassen.
+- **Feature-Freeze:** Es werden keine neuen Features mehr in den laufenden
+  Sprint aufgenommen; die verbleibende Zeit fließt ausschließlich in den
+  lauffähigen Kern-Workflow sowie die geplanten Semester-4-Anforderungen
+  (CI-Pipeline, Tests, Refactoring, Metriken).
+- **Dokumentation:** Die bewusste Scope-Reduktion wird in den Projektdokumenten
+  festgehalten und in der Final-Präsentation transparent begründet.

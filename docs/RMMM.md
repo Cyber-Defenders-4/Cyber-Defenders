@@ -33,7 +33,7 @@ Score = Wahrscheinlichkeit × Auswirkung.
 
 | ID   | Risiko, kurz                 | Art       | W | A | Score | Verantwortlich | Status | Aktualisiert |
 |------|------------------------------|-----------|---|---|-------|----------------|--------|--------------|
-| R-01 | [ein paar Worte]             | technical |   |   |       | [Name]         | open   | [TT.MM.JJ]   |
+| R-01 | Judge0-Hosting               | technical | 4 | 5 | 20    | Dominik        | open   | 21.11.26     |
 | R-02 | [ein paar Worte]             |           |   |   |       | [Name]         | open   | [TT.MM.JJ]   |
 | R-03 | Abhängigkeit von der Neon-DB | technical | 2 | 5 | 10    | Leonie         | open   | 18.11.26     |
 
@@ -43,22 +43,43 @@ Score = Wahrscheinlichkeit × Auswirkung.
 <!-- Kopiert den folgenden Block einmal für jedes Risiko, das ihr vollständig
      ausschreibt. -->
 
-### R-01 [Risiko, kurz]
+### R-01 Judge0-Hosting
 
-*Verantwortlich: [Name]*
+*Verantwortlich: Dominik*
 
-**Risiko.** Weil [Ursache – was heute schon wahr ist], könnte [Ereignis – was
-passieren kann], sodass [Wirkung – was es uns kosten würde].
+**Risiko.** Weil Judge0 einen eigenen Linux-Server mit privilegierten Containern braucht und nicht
+auf Vercel läuft, könnten wir keinen dauerhaften, kostenlosen Server dafür finden, sodass die
+Code-Prüfung (UC-04, UC-08) und damit der Kern des Spiels in der Final-Demo fehlt.
 
-**Bewertung.** Wahrscheinlichkeit [Wert] × Auswirkung [Wert] = [Score]. [Ein Satz:
-warum diese Zahlen.]
+**Bewertung.** Wahrscheinlichkeit 4 × Auswirkung 5 = 20.
 
-**Mitigation.** [Was wir tun, bevor es eintritt, damit es unwahrscheinlicher oder
-weniger schlimm wird. Oder: akzeptiert, weil …]
+- **Wahrscheinlichkeit 4 (wahrscheinlich):** Judge0 braucht eine eigene Serverumgebung, wir haben kein
+Projektbudget (C-03) und das Guthaben von Azure for Students ist begrenzt. Ob wir Judge0 dauerhaft
+kostenlos betreiben können, ist deshalb unsicher.
+- **Auswirkung 5 (keine Demo):** Ohne Judge0 kann der Spieler keinen Code ausführen und keine Lösung
+prüfen lassen. Damit lässt sich keine Programmier-Mission abschließen und das zentrale Feature des
+Spiels fehlt in der Final-Demo.
 
-**Indikator.** [Das Warnzeichen, auf das wir achten.]
+**Mitigation.** Das Hosting ist bisher nur geplant. Sobald wir in Semester 4 mit dem Programmieren
+beginnen, setzen wir als erstes Item im ersten Sprint Judge0 auf einer Azure-for-Students-VM auf und
+prüfen es mit einem Java-Beispiel. Die VM stoppen wir zwischen den Tests, damit das Guthaben bis zur
+Final-Demo reicht. Im selben Sprint prüfen wir, ob die gehostete Judge0-Variante mit Gratis-Kontingent
+verfügbar ist und für unsere Anforderungen reicht, damit der Plan B vorab geklärt ist. Die Spiellogik
+ruft Judge0 nur über die Schnittstelle `CodeRunner` auf, damit wir den Anbieter austauschen können.
 
-**Contingency.** [Unser Plan B: was wir tun, wenn es trotzdem eingetreten ist.]
+**Indikator.** Am Ende des ersten Sprints in Semester 4 beantwortet noch keine Judge0-Instanz eine
+Test-Abgabe, oder das Azure-Guthaben sinkt schneller als ein Viertel pro Monat.
+
+**Contingency.** Fällt die Azure-VM aus oder ist das Guthaben aufgebraucht, kann jedes Teammitglied
+diese Schritte befolgen:
+
+1. Ein Konto für die gehostete Judge0-Variante mit Gratis-Kontingent anlegen und Adresse und Token notieren.
+2. Adresse und Token im Backend als Umgebungsvariablen eintragen.
+3. Das Backend neu starten und eine Test-Abgabe mit einem Java-Beispiel durchführen.
+4. Reicht das Gratis-Kontingent für die Demo nicht, andere Hosting-Angebote vergleichen und das günstigste wählen, auf dem Judge0 läuft.
+5. Judge0 dort nach der offiziellen Judge0-Anleitung aufsetzen und Schritt 2 und 3 wiederholen.
+
+Die Spiellogik bleibt dabei gleich, weil sie Judge0 nur über `CodeRunner` anspricht.
 
 ### R-03 Abhängigkeit von Neon-DB
 

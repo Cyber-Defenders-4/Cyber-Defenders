@@ -1,0 +1,32 @@
+<div 
+  class="flex flex-col p-[3px] bg-chrome shadow-bevel-out font-ui text-chrome-ink"
+  [class.absolute]="!isStatic()"
+  [class.relative]="isStatic()"
+  [class.shadow-window-drop]="!isStatic()"
+  [style.width]="width()"
+  [style.height]="height()"
+  [style.left]="left()"
+  [style.top]="top()">
+  
+  <div 
+    class="flex items-center gap-space-2 h-[24px] pl-space-1 pr-space-2 text-[15px] font-semibold tracking-[0.2px] text-titlebar-ink"
+    [class.bg-titlebar]="isActive()"
+    [class.bg-titlebar-inactive]="!isActive()">
+    
+    @if (icon()) {
+      <span [innerHTML]="icon()" class="w-[16px] h-[16px] flex-none"></span>
+    }
+    
+    <span class="flex-1 whitespace-nowrap overflow-hidden text-ellipsis">{{ title() }}</span>
+    
+    <div class="flex gap-space-1">
+      <button class="w-[18px] h-[16px] grid place-items-center bg-chrome shadow-bevel-out text-chrome-ink font-ui font-bold text-[11px] leading-none border-0 p-0 cursor-default active:shadow-bevel-in active:pt-[2px]">_</button>
+      <button class="w-[18px] h-[16px] grid place-items-center bg-chrome shadow-bevel-out text-chrome-ink font-ui font-bold text-[11px] leading-none border-0 p-0 cursor-default active:shadow-bevel-in active:pt-[2px]">□</button>
+      <button class="w-[18px] h-[16px] grid place-items-center bg-chrome shadow-bevel-out text-chrome-ink font-ui font-bold text-[11px] leading-none border-0 p-0 cursor-default active:shadow-bevel-in active:pt-[2px]">×</button>
+    </div>
+  </div>
+
+  <div class="flex-1 min-h-0 p-space-3 flex flex-col gap-space-3">
+    <ng-content></ng-content>
+  </div>
+</div>

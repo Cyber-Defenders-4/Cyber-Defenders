@@ -1,0 +1,15 @@
+<button 
+  (click)="onClick($event)"
+  [disabled]="isDisabled()"
+  class="min-w-[88px] h-[30px] px-[var(--spacing-scale-4)] bg-chrome text-chrome-ink border-0 shadow-bevel-out font-ui text-[15px] leading-none inline-flex items-center justify-center gap-[6px] cursor-default 
+         active:shadow-bevel-in active:pt-[2px] 
+         focus-visible:outline-1 focus-visible:outline-dotted focus-visible:outline-focus focus-visible:outline-offset-[-5px] 
+         disabled:text-ink-muted disabled:[text-shadow:1px_1px_0_var(--color-chrome-light)] disabled:shadow-bevel-out disabled:active:pt-0"
+  
+  [class.outline]="isDefault()"
+  [class.outline-1]="isDefault()"
+  [class.outline-chrome-ink]="isDefault()"
+  [class.outline-offset-0]="isDefault()">
+  
+  <ng-content></ng-content>
+</button>
